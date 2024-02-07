@@ -139,7 +139,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Door Controller
+  m_Name: Door1_C1 Controller
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: isOpen
