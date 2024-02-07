@@ -9,6 +9,10 @@ TagManager:
   - Handle
   - Drawer
   - Monitor
+  - OutDoor
+  - InDoor
+  - Wall
+  - Item
   layers:
   - Default
   - TransparentFX
