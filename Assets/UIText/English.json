@@ -1,0 +1,23 @@
+{
+  "uiTexts": {
+    "Key": "Value",
+    "New Game": "New Game",
+    "Options": "Options",
+    "Quit": "Quit",
+    "Title": "Return To Title",
+    "Temp": "Spare Button",
+    "Language Selected": "Language Selected",
+    "BGM Volume Settings": "BGM Music Volume ",
+    "Sound Effect Settings": "Sound Effect Volume",
+    "Light Intensity Settings": "Brightness Intensity",
+    "Light Intensity Subject": "Brightness Control",
+    "Light Intensity Descripton": "Please set it so that the picture is faintly visible.",
+    "Character Setting Subject": "Character Setting",
+    "Next": "Next",
+    "Back": "Back",
+    "Complete": "Complete",
+    "Loading": "Loding",
+    "LoadingComplete": "Load Complete",
+    "Character  Closet": "Closet"
+  }
+}
