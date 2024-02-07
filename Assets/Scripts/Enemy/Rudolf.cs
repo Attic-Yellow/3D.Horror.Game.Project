@@ -5,7 +5,7 @@ using UnityEngine;
 public class Rudolf : Enemy
 {
     public bool isStunned = false;
-    private void Awake()
+    private new void Awake()
     {
         base.Awake();
     }

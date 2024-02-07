@@ -111,7 +111,7 @@ GameObject:
   - component: {fileID: 4345101748821951823}
   m_Layer: 0
   m_Name: Out
-  m_TagString: InDoor
+  m_TagString: OutDoor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -124,12 +124,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4363813427784665178}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.078999996, y: 0, z: 0.093}
+  m_LocalPosition: {x: 0.65, y: 0.9499999, z: 0.059}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 5535027081781221149}
-  m_RootOrder: 1
+  m_Father: {fileID: 3861936338364267993}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &4345101748821951823
 BoxCollider:
@@ -142,7 +142,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.2, y: 0.1, z: 0.1}
+  m_Size: {x: 0.5, y: 0.5, z: 0.1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4789362796291647399
 GameObject:
@@ -156,7 +156,7 @@ GameObject:
   - component: {fileID: 4568519734324280938}
   m_Layer: 0
   m_Name: In
-  m_TagString: OutDoor
+  m_TagString: InDoor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -169,12 +169,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4789362796291647399}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.07099998, y: 0, z: -0.08800001}
+  m_LocalPosition: {x: 0.65, y: 0.9499999, z: -0.141}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 5535027081781221149}
-  m_RootOrder: 0
+  m_Father: {fileID: 3861936338364267993}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &4568519734324280938
 BoxCollider:
@@ -187,7 +187,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.2, y: 0.1, z: 0.1}
+  m_Size: {x: 0.5, y: 0.5, z: 0.1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &3608196794500160050
 PrefabInstance:
@@ -442,9 +442,3 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4968889187860063171, guid: 1a4fd54eff64948438ae75e81cf7cdb0, type: 3}
---- !u!4 &5535027081781221149 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1a4fd54eff64948438ae75e81cf7cdb0,
-    type: 3}
-  m_PrefabInstance: {fileID: 5429903759960568054}
-  m_PrefabAsset: {fileID: 0}

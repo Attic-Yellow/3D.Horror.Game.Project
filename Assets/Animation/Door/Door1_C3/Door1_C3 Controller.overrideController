@@ -9,7 +9,5 @@ AnimatorOverrideController:
   m_Name: Door1_C3 Controller
   m_Controller: {fileID: 9100000, guid: 49ac32ca4c6c5c1479c24c96bd24ec08, type: 2}
   m_Clips:
-  - m_OriginalClip: {fileID: 7400000, guid: 85c9e7b3f1e0e354a8478fce2a9eb78b, type: 2}
-    m_OverrideClip: {fileID: 7400000, guid: 4b422a10e42c3a546a9e1c9ed0debcc8, type: 2}
-  - m_OriginalClip: {fileID: 7400000, guid: 54f771ad63ea1ec458117f8b2e88b380, type: 2}
-    m_OverrideClip: {fileID: 7400000, guid: 0f78149cabf43d04ca030b3dabf001ef, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 1fd78a12f7ffe634a968c6cdc8376aaf, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: bcd0ee6241b292b4d9d7aac3ccf9b2ad, type: 2}

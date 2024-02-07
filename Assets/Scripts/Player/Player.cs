@@ -28,46 +28,55 @@ public class Player : MonoBehaviour
     {
         rig.weight = 0f;
     }
+
     private void Update()
     {
-        Ray ray = playerCamera.ScreenPointToRay(
-        new Vector3(Screen.width / 2, Screen.height / 2, 0)); //화면 가운데로 레이를 쏨
+        Ray ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward);
         RaycastHit hit;
+        Debug.DrawRay(ray.origin, ray.direction * interactionDistance, new Color(1, 0, 1));
 
-        if (Input.GetKey(KeyCode.F))
+        if (Physics.Raycast(ray, out hit, interactionDistance, LayerMask.GetMask("Interaction Object")))
         {
-            if (Physics.Raycast(ray, out hit, interactionDistance))
+            // 충돌한 물체가 상호작용 가능한 물체인지 확인
+            if (hit.collider.CompareTag("Item"))
             {
-                // 충돌한 물체가 상호작용 가능한 물체인지 확인
-                if (hit.collider.CompareTag("Item"))
-                {
-                    Item item = hit.collider.gameObject.GetComponent<Item>();
-                    if (item != prevHitItem)
-                    {
-                        interactionText.gameObject.SetActive(false);
-                    }
-                    prevHitItem = item;
-                    interactionText.text = prevHitItem.text;
-                    interactionText.gameObject.SetActive(true);
-                }
-                else if (hit.collider.CompareTag("OutDoor"))
-                {
-                    door = hit.collider.gameObject.GetComponent<Door>();
-                    door.isOut = true;
-                }
-                else if (hit.collider.CompareTag("InDoor"))
-                {
-                    door = hit.collider.gameObject.GetComponent<Door>();
-                    door.isOut = false;
-                }
-                else
+                Item item = hit.collider.gameObject.GetComponent<Item>();
+                if (item != prevHitItem)
                 {
                     interactionText.gameObject.SetActive(false);
                 }
+                prevHitItem = item;
+                interactionText.text = prevHitItem.text;
+                interactionText.gameObject.SetActive(true);
             }
+            else if (hit.collider.CompareTag("OutDoor") || hit.collider.CompareTag("InDoor"))
+            {
+                door = hit.collider.gameObject.GetComponentInParent<Door>();
+            }
+            else
+            {
+                ResetInteractions();
+            }
+        }
+        else
+        {
+            ResetInteractions();
         }
     }
 
+    private void ResetInteractions()
+    {
+        if (prevHitItem != null)
+        {
+            // interactionText.gameObject.SetActive(false);
+            prevHitItem = null;
+        }
+
+        if (door != null)
+        {
+            door = null;
+        }
+    }
 
     void OnInteraction() //F 상호작용키 
     {
@@ -81,7 +90,7 @@ public class Player : MonoBehaviour
             prevHitItem.gameObject.SetActive(false);
             prevHitItem = null;
         }
-        if (door != null && interactionText.gameObject.activeSelf)
+        if (door != null /*&& interactionText.gameObject.activeSelf*/)
         {
             if (door.isOpen)
             {
@@ -93,7 +102,7 @@ public class Player : MonoBehaviour
             }
             door = null;
         }
-        interactionText.gameObject.SetActive(false); // 상호작용 텍스트 비활성화
+        // interactionText.gameObject.SetActive(false); // 상호작용 텍스트 비활성화
     }
 
     void OnFlashlight() //Q누르면

@@ -8,9 +8,9 @@ using UnityEngine.PlayerLoop;
 
 public class Santa : Enemy
 {
-    private void Awake()
+    private new void Awake()
     {
-     base.Awake();
+        base.Awake();
     }
 
 

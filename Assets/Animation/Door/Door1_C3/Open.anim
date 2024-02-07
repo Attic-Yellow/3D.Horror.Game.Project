@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Door Open
+  m_Name: Open
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -47,7 +47,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: DoorHandle1_C1
+    path: DoorHandle1_C2
   m_PositionCurves: []
   m_ScaleCurves: []
   m_FloatCurves: []
@@ -60,7 +60,7 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 2874262376
+      path: 844665554
       attribute: 4
       script: {fileID: 0}
       typeID: 4
@@ -113,7 +113,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: DoorHandle1_C1
+    path: DoorHandle1_C2
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -141,7 +141,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: DoorHandle1_C1
+    path: DoorHandle1_C2
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -178,7 +178,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: DoorHandle1_C1
+    path: DoorHandle1_C2
     classID: 4
     script: {fileID: 0}
   m_EulerEditorCurves:
@@ -188,8 +188,8 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.z
-    path: DoorHandle1_C1
+    attribute: m_LocalEulerAngles.x
+    path: DoorHandle1_C2
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -199,7 +199,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: DoorHandle1_C1
+    path: DoorHandle1_C2
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -208,8 +208,8 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.x
-    path: DoorHandle1_C1
+    attribute: m_LocalEulerAngles.z
+    path: DoorHandle1_C2
     classID: 4
     script: {fileID: 0}
   m_HasGenericRootTransform: 0

@@ -19,6 +19,8 @@ public class PlayerMove : MonoBehaviour
     private Vector2 inputValue;
     private Vector3 moveDir;
 
+    public Transform cameraTransform; // 카메라의 Transform
+
     private void Awake()
     {
         controller = GetComponent<CharacterController>();
@@ -37,7 +39,19 @@ public class PlayerMove : MonoBehaviour
         {
             currentSpeed = isRun ? sprintSpeed : moveSpeed;
         }
-        moveDir = transform.TransformDirection(new Vector3(inputValue.x, moveDirY, inputValue.y)) * currentSpeed;
+
+        // 카메라 방향에 기반한 플레이어의 이동 방향 계산
+        Vector3 forward = Camera.main.transform.forward;
+        Vector3 right = Camera.main.transform.right;
+        forward.y = 0; // 카메라의 상하 움직임은 무시
+        right.y = 0; // 카메라의 상하 움직임은 무시
+        forward.Normalize();
+        right.Normalize();
+
+        moveDir = (forward * inputValue.y + right * inputValue.x) * currentSpeed;
+        moveDirY += Physics.gravity.y * gravityScale * Time.deltaTime; // 중력 가속도 추가
+        moveDir.y = moveDirY;
+
         controller.Move(moveDir * Time.deltaTime);
 
     }
@@ -71,7 +85,7 @@ public class PlayerMove : MonoBehaviour
     }
    void Ani()
     {
-        animator.SetFloat("Speed", inputValue.magnitude);
-        animator.SetBool("Run", isRun);
+        // animator.SetFloat("Speed", inputValue.magnitude);
+        // animator.SetBool("Run", isRun);
     }
 }

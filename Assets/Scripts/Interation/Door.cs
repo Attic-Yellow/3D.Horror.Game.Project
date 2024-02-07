@@ -6,8 +6,8 @@ using UnityEngine;
 public class Door : MonoBehaviour
 {
     public bool isOpen = false;
-    public bool isOut;
-    public float rotationSpeed = 5f;
+    public bool isOut = true; // 밖에서 문을 여는지 안에서 여는지
+    public float rotationSpeed = 3f;
     public Quaternion startRotation;
     public Transform inRoomTransform;
 
@@ -18,21 +18,18 @@ public class Door : MonoBehaviour
         startRotation = transform.rotation;
     }
 
-
-    public void OpenDoor() //안쪽에서 여는지
+    public void OpenDoor()
     {
-        if(!isOut)
-        {
-            StartCoroutine(RotateDoorCoroutine(startRotation * Quaternion.Euler(0f, -90f, 0f)));
-        }
-        else
-        {
-            StartCoroutine(RotateDoorCoroutine(startRotation * Quaternion.Euler(0f, 90f, 0f)));
-        }
+        // isOut 상태에 따라 문 열기 방향 결정
+        Quaternion targetRotation = isOut ? startRotation * Quaternion.Euler(0f, -120f, 0f) : startRotation * Quaternion.Euler(0f, 120f, 0f);
+        StartCoroutine(RotateDoorCoroutine(targetRotation));
+        isOut = !isOut;
     }
 
     public void CloseDoor()
     {
+        // 문 닫을 때 역방향으로 회전
+        Quaternion targetRotation = isOut ? startRotation * Quaternion.Euler(0f, 120f, 0f) : startRotation * Quaternion.Euler(0f, -120f, 0f);
         StartCoroutine(RotateDoorCoroutine(startRotation));
     }
 
@@ -44,11 +41,17 @@ public class Door : MonoBehaviour
         while (elapsedTime < 1.5f)
         {
             elapsedTime += Time.deltaTime * rotationSpeed;
-            transform.rotation = Quaternion.Slerp(currentRotation, targetRotation, elapsedTime);
-            animator.SetTrigger("IsOpen");
+            transform.rotation = Quaternion.Slerp(currentRotation, targetRotation, elapsedTime / 1.5f);
             yield return null;
         }
 
+        // 문의 상태 업데이트
         isOpen = !isOpen;
+
+        // 애니메이션 트리거 설정
+        if (isOpen)
+        {
+            animator.SetTrigger("IsOpen");
+        }
     }
 }
