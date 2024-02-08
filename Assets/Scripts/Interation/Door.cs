@@ -7,7 +7,7 @@ public class Door : MonoBehaviour
 {
     public bool isOpen = false;
     public bool isOut = true; // 밖에서 문을 여는지 안에서 여는지
-    public float rotationSpeed = 3f;
+    public float rotationSpeed = 4f;
     public Quaternion startRotation;
     public Transform inRoomTransform;
 
@@ -21,7 +21,7 @@ public class Door : MonoBehaviour
     public void OpenDoor()
     {
         // isOut 상태에 따라 문 열기 방향 결정
-        Quaternion targetRotation = isOut ? startRotation * Quaternion.Euler(0f, -120f, 0f) : startRotation * Quaternion.Euler(0f, 120f, 0f);
+        Quaternion targetRotation = isOut ? startRotation * Quaternion.Euler(0f, 100f, 0f) : startRotation * Quaternion.Euler(0f, -100f, 0f);
         StartCoroutine(RotateDoorCoroutine(targetRotation));
         isOut = !isOut;
     }
@@ -49,9 +49,9 @@ public class Door : MonoBehaviour
         isOpen = !isOpen;
 
         // 애니메이션 트리거 설정
-        if (isOpen)
+      /*  if (isOpen)
         {
             animator.SetTrigger("IsOpen");
-        }
+        }*/
     }
 }

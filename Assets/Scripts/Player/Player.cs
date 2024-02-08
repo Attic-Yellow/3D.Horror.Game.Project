@@ -49,9 +49,15 @@ public class Player : MonoBehaviour
                 interactionText.text = prevHitItem.text;
                 interactionText.gameObject.SetActive(true);
             }
-            else if (hit.collider.CompareTag("OutDoor") || hit.collider.CompareTag("InDoor"))
+            else if (hit.collider.CompareTag("OutDoor") )
             {
                 door = hit.collider.gameObject.GetComponentInParent<Door>();
+                door.isOut = true;
+            }
+            else if(hit.collider.CompareTag("InDoor"))
+            {
+                door = hit.collider.gameObject.GetComponentInParent<Door>();
+                door.isOut = false;
             }
             else
             {
