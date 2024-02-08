@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7119415402838986979}
   - component: {fileID: 2007527127368472544}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Out
   m_TagString: OutDoor
   m_Icon: {fileID: 0}
@@ -154,7 +154,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1750171238118111626}
   - component: {fileID: 1320531788572699243}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: In
   m_TagString: InDoor
   m_Icon: {fileID: 0}
