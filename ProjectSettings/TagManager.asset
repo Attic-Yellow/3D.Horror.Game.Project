@@ -9,6 +9,11 @@ TagManager:
   - Handle
   - Drawer
   - Monitor
+  - OutDoor
+  - InDoor
+  - Wall
+  - Item
+  - Switch
   layers:
   - Default
   - TransparentFX
@@ -18,8 +23,8 @@ TagManager:
   - UI
   - Interaction Object
   - No Directional Light Object
-  - 
-  - 
+  - Screen Point
+  - Player
   - 
   - 
   - 
