@@ -22,6 +22,9 @@ public class OverlayManager : MonoBehaviour
     [SerializeField] private GameObject optionsOverlay;
     [SerializeField] private GameObject loadingOverlay;
 
+    [Header("게임 씬 오버레이")]
+    [SerializeField] private GameObject interactiveOverlay;
+
     private void Start()
     {
         GameManager.instance.overlayManager = this;
@@ -39,6 +42,11 @@ public class OverlayManager : MonoBehaviour
         if (loadingOverlay != null)
         {
             loadingOverlay.SetActive(false);
+        }
+
+        if (interactiveOverlay != null)
+        {
+            interactiveOverlay.SetActive(false);
         }
     }
 
@@ -88,6 +96,14 @@ public class OverlayManager : MonoBehaviour
         if (chacterSettingOverlay != null)
         {
             chacterSettingOverlay.SetActive(!chacterSettingOverlay.activeSelf);
+        }
+    }
+
+    public void InteractiveOverlayController()
+    {
+        if (interactiveOverlay != null)
+        {
+            interactiveOverlay.SetActive(!interactiveOverlay.activeSelf);
         }
     }
 

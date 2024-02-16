@@ -10,6 +10,7 @@ Sound Effect Settings,Sound Effect Volume
 Light Intensity Settings,Brightness Intensity
 Light Intensity Subject,Brightness Control
 Light Intensity Descripton,Please set it so that the picture is faintly visible.
+Mouse Sensitivity Settings,Mouse Sensitivity
 Character Setting Subject,Character Setting
 Next,Next
 Back,Back
@@ -17,3 +18,5 @@ Complete,Complete
 Loading,Loding
 LoadingComplete,Load Complete
 Character  Closet,Closet
+Door Open,Open
+Door Close,Close

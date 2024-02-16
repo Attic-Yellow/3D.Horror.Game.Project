@@ -1,13 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerCameraView : MonoBehaviour
 {
-    [SerializeField] private float mouseSensitivity;
+    [SerializeField] public float mouseSensitivity;
     [SerializeField] private Transform playerBody;
     private float xRotation = 0f;
-    private float yRotation = 0f;
 
     private void Start()
     {
@@ -28,5 +28,10 @@ public class PlayerCameraView : MonoBehaviour
 
         // 카메라의 로컬 회전을 직접 조정
         transform.localEulerAngles = new Vector3(xRotation, playerBody.eulerAngles.y, 0f);
+    }
+
+    public void UpdateMouseSensitivity(float newSensitivity)
+    {
+        mouseSensitivity = newSensitivity;
     }
 }

@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Animations.Rigging;
+using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
     [SerializeField] private Camera playerCamera;
+    [SerializeField] private GameObject lastHitGameObject = null;
 
     public float interactionDistance = 5f;
     public List<Item> haveitems = new();
@@ -23,6 +25,8 @@ public class Player : MonoBehaviour
 
     public Transform canvas;
     GameObject panel;
+
+    private bool isPaused = false;
 
     private void Awake()
     {
@@ -52,20 +56,32 @@ public class Player : MonoBehaviour
             else if (hit.collider.CompareTag("OutDoor") )
             {
                 door = hit.collider.gameObject.GetComponentInParent<Door>();
+                hit.collider.gameObject.transform.Find("CanvasRoot").gameObject.SetActive(true);
+                lastHitGameObject = hit.collider.gameObject;
                 door.isOut = true;
             }
             else if(hit.collider.CompareTag("InDoor"))
             {
                 door = hit.collider.gameObject.GetComponentInParent<Door>();
+                hit.collider.gameObject.transform.Find("CanvasRoot").gameObject.SetActive(true);
+                lastHitGameObject = hit.collider.gameObject;
                 door.isOut = false;
             }
             else
             {
+                if (lastHitGameObject != null)
+                {
+                    lastHitGameObject.gameObject.transform.Find("CanvasRoot").gameObject.SetActive(false);
+                }
                 ResetInteractions();
             }
         }
         else
         {
+            if (lastHitGameObject != null)
+            {
+                lastHitGameObject.gameObject.transform.Find("CanvasRoot").gameObject.SetActive(false);
+            }
             ResetInteractions();
         }
     }
@@ -171,5 +187,14 @@ public class Player : MonoBehaviour
 
             }
         }
+    }
+
+    // Esc키를 누르면 일시정지 및 옵션창 활성화
+    void OnPause()
+    {
+        isPaused = !isPaused;
+        Cursor.lockState = isPaused ? CursorLockMode.Confined : CursorLockMode.Locked;
+        GameManager.instance.overlayManager.OptionOverlayController();
+        Cursor.visible = isPaused;
     }
 }

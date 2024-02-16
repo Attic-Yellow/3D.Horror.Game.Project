@@ -1,7 +1,7 @@
 ManifestFileVersion: 0
-CRC: 2023609833
+CRC: 997951808
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
-      Name: language/json
+      Name: langeage/json
       Dependencies: {}

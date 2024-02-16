@@ -11,9 +11,11 @@ public class SettingsManager : MonoBehaviour
     [SerializeField] private Slider bgmVolumeSlider;
     [SerializeField] private Slider sfxVolumeSlider;
     [SerializeField] private Slider lightIntensitySlider;
+    [SerializeField] private Slider mouseSensitivitySlider;
     [SerializeField] private TextMeshProUGUI bgmVolumeText;
     [SerializeField] private TextMeshProUGUI sfxVolumeText;
     [SerializeField] private TextMeshProUGUI lightIntensityText;
+    [SerializeField] private TextMeshProUGUI mouseSensitivityText;
     [SerializeField] private AudioSource bgmAudioSource; // 배경음악을 위한 AudioSource
     [SerializeField] private AudioSource sfxAudioSource; // 효과음을 위한 AudioSource
     [SerializeField] private Volume globalVolume;
@@ -23,6 +25,9 @@ public class SettingsManager : MonoBehaviour
     {
         GameManager.instance.settingsManager = this;
         globalVolume.profile.TryGet<ColorAdjustments>(out colorAdjustments);
+
+        mouseSensitivitySlider.minValue = 1;
+        mouseSensitivitySlider.maxValue = 300;
 
         // 슬라이더의 최솟값과 최댓값 설정
         lightIntensitySlider.minValue = -2;
@@ -51,6 +56,11 @@ public class SettingsManager : MonoBehaviour
         if (sfxVolumeSlider != null)
         {
             sfxVolumeSlider.value = PlayerPrefs.GetFloat("SFXVolume", 0.5f);
+        }
+
+        if (mouseSensitivitySlider != null)
+        {
+            mouseSensitivitySlider.value = PlayerPrefs.GetFloat("MouseSensitivity", 100);
         }
 
         lightIntensitySlider.value = lightIntensityValue - 2;
@@ -85,6 +95,19 @@ public class SettingsManager : MonoBehaviour
         UpdateSettingsText();
     }
 
+    public void OnMouseSensitivityChanged()
+    {
+        float mouseSensitivity = mouseSensitivitySlider.value;
+        PlayerPrefs.SetFloat("MouseSensitivity", mouseSensitivity);
+
+        var playerCameraView = FindObjectOfType<PlayerCameraView>(); // 예시로 FindObjectOfType 사용
+        if (playerCameraView != null)
+        {
+            playerCameraView.UpdateMouseSensitivity(mouseSensitivity);
+        }
+        UpdateSettingsText();
+    }
+
     public void AdjustPostExposure(float exposure)
     {
         if (colorAdjustments != null)
@@ -104,6 +127,11 @@ public class SettingsManager : MonoBehaviour
         if (sfxVolumeText != null)
         {
             sfxVolumeText.text = (sfxVolumeSlider.value * 100).ToString("0");
+        }
+
+        if (mouseSensitivityText != null)
+        {
+            mouseSensitivityText.text = mouseSensitivitySlider.value.ToString("0");
         }
 
         if (lightIntensityText != null)
