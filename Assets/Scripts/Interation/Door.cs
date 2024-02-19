@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Door : MonoBehaviour
@@ -13,15 +15,27 @@ public class Door : MonoBehaviour
 
     [SerializeField] private Animator animator;
 
+    [SerializeField] private TextMeshProUGUI[] openText;
+    [SerializeField] private TextMeshProUGUI[] closeText;
+
     private void Awake()
     {
         startRotation = transform.rotation;
     }
 
+    private void Start()
+    {
+        for (int i = 0; i < 2; i++)
+        {
+            openText[i].gameObject.SetActive(!isOpen);
+            closeText[i].gameObject.SetActive(isOpen);
+        }
+    }
+
     public void OpenDoor()
     {
         // isOut 상태에 따라 문 열기 방향 결정
-        Quaternion targetRotation = isOut ? startRotation * Quaternion.Euler(0f, 100f, 0f) : startRotation * Quaternion.Euler(0f, -100f, 0f);
+        Quaternion targetRotation = isOut ? startRotation * Quaternion.Euler(0f, 120f, 0f) : startRotation * Quaternion.Euler(0f, -120f, 0f);
         StartCoroutine(RotateDoorCoroutine(targetRotation));
         isOut = !isOut;
     }
@@ -38,20 +52,20 @@ public class Door : MonoBehaviour
         float elapsedTime = 0f;
         Quaternion currentRotation = transform.rotation;
 
-        while (elapsedTime < 1.5f)
+        while (elapsedTime < 2.5f)
         {
             elapsedTime += Time.deltaTime * rotationSpeed;
-            transform.rotation = Quaternion.Slerp(currentRotation, targetRotation, elapsedTime / 1.5f);
+            transform.rotation = Quaternion.Slerp(currentRotation, targetRotation, elapsedTime / 2.5f);
             yield return null;
         }
 
         // 문의 상태 업데이트
         isOpen = !isOpen;
 
-        // 애니메이션 트리거 설정
-      /*  if (isOpen)
+        for (int i = 0; i < 2; i++)
         {
-            animator.SetTrigger("IsOpen");
-        }*/
+            openText[i].gameObject.SetActive(!isOpen);
+            closeText[i].gameObject.SetActive(isOpen);
+        }
     }
 }

@@ -21,6 +21,9 @@
     "LoadingComplete": "Load Complete",
     "Character  Closet": "Closet",
     "Door Open": "Open",
-    "Door Close": "Close"
+    "Door Close": "Close",
+    "Turn On": "Turn On",
+    "Turn Off": "Turn Off",
+    "Glean": "Glean"
   }
 }

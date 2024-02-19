@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,7 @@ public class PlayerCameraView : MonoBehaviour
 {
     [SerializeField] public float mouseSensitivity;
     [SerializeField] private Transform playerBody;
+    [SerializeField] private CinemachineVirtualCamera vCam;
     private float xRotation = 0f;
 
     private void Start()
@@ -16,6 +18,10 @@ public class PlayerCameraView : MonoBehaviour
 
     private void Update()
     {
+        if (vCam.m_Follow != playerBody)
+        {
+            return;
+        }
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
 

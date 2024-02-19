@@ -18,5 +18,8 @@ Complete,완료
 Loading,로딩중
 LoadingComplete,로딩 완료
 Character  Closet,옷장
-Door Open,문 열기
-Door Close,문 닫기
+Door Open,열기
+Door Close,닫기
+Turn On,켜기
+Turn Off,끄기
+Glean,줍기

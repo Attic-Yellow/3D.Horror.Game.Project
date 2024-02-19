@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -8,6 +9,7 @@ using UnityEngine.InputSystem;
 public class Player : MonoBehaviour
 {
     [SerializeField] private Camera playerCamera;
+    [SerializeField] private CameraZoom cameraZoom;
     [SerializeField] private GameObject lastHitGameObject = null;
 
     public float interactionDistance = 5f;
@@ -39,7 +41,7 @@ public class Player : MonoBehaviour
         RaycastHit hit;
         Debug.DrawRay(ray.origin, ray.direction * interactionDistance, new Color(1, 0, 1));
 
-        if (Physics.Raycast(ray, out hit, interactionDistance, LayerMask.GetMask("Interaction Object")))
+        if (Physics.Raycast(ray, out hit, interactionDistance, LayerMask.GetMask("Interaction Object")) && !cameraZoom.isZoomIn)
         {
             // 충돌한 물체가 상호작용 가능한 물체인지 확인
             if (hit.collider.CompareTag("Item"))
@@ -47,11 +49,11 @@ public class Player : MonoBehaviour
                 Item item = hit.collider.gameObject.GetComponent<Item>();
                 if (item != prevHitItem)
                 {
-                    interactionText.gameObject.SetActive(false);
+                    hit.collider.gameObject.transform.Find("CanvasRoot").gameObject.SetActive(false);
                 }
                 prevHitItem = item;
-                interactionText.text = prevHitItem.text;
-                interactionText.gameObject.SetActive(true);
+                hit.collider.gameObject.transform.Find("CanvasRoot").gameObject.SetActive(true);
+                lastHitGameObject = hit.collider.gameObject;
             }
             else if (hit.collider.CompareTag("OutDoor") )
             {
@@ -67,30 +69,40 @@ public class Player : MonoBehaviour
                 lastHitGameObject = hit.collider.gameObject;
                 door.isOut = false;
             }
+            else if (hit.collider.CompareTag("Monitor"))
+            {
+                hit.collider.gameObject.transform.Find("CanvasRoot").gameObject.SetActive(true);
+                lastHitGameObject = hit.collider.gameObject;
+
+                if (Input.GetKeyDown(KeyCode.F))
+                {
+                    GameObject gameObject = hit.collider.gameObject.transform.Find("target").gameObject;
+                    cameraZoom.LookAtZoomIn(gameObject);
+                    hit.collider.gameObject.transform.Find("CanvasRoot").gameObject.SetActive(false);
+                }
+            }
             else
             {
-                if (lastHitGameObject != null)
-                {
-                    lastHitGameObject.gameObject.transform.Find("CanvasRoot").gameObject.SetActive(false);
-                }
                 ResetInteractions();
             }
         }
         else
         {
-            if (lastHitGameObject != null)
-            {
-                lastHitGameObject.gameObject.transform.Find("CanvasRoot").gameObject.SetActive(false);
-            }
             ResetInteractions();
         }
     }
 
     private void ResetInteractions()
     {
+        if (lastHitGameObject != null)
+        {
+            lastHitGameObject.gameObject.transform.Find("CanvasRoot").gameObject.SetActive(false);
+        }
+
+        lastHitGameObject = null;
+
         if (prevHitItem != null)
         {
-            // interactionText.gameObject.SetActive(false);
             prevHitItem = null;
         }
 
@@ -102,7 +114,7 @@ public class Player : MonoBehaviour
 
     void OnInteraction() //F 상호작용키 
     {
-        if (prevHitItem != null && interactionText.gameObject.activeSelf)
+        if (prevHitItem != null)
         {
             // 상호작용 가능한 아이템이 있고 상호작용 텍스트가 활성화된 상태일 때
             ItemManager.Instance.SetItemState(prevHitItem.name, true); // 아이템을 먹히고 BOOL 값을 TRUE로 설정
@@ -112,7 +124,7 @@ public class Player : MonoBehaviour
             prevHitItem.gameObject.SetActive(false);
             prevHitItem = null;
         }
-        if (door != null /*&& interactionText.gameObject.activeSelf*/)
+        if (door != null)
         {
             if (door.isOpen)
             {
@@ -124,7 +136,6 @@ public class Player : MonoBehaviour
             }
             door = null;
         }
-        // interactionText.gameObject.SetActive(false); // 상호작용 텍스트 비활성화
     }
 
     void OnFlashlight() //Q누르면

@@ -12,8 +12,8 @@ public class CSVTranslator : MonoBehaviour
 
     static void ConvertToJsonCoroutine()
     {
-        var csvFileName = $"Korean.csv";
-        var jsonFileName = $"Korean.json";
+        var csvFileName = $"English.csv";
+        var jsonFileName = $"English.json";
 
         string csvFilePath = Path.Combine("Assets/UIText", csvFileName);
         string jsonFilePath = Path.Combine("Assets/UIText", jsonFileName);

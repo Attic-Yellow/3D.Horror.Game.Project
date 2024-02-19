@@ -1272,6 +1272,12 @@ MonoBehaviour:
   startRotation: {x: 0, y: 0, z: 0, w: 0}
   inRoomTransform: {fileID: 1777290276117683917}
   animator: {fileID: 3346452397985013324}
+  openText:
+  - {fileID: 239488347693326271}
+  - {fileID: 8514742723432272967}
+  closeText:
+  - {fileID: 4103410717015382984}
+  - {fileID: 3195771254295232950}
 --- !u!4 &1777290276117683917 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9839790f7c036486a855e0e39d6ee825,
