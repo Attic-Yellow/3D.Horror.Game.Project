@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
-    public bool isOpen = false;
+    public bool isOpen;
     public bool isOut = true; // 밖에서 문을 여는지 안에서 여는지
     public float rotationSpeed = 4f;
     public Quaternion startRotation;
@@ -35,15 +35,12 @@ public class Door : MonoBehaviour
     public void OpenDoor()
     {
         // isOut 상태에 따라 문 열기 방향 결정
-        Quaternion targetRotation = isOut ? startRotation * Quaternion.Euler(0f, 120f, 0f) : startRotation * Quaternion.Euler(0f, -120f, 0f);
+        Quaternion targetRotation = isOut ? startRotation * Quaternion.Euler(0f, 130f, 0f) : startRotation * Quaternion.Euler(0f, -130f, 0f);
         StartCoroutine(RotateDoorCoroutine(targetRotation));
-        isOut = !isOut;
     }
 
     public void CloseDoor()
     {
-        // 문 닫을 때 역방향으로 회전
-        Quaternion targetRotation = isOut ? startRotation * Quaternion.Euler(0f, 120f, 0f) : startRotation * Quaternion.Euler(0f, -120f, 0f);
         StartCoroutine(RotateDoorCoroutine(startRotation));
     }
 

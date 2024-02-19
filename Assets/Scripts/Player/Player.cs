@@ -76,7 +76,7 @@ public class Player : MonoBehaviour
 
                 if (Input.GetKeyDown(KeyCode.F))
                 {
-                    GameObject gameObject = hit.collider.gameObject.transform.Find("target").gameObject;
+                    GameObject gameObject = hit.collider.gameObject.transform.Find("Target").gameObject;
                     cameraZoom.LookAtZoomIn(gameObject);
                     hit.collider.gameObject.transform.Find("CanvasRoot").gameObject.SetActive(false);
                 }

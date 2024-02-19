@@ -43,13 +43,13 @@ public class CameraZoom : MonoBehaviour
         initRotation = vCam.transform.rotation;
         targetRotation = target.transform.rotation;
         vCam.m_Follow = target.transform;
-        StartCoroutine(ChangeFOV(10, targetRotation, 1f));
+        StartCoroutine(ChangeFOV(20, targetRotation, 1.5f));
     }
 
     public void LookAtZoomOut()
     {
         isZoomIn = false;
         vCam.m_Follow = player.transform;
-        StartCoroutine(ChangeFOV(70, initRotation, 1f));
+        StartCoroutine(ChangeFOV(70, initRotation, 1.5f));
     }
 }
