@@ -9,12 +9,16 @@ public class CameraZoom : MonoBehaviour
     [SerializeField] private GameObject player;
     [SerializeField] private Quaternion targetRotation;
     [SerializeField] private Quaternion initRotation;
+    [SerializeField] private MonitorControl monitorControl;
+    [SerializeField] private OSFadeEffect oSFadeEffect;
     public bool isZoomIn = false;
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Z) && isZoomIn)
         {
+            GameManager.instance.overlayManager.ComputerOverlayController();
+            monitorControl.OnAndOff();
             LookAtZoomOut();
         }
     }
@@ -43,13 +47,26 @@ public class CameraZoom : MonoBehaviour
         initRotation = vCam.transform.rotation;
         targetRotation = target.transform.rotation;
         vCam.m_Follow = target.transform;
-        StartCoroutine(ChangeFOV(20, targetRotation, 1.5f));
+        StartCoroutine(ChangeFOV(26, targetRotation, 1.2f));
     }
 
     public void LookAtZoomOut()
     {
         isZoomIn = false;
         vCam.m_Follow = player.transform;
-        StartCoroutine(ChangeFOV(70, initRotation, 1.5f));
+        StartCoroutine(ChangeFOV(70, initRotation, 1.2f));
+    }
+
+    public void MonitorOn()
+    {
+        StartCoroutine(TurnOnEffect());
+    }
+
+    private IEnumerator TurnOnEffect()
+    {
+        yield return new WaitForSeconds(1.25f);
+
+        GameManager.instance.overlayManager.ComputerOverlayController();
+        oSFadeEffect.FadeBlink();
     }
 }

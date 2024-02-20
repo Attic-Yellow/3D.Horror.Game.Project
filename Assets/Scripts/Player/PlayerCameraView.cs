@@ -18,7 +18,7 @@ public class PlayerCameraView : MonoBehaviour
 
     private void Update()
     {
-        if (vCam.m_Follow != playerBody)
+        if (vCam.m_Follow != playerBody || GameManager.instance.overlayManager.CheckOnOverlay())
         {
             return;
         }

@@ -78,6 +78,8 @@ public class Player : MonoBehaviour
                 {
                     GameObject gameObject = hit.collider.gameObject.transform.Find("Target").gameObject;
                     cameraZoom.LookAtZoomIn(gameObject);
+                    hit.collider.gameObject.transform.Find("Screen").gameObject.GetComponent<MonitorControl>().OnAndOff();
+                    cameraZoom.MonitorOn();
                     hit.collider.gameObject.transform.Find("CanvasRoot").gameObject.SetActive(false);
                 }
             }
@@ -205,7 +207,7 @@ public class Player : MonoBehaviour
     {
         isPaused = !isPaused;
         Cursor.lockState = isPaused ? CursorLockMode.Confined : CursorLockMode.Locked;
-        GameManager.instance.overlayManager.OptionOverlayController();
         Cursor.visible = isPaused;
+        GameManager.instance.overlayManager.OptionOverlayController();
     }
 }
