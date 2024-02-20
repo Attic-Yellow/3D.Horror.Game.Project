@@ -24013,7 +24013,7 @@ MonoBehaviour:
   targetRotation: {x: 0, y: 0, z: 0, w: 0}
   initRotation: {x: 0, y: 0, z: 0, w: 0}
   monitorControl: {fileID: 816026765}
-  oSFadeEffect: {fileID: 1110791757}
+  oSFadeEffect: {fileID: 1307692907}
   isZoomIn: 0
 --- !u!4 &1089663058 stripped
 Transform:
@@ -24727,7 +24727,6 @@ GameObject:
   - component: {fileID: 1110791754}
   - component: {fileID: 1110791756}
   - component: {fileID: 1110791755}
-  - component: {fileID: 1110791757}
   m_Layer: 5
   m_Name: Loding Screen
   m_TagString: Untagged
@@ -24794,27 +24793,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1110791753}
   m_CullTransparentMesh: 1
---- !u!114 &1110791757
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1110791753}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54272e2b75dcc3249aaaa8941df832d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  uiElement: {fileID: 1919269225}
-  fadeSpeed: 1
-  blinkDuration: 4
-  minBlinkFrequency: 0.05
-  maxBlinkFrequency: 0.5
-  lodingTime: 0
-  lodingScreen: {fileID: 1110791753}
-  startScren: {fileID: 457065703}
-  interactiveIcon: {fileID: 69080340}
 --- !u!1001 &1120798482
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28805,6 +28783,7 @@ GameObject:
   - component: {fileID: 1307692904}
   - component: {fileID: 1307692906}
   - component: {fileID: 1307692905}
+  - component: {fileID: 1307692907}
   m_Layer: 5
   m_Name: Computer Overlay
   m_TagString: Untagged
@@ -28873,6 +28852,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1307692903}
   m_CullTransparentMesh: 1
+--- !u!114 &1307692907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1307692903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54272e2b75dcc3249aaaa8941df832d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiElement: {fileID: 1919269225}
+  fadeSpeed: 1
+  blinkDuration: 0
+  minBlinkFrequency: 0.05
+  maxBlinkFrequency: 0.5
+  lodingTime: 0
+  lodingScreen: {fileID: 1110791753}
+  startScren: {fileID: 457065703}
+  interactiveIcon: {fileID: 69080340}
 --- !u!1001 &1312880376
 PrefabInstance:
   m_ObjectHideFlags: 0

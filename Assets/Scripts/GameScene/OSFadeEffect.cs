@@ -42,8 +42,6 @@ public class OSFadeEffect : MonoBehaviour
 
         lodingTime = Random.Range(1f, 2f);
 
-        lodingScreen.SetActive(false);
-        startScren.SetActive(true);
         yield return new WaitForSeconds(lodingTime);
         startScren.SetActive(false);
         interactiveIcon.SetActive(true);
@@ -83,5 +81,8 @@ public class OSFadeEffect : MonoBehaviour
         uiElement.blocksRaycasts = false;
         uiElement.interactable = false;
         uiElement.alpha = 0; // 완전히 투명하게 설정
+
+        lodingScreen.SetActive(false);
+        startScren.SetActive(true);
     }
 }

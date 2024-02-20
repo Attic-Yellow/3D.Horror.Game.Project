@@ -39,6 +39,9 @@ public class CameraZoom : MonoBehaviour
 
             yield return null;
         }
+
+        vCam.m_Lens.FieldOfView = targetFOV;
+        vCam.transform.rotation = targetRotation;
     }
 
     public void LookAtZoomIn(GameObject target)
