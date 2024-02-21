@@ -149,7 +149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2483dcc990041274d82998cf8d5668d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  localizationKey: Type
+  localizationKey: Fire Type
 --- !u!1 &56506006372929100
 GameObject:
   m_ObjectHideFlags: 0
@@ -986,7 +986,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2483dcc990041274d82998cf8d5668d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  localizationKey: Inspector's Name
+  localizationKey: Fire Inspector's Name
 --- !u!1 &531783444132648589
 GameObject:
   m_ObjectHideFlags: 0
@@ -1136,7 +1136,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2483dcc990041274d82998cf8d5668d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  localizationKey: Date
+  localizationKey: Fire Date
 --- !u!1 &622962276303360835
 GameObject:
   m_ObjectHideFlags: 0
@@ -1651,7 +1651,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2483dcc990041274d82998cf8d5668d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  localizationKey: Inspector's Name
+  localizationKey: Fire Inspector's Name
 --- !u!1 &1367709787568159047
 GameObject:
   m_ObjectHideFlags: 0
@@ -2157,7 +2157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2483dcc990041274d82998cf8d5668d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  localizationKey: Sign
+  localizationKey: Fire Sign
 --- !u!1 &2665074199633327602
 GameObject:
   m_ObjectHideFlags: 0
@@ -2263,7 +2263,6 @@ GameObject:
   - component: {fileID: 5695594977133884659}
   - component: {fileID: 2031925977496960339}
   - component: {fileID: 925055026034585660}
-  - component: {fileID: 2866540711768196728}
   m_Layer: 5
   m_Name: Year Text Area
   m_TagString: Untagged
@@ -2345,19 +2344,6 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
   m_EffectDistance: {x: 3, y: 3}
   m_UseGraphicAlpha: 1
---- !u!114 &2866540711768196728
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2685852851329901979}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2483dcc990041274d82998cf8d5668d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  localizationKey: Year
 --- !u!1 &2810297892421932913
 GameObject:
   m_ObjectHideFlags: 0
@@ -3695,7 +3681,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2483dcc990041274d82998cf8d5668d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  localizationKey: Management Number
+  localizationKey: Fire Management Number
 --- !u!1 &3748258815524527473
 GameObject:
   m_ObjectHideFlags: 0
@@ -4265,7 +4251,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2483dcc990041274d82998cf8d5668d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  localizationKey: Date
+  localizationKey: Fire Date
 --- !u!1 &4961891753633045973
 GameObject:
   m_ObjectHideFlags: 0
@@ -4916,7 +4902,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2483dcc990041274d82998cf8d5668d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  localizationKey: Example Name
+  localizationKey: Example Fire Name
 --- !u!1 &5577837798312197712
 GameObject:
   m_ObjectHideFlags: 0
@@ -5675,6 +5661,7 @@ GameObject:
   - component: {fileID: 2286747700557797490}
   - component: {fileID: 8046897362261734075}
   - component: {fileID: 4298397350426662227}
+  - component: {fileID: 2358695210603317728}
   m_Layer: 5
   m_Name: Year Text
   m_TagString: Untagged
@@ -5800,6 +5787,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &2358695210603317728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6001144051622156482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2483dcc990041274d82998cf8d5668d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localizationKey: Fire Year
 --- !u!1 &6002445031311257493
 GameObject:
   m_ObjectHideFlags: 0
@@ -6462,7 +6462,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2483dcc990041274d82998cf8d5668d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  localizationKey: Example Date
+  localizationKey: Example Fire Date
 --- !u!1 &6497187553354736789
 GameObject:
   m_ObjectHideFlags: 0
@@ -7299,7 +7299,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2483dcc990041274d82998cf8d5668d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  localizationKey: Sign
+  localizationKey: Fire Sign
 --- !u!1 &7307288656183173361
 GameObject:
   m_ObjectHideFlags: 0

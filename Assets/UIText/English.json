@@ -26,6 +26,15 @@
     "Turn Off": "Turn Off",
     "Glean": "Glean",
     "Com Start Text": "New Start",
-    "Welcom": "Welcom"
+    "Welcom": "Welcom",
+    "Fire Update Text": "Fire Extinguisher Inspection Record",
+    "Fire Year": "Year",
+    "Fire Type": "Type",
+    "Fire Management Number": "Number",
+    "Fire Date": "dd/mm",
+    "Fire Inspector's Name": "Inspector's Name",
+    "Fire Sign": "Sign",
+    "Example Fire Date": "15/11",
+    "Example Fire Name": "Friedrich Gauß"
   }
 }
