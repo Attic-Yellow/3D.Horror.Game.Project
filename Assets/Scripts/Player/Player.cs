@@ -14,10 +14,9 @@ public class Player : MonoBehaviour
 
     public float interactionDistance = 5f;
     public List<Item> haveitems = new();
-    public TextMeshProUGUI interactionText; //상호작용 텍스트
 
     public Transform ItemPos;
-    Item prevHitItem;
+    private Item prevHitItem;
 
     public Rig rig;
     public RigTarget rigTarget;
@@ -25,10 +24,12 @@ public class Player : MonoBehaviour
     public Door door;
     public bool isOpened; //열었는지
 
-    public Transform canvas;
-    GameObject panel;
+    private Enemy collisionEnemy;
+    public ComeGhost comeGhost;
+    public Locker locker;
 
     private bool isPaused = false;
+    public bool isOver;
 
     private void Awake()
     {
@@ -41,7 +42,7 @@ public class Player : MonoBehaviour
         RaycastHit hit;
         Debug.DrawRay(ray.origin, ray.direction * interactionDistance, new Color(1, 0, 1));
 
-        if (Physics.Raycast(ray, out hit, interactionDistance, LayerMask.GetMask("Interaction Object")) && !cameraZoom.isZoomIn)
+        if (Physics.Raycast(ray, out hit, interactionDistance, LayerMask.GetMask("Interaction Object")))
         {
             // 충돌한 물체가 상호작용 가능한 물체인지 확인
             if (hit.collider.CompareTag("Item"))
@@ -83,6 +84,15 @@ public class Player : MonoBehaviour
                     hit.collider.gameObject.transform.Find("CanvasRoot").gameObject.SetActive(false);
                 }
             }
+            else if (hit.collider.CompareTag("Ghost"))
+            {
+                comeGhost.isSee = true;
+            }
+            else if (hit.collider.CompareTag("Locker"))
+            {
+                locker = hit.collider.gameObject.GetComponent<Locker>();
+                lastHitGameObject = hit.collider.gameObject;
+            }
             else
             {
                 ResetInteractions();
@@ -112,6 +122,21 @@ public class Player : MonoBehaviour
         {
             door = null;
         }
+
+        if (locker != null)
+        {
+            locker = null;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
+            collisionEnemy = other.gameObject.GetComponent<Enemy>();
+            print("닿았어");
+            isOver = true;
+        }
     }
 
     void OnInteraction() //F 상호작용키 
@@ -119,7 +144,7 @@ public class Player : MonoBehaviour
         if (prevHitItem != null)
         {
             // 상호작용 가능한 아이템이 있고 상호작용 텍스트가 활성화된 상태일 때
-            ItemManager.Instance.SetItemState(prevHitItem.name, true); // 아이템을 먹히고 BOOL 값을 TRUE로 설정
+            Holder.Instance.SetItemState(prevHitItem.name, true); // 아이템을 먹히고 BOOL 값을 TRUE로 설정
             haveitems.Add(prevHitItem); // 아이템을 인벤토리에 추가
             prevHitItem.tag = "Untagged";
             prevHitItem.SetTransform(ItemPos);
@@ -138,11 +163,22 @@ public class Player : MonoBehaviour
             }
             door = null;
         }
+        if (locker != null && !locker.timelinePlaying)
+        {
+            if (locker.isIn)
+            {
+                locker.OnTimeline();
+            }
+            else
+            {
+                locker.ReverseTimeline();
+            }
+        }
     }
 
     void OnFlashlight() //Q누르면
     {
-        if (ItemManager.Instance.isHaveItems.ContainsKey("Flashlight"))
+        if (Holder.Instance.isHaveItems.ContainsKey("Flashlight"))
         {
             foreach (Item item in haveitems)
             {
@@ -168,38 +204,7 @@ public class Player : MonoBehaviour
 
     void OnCCTV()
     {
-        if (ItemManager.Instance.isHaveItems.ContainsKey("CCTV"))
-        {
-            foreach (Item item in haveitems)
-            {
-                if (item.GetComponent<CCTV>() != null)
-                {
-                    if (!item.gameObject.activeSelf)
-                    {
-                        rigTarget.SetTransform(item.handTargetPos);
-                        item.gameObject.SetActive(true);
-                        if (panel == null)
-                            panel = Instantiate(item.GetComponent<CCTV>().phonePanel);
-                        else
-                        {
-                            panel.SetActive(true);
-                        }
-                        panel.transform.SetParent(canvas);
-                        panel.transform.localPosition = Vector3.zero;
-
-                        rig.weight = 1;
-                    }
-                    else
-                    {
-                        item.gameObject.SetActive(false);
-                        rig.weight = 0;
-                        panel.SetActive(false);
-                    }
-                    break;
-                }
-
-            }
-        }
+       
     }
 
     // Esc키를 누르면 일시정지 및 옵션창 활성화

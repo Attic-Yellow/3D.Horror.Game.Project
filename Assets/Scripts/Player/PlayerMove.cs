@@ -18,6 +18,7 @@ public class PlayerMove : MonoBehaviour
     private bool isRun = false;
     private Vector2 inputValue;
     private Vector3 moveDir;
+    public bool isMoving;
 
     public Transform cameraTransform; // 카메라의 Transform
 
@@ -36,6 +37,8 @@ public class PlayerMove : MonoBehaviour
 
         CalcGravity();
         Ani();
+        isMoving = inputValue.magnitude > 0f;
+
         if (inputValue.y < 0) //뒤로 가는키를 누르면 이속감소
         {
             currentSpeed = isRun ? sprintSpeed * 0.5f : moveSpeed * 0.7f;
@@ -71,16 +74,19 @@ public class PlayerMove : MonoBehaviour
     {
         inputValue = _value.Get<Vector2>();
     }
+
    public void OnRun()
     {
         isRun = true;
      
     }
+
     public void OnRunCancle()
     {
         isRun = false;
       
     }
+
     void OnJump(InputValue value)
     {
         if (controller.isGrounded)
@@ -88,6 +94,7 @@ public class PlayerMove : MonoBehaviour
             moveDirY = jumpPower;
         }
     }
+
    void Ani()
     {
         // animator.SetFloat("Speed", inputValue.magnitude);
