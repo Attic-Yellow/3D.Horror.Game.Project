@@ -7,7 +7,6 @@ public class EnemyCameraDetection : MonoBehaviour
     public Transform enemyForward; // 적의 카메라
 
     public LayerMask playerLayer; // 플레이어가 속한 레이어
-    public LayerMask doorLayer; // 문이 속한 레이어
     public float maxDetectionDistance = 40f; // 시야 최대 감지 거리
     public float doorCheckDistance = 10f;
     public float fieldOfViewAngle = 60f; // 시야각
@@ -48,20 +47,20 @@ public class EnemyCameraDetection : MonoBehaviour
     {
         RaycastHit hit;
         Debug.DrawRay(enemyForward.transform.position, enemyForward.transform.forward*doorCheckDistance,Color.black);
-        if (Physics.Raycast(enemyForward.transform.position, enemyForward.transform.forward, out hit, doorCheckDistance, doorLayer))
+        if (Physics.Raycast(enemyForward.transform.position, enemyForward.transform.forward, out hit, doorCheckDistance))
         {
-          
-              Door door = hit.collider.gameObject.GetComponentInParent<Door>();
-            if(hit.collider.gameObject.CompareTag("InDoor"))
-                door.isOut = false;
-            if (hit.collider.gameObject.CompareTag("OutDoor"))
-                door.isOut = true;
-            if (!door.isOpen)
+            if (hit.collider.gameObject.CompareTag("InDoor") || hit.collider.gameObject.CompareTag("OutDoor"))
             {
-                return door;
+                Door door = hit.collider.gameObject.GetComponentInParent<Door>();
+                if (hit.collider.gameObject.CompareTag("InDoor"))
+                    door.isOut = false;
+                if (hit.collider.gameObject.CompareTag("OutDoor"))
+                    door.isOut = true;
+                if (!door.isOpen)
+                {
+                    return door;
+                }
             }
-
-
         }
         return null;
     }
