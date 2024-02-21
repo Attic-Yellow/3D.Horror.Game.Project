@@ -9,9 +9,13 @@ public class CameraZoom : MonoBehaviour
     [SerializeField] private GameObject player;
     [SerializeField] private Quaternion targetRotation;
     [SerializeField] private Quaternion initRotation;
+
     [SerializeField] private MonitorControl monitorControl;
     [SerializeField] private OSFadeEffect oSFadeEffect;
+    [SerializeField] private CameraController cameraController;
+
     public bool isZoomIn = false;
+
 
     private void Update()
     {
@@ -20,9 +24,11 @@ public class CameraZoom : MonoBehaviour
             GameManager.instance.overlayManager.ComputerOverlayController();
             monitorControl.OnAndOff();
             LookAtZoomOut();
+            cameraController.SetPointCamActive();
         }
     }
 
+    // 카메라 줌인, 줌아웃
     private IEnumerator ChangeFOV(float targetFOV, Quaternion targetRotation, float duration)
     {
         float startTime = Time.time;
@@ -44,6 +50,7 @@ public class CameraZoom : MonoBehaviour
         vCam.transform.rotation = targetRotation;
     }
 
+    // 카메라 줌인
     public void LookAtZoomIn(GameObject target)
     {
         isZoomIn = true;
@@ -53,18 +60,22 @@ public class CameraZoom : MonoBehaviour
         StartCoroutine(ChangeFOV(26, targetRotation, 1.2f));
     }
 
+    // 카메라 줌아웃
     public void LookAtZoomOut()
     {
         isZoomIn = false;
         vCam.m_Follow = player.transform;
         StartCoroutine(ChangeFOV(70, initRotation, 1.2f));
     }
-
+    
+    // 모니터 켜는 효과
     public void MonitorOn()
     {
+        cameraController.SetPointCamActive();
         StartCoroutine(TurnOnEffect());
     }
 
+    // 모니터 켜는 효과
     private IEnumerator TurnOnEffect()
     {
         yield return new WaitForSeconds(1.25f);

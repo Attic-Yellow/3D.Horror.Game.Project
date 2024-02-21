@@ -9,6 +9,7 @@ public class MonitorControl : MonoBehaviour
     [SerializeField] private float turnSpeed = 10f;
     [SerializeField] private float maxGlowSize = 2f;
 
+    // 모니터가 켜고 꺼지는 셰이더 효과
     public void OnAndOff()
     {
         isOn = !isOn;
@@ -24,6 +25,7 @@ public class MonitorControl : MonoBehaviour
         }
     }
 
+    // 모니터 켜는 효과
     private IEnumerator TurnOnEffect()
     {
         float elapsedTime = 0f;
@@ -39,6 +41,7 @@ public class MonitorControl : MonoBehaviour
         }
     }
 
+    // 모니터 끄는 효과
     private IEnumerator TurnOffEffect()
     {
         float currentGlowSize = monitor.GetFloat("_GlowSize");

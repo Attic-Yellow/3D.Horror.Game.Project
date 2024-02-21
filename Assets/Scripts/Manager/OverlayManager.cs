@@ -24,6 +24,7 @@ public class OverlayManager : MonoBehaviour
 
     [Header("게임 씬 오버레이")]
     [SerializeField] private GameObject computerOverlay;
+    [SerializeField] private GameObject crtOverlay;
 
     private void Start()
     {
@@ -47,6 +48,11 @@ public class OverlayManager : MonoBehaviour
         if (computerOverlay != null)
         {
             computerOverlay.SetActive(false);
+        }
+
+        if (crtOverlay != null)
+        {
+            crtOverlay.SetActive(false);
         }
     }
 
@@ -107,11 +113,21 @@ public class OverlayManager : MonoBehaviour
         
     }
 
+    // 컴퓨터 오버레이 활성화 / 비활성화 시키는 함수
     public void ComputerOverlayController()
     {
         if (computerOverlay != null)
         {
             computerOverlay.SetActive(!computerOverlay.activeSelf);
+        }
+    }
+
+    // CRT 오버레이 활성화 / 비활성화 시키는 함수
+    public void CrtOverlayController()
+    {
+        if (crtOverlay != null)
+        {
+            crtOverlay.SetActive(!crtOverlay.activeSelf);
         }
     }
 
