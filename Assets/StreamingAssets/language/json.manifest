@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 3665619446
+CRC: 2414517395
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: c032d2180496d5c7d3cd589c1be9f9cd
+    Hash: f58dbf44b88980636ae07d5f1d8fd3c6
   TypeTreeHash:
     serializedVersion: 2
     Hash: 5ad585dd02dfb5016c0dad519eab8f49
@@ -13,6 +13,6 @@ ClassTypes:
   Script: {instanceID: 0}
 SerializeReferenceClassIdentifiers: []
 Assets:
-- Assets/UIText/Korean.json
 - Assets/UIText/English.json
+- Assets/UIText/Korean.json
 Dependencies: []

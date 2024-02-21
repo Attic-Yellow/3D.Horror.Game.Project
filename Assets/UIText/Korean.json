@@ -12,12 +12,20 @@
     "Light Intensity Settings": "밝기",
     "Light Intensity Subject": "밝기 설정",
     "Light Intensity Descripton": "그림이 희미하게 보일 정도로 설정 해주세요.",
+    "Mouse Sensitivity Settings": "마우스 감도",
     "Character Setting Subject": "캐릭터 설정",
     "Next": "다음",
     "Back": "뒤로",
     "Complete": "완료",
     "Loading": "로딩중",
     "LoadingComplete": "로딩 완료",
-    "Character  Closet": "옷장"
+    "Character  Closet": "옷장",
+    "Door Open": "열기",
+    "Door Close": "닫기",
+    "Turn On": "켜기",
+    "Turn Off": "끄기",
+    "Glean": "줍기",
+    "Com Start Text": "새로운 시작",
+    "Welcom": "어서오세요"
   }
 }

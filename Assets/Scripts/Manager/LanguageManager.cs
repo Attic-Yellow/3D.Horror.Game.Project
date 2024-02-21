@@ -39,7 +39,7 @@ public class LanguageManager : MonoBehaviour
         GameManager.instance.SetLanguageType(language);
         currentLanguage = language;
         string languageFileName = language.ToString() + ".json";
-        string assetBundleName = "Language/Json"; 
+        string assetBundleName = "language/json"; 
 
         // 에셋 번들 로드
         AssetBundle localizedTextBundle = AssetBundle.LoadFromFile(Path.Combine(Application.streamingAssetsPath, assetBundleName));

@@ -22,6 +22,10 @@ public class OverlayManager : MonoBehaviour
     [SerializeField] private GameObject optionsOverlay;
     [SerializeField] private GameObject loadingOverlay;
 
+    [Header("게임 씬 오버레이")]
+    [SerializeField] private GameObject computerOverlay;
+    [SerializeField] private GameObject crtOverlay;
+
     private void Start()
     {
         GameManager.instance.overlayManager = this;
@@ -39,6 +43,16 @@ public class OverlayManager : MonoBehaviour
         if (loadingOverlay != null)
         {
             loadingOverlay.SetActive(false);
+        }
+
+        if (computerOverlay != null)
+        {
+            computerOverlay.SetActive(false);
+        }
+
+        if (crtOverlay != null)
+        {
+            crtOverlay.SetActive(false);
         }
     }
 
@@ -99,6 +113,24 @@ public class OverlayManager : MonoBehaviour
         
     }
 
+    // 컴퓨터 오버레이 활성화 / 비활성화 시키는 함수
+    public void ComputerOverlayController()
+    {
+        if (computerOverlay != null)
+        {
+            computerOverlay.SetActive(!computerOverlay.activeSelf);
+        }
+    }
+
+    // CRT 오버레이 활성화 / 비활성화 시키는 함수
+    public void CrtOverlayController()
+    {
+        if (crtOverlay != null)
+        {
+            crtOverlay.SetActive(!crtOverlay.activeSelf);
+        }
+    }
+
     // 모든 오버레이 비활성화 시키는 함수
     public void CloseButton()
     {
@@ -119,6 +151,7 @@ public class OverlayManager : MonoBehaviour
         Application.Quit();
     }
 
+    // 게임 씬으로 넘어가는 함수
     private IEnumerator LoadingOverlayController()
     {
         if (loadingOverlay != null)
@@ -127,5 +160,15 @@ public class OverlayManager : MonoBehaviour
             loadingOverlay.SetActive(true);
             sceneLoader.LoadScene("GameScene");
         }
+    }
+
+    // 오버레이가 활성화되어 있는지 확인하는 함수
+    public bool CheckOnOverlay()
+    {
+        if (optionsOverlay != null && computerOverlay != null)
+        {
+            return optionsOverlay.activeSelf || computerOverlay.activeSelf;
+        }
+        return false;
     }
 }

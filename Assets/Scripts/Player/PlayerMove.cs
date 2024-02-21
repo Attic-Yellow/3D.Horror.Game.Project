@@ -29,6 +29,11 @@ public class PlayerMove : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.instance.overlayManager.CheckOnOverlay())
+        {
+            return;
+        }
+
         CalcGravity();
         Ani();
         if (inputValue.y < 0) //뒤로 가는키를 누르면 이속감소
