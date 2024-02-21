@@ -714,7 +714,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2292997384001421740}
   - component: {fileID: 2292997382923614088}
-  - component: {fileID: 2292997382923614086}
+  - component: {fileID: 4623635605949524566}
   m_Layer: 6
   m_Name: Ghost
   m_TagString: Ghost
@@ -753,7 +753,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2, y: 2, z: 0.5}
   m_Center: {x: 0, y: 1.28, z: 0}
---- !u!114 &2292997382923614086
+--- !u!114 &4623635605949524566
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -762,7 +762,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2292997384001134028}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d54c2d233ae42924a9e9a15c240d01c2, type: 3}
+  m_Script: {fileID: 11500000, guid: 3e087b2300a7ce1479b99bfd3364ca5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   detectionRadius: 10
