@@ -26,12 +26,18 @@ public class SettingsManager : MonoBehaviour
         GameManager.instance.settingsManager = this;
         globalVolume.profile.TryGet<ColorAdjustments>(out colorAdjustments);
 
-        mouseSensitivitySlider.minValue = 1;
-        mouseSensitivitySlider.maxValue = 300;
+        if (mouseSensitivitySlider != null)
+        {
+            mouseSensitivitySlider.minValue = 1;
+            mouseSensitivitySlider.maxValue = 300;
+        }
 
         // 슬라이더의 최솟값과 최댓값 설정
-        lightIntensitySlider.minValue = -2;
-        lightIntensitySlider.maxValue = 1;
+        if (lightIntensitySlider != null)
+        {
+            lightIntensitySlider.minValue = -2;
+            lightIntensitySlider.maxValue = 1;
+        }
 
         LoadSettings();
     }
@@ -67,7 +73,7 @@ public class SettingsManager : MonoBehaviour
         UpdateSettingsText();
     }
 
-    // 슬라이더 값이 변경될 때 호출
+    // 배경음 불륨 조절
     public void OnBGMVolumeChanged()
     {
         float bgmVolume = bgmVolumeSlider.value;
@@ -76,6 +82,7 @@ public class SettingsManager : MonoBehaviour
         UpdateSettingsText();
     }
 
+    // 효과음 불륨 조절
     public void OnSFXVolumeChanged()
     {
         float sfxVolume = sfxVolumeSlider.value;
@@ -87,6 +94,7 @@ public class SettingsManager : MonoBehaviour
         UpdateSettingsText();
     }
 
+    // 조명 강도 조절
     public void OnLightIntensityChanged()
     {
         float newExposure = lightIntensitySlider.value;
@@ -95,6 +103,7 @@ public class SettingsManager : MonoBehaviour
         UpdateSettingsText();
     }
 
+    // 마우스 감도 조절
     public void OnMouseSensitivityChanged()
     {
         float mouseSensitivity = mouseSensitivitySlider.value;
@@ -108,6 +117,7 @@ public class SettingsManager : MonoBehaviour
         UpdateSettingsText();
     }
 
+    // 조명 강도 변경 함수
     public void AdjustPostExposure(float exposure)
     {
         if (colorAdjustments != null)
