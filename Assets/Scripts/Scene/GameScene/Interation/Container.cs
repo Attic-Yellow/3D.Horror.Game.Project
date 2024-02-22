@@ -7,17 +7,10 @@ public class Container : MonoBehaviour
 {
     public bool isOpen;
 
-    [SerializeField] protected float rotationSpeed = 4f;
-    [SerializeField] protected Quaternion startRotation;
     public Transform inRoomTransform;
 
     [SerializeField] protected TextMeshProUGUI[] openText;
     [SerializeField] protected TextMeshProUGUI[] closeText;
-
-    protected void Awake()
-    {
-        startRotation = transform.rotation;
-    }
 
     protected void Start()
     {

@@ -5,7 +5,6 @@ TagManager:
   serializedVersion: 2
   tags:
   - UICamera
-  - Door
   - Drawer
   - Monitor
   - OutDoor
@@ -17,6 +16,7 @@ TagManager:
   - Battery
   - Locker
   - MissionItem
+  - Handle
   layers:
   - Default
   - TransparentFX

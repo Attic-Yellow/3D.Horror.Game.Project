@@ -9,12 +9,21 @@ public class Door : Container
 {
     public bool isOut = true; // 밖에서 문을 여는지 안에서 여는지
 
+    [SerializeField] protected float rotationSpeed = 4f;
+    [SerializeField] protected Quaternion startRotation;
+    [SerializeField] private float openAngle;
+
     // [SerializeField] private Animator animator;
+
+    protected void Awake()
+    {
+        startRotation = transform.rotation;
+    }
 
     public void OpenDoor()
     {
         // isOut 상태에 따라 문 열기 방향 결정
-        Quaternion targetRotation = isOut ? startRotation * Quaternion.Euler(0f, 130f, 0f) : startRotation * Quaternion.Euler(0f, -130f, 0f);
+        Quaternion targetRotation = isOut ? startRotation * Quaternion.Euler(0f, openAngle, 0f) : startRotation * Quaternion.Euler(0f, -openAngle, 0f);
         StartCoroutine(RotateDoorCoroutine(targetRotation));
     }
 
