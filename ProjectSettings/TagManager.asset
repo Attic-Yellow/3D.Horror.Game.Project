@@ -6,18 +6,17 @@ TagManager:
   tags:
   - UICamera
   - Door
-  - Handle
   - Drawer
   - Monitor
   - OutDoor
   - InDoor
-  - Wall
   - Item
   - Switch
   - Ghost
   - Enemy
   - Battery
   - Locker
+  - MissionItem
   layers:
   - Default
   - TransparentFX

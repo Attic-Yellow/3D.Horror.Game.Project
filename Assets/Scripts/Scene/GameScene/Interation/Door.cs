@@ -5,32 +5,11 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Door : MonoBehaviour
+public class Door : Container
 {
-    public bool isOpen;
     public bool isOut = true; // 밖에서 문을 여는지 안에서 여는지
-    public float rotationSpeed = 4f;
-    public Quaternion startRotation;
-    public Transform inRoomTransform;
 
-    [SerializeField] private Animator animator;
-
-    [SerializeField] private TextMeshProUGUI[] openText;
-    [SerializeField] private TextMeshProUGUI[] closeText;
-
-    private void Awake()
-    {
-        startRotation = transform.rotation;
-    }
-
-    private void Start()
-    {
-        for (int i = 0; i < 2; i++)
-        {
-            openText[i].gameObject.SetActive(!isOpen);
-            closeText[i].gameObject.SetActive(isOpen);
-        }
-    }
+    // [SerializeField] private Animator animator;
 
     public void OpenDoor()
     {
@@ -59,10 +38,17 @@ public class Door : MonoBehaviour
         // 문의 상태 업데이트
         isOpen = !isOpen;
 
-        for (int i = 0; i < 2; i++)
+        for (int i = 0; i < openText.Length; i++)
         {
-            openText[i].gameObject.SetActive(!isOpen);
-            closeText[i].gameObject.SetActive(isOpen);
+            if (openText != null)
+            {
+                openText[i].gameObject.SetActive(!isOpen);
+            }
+
+            if (closeText != null)
+            {
+                closeText[i].gameObject.SetActive(isOpen);
+            }
         }
     }
 }
