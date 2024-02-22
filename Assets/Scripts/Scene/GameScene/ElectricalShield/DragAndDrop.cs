@@ -4,20 +4,22 @@ using UnityEngine;
 
 public class DragAndDrop : MonoBehaviour
 {
-    private Vector3 offset;
     public float minX = -0.1f;
     public float maxX = 0.04f;
 
+
     private void OnMouseDrag()
     {
-        float distance = Camera.main.WorldToScreenPoint(transform.localPosition).z;
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.WorldToScreenPoint(transform.position).z));
 
-        Vector3 mousePos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, distance);
-        Vector3 objPos = Camera.main.ScreenToWorldPoint(mousePos);
+        // 로컬 좌표계에서의 마우스 위치로 변환
+        Vector3 localMousePos = transform.parent.InverseTransformPoint(mousePos);
 
-        objPos.y = transform.localPosition.y;
-        objPos.x = transform.localPosition.x;
-        transform.localPosition = objPos;
+        // x 값을 minX와 maxX 사이로 제한
+        localMousePos.x = Mathf.Clamp(localMousePos.x, minX, maxX);
+
+        // 오브젝트의 위치 설정
+        transform.localPosition = new Vector3(localMousePos.x, transform.localPosition.y, transform.localPosition.z);
 
 
     }
