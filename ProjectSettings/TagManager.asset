@@ -15,9 +15,9 @@ TagManager:
   - Item
   - Switch
   - Ghost
-  - UseItem
   - Enemy
-  - MissionItem
+  - Battery
+  - Locker
   layers:
   - Default
   - TransparentFX
