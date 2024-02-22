@@ -34,7 +34,7 @@ public class CameraZoom : MonoBehaviour
             {
                 MissionOverlayControl(missions);
             }
-            
+
             LookAtZoomOut();
             cameraController.SetPointCamActive();
         }
@@ -65,11 +65,21 @@ public class CameraZoom : MonoBehaviour
     // 카메라 줌인
     public void LookAtZoomIn(GameObject target)
     {
+        var transposer = vCam.GetCinemachineComponent<CinemachineTransposer>();
+
+        if (transposer != null)
+        {
+            transposer.m_XDamping = 1;
+            transposer.m_YDamping = 1;
+            transposer.m_ZDamping = 1;
+        }
+
         isZoomIn = true;
         initRotation = vCam.transform.rotation;
         targetRotation = target.transform.rotation;
         vCam.m_Follow = target.transform;
         StartCoroutine(ChangeFOV(26, targetRotation, 1.2f));
+        CursorConfined();
     }
 
     // 카메라 줌아웃
@@ -78,6 +88,15 @@ public class CameraZoom : MonoBehaviour
         isZoomIn = !isZoomIn;
         vCam.m_Follow = player.transform;
         StartCoroutine(ChangeFOV(70, initRotation, 1.2f));
+        CuesorLoked();
+        var transposer = vCam.GetCinemachineComponent<CinemachineTransposer>();
+
+        if (transposer != null)
+        {
+            transposer.m_XDamping = 0;
+            transposer.m_YDamping = 0;
+            transposer.m_ZDamping = 0;
+        }
     }
     
     // 모니터 켜는 효과
@@ -118,5 +137,17 @@ public class CameraZoom : MonoBehaviour
         yield return new WaitForSeconds(1.25f);
 
         missions.gameObject.transform.Find("MissionRoot").gameObject.SetActive(isMission);
+    }
+
+    private void CuesorLoked()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
+
+    private void CursorConfined()
+    {
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
     }
 }

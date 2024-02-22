@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
+    [SerializeField] private Camera overlayCam;
     [SerializeField] private Camera pointCam;
     [SerializeField] private Camera crtCam;
-    [SerializeField] private Camera overlayCam;
     [SerializeField] private Transform[] target;
     
     private void Start()
@@ -28,18 +28,19 @@ public class CameraController : MonoBehaviour
 
     }
 
+    public void SetOverlayCamAtive()
+    {
+        if (overlayCam != null)
+        {
+            overlayCam.gameObject.SetActive(!overlayCam.gameObject.activeSelf);
+        }
+    }
+
     public void SetPointCamActive()
     {
         if (pointCam != null)
         {
             pointCam.gameObject.SetActive(!pointCam.gameObject.activeSelf);
-        }
-    }
-    public void SetOverlayCamAtive()
-    {
-        if(overlayCam != null)
-        {
-            overlayCam.gameObject.SetActive(!overlayCam.gameObject.activeSelf);
         }
     }
 

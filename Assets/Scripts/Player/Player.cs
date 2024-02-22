@@ -193,7 +193,7 @@ public class Player : MonoBehaviour
             prevHitItem = null;
         }
 
-        if (lastHitGameObject.gameObject.GetComponentInParent<Door>() != null)
+        if (lastHitGameObject !=null && lastHitGameObject.gameObject.GetComponentInParent<Door>() != null)
         {
             Door door = lastHitGameObject.gameObject.GetComponentInParent<Door>();
 
@@ -207,7 +207,7 @@ public class Player : MonoBehaviour
             }
         }
 
-        if (lastHitGameObject.gameObject.GetComponentInParent<Drawer>() != null)
+        if (lastHitGameObject != null && lastHitGameObject.gameObject.GetComponentInParent<Drawer>() != null)
         {
             Drawer drawer = lastHitGameObject.gameObject.GetComponentInParent<Drawer>();
             drawer.DrawerController();
@@ -288,8 +288,13 @@ public class Player : MonoBehaviour
     void OnPause()
     {
         isPaused = !isPaused;
-        Cursor.lockState = isPaused ? CursorLockMode.Confined : CursorLockMode.Locked;
-        Cursor.visible = isPaused;
+
+        if (!cameraZoom.isZoomIn)
+        {
+            Cursor.lockState = isPaused ? CursorLockMode.Confined : CursorLockMode.Locked;
+            Cursor.visible = true;
+        }
+        
         GameManager.instance.overlayManager.OptionOverlayController();
     }
 }
