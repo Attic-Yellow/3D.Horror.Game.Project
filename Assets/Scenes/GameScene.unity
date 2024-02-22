@@ -17156,6 +17156,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1933174183, guid: 802b9da906ff01349ad0c48e51a7691f, type: 3}
+      propertyPath: localizationKey
+      value: Glean
+      objectReference: {fileID: 0}
     - target: {fileID: 1563341477951535490, guid: 802b9da906ff01349ad0c48e51a7691f,
         type: 3}
       propertyPath: m_Name
