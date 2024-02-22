@@ -6,10 +6,16 @@ public class CameraController : MonoBehaviour
 {
     [SerializeField] private Camera pointCam;
     [SerializeField] private Camera crtCam;
+    [SerializeField] private Camera overlayCam;
     [SerializeField] private Transform[] target;
-
+    
     private void Start()
     {
+        if(overlayCam != null)
+        {
+            overlayCam.gameObject.SetActive(true);
+        }
+
         if (pointCam != null)
         {
             pointCam.gameObject.SetActive(true);
@@ -19,6 +25,7 @@ public class CameraController : MonoBehaviour
         {
             crtCam.gameObject.SetActive(false);
         }
+
     }
 
     public void SetPointCamActive()
@@ -26,6 +33,13 @@ public class CameraController : MonoBehaviour
         if (pointCam != null)
         {
             pointCam.gameObject.SetActive(!pointCam.gameObject.activeSelf);
+        }
+    }
+    public void SetOverlayCamAtive()
+    {
+        if(overlayCam != null)
+        {
+            overlayCam.gameObject.SetActive(!overlayCam.gameObject.activeSelf);
         }
     }
 
