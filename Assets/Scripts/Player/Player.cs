@@ -30,6 +30,7 @@ public class Player : MonoBehaviour
 
     private bool isPaused = false;
     public bool isOver;
+    private Battery battery;
 
     private void Awake()
     {
@@ -92,6 +93,10 @@ public class Player : MonoBehaviour
             {
                 locker = hit.collider.gameObject.GetComponent<Locker>();
                 lastHitGameObject = hit.collider.gameObject;
+            }
+            else if(hit.collider.CompareTag("Battery"))
+            {
+               battery = hit.collider.gameObject.GetComponent<Battery>();
             }
             else
             {
@@ -173,6 +178,12 @@ public class Player : MonoBehaviour
             {
                 locker.ReverseTimeline();
             }
+        }
+        if(battery != null && Holder.Instance.isHaveItems["Flashlight"])
+        {
+            battery.Use();
+            Destroy(battery.gameObject);
+            battery = null;
         }
     }
 

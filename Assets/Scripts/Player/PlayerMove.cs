@@ -5,8 +5,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerMove : MonoBehaviour
 {
-    CharacterController controller;
-    Animator animator;
+    private CharacterController controller;
+    private Animator animator;
 
     public float moveSpeed;
     public float sprintSpeed;
