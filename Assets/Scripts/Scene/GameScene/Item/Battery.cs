@@ -2,13 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Battery : UseItem
+public class Battery : MonoBehaviour
 {
-
-    public override void Use()
+    private float addTime = 10f;
+    private Flashlight flashlight;
+    private void Awake()
     {
-        Flashlight flashlight = FindObjectOfType<Flashlight>();
-        flashlight.currentBatteryTime = flashlight.maxBatteryTime;
+         flashlight = FindObjectOfType<Flashlight>();
+    }
+    public void Use()
+    {  
+        flashlight.AddTime(addTime);
     }
 
 

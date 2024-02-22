@@ -41,4 +41,12 @@ public class Flashlight : Item
             }
         }
     }
+
+    public void AddTime(float time)
+    {
+        currentBatteryTime+= time;
+        if(currentBatteryTime > maxBatteryTime)
+        {
+            currentBatteryTime = maxBatteryTime;
+        }    }
 }
