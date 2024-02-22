@@ -14,11 +14,6 @@ TagManager:
   - Wall
   - Item
   - Switch
-  - Ghost
-  - Enemy
-  - Locker
-  - Battery
-  - FireExtinguisher
   layers:
   - Default
   - TransparentFX

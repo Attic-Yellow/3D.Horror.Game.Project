@@ -22,7 +22,6 @@ public class Player : MonoBehaviour
     public RigTarget rigTarget;
 
     public Door door;
-    private Battery battery;
     public bool isOpened; //열었는지
 
     private Enemy collisionEnemy;
@@ -49,7 +48,7 @@ public class Player : MonoBehaviour
             if (hit.collider.CompareTag("Item"))
             {
                 Item item = hit.collider.gameObject.GetComponent<Item>();
-                if (item != prevHitItem && hit.collider.gameObject.transform.Find("CanvasRoot").gameObject.activeSelf)
+                if (item != prevHitItem)
                 {
                     hit.collider.gameObject.transform.Find("CanvasRoot").gameObject.SetActive(false);
                 }
@@ -94,10 +93,6 @@ public class Player : MonoBehaviour
                 locker = hit.collider.gameObject.GetComponent<Locker>();
                 lastHitGameObject = hit.collider.gameObject;
             }
-            else if(hit.collider.CompareTag("Battery") && Holder.Instance.isHaveItems["Flashlight"])
-            {
-                battery = hit.collider.gameObject.GetComponent<Battery>();
-            }
             else
             {
                 ResetInteractions();
@@ -131,10 +126,6 @@ public class Player : MonoBehaviour
         if (locker != null)
         {
             locker = null;
-        }
-        if(battery != null)
-        {
-            battery = null;
         }
     }
 
@@ -182,11 +173,6 @@ public class Player : MonoBehaviour
             {
                 locker.ReverseTimeline();
             }
-        }
-        if(battery !=null)
-        {
-            battery.Use();
-            Destroy(battery.gameObject);
         }
     }
 

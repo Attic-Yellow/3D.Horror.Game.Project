@@ -13,10 +13,10 @@ GameObject:
   - component: {fileID: 4009487881061227383}
   - component: {fileID: 3937896412058973905}
   - component: {fileID: 4032928180636889432}
-  - component: {fileID: 625561950}
+  - component: {fileID: 4032928180636889433}
   m_Layer: 6
   m_Name: battery
-  m_TagString: Battery
+  m_TagString: UseItem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28,7 +28,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4031895043631688533}
-  m_LocalRotation: {x: -0, y: -0.7177741, z: 0, w: -0.6962761}
+  m_LocalRotation: {x: -0, y: -0.7177715, z: -0, w: -0.69627875}
   m_LocalPosition: {x: -0.015, y: 1.024, z: -1.503}
   m_LocalScale: {x: 0.21121144, y: 0.21121144, z: 0.21121144}
   m_ConstrainProportionsScale: 0
@@ -121,7 +121,7 @@ CapsuleCollider:
   m_Height: 0.280867
   m_Direction: 1
   m_Center: {x: 0, y: 0.005438015, z: 0}
---- !u!114 &625561950
+--- !u!114 &4032928180636889433
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -130,6 +130,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4031895043631688533}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a750cf46f24fabc4d9eb82b6d03c0bee, type: 3}
+  m_Script: {fileID: 11500000, guid: 127e6a6c96beb95459f8dcc6326249bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  text: 
