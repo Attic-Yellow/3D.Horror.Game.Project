@@ -13,16 +13,28 @@ public class CameraZoom : MonoBehaviour
     [SerializeField] private MonitorControl monitorControl;
     [SerializeField] private OSFadeEffect oSFadeEffect;
     [SerializeField] private CameraController cameraController;
+    [SerializeField] private GameObject missions;
 
     public bool isZoomIn = false;
+    private bool isMonitorOn = false;
+    private bool isMission = false;
 
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Z) && isZoomIn)
         {
-            GameManager.instance.overlayManager.ComputerOverlayController();
-            monitorControl.OnAndOff();
+            if (isMonitorOn)
+            {
+                isMonitorOn = !isMonitorOn;
+                GameManager.instance.overlayManager.ComputerOverlayController();
+                monitorControl.OnAndOff();
+            }
+            else if (isMission)
+            {
+                MissionOverlayControl(missions);
+            }
+            
             LookAtZoomOut();
             cameraController.SetPointCamActive();
         }
@@ -63,7 +75,7 @@ public class CameraZoom : MonoBehaviour
     // 카메라 줌아웃
     public void LookAtZoomOut()
     {
-        isZoomIn = false;
+        isZoomIn = !isZoomIn;
         vCam.m_Follow = player.transform;
         StartCoroutine(ChangeFOV(70, initRotation, 1.2f));
     }
@@ -71,6 +83,7 @@ public class CameraZoom : MonoBehaviour
     // 모니터 켜는 효과
     public void MonitorOn()
     {
+        isMonitorOn = !isMonitorOn;
         cameraController.SetPointCamActive();
         StartCoroutine(TurnOnEffect());
     }
@@ -82,5 +95,28 @@ public class CameraZoom : MonoBehaviour
 
         GameManager.instance.overlayManager.ComputerOverlayController();
         oSFadeEffect.FadeBlink();
+    }
+
+    public void MissionOverlayControl(GameObject mission)
+    {
+        isMission = !isMission;
+        missions = mission;
+        if (isMission)
+        {
+            cameraController.SetPointCamActive();
+            StartCoroutine(MissionEffect());
+        }
+        else
+        {
+            missions.gameObject.transform.Find("MissionRoot").gameObject.SetActive(isMission);
+            missions = null;
+        }
+    }
+
+    private IEnumerator MissionEffect()
+    {
+        yield return new WaitForSeconds(1.25f);
+
+        missions.gameObject.transform.Find("MissionRoot").gameObject.SetActive(isMission);
     }
 }

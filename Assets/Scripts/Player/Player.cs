@@ -43,7 +43,7 @@ public class Player : MonoBehaviour
         RaycastHit hit;
         Debug.DrawRay(ray.origin, ray.direction * interactionDistance, new Color(1, 0, 1));
 
-        if (Physics.Raycast(ray, out hit, interactionDistance, LayerMask.GetMask("Interaction Object")))
+        if (Physics.Raycast(ray, out hit, interactionDistance, LayerMask.GetMask("Interaction Object")) && !cameraZoom.isZoomIn)
         {
             // 충돌한 물체가 상호작용 가능한 물체인지 확인
             if (hit.collider.CompareTag("Item"))
@@ -59,6 +59,10 @@ public class Player : MonoBehaviour
             }
             else if (hit.collider.CompareTag("OutDoor") )
             {
+                if (lastHitGameObject != null)
+                {
+                    lastHitGameObject.gameObject.transform.Find("CanvasRoot").gameObject.SetActive(false);
+                }
                 door = hit.collider.gameObject.GetComponentInParent<Door>();
                 hit.collider.gameObject.transform.Find("CanvasRoot").gameObject.SetActive(true);
                 lastHitGameObject = hit.collider.gameObject;
@@ -66,6 +70,10 @@ public class Player : MonoBehaviour
             }
             else if(hit.collider.CompareTag("InDoor"))
             {
+                if (lastHitGameObject != null)
+                {
+                    lastHitGameObject.gameObject.transform.Find("CanvasRoot").gameObject.SetActive(false);
+                }
                 door = hit.collider.gameObject.GetComponentInParent<Door>();
                 hit.collider.gameObject.transform.Find("CanvasRoot").gameObject.SetActive(true);
                 lastHitGameObject = hit.collider.gameObject;
@@ -85,18 +93,31 @@ public class Player : MonoBehaviour
                     hit.collider.gameObject.transform.Find("CanvasRoot").gameObject.SetActive(false);
                 }
             }
-            else if (hit.collider.CompareTag("Ghost"))
+            else if (hit.collider.CompareTag("MissionItem"))
             {
-                comeGhost.isSee = true;
+                hit.collider.gameObject.transform.Find("CanvasRoot").gameObject.SetActive(true);
+                lastHitGameObject = hit.collider.gameObject;
+
+                if (Input.GetKeyDown(KeyCode.F))
+                {
+                    GameObject gameObject = hit.collider.gameObject.transform.Find("Target").gameObject;
+                    cameraZoom.LookAtZoomIn(gameObject);
+                    hit.collider.gameObject.transform.Find("CanvasRoot").gameObject.SetActive(false);
+                    cameraZoom.MissionOverlayControl(hit.collider.gameObject);
+                }
             }
             else if (hit.collider.CompareTag("Locker"))
             {
                 locker = hit.collider.gameObject.GetComponent<Locker>();
                 lastHitGameObject = hit.collider.gameObject;
             }
-            else if(hit.collider.CompareTag("Battery"))
+            else if (hit.collider.CompareTag("Battery"))
             {
-               battery = hit.collider.gameObject.GetComponent<Battery>();
+                battery = hit.collider.gameObject.GetComponent<Battery>();
+            }
+            else if (hit.collider.CompareTag("Ghost"))
+            {
+                comeGhost.isSee = true;
             }
             else
             {

@@ -8,12 +8,25 @@ using UnityEngine;
 
 public class CSVTranslator : MonoBehaviour
 {
-    [MenuItem("Assets/Build CSVTranslator")]
+    public enum Language
+    {
+        English,
+        Korean
+    }
 
+    [MenuItem("Assets/Build CSVTranslator")]
     static void ConvertToJsonCoroutine()
     {
-        var csvFileName = $"English.csv";
-        var jsonFileName = $"English.json";
+        foreach (Language lang in System.Enum.GetValues(typeof(Language)))
+        {
+            ConvertLanguageToJSON(lang);
+        }
+    }
+
+    static void ConvertLanguageToJSON(Language lang)
+    {
+        var csvFileName = $"{lang}.csv";
+        var jsonFileName = $"{lang}.json";
 
         string csvFilePath = Path.Combine("Assets/UIText", csvFileName);
         string jsonFilePath = Path.Combine("Assets/UIText", jsonFileName);
@@ -39,7 +52,7 @@ public class CSVTranslator : MonoBehaviour
             uiTexts
         };
 
-        string json = JsonConvert.SerializeObject(combinedData, Formatting.Indented);
+        string json = JsonConvert.SerializeObject(combinedData);
         File.WriteAllText(jsonFilePath, json);
     }
 }
