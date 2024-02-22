@@ -1148,14 +1148,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isOpen: 0
-  rotationSpeed: 4
-  startRotation: {x: 0, y: 0, z: 0, w: 0}
   inRoomTransform: {fileID: 8006292331814290606}
   openText:
   - {fileID: 8396948532395227819}
   closeText:
   - {fileID: 4717905312565274049}
   isOut: 1
+  rotationSpeed: 4
+  startRotation: {x: 0, y: 0, z: 0, w: 0}
+  openAngle: 130
 --- !u!4 &8006292331814290606 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 967664c5509a94973bdeaad00150ba33,
@@ -1273,14 +1274,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isOpen: 0
-  rotationSpeed: 4
-  startRotation: {x: 0, y: 0, z: 0, w: 0}
   inRoomTransform: {fileID: 8006292330822199115}
   openText:
   - {fileID: 6260021210420871197}
   closeText:
   - {fileID: 5181864144023923227}
   isOut: 1
+  rotationSpeed: 4
+  startRotation: {x: 0, y: 0, z: 0, w: 0}
+  openAngle: 130
 --- !u!4 &8006292330822199115 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 429fd74854f3744cd97d16ab6f84d293,

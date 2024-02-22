@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class CCTV : Item
 {
-    public GameObject phonePanel;
-
     private void Update()
     {
         if(Holder.Instance.isHaveItems.ContainsKey(name)&&Input.GetKeyDown(KeyCode.Z))

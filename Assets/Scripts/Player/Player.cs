@@ -2,6 +2,7 @@ using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Animations.Rigging;
 using UnityEngine.InputSystem;
@@ -20,9 +21,6 @@ public class Player : MonoBehaviour
 
     public Rig rig;
     public RigTarget rigTarget;
-
-    public Door door;
-    public bool isOpened; //열었는지
 
     private Enemy collisionEnemy;
     public ComeGhost comeGhost;
@@ -45,6 +43,11 @@ public class Player : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, interactionDistance, LayerMask.GetMask("Interaction Object")) && !cameraZoom.isZoomIn)
         {
+            if (lastHitGameObject != null)
+            {
+                lastHitGameObject.gameObject.transform.Find("CanvasRoot").gameObject.SetActive(false);
+            }
+
             // 충돌한 물체가 상호작용 가능한 물체인지 확인
             if (hit.collider.CompareTag("Item"))
             {
@@ -63,10 +66,10 @@ public class Player : MonoBehaviour
                 {
                     lastHitGameObject.gameObject.transform.Find("CanvasRoot").gameObject.SetActive(false);
                 }
-                door = hit.collider.gameObject.GetComponentInParent<Door>();
-                hit.collider.gameObject.transform.Find("CanvasRoot").gameObject.SetActive(true);
+
                 lastHitGameObject = hit.collider.gameObject;
-                door.isOut = true;
+                lastHitGameObject.gameObject.transform.Find("CanvasRoot").gameObject.SetActive(true);
+                lastHitGameObject.gameObject.GetComponentInParent<Door>().isOut = true;
             }
             else if(hit.collider.CompareTag("InDoor"))
             {
@@ -74,10 +77,15 @@ public class Player : MonoBehaviour
                 {
                     lastHitGameObject.gameObject.transform.Find("CanvasRoot").gameObject.SetActive(false);
                 }
-                door = hit.collider.gameObject.GetComponentInParent<Door>();
+
+                lastHitGameObject = hit.collider.gameObject;
+                lastHitGameObject.gameObject.transform.Find("CanvasRoot").gameObject.SetActive(true);
+                lastHitGameObject.gameObject.GetComponentInParent<Door>().isOut = false;
+            }
+            else if (hit.collider.CompareTag("Drawer"))
+            {
                 hit.collider.gameObject.transform.Find("CanvasRoot").gameObject.SetActive(true);
                 lastHitGameObject = hit.collider.gameObject;
-                door.isOut = false;
             }
             else if (hit.collider.CompareTag("Monitor"))
             {
@@ -114,6 +122,13 @@ public class Player : MonoBehaviour
             else if (hit.collider.CompareTag("Battery"))
             {
                 battery = hit.collider.gameObject.GetComponent<Battery>();
+                hit.collider.gameObject.transform.Find("CanvasRoot").gameObject.SetActive(true);
+                lastHitGameObject = hit.collider.gameObject;
+            }
+            else if (hit.collider.CompareTag("Switch"))
+            {
+                hit.collider.gameObject.transform.Find("CanvasRoot").gameObject.SetActive(true);
+                lastHitGameObject = hit.collider.gameObject;
             }
             else if (hit.collider.CompareTag("Ghost"))
             {
@@ -144,14 +159,14 @@ public class Player : MonoBehaviour
             prevHitItem = null;
         }
 
-        if (door != null)
-        {
-            door = null;
-        }
-
         if (locker != null)
         {
             locker = null;
+        }
+
+        if (battery != null)
+        {
+            battery = null;
         }
     }
 
@@ -177,8 +192,11 @@ public class Player : MonoBehaviour
             prevHitItem.gameObject.SetActive(false);
             prevHitItem = null;
         }
-        if (door != null)
+
+        if (lastHitGameObject.gameObject.GetComponentInParent<Door>() != null)
         {
+            Door door = lastHitGameObject.gameObject.GetComponentInParent<Door>();
+
             if (door.isOpen)
             {
                 door.CloseDoor();
@@ -187,8 +205,14 @@ public class Player : MonoBehaviour
             {
                 door.OpenDoor();
             }
-            door = null;
         }
+
+        if (lastHitGameObject.gameObject.GetComponentInParent<Drawer>() != null)
+        {
+            Drawer drawer = lastHitGameObject.gameObject.GetComponentInParent<Drawer>();
+            drawer.DrawerController();
+        }
+
         if (locker != null && !locker.timelinePlaying)
         {
             if (locker.isIn)
@@ -236,7 +260,28 @@ public class Player : MonoBehaviour
 
     void OnCCTV()
     {
-       
+       if (Holder.Instance.isHaveItems.ContainsKey("CCTV"))
+        {
+            foreach (Item item in haveitems)
+            {
+                if (item.GetComponent<CCTV>() != null)
+                {
+                    if (!item.gameObject.activeSelf)
+                    {
+                        rigTarget.SetTransform(item.handTargetPos);
+                        item.gameObject.SetActive(true);
+                        rig.weight = 1;
+                    }
+                    else
+                    {
+                        item.gameObject.SetActive(false);
+                        rig.weight = 0;
+                    }
+                    break;
+                }
+
+            }
+        }
     }
 
     // Esc키를 누르면 일시정지 및 옵션창 활성화

@@ -1209,7 +1209,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: d1995ce25f40046ea9d5817ce6605c9c,
         type: 3}
       propertyPath: m_TagString
-      value: Door
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d1995ce25f40046ea9d5817ce6605c9c, type: 3}
@@ -1273,17 +1273,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isOpen: 0
-  isOut: 0
-  rotationSpeed: 5
-  startRotation: {x: 0, y: 0, z: 0, w: 0}
   inRoomTransform: {fileID: 1586010506691454858}
-  animator: {fileID: 2728459308171065870}
   openText:
   - {fileID: 8808716763690922279}
   - {fileID: 7190380567671150323}
   closeText:
   - {fileID: 412014446633676856}
   - {fileID: 848107257019101281}
+  isOut: 0
+  rotationSpeed: 5
+  startRotation: {x: 0, y: 0, z: 0, w: 0}
+  openAngle: 125
 --- !u!1001 &8660161765193885736
 PrefabInstance:
   m_ObjectHideFlags: 0
