@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
         }
         // PlayerPrefs.DeleteAll();
         languageType = (LanguageType)PlayerPrefs.GetInt("LanguageSetting", (int)LanguageType.English);
+      
     }
 
     // 현재 활성화된 언어를 설정
