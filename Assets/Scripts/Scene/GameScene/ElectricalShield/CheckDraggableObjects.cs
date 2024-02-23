@@ -32,7 +32,7 @@ public class CheckDraggableObjects : MonoBehaviour
      
         }
     }
-    public void CheckActivatable()
+    public void CheckActivatable() 
     {
         Activatable activatable = FindObjectOfType<Activatable>();
 
