@@ -10,6 +10,7 @@ using UnityEngine.InputSystem;
 public class Player : MonoBehaviour
 {
     [SerializeField] private Camera playerCamera;
+    [SerializeField] private CameraController cameraController;
     [SerializeField] private CameraZoom cameraZoom;
     [SerializeField] private GameObject lastHitGameObject = null;
 
@@ -207,6 +208,16 @@ public class Player : MonoBehaviour
             }
         }
 
+        if (lastHitGameObject != null && lastHitGameObject.gameObject.GetComponentInParent<Shield>() != null)
+        {
+            Shield shield = lastHitGameObject.gameObject.GetComponentInParent<Shield>();
+
+            if (shield.isOpen)
+            {
+                shield.OpenShield();
+            }
+        }
+
         if (lastHitGameObject != null && lastHitGameObject.gameObject.GetComponentInParent<Drawer>() != null)
         {
             Drawer drawer = lastHitGameObject.gameObject.GetComponentInParent<Drawer>();
@@ -292,6 +303,8 @@ public class Player : MonoBehaviour
 
         if (!cameraZoom.isZoomIn)
         {
+            cameraController.SetOverlayCamAtive();
+            cameraController.SetPointCamActive();
             Cursor.lockState = isPaused ? CursorLockMode.Confined : CursorLockMode.Locked;
             Cursor.visible = true;
         }

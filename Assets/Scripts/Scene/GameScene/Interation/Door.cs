@@ -10,7 +10,7 @@ public class Door : Container
     public bool isOut = true; // 밖에서 문을 여는지 안에서 여는지
     [SerializeField] protected float rotationSpeed = 4f;
     [SerializeField] protected Quaternion startRotation;
-    [SerializeField] private float openAngle;
+    [SerializeField] protected float openAngle;
 
     // [SerializeField] private Animator animator;
 
@@ -31,13 +31,7 @@ public class Door : Container
         StartCoroutine(RotateDoorCoroutine(startRotation));
     }
 
-    public void OpenShield()
-    {
-        Quaternion targetRotation = startRotation * Quaternion.Euler(openAngle, 0f, 0f);
-        StartCoroutine(RotateDoorCoroutine(targetRotation));
-    }
-
-    IEnumerator RotateDoorCoroutine(Quaternion targetRotation)
+    protected IEnumerator RotateDoorCoroutine(Quaternion targetRotation)
     {
         float elapsedTime = 0f;
         Quaternion currentRotation = transform.localRotation;

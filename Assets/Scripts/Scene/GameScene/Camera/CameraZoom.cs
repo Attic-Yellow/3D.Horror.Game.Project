@@ -16,8 +16,8 @@ public class CameraZoom : MonoBehaviour
     [SerializeField] private GameObject missions;
 
     public bool isZoomIn = false;
-    private bool isMonitorOn = false;
-    private bool isMission = false;
+    [SerializeField] private bool isMonitorOn = false;
+    [SerializeField] private bool isMission = false;
 
 
     private void Update()
@@ -27,16 +27,33 @@ public class CameraZoom : MonoBehaviour
             if (isMonitorOn)
             {
                 isMonitorOn = !isMonitorOn;
+                cameraController.SetOverlayCamAtive();
                 GameManager.instance.overlayManager.ComputerOverlayController();
                 monitorControl.OnAndOff();
             }
-            else if (isMission)
+            else if (missions != null && isMission)
             {
+                if (missions.gameObject.GetComponentInParent<Shield>() != null)
+                {
+                    print("Shield");
+                    missions.gameObject.GetComponentInParent<Shield>().CloseShield();
+                }
+
                 MissionOverlayControl(missions);
+                
             }
 
             LookAtZoomOut();
             cameraController.SetPointCamActive();
+            missions = null;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (missions != null && missions.gameObject.GetComponentInParent<Shield>() != null)
+            {
+                cameraController.SetOverlayCamAtive();
+            }
         }
     }
 
@@ -103,6 +120,7 @@ public class CameraZoom : MonoBehaviour
     public void MonitorOn()
     {
         isMonitorOn = !isMonitorOn;
+        cameraController.SetOverlayCamAtive();
         cameraController.SetPointCamActive();
         StartCoroutine(TurnOnEffect());
     }
@@ -120,15 +138,23 @@ public class CameraZoom : MonoBehaviour
     {
         isMission = !isMission;
         missions = mission;
+
         if (isMission)
         {
             cameraController.SetPointCamActive();
-            StartCoroutine(MissionEffect());
+            if (missions.gameObject.transform.Find("MissionRoot") != null)
+            {
+                cameraController.SetOverlayCamAtive();
+                StartCoroutine(MissionEffect());
+            }
         }
         else
         {
-            missions.gameObject.transform.Find("MissionRoot").gameObject.SetActive(isMission);
-            missions = null;
+            if (missions.gameObject.transform.Find("MissionRoot") != null)
+            {
+                cameraController.SetOverlayCamAtive();
+                missions.gameObject.transform.Find("MissionRoot").gameObject.SetActive(isMission);
+            }
         }
     }
 
