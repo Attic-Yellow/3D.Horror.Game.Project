@@ -12,6 +12,7 @@ public class Item : MonoBehaviour
     {
         transform.SetParent(newPos);
         transform.localPosition = Vector3.zero;
+        transform.localPosition = Vector3.zero;
 
     }
 }
