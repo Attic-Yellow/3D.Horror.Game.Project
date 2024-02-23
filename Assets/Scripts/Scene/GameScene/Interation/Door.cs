@@ -16,7 +16,7 @@ public class Door : Container
 
     protected void Awake()
     {
-        startRotation = transform.rotation;
+        startRotation = Quaternion.identity;
     }
 
     public void OpenDoor()
@@ -31,15 +31,21 @@ public class Door : Container
         StartCoroutine(RotateDoorCoroutine(startRotation));
     }
 
+    public void OpenShield()
+    {
+        Quaternion targetRotation = startRotation * Quaternion.Euler(openAngle, 0f, 0f);
+        StartCoroutine(RotateDoorCoroutine(targetRotation));
+    }
+
     IEnumerator RotateDoorCoroutine(Quaternion targetRotation)
     {
         float elapsedTime = 0f;
-        Quaternion currentRotation = transform.rotation;
+        Quaternion currentRotation = transform.localRotation;
 
         while (elapsedTime < 2.5f)
         {
             elapsedTime += Time.deltaTime * rotationSpeed;
-            transform.rotation = Quaternion.Slerp(currentRotation, targetRotation, elapsedTime / 2.5f);
+            transform.localRotation = Quaternion.Slerp(currentRotation, targetRotation, elapsedTime / 2.5f);
             yield return null;
         }
 
