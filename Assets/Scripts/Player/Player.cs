@@ -215,7 +215,7 @@ public class Player : MonoBehaviour
 
         if (locker != null && !locker.timelinePlaying)
         {
-            if (locker.isIn)
+            if (!locker.isIn)
             {
                 locker.OnTimeline();
             }
