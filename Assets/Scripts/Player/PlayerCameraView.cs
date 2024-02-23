@@ -1,6 +1,8 @@
 using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -9,8 +11,13 @@ public class PlayerCameraView : MonoBehaviour
     [SerializeField] public float mouseSensitivity;
     [SerializeField] private Transform playerBody;
     [SerializeField] private CinemachineVirtualCamera vCam;
+    [SerializeField] private Player Player;
     private float xRotation = 0f;
 
+    private void Awake()
+    {
+        Player = playerBody.gameObject.GetComponent<Player>();
+    }
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -28,10 +35,12 @@ public class PlayerCameraView : MonoBehaviour
 
         // 캐릭터의 수평 회전을 처리
         playerBody.Rotate(Vector3.up * mouseX);
-
         // 카메라의 상하 회전을 처리
-        xRotation -= mouseY;
+        xRotation -= mouseY;   
         xRotation = Mathf.Clamp(xRotation, -90f, 90f);
+
+       /* if(Player.nowItem != null) 
+        Player.nowItem.transform.rotation = transform.rotation;*/
 
         // 카메라의 로컬 회전을 직접 조정
         transform.localEulerAngles = new Vector3(xRotation, playerBody.eulerAngles.y, 0f);

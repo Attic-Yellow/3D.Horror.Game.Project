@@ -5,27 +5,38 @@ using UnityEngine.InputSystem;
 
 public class PlayerMove : MonoBehaviour
 {
+    [SerializeField]
+    private enum State
+    {
+       Standing,
+       Crouch
+    }
+    private State state;
     private CharacterController controller;
     private Animator animator;
 
     public float moveSpeed;
     public float sprintSpeed;
-    public float gravityScale;
-    public float jumpPower;
+
+
+    
     float moveDirY;
 
     private float currentSpeed;
     private bool isRun = false;
+    private bool isCrouch = false;
     private Vector2 inputValue;
     private Vector3 moveDir;
     public bool isMoving;
-
-    public Transform cameraTransform; // 카메라의 Transform
+  
+    
 
     private void Awake()
     {
         controller = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
+        state = State.Standing;
+  
     }
 
     private void Update()
@@ -34,10 +45,20 @@ public class PlayerMove : MonoBehaviour
         {
             return;
         }
-
-        CalcGravity();
-        Ani();
+        state = isCrouch ? State.Crouch : State.Standing;
         isMoving = inputValue.magnitude > 0f;
+        switch (state)
+        {
+          case State.Standing:
+
+                break;
+          case State.Crouch:
+
+                break;
+        }
+     
+
+      
 
         if (inputValue.y < 0) //뒤로 가는키를 누르면 이속감소
         {
@@ -57,18 +78,13 @@ public class PlayerMove : MonoBehaviour
         right.Normalize();
 
         moveDir = (forward * inputValue.y + right * inputValue.x) * currentSpeed;
-        moveDirY += Physics.gravity.y * gravityScale * Time.deltaTime; // 중력 가속도 추가
-        moveDir.y = moveDirY;
+        moveDir.y = 0;
 
         controller.Move(moveDir * Time.deltaTime);
 
     }
 
-    void CalcGravity()
-    {
-        //중력 가속도 가산
-        moveDirY += Physics.gravity.y * gravityScale * Time.deltaTime;
-    }
+
 
     public void OnMove(InputValue _value)
     {
@@ -86,18 +102,11 @@ public class PlayerMove : MonoBehaviour
         isRun = false;
       
     }
-
-    void OnJump(InputValue value)
+    public void OnCrouch()
     {
-        if (controller.isGrounded)
-        {
-            moveDirY = jumpPower;
-        }
+        isCrouch = !isCrouch;
     }
+   
 
-   void Ani()
-    {
-        // animator.SetFloat("Speed", inputValue.magnitude);
-        // animator.SetBool("Run", isRun);
-    }
+  
 }
