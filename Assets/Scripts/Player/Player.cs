@@ -192,7 +192,27 @@ public class Player : MonoBehaviour
             prevHitItem.gameObject.SetActive(false);
             prevHitItem = null;
         }
-
+        if (locker != null && !locker.timelinePlaying)
+        {
+            if (!locker.isIn)
+            {
+                locker.OnTimeline();
+            }
+            else
+            {
+                locker.ReverseTimeline();
+            }
+        }
+        if (battery != null && Holder.Instance.isHaveItems["Flashlight"])
+        {
+            battery.Use();
+            Destroy(battery.gameObject);
+            battery = null;
+        }
+        if (lastHitGameObject == null)
+        {
+            return;
+        }
         if (lastHitGameObject.gameObject.GetComponentInParent<Door>() != null)
         {
             Door door = lastHitGameObject.gameObject.GetComponentInParent<Door>();
@@ -213,23 +233,7 @@ public class Player : MonoBehaviour
             drawer.DrawerController();
         }
 
-        if (locker != null && !locker.timelinePlaying)
-        {
-            if (!locker.isIn)
-            {
-                locker.OnTimeline();
-            }
-            else
-            {
-                locker.ReverseTimeline();
-            }
-        }
-        if (battery != null && Holder.Instance.isHaveItems["Flashlight"])
-        {
-            battery.Use();
-            Destroy(battery.gameObject);
-            battery = null;
-        }
+
     }
 
     void OnFlashlight() //Q´©¸£¸é
