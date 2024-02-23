@@ -16,7 +16,6 @@ TagManager:
   - Battery
   - Locker
   - MissionItem
-  - Handle
   layers:
   - Default
   - TransparentFX

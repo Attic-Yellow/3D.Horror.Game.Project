@@ -13,8 +13,8 @@ public class PlayerCameraView : MonoBehaviour
 
     private void Start()
     {
-        /*Cursor.lockState = CursorLockMode.Locked;*/
-        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.lockState = CursorLockMode.Locked;
+        // Cursor.lockState = CursorLockMode.Confined;
     }
 
     private void Update()
