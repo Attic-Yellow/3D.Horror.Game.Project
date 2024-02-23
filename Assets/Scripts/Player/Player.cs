@@ -192,7 +192,6 @@ public class Player : MonoBehaviour
             prevHitItem.gameObject.SetActive(false);
             prevHitItem = null;
         }
-
         if (lastHitGameObject.gameObject.GetComponentInParent<Door>() != null)
         {
             Door door = lastHitGameObject.gameObject.GetComponentInParent<Door>();
