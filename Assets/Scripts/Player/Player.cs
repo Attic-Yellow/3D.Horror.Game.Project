@@ -21,7 +21,7 @@ public class Player : MonoBehaviour
 
     public Rig rig;
     public RigTarget rigTarget;
-
+    public RigHint rigHint;
     private Enemy collisionEnemy;
     public ComeGhost comeGhost;
     public Locker locker;
@@ -242,7 +242,8 @@ public class Player : MonoBehaviour
                 {
                     if (!item.gameObject.activeSelf)
                     {
-                        rigTarget.Target = item.handTargetPos;
+                        rigTarget.target = item.handTargetPos;
+                        rigHint.target = item.hintPos;
                         item.gameObject.SetActive(true);
                         rig.weight = 1;
                     }

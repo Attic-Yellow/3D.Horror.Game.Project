@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RigTarget : MonoBehaviour
+public class RigHint : MonoBehaviour
 {
     public Transform target;
 
@@ -14,10 +14,4 @@ public class RigTarget : MonoBehaviour
         transform.position = target.position;
         transform.rotation = target.rotation;
     }
-    public void SetTransform(Transform newPos)
-    {
-        transform.position = newPos.position;
-        transform.rotation = newPos.rotation;
-    }
-   
 }
