@@ -41,4 +41,9 @@ public class PlayerCameraView : MonoBehaviour
     {
         mouseSensitivity = newSensitivity;
     }
+
+    public void CursorLockedToConfined(CursorLockMode lockMode)
+    {
+        Cursor.lockState = lockMode;
+    }
 }

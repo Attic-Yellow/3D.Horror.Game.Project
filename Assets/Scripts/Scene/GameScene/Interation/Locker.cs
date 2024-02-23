@@ -4,14 +4,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
 
-public class Locker : TimelineSystem
+public class Locker : MonoBehaviour
 {
+    public CinemachineVirtualCameraBase camera2;
+    public PlayableDirector timeline;
+    public bool isChanged = false;
+    public bool timelinePlaying = false;
     public GameObject tf;
     public bool isIn;
 
-    private new void Awake()
+    private void Awake()
     {
-        base.Awake();
+        timeline = GetComponent<PlayableDirector>();
     }
 
     private void Update()
@@ -23,7 +27,7 @@ public class Locker : TimelineSystem
         }
     }
    
-    public override void OnTimeline()
+    public void OnTimeline()
     {
         isChanged = false;
         PositionAndRotation(tf.transform);
@@ -52,6 +56,24 @@ public class Locker : TimelineSystem
         CameraPriorityChange(9);
         isIn = false;
         isChanged = true;
+        timelinePlaying = false;
+    }
+    public void PositionAndRotation(Transform _tf)
+    {
+        camera2.transform.position = _tf.position;
+        camera2.transform.rotation = _tf.rotation;
+    }
+
+    public void CameraPriorityChange(int _num)
+    {
+        camera2.Priority = _num;
+    }
+
+    private IEnumerator PauseTimeline(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        timeline.Pause();
         timelinePlaying = false;
     }
 }
