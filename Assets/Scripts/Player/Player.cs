@@ -234,10 +234,7 @@ public class Player : MonoBehaviour
         }
 
 
-
-
     }
-
 
     void OnFlashlight() //Q´©¸£¸é
     {
