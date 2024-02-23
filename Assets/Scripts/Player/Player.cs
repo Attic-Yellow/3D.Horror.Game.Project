@@ -242,7 +242,7 @@ public class Player : MonoBehaviour
                 {
                     if (!item.gameObject.activeSelf)
                     {
-                        rigTarget.SetTransform(item.handTargetPos);
+                        rigTarget.Target = item.handTargetPos;
                         item.gameObject.SetActive(true);
                         rig.weight = 1;
                     }
