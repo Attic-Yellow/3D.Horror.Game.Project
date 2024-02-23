@@ -192,9 +192,30 @@ public class Player : MonoBehaviour
             prevHitItem.gameObject.SetActive(false);
             prevHitItem = null;
         }
+
+        if (lastHitGameObject != null && lastHitGameObject.gameObject.GetComponentInParent<Door>() != null)
+        {
+            Door door = lastHitGameObject.gameObject.GetComponentInParent<Door>();
+
+            if (door.isOpen)
+            {
+                door.CloseDoor();
+            }
+            else
+            {
+                door.OpenDoor();
+            }
+        }
+
+        if (lastHitGameObject != null && lastHitGameObject.gameObject.GetComponentInParent<Drawer>() != null)
+        {
+            Drawer drawer = lastHitGameObject.gameObject.GetComponentInParent<Drawer>();
+            drawer.DrawerController();
+        }
+
         if (locker != null && !locker.timelinePlaying)
         {
-            if (!locker.isIn)
+            if (locker.isIn)
             {
                 locker.OnTimeline();
             }
@@ -209,31 +230,6 @@ public class Player : MonoBehaviour
             Destroy(battery.gameObject);
             battery = null;
         }
-        if (lastHitGameObject == null)
-        {
-            return;
-        }
-        if (lastHitGameObject.gameObject.GetComponentInParent<Door>() != null)
-        {
-            Door door = lastHitGameObject.gameObject.GetComponentInParent<Door>();
-
-            if (door.isOpen)
-            {
-                door.CloseDoor();
-            }
-            else
-            {
-                door.OpenDoor();
-            }
-        }
-
-        if (lastHitGameObject.gameObject.GetComponentInParent<Drawer>() != null)
-        {
-            Drawer drawer = lastHitGameObject.gameObject.GetComponentInParent<Drawer>();
-            drawer.DrawerController();
-        }
-
-
     }
 
     void OnFlashlight() //Q´©¸£¸é
@@ -292,8 +288,13 @@ public class Player : MonoBehaviour
     void OnPause()
     {
         isPaused = !isPaused;
-        Cursor.lockState = isPaused ? CursorLockMode.Confined : CursorLockMode.Locked;
-        Cursor.visible = isPaused;
+
+        if (!cameraZoom.isZoomIn)
+        {
+            Cursor.lockState = isPaused ? CursorLockMode.Confined : CursorLockMode.Locked;
+            Cursor.visible = true;
+        }
+
         GameManager.instance.overlayManager.OptionOverlayController();
     }
 }
