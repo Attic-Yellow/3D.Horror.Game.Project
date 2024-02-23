@@ -234,7 +234,11 @@ public class Player : MonoBehaviour
         }
 
 
+
+
     }
+
+
     void OnFlashlight() //Q´©¸£¸é
     {
         if (Holder.Instance.isHaveItems.ContainsKey("Flashlight"))
