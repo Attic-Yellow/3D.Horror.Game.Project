@@ -24,7 +24,7 @@ Turn On,Turn On
 Turn Off,Turn Off
 Glean,Get
 Com Start Text,New Start
-Welcom,Welcom
+Welcom,Welcome
 Fire Update Text,Fire Extinguisher Inspection Record
 Fire Year,Year
 Fire Type,Type
@@ -35,3 +35,4 @@ Fire Sign,Sign
 Example Fire Date,15/11
 Example Fire Name,Friedrich Gau©¬
 Fire Use,USE
+Com Start,Start
