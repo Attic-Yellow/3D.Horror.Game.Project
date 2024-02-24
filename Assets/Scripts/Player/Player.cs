@@ -183,6 +183,8 @@ public class Player : MonoBehaviour
 
     void OnInteraction() //F 상호작용키 
     {
+        PlayerMove playerMove = GetComponent<PlayerMove>();
+        playerMove.TakeOutAni();
         if (prevHitItem != null)
         {
             // 상호작용 가능한 아이템이 있고 상호작용 텍스트가 활성화된 상태일 때

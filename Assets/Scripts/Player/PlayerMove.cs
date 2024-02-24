@@ -17,7 +17,8 @@ public class PlayerMove : MonoBehaviour
 
     public float moveSpeed;
     public float sprintSpeed;
-
+    public float crouchWalkSpeed;
+    public float crouchRunSpeed;
 
     
     float moveDirY;
@@ -36,11 +37,12 @@ public class PlayerMove : MonoBehaviour
         controller = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
         state = State.Standing;
-  
+        animator.SetLayerWeight(1, 0);
     }
 
     private void Update()
     {
+        Ani();
         if (GameManager.instance.overlayManager.CheckOnOverlay())
         {
             return;
@@ -51,8 +53,26 @@ public class PlayerMove : MonoBehaviour
         {
           case State.Standing:
 
+                if (inputValue.y < 0) //뒤로 가는키를 누르면 이속감소
+                {
+                    currentSpeed = isRun ? sprintSpeed * 0.5f : moveSpeed * 0.7f;
+                }
+                else
+                {
+                    currentSpeed = isRun ? sprintSpeed : moveSpeed;
+                }
+
                 break;
           case State.Crouch:
+
+                if(inputValue.y < 0)
+                {
+                    currentSpeed = isRun ? crouchRunSpeed * 0.5f : crouchWalkSpeed * 0.7f;
+                }
+                else
+                {
+                    currentSpeed = isRun ? crouchRunSpeed : crouchWalkSpeed;
+                }
 
                 break;
         }
@@ -60,14 +80,7 @@ public class PlayerMove : MonoBehaviour
 
       
 
-        if (inputValue.y < 0) //뒤로 가는키를 누르면 이속감소
-        {
-            currentSpeed = isRun ? sprintSpeed * 0.5f : moveSpeed * 0.7f;
-        }
-        else
-        {
-            currentSpeed = isRun ? sprintSpeed : moveSpeed;
-        }
+      
 
         // 카메라 방향에 기반한 플레이어의 이동 방향 계산
         Vector3 forward = Camera.main.transform.forward;
@@ -81,8 +94,6 @@ public class PlayerMove : MonoBehaviour
         moveDir.y = 0;
 
         controller.Move(moveDir * Time.deltaTime);
-        print($"X{moveDir.x}");
-        print($"Y{moveDir.y}");
 
     }
 
@@ -110,9 +121,21 @@ public class PlayerMove : MonoBehaviour
     }
     private void Ani()
     {
-        animator.SetFloat("Dir", moveDir.magnitude * Time.deltaTime);
-        animator.SetFloat("")
-    }
+        animator.SetFloat("Velocity", moveDir.magnitude);
+        animator.SetFloat("XDir", inputValue.x * currentSpeed);
+        animator.SetFloat("ZDir", inputValue.y * currentSpeed);
 
-  
+        animator.SetBool("IsCrouch", isCrouch);
+        animator.SetBool("IsRun", isRun);
+     
+    }
+    public void TakeOutAni()
+    {
+        animator.SetLayerWeight(1, 1f); //애니메이터의 두번쨰 레이어의 weight를 1로
+        animator.SetTrigger("TakeOut");
+    }
+    public void WeightZero()
+    {
+        animator.SetLayerWeight(1, 0f);
+    }
 }
