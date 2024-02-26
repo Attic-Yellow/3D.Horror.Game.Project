@@ -8,8 +8,8 @@ public class PlayerMove : MonoBehaviour
     [SerializeField]
     private enum State
     {
-       Standing,
-       Crouch
+        Standing,
+        Crouch
     }
     private State state;
     private CharacterController controller;
@@ -20,7 +20,7 @@ public class PlayerMove : MonoBehaviour
     public float crouchWalkSpeed;
     public float crouchRunSpeed;
     public float gravityScale = 1f;
-    
+
 
     private float currentSpeed;
     private bool isRun = false;
@@ -28,8 +28,8 @@ public class PlayerMove : MonoBehaviour
     private Vector2 inputValue;
     private Vector3 moveDir;
     public bool isMoving;
-  
-    
+
+
 
     private void Awake()
     {
@@ -50,7 +50,7 @@ public class PlayerMove : MonoBehaviour
         isMoving = inputValue.magnitude > 0f;
         switch (state)
         {
-          case State.Standing:
+            case State.Standing:
 
                 if (inputValue.y < 0) //뒤로 가는키를 누르면 이속감소
                 {
@@ -62,9 +62,9 @@ public class PlayerMove : MonoBehaviour
                 }
 
                 break;
-          case State.Crouch:
+            case State.Crouch:
 
-                if(inputValue.y < 0)
+                if (inputValue.y < 0)
                 {
                     currentSpeed = isRun ? crouchRunSpeed * 0.5f : crouchWalkSpeed * 0.7f;
                 }
@@ -75,7 +75,7 @@ public class PlayerMove : MonoBehaviour
 
                 break;
         }
-     
+
         // 카메라 방향에 기반한 플레이어의 이동 방향 계산
         Vector3 forward = Camera.main.transform.forward;
         Vector3 right = Camera.main.transform.right;
@@ -90,9 +90,9 @@ public class PlayerMove : MonoBehaviour
 
     }
 
-  private void Gravity()
+    private void Gravity()
     {
-       if(!controller.isGrounded)
+        if (!controller.isGrounded)
         {
             moveDir.y -= gravityScale;
         }
@@ -107,16 +107,16 @@ public class PlayerMove : MonoBehaviour
         inputValue = _value.Get<Vector2>();
     }
 
-   public void OnRun()
+    public void OnRun()
     {
         isRun = true;
-     
+
     }
 
     public void OnRunCancle()
     {
         isRun = false;
-      
+
     }
     public void OnCrouch()
     {
@@ -124,13 +124,13 @@ public class PlayerMove : MonoBehaviour
     }
     private void Ani()
     {
-        animator.SetFloat("Velocity", new Vector3(moveDir.x,0,moveDir.z).magnitude);
+        animator.SetFloat("Velocity", new Vector3(moveDir.x, 0, moveDir.z).magnitude);
         animator.SetFloat("XDir", inputValue.x * currentSpeed);
         animator.SetFloat("ZDir", inputValue.y * currentSpeed);
 
         animator.SetBool("IsCrouch", isCrouch);
         animator.SetBool("IsRun", isRun);
-     
+
     }
     public void TakeOutAni()
     {
