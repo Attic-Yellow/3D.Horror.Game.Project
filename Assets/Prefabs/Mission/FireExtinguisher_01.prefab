@@ -273,14 +273,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1908983195622296033}
-  m_LocalRotation: {x: 0.2588191, y: 0, z: 0, w: 0.9659258}
-  m_LocalPosition: {x: 0, y: -1.35, z: 1.2}
+  m_LocalRotation: {x: 0, y: 0.9659258, z: -0.2588191, w: 0}
+  m_LocalPosition: {x: 0, y: -1, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 286709809945519978}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 30, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 30, y: 180, z: 0}
 --- !u!1 &1924235616009389285
 GameObject:
   m_ObjectHideFlags: 0
@@ -296,7 +296,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1717050540926080172
 Transform:
   m_ObjectHideFlags: 0
@@ -672,12 +672,12 @@ PrefabInstance:
     - target: {fileID: 41536776294986646, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
       propertyPath: m_EffectDistance.x
-      value: 600
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 41536776294986646, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
       propertyPath: m_EffectDistance.y
-      value: 600
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 56506006372929100, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
@@ -732,12 +732,12 @@ PrefabInstance:
     - target: {fileID: 136694096580381572, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
       propertyPath: m_EffectDistance.x
-      value: 600
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 136694096580381572, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
       propertyPath: m_EffectDistance.y
-      value: 600
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 155508492243809059, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
@@ -842,12 +842,12 @@ PrefabInstance:
     - target: {fileID: 564755791417651311, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
       propertyPath: m_EffectDistance.x
-      value: 600
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 564755791417651311, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
       propertyPath: m_EffectDistance.y
-      value: 600
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 622962276303360835, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
@@ -877,12 +877,12 @@ PrefabInstance:
     - target: {fileID: 812724508435913194, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
       propertyPath: m_EffectDistance.x
-      value: 600
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 812724508435913194, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
       propertyPath: m_EffectDistance.y
-      value: 600
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 925055026034585660, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
@@ -932,12 +932,12 @@ PrefabInstance:
     - target: {fileID: 962862416811048308, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
       propertyPath: m_EffectDistance.x
-      value: 600
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 962862416811048308, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
       propertyPath: m_EffectDistance.y
-      value: 600
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 999296340168491126, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
@@ -948,6 +948,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_fontSizeBase
       value: 0.005
+      objectReference: {fileID: 0}
+    - target: {fileID: 1160334851083252185, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1160334851083252185, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
@@ -1022,12 +1027,12 @@ PrefabInstance:
     - target: {fileID: 1483254720400127327, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
       propertyPath: m_EffectDistance.x
-      value: 600
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1483254720400127327, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
       propertyPath: m_EffectDistance.y
-      value: 600
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1501309242696852167, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
@@ -1107,12 +1112,12 @@ PrefabInstance:
     - target: {fileID: 1879539904811279388, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
       propertyPath: m_EffectDistance.x
-      value: 600
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1879539904811279388, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
       propertyPath: m_EffectDistance.y
-      value: 600
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1987521920170774238, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
@@ -1147,12 +1152,12 @@ PrefabInstance:
     - target: {fileID: 2065897771006109451, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
       propertyPath: m_EffectDistance.x
-      value: 600
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2065897771006109451, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
       propertyPath: m_EffectDistance.y
-      value: 600
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2101658685332284970, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
@@ -1211,6 +1216,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2679082029202442146, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2679082029202442146, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
+        type: 3}
       propertyPath: m_EffectColor.b
       value: 0
       objectReference: {fileID: 0}
@@ -1233,6 +1243,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_EffectDistance.y
       value: 600
+      objectReference: {fileID: 0}
+    - target: {fileID: 2680532920844388722, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2680532920844388722, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
@@ -1282,12 +1297,17 @@ PrefabInstance:
     - target: {fileID: 2730762551330397464, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
       propertyPath: m_EffectDistance.x
-      value: 600
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2730762551330397464, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
       propertyPath: m_EffectDistance.y
-      value: 600
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2775895502054928781, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2775895502054928781, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
@@ -1427,12 +1447,12 @@ PrefabInstance:
     - target: {fileID: 3662273612489273778, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
       propertyPath: m_EffectDistance.x
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3662273612489273778, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
       propertyPath: m_EffectDistance.y
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3736413225091241929, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
@@ -1473,6 +1493,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_fontSizeBase
       value: 0.015
+      objectReference: {fileID: 0}
+    - target: {fileID: 3951194549704685823, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3951194549704685823, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
@@ -1527,12 +1552,12 @@ PrefabInstance:
     - target: {fileID: 4067804910206847197, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
       propertyPath: m_EffectDistance.x
-      value: 600
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4067804910206847197, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
       propertyPath: m_EffectDistance.y
-      value: 600
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4155254627633470625, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
@@ -1562,12 +1587,12 @@ PrefabInstance:
     - target: {fileID: 4259019176727600642, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
       propertyPath: m_EffectDistance.x
-      value: 600
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4259019176727600642, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
       propertyPath: m_EffectDistance.y
-      value: 600
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4298397350426662227, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
@@ -1632,12 +1657,12 @@ PrefabInstance:
     - target: {fileID: 4740461242637602484, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
       propertyPath: m_EffectDistance.x
-      value: 600
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4740461242637602484, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
       propertyPath: m_EffectDistance.y
-      value: 600
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4807412414151930053, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
@@ -1662,12 +1687,12 @@ PrefabInstance:
     - target: {fileID: 4845499491734995648, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
       propertyPath: m_EffectDistance.x
-      value: 600
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4845499491734995648, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
       propertyPath: m_EffectDistance.y
-      value: 600
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4860749659100874105, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
@@ -1707,12 +1732,12 @@ PrefabInstance:
     - target: {fileID: 5132754263675821237, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
       propertyPath: m_EffectDistance.x
-      value: 600
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5132754263675821237, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
       propertyPath: m_EffectDistance.y
-      value: 600
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5146198873524738234, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
@@ -1737,12 +1762,12 @@ PrefabInstance:
     - target: {fileID: 5181853682691444909, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
       propertyPath: m_EffectDistance.x
-      value: 600
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5181853682691444909, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
       propertyPath: m_EffectDistance.y
-      value: 600
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5215817232300411085, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
@@ -1797,12 +1822,17 @@ PrefabInstance:
     - target: {fileID: 5439058161845701384, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
       propertyPath: m_EffectDistance.x
-      value: 600
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5439058161845701384, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
       propertyPath: m_EffectDistance.y
-      value: 600
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5459128851306478829, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5459128851306478829, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
@@ -1892,12 +1922,12 @@ PrefabInstance:
     - target: {fileID: 5756631148156537032, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
       propertyPath: m_EffectDistance.x
-      value: 600
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5756631148156537032, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
       propertyPath: m_EffectDistance.y
-      value: 600
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5762839220322212593, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
@@ -1917,12 +1947,12 @@ PrefabInstance:
     - target: {fileID: 5762839220322212593, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
       propertyPath: m_EffectDistance.x
-      value: 600
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5762839220322212593, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
       propertyPath: m_EffectDistance.y
-      value: 600
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5764074942916943832, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
@@ -2102,12 +2132,12 @@ PrefabInstance:
     - target: {fileID: 6223412677026188836, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
       propertyPath: m_EffectDistance.x
-      value: 600
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6223412677026188836, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
       propertyPath: m_EffectDistance.y
-      value: 600
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6299818779763438932, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
@@ -2132,12 +2162,12 @@ PrefabInstance:
     - target: {fileID: 6353310561136150111, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
       propertyPath: m_EffectDistance.x
-      value: 600
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6353310561136150111, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
       propertyPath: m_EffectDistance.y
-      value: 600
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6380620537122626156, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
@@ -2173,6 +2203,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_PixelsPerUnitMultiplier
       value: 10000
+      objectReference: {fileID: 0}
+    - target: {fileID: 6743411010884396725, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6743411010884396725, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
@@ -2232,12 +2267,12 @@ PrefabInstance:
     - target: {fileID: 6803102285609533965, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
       propertyPath: m_EffectDistance.x
-      value: 600
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6803102285609533965, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
       propertyPath: m_EffectDistance.y
-      value: 600
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6871626566616501669, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
@@ -2277,12 +2312,12 @@ PrefabInstance:
     - target: {fileID: 6967391281582688838, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
       propertyPath: m_EffectDistance.x
-      value: 600
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6967391281582688838, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
       propertyPath: m_EffectDistance.y
-      value: 600
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6987700014051767618, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
@@ -2291,6 +2326,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7019134974066358130, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7019134974066358130, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
+        type: 3}
       propertyPath: m_EffectColor.b
       value: 0
       objectReference: {fileID: 0}
@@ -2332,12 +2372,12 @@ PrefabInstance:
     - target: {fileID: 7027863341880752644, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
       propertyPath: m_EffectDistance.x
-      value: 600
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7027863341880752644, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
       propertyPath: m_EffectDistance.y
-      value: 600
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7079112363517255219, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
@@ -2422,12 +2462,12 @@ PrefabInstance:
     - target: {fileID: 7649710092350043386, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
       propertyPath: m_EffectDistance.x
-      value: 600
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7649710092350043386, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
       propertyPath: m_EffectDistance.y
-      value: 600
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7661061706265099251, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
@@ -2447,12 +2487,12 @@ PrefabInstance:
     - target: {fileID: 7661061706265099251, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
       propertyPath: m_EffectDistance.x
-      value: 600
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7661061706265099251, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
       propertyPath: m_EffectDistance.y
-      value: 600
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7674226824028269984, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
@@ -2492,12 +2532,12 @@ PrefabInstance:
     - target: {fileID: 7826960066220027819, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
       propertyPath: m_EffectDistance.x
-      value: 600
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7826960066220027819, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
       propertyPath: m_EffectDistance.y
-      value: 600
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7866512482860923252, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
@@ -2547,12 +2587,12 @@ PrefabInstance:
     - target: {fileID: 8069985776028889467, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
       propertyPath: m_EffectDistance.x
-      value: 600
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8069985776028889467, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
       propertyPath: m_EffectDistance.y
-      value: 600
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8264209485957130341, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
@@ -2572,12 +2612,12 @@ PrefabInstance:
     - target: {fileID: 8264209485957130341, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
       propertyPath: m_EffectDistance.x
-      value: 600
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8264209485957130341, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
       propertyPath: m_EffectDistance.y
-      value: 600
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8273003132349317715, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
@@ -2647,12 +2687,12 @@ PrefabInstance:
     - target: {fileID: 8519822685932190812, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
       propertyPath: m_EffectDistance.x
-      value: 600
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8519822685932190812, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
       propertyPath: m_EffectDistance.y
-      value: 600
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8639399113368262905, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
@@ -2682,12 +2722,12 @@ PrefabInstance:
     - target: {fileID: 8641371186134593457, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
       propertyPath: m_EffectDistance.x
-      value: 600
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8641371186134593457, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
       propertyPath: m_EffectDistance.y
-      value: 600
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8641493441666918137, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
@@ -2717,12 +2757,12 @@ PrefabInstance:
     - target: {fileID: 8812309775982716293, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
       propertyPath: m_EffectDistance.x
-      value: 600
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8812309775982716293, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
       propertyPath: m_EffectDistance.y
-      value: 600
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8863085258674939780, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
@@ -2787,189 +2827,31 @@ PrefabInstance:
     - target: {fileID: 9165463864930886209, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
       propertyPath: m_EffectDistance.x
-      value: 600
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9165463864930886209, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
       propertyPath: m_EffectDistance.y
-      value: 600
+      value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1160334851083252185, guid: cbb680bd36e76c24cb2b8f1c30a8c72e, type: 3}
+    - {fileID: 5459128851306478829, guid: cbb680bd36e76c24cb2b8f1c30a8c72e, type: 3}
+    - {fileID: 7019134974066358130, guid: cbb680bd36e76c24cb2b8f1c30a8c72e, type: 3}
+    - {fileID: 2775895502054928781, guid: cbb680bd36e76c24cb2b8f1c30a8c72e, type: 3}
+    - {fileID: 3951194549704685823, guid: cbb680bd36e76c24cb2b8f1c30a8c72e, type: 3}
+    - {fileID: 6743411010884396725, guid: cbb680bd36e76c24cb2b8f1c30a8c72e, type: 3}
+    - {fileID: 2679082029202442146, guid: cbb680bd36e76c24cb2b8f1c30a8c72e, type: 3}
+    - {fileID: 2680532920844388722, guid: cbb680bd36e76c24cb2b8f1c30a8c72e, type: 3}
+    - {fileID: 925055026034585660, guid: cbb680bd36e76c24cb2b8f1c30a8c72e, type: 3}
+    - {fileID: 5215817232300411085, guid: cbb680bd36e76c24cb2b8f1c30a8c72e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: cbb680bd36e76c24cb2b8f1c30a8c72e, type: 3}
---- !u!1 &41500660819295412 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5622255420185557381, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
-    type: 3}
-  m_PrefabInstance: {fileID: 5662488344097932593}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &5255013565902409319
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 41500660819295412}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_EffectDistance: {x: 1, y: -1}
-  m_UseGraphicAlpha: 1
---- !u!1 &67615803217200834 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5648933484598232051, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
-    type: 3}
-  m_PrefabInstance: {fileID: 5662488344097932593}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2602036033609381459
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 67615803217200834}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_EffectDistance: {x: 1, y: -1}
-  m_UseGraphicAlpha: 1
 --- !u!224 &102220199397432041 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5764074942916943832, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
     type: 3}
   m_PrefabInstance: {fileID: 5662488344097932593}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &614483109781662209 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5049139931423452976, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
-    type: 3}
-  m_PrefabInstance: {fileID: 5662488344097932593}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &8758412248034780173
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 614483109781662209}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_EffectDistance: {x: 1, y: -1}
-  m_UseGraphicAlpha: 1
---- !u!1 &1281793963856955540 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6871626566616501669, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
-    type: 3}
-  m_PrefabInstance: {fileID: 5662488344097932593}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1598524134259059446
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1281793963856955540}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_EffectDistance: {x: 1, y: -1}
-  m_UseGraphicAlpha: 1
---- !u!1 &1378343896889297992 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6752566400748177785, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
-    type: 3}
-  m_PrefabInstance: {fileID: 5662488344097932593}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &3522479590489789612
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1378343896889297992}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_EffectDistance: {x: 1, y: -1}
-  m_UseGraphicAlpha: 1
---- !u!1 &1402217213859060711 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6764580387386466006, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
-    type: 3}
-  m_PrefabInstance: {fileID: 5662488344097932593}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &7938407660422982222
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1402217213859060711}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_EffectDistance: {x: 1, y: -1}
-  m_UseGraphicAlpha: 1
---- !u!1 &1592505941058576221 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6380620537122626156, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
-    type: 3}
-  m_PrefabInstance: {fileID: 5662488344097932593}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &5412727774782778087
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1592505941058576221}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_EffectDistance: {x: 1, y: -1}
-  m_UseGraphicAlpha: 1
---- !u!1 &1669093563249975282 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6466321227368143555, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
-    type: 3}
-  m_PrefabInstance: {fileID: 5662488344097932593}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &8850799100491567383
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1669093563249975282}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_EffectDistance: {x: 1, y: -1}
-  m_UseGraphicAlpha: 1
 --- !u!1 &1767480881082579712 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6202135475978239537, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
@@ -2988,29 +2870,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_EffectDistance: {x: 1, y: -1}
-  m_UseGraphicAlpha: 1
---- !u!1 &1871317013362454629 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6299818779763438932, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
-    type: 3}
-  m_PrefabInstance: {fileID: 5662488344097932593}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &6424165348754444221
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1871317013362454629}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_EffectDistance: {x: 1, y: -1}
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
+  m_EffectDistance: {x: 0, y: 0}
   m_UseGraphicAlpha: 1
 --- !u!1 &2043417771835038312 stripped
 GameObject:
@@ -3030,29 +2891,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_EffectDistance: {x: 1, y: -1}
-  m_UseGraphicAlpha: 1
---- !u!1 &2180505897389885037 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5825271609328321372, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
-    type: 3}
-  m_PrefabInstance: {fileID: 5662488344097932593}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &7485629785006599110
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2180505897389885037}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_EffectDistance: {x: 1, y: -1}
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
+  m_EffectDistance: {x: 0, y: 0}
   m_UseGraphicAlpha: 1
 --- !u!1 &2199582693152444602 stripped
 GameObject:
@@ -3072,29 +2912,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_EffectDistance: {x: 1, y: -1}
-  m_UseGraphicAlpha: 1
---- !u!1 &2607621821862424211 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7684567163584506786, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
-    type: 3}
-  m_PrefabInstance: {fileID: 5662488344097932593}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &5821437117195572628
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2607621821862424211}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_EffectDistance: {x: 1, y: -1}
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
+  m_EffectDistance: {x: 0, y: 0}
   m_UseGraphicAlpha: 1
 --- !u!1 &2768283231933741497 stripped
 GameObject:
@@ -3114,50 +2933,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_EffectDistance: {x: 1, y: -1}
-  m_UseGraphicAlpha: 1
---- !u!1 &2826725961162846089 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7615515970563680952, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
-    type: 3}
-  m_PrefabInstance: {fileID: 5662488344097932593}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &8618646099169010788
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2826725961162846089}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_EffectDistance: {x: 1, y: -1}
-  m_UseGraphicAlpha: 1
---- !u!1 &2903107543312481964 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7412040739612982173, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
-    type: 3}
-  m_PrefabInstance: {fileID: 5662488344097932593}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1889429688605960765
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2903107543312481964}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_EffectDistance: {x: 1, y: -1}
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
+  m_EffectDistance: {x: 0, y: 0}
   m_UseGraphicAlpha: 1
 --- !u!1 &2923626381576324225 stripped
 GameObject:
@@ -3177,50 +2954,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_EffectDistance: {x: 1, y: -1}
-  m_UseGraphicAlpha: 1
---- !u!1 &3723864915541120785 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9023208474701533728, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
-    type: 3}
-  m_PrefabInstance: {fileID: 5662488344097932593}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &6076917234922620912
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3723864915541120785}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_EffectDistance: {x: 1, y: -1}
-  m_UseGraphicAlpha: 1
---- !u!1 &3861047438889280181 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8863085258674939780, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
-    type: 3}
-  m_PrefabInstance: {fileID: 5662488344097932593}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &5568816155615968231
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3861047438889280181}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_EffectDistance: {x: 1, y: -1}
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
+  m_EffectDistance: {x: 0, y: 0}
   m_UseGraphicAlpha: 1
 --- !u!1 &4138945073714601416 stripped
 GameObject:
@@ -3240,155 +2975,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_EffectDistance: {x: 1, y: -1}
-  m_UseGraphicAlpha: 1
---- !u!1 &4869718635336021818 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 937175786424824331, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
-    type: 3}
-  m_PrefabInstance: {fileID: 5662488344097932593}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &8797206465669093447
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4869718635336021818}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_EffectDistance: {x: 1, y: -1}
-  m_UseGraphicAlpha: 1
---- !u!1 &5529656196878890514 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 155508492243809059, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
-    type: 3}
-  m_PrefabInstance: {fileID: 5662488344097932593}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &7711114693651520949
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5529656196878890514}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_EffectDistance: {x: 1, y: -1}
-  m_UseGraphicAlpha: 1
---- !u!1 &5562802630366828394 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 262959892994773595, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
-    type: 3}
-  m_PrefabInstance: {fileID: 5662488344097932593}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1462395916227710727
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5562802630366828394}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_EffectDistance: {x: 1, y: -1}
-  m_UseGraphicAlpha: 1
---- !u!1 &5764476943285162316 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 102098557549302909, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
-    type: 3}
-  m_PrefabInstance: {fileID: 5662488344097932593}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &8716642891038927820
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5764476943285162316}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_EffectDistance: {x: 1, y: -1}
-  m_UseGraphicAlpha: 1
---- !u!1 &5850008913477512623 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2286240062860257438, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
-    type: 3}
-  m_PrefabInstance: {fileID: 5662488344097932593}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &4734747428063745377
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5850008913477512623}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_EffectDistance: {x: 1, y: -1}
-  m_UseGraphicAlpha: 1
---- !u!1 &6034722713445540635 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2101658685332284970, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
-    type: 3}
-  m_PrefabInstance: {fileID: 5662488344097932593}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &828241745867470676
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6034722713445540635}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_EffectDistance: {x: 1, y: -1}
-  m_UseGraphicAlpha: 1
---- !u!1 &6597453693771602521 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1521071017997836136, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
-    type: 3}
-  m_PrefabInstance: {fileID: 5662488344097932593}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &4250633375553205321
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6597453693771602521}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_EffectDistance: {x: 1, y: -1}
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
+  m_EffectDistance: {x: 0, y: 0}
   m_UseGraphicAlpha: 1
 --- !u!1 &6660304793450085494 stripped
 GameObject:
@@ -3409,28 +2997,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
-  m_EffectDistance: {x: 600, y: 600}
-  m_UseGraphicAlpha: 1
---- !u!1 &6935013651141187102 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3362831067508511535, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
-    type: 3}
-  m_PrefabInstance: {fileID: 5662488344097932593}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &3536365164390054720
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6935013651141187102}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_EffectDistance: {x: 1, y: -1}
+  m_EffectDistance: {x: 0, y: 0}
   m_UseGraphicAlpha: 1
 --- !u!1 &6971771522049779144 stripped
 GameObject:
@@ -3450,50 +3017,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_EffectDistance: {x: 1, y: -1}
-  m_UseGraphicAlpha: 1
---- !u!1 &7012238603358611328 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3442239947925873329, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
-    type: 3}
-  m_PrefabInstance: {fileID: 5662488344097932593}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1980601322905716859
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7012238603358611328}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_EffectDistance: {x: 1, y: -1}
-  m_UseGraphicAlpha: 1
---- !u!1 &7164924611657330417 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3313488090184985536, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
-    type: 3}
-  m_PrefabInstance: {fileID: 5662488344097932593}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &7652162365028740130
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7164924611657330417}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_EffectDistance: {x: 1, y: -1}
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
+  m_EffectDistance: {x: 0, y: 0}
   m_UseGraphicAlpha: 1
 --- !u!1 &7257118020681567324 stripped
 GameObject:
@@ -3513,71 +3038,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_EffectDistance: {x: 1, y: -1}
-  m_UseGraphicAlpha: 1
---- !u!1 &7382387516510410384 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2947238105005872033, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
-    type: 3}
-  m_PrefabInstance: {fileID: 5662488344097932593}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &8181024647943768549
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7382387516510410384}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_EffectDistance: {x: 1, y: -1}
-  m_UseGraphicAlpha: 1
---- !u!1 &7608018133439861312 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2810297892421932913, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
-    type: 3}
-  m_PrefabInstance: {fileID: 5662488344097932593}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &8813639520151680905
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7608018133439861312}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_EffectDistance: {x: 1, y: -1}
-  m_UseGraphicAlpha: 1
---- !u!1 &7667675202054828227 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2665074199633327602, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
-    type: 3}
-  m_PrefabInstance: {fileID: 5662488344097932593}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &5378887190318934110
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7667675202054828227}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_EffectDistance: {x: 1, y: -1}
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
+  m_EffectDistance: {x: 0, y: 0}
   m_UseGraphicAlpha: 1
 --- !u!1 &7769593183985623210 stripped
 GameObject:
@@ -3598,49 +3060,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_EffectDistance: {x: 1, y: -1}
-  m_UseGraphicAlpha: 1
---- !u!1 &8592689094815603088 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4155254627633470625, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
-    type: 3}
-  m_PrefabInstance: {fileID: 5662488344097932593}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1398400395682882778
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8592689094815603088}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_EffectDistance: {x: 1, y: -1}
-  m_UseGraphicAlpha: 1
---- !u!1 &8831926850515081280 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3748258815524527473, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
-    type: 3}
-  m_PrefabInstance: {fileID: 5662488344097932593}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &8561075380296193333
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8831926850515081280}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_EffectDistance: {x: 1, y: -1}
+  m_EffectDistance: {x: 0, y: 0}
   m_UseGraphicAlpha: 1
 --- !u!1 &8923708476750101417 stripped
 GameObject:
@@ -3660,27 +3080,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_EffectDistance: {x: 1, y: -1}
-  m_UseGraphicAlpha: 1
---- !u!1 &9094646222372379190 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3504820479278309127, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
-    type: 3}
-  m_PrefabInstance: {fileID: 5662488344097932593}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &5677091955092084833
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9094646222372379190}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_EffectDistance: {x: 1, y: -1}
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
+  m_EffectDistance: {x: 0, y: 0}
   m_UseGraphicAlpha: 1

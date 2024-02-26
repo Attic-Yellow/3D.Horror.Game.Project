@@ -163,6 +163,7 @@ GameObject:
   - component: {fileID: 7304435956947055585}
   - component: {fileID: 3021376061868474890}
   - component: {fileID: 2723320631935809164}
+  - component: {fileID: 6756511256654518599}
   m_Layer: 5
   m_Name: Hour Text
   m_TagString: Untagged
@@ -288,6 +289,22 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &6756511256654518599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2137745879646839769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6399700ac762c540930bcc6efcc4234, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeSystem: {fileID: 0}
+  timeText: {fileID: 2723320631935809164}
+  showColon: 1
+  colonTimer: 0
 --- !u!1 &2364918323759487589
 GameObject:
   m_ObjectHideFlags: 0
