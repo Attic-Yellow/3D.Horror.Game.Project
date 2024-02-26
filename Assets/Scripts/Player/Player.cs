@@ -20,10 +20,11 @@ public class Player : MonoBehaviour
     public Transform ItemPos;
     private Item prevHitItem;
 
+    public Item currentItem;
     public Rig rig;
+    public RigBuilder rigBuilder;
     public RigTarget rigTarget;
     public RigHint rigHint;
-    private Enemy collisionEnemy;
     public ComeGhost comeGhost;
     public Locker locker;
 
@@ -34,11 +35,14 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         rig.weight = 0f;
+        rigBuilder.enabled = false;
     }
 
     private void Update()
     {
-        Ray ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward);
+        RigTargetChange();
+
+         Ray ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward);
         RaycastHit hit;
         Debug.DrawRay(ray.origin, ray.direction * interactionDistance, new Color(1, 0, 1));
 
@@ -175,19 +179,19 @@ public class Player : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            collisionEnemy = other.gameObject.GetComponent<Enemy>();
             print("닿았어");
             isOver = true;
         }
     }
 
-    void OnInteraction() //F 상호작용키 
+   private void OnInteraction() //F 상호작용키 
     {
+        
         if (prevHitItem != null)
         {
             // 상호작용 가능한 아이템이 있고 상호작용 텍스트가 활성화된 상태일 때
             Holder.Instance.SetItemState(prevHitItem.name, true); // 아이템을 먹히고 BOOL 값을 TRUE로 설정
-            haveitems.Add(prevHitItem); // 아이템을 인벤토리에 추가
+            haveitems.Add(prevHitItem) ;
             prevHitItem.tag = "Untagged";
             prevHitItem.SetTransform(ItemPos);
             prevHitItem.gameObject.SetActive(false);
@@ -243,7 +247,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    void OnFlashlight() //Q누르면
+   private void OnFlashlight() //Q누르면
     {
         if (Holder.Instance.isHaveItems.ContainsKey("Flashlight"))
         {
@@ -253,15 +257,19 @@ public class Player : MonoBehaviour
                 {
                     if (!item.gameObject.activeSelf)
                     {
-                        rigTarget.target = item.handTargetPos;
-                        rigHint.target = item.hintPos;
+                        currentItem = item;                     
                         item.gameObject.SetActive(true);
+                        rigBuilder.enabled = true;
                         rig.weight = 1;
+                        
                     }
                     else
                     {
+                        currentItem = null;
                         item.gameObject.SetActive(false);
+                        rigBuilder.enabled = false;
                         rig.weight = 0;
+                       
                     }
                     break;
                 }
@@ -270,7 +278,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    void OnCCTV()
+    private void OnCCTV()
     {
         if (Holder.Instance.isHaveItems.ContainsKey("CCTV"))
         {
@@ -280,12 +288,13 @@ public class Player : MonoBehaviour
                 {
                     if (!item.gameObject.activeSelf)
                     {
-                        rigTarget.SetTransform(item.handTargetPos);
-                        item.gameObject.SetActive(true);
+                        currentItem = item;
                         rig.weight = 1;
+                        currentItem = item;
                     }
                     else
                     {
+                        currentItem = null;
                         item.gameObject.SetActive(false);
                         rig.weight = 0;
                     }
@@ -295,9 +304,37 @@ public class Player : MonoBehaviour
             }
         }
     }
+    private void OnTab()
+    {
+        PlayerMove playerMove = GetComponent<PlayerMove>();
+        playerMove.TakeOutAni();
+        if (currentItem == null)
+        {
+            if(Holder.Instance.isHaveItems.ContainsKey("Document"))
+            {
+                foreach(Item item in haveitems)
+                {
+                    if (item.GetComponent<Document>() != null)
+                    {
+                        if (!item.gameObject.activeSelf)
+                        {
+                            item.gameObject.SetActive(true);
+                            currentItem = item;
+                        }
+                        else
+                        {
+                            item.gameObject.SetActive(false);
+                            currentItem = null;
+                        }
+                    }
+                }
+
+            }
+        }
+    }
 
     // Esc키를 누르면 일시정지 및 옵션창 활성화
-    void OnPause()
+    private void OnPause()
     {
         isPaused = !isPaused;
 
@@ -310,5 +347,19 @@ public class Player : MonoBehaviour
         }
 
         GameManager.instance.overlayManager.OptionOverlayController();
+    }
+
+    private void RigTargetChange()
+    {
+        if (currentItem != null)
+        {
+            rigTarget.target = currentItem.handTargetPos;
+            rigHint.target = currentItem.hintPos;
+        }
+        else
+        {
+            rigTarget.target = null;
+            rigHint.target = null;
+        }
     }
 }

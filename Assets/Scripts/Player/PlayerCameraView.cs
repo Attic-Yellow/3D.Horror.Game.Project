@@ -37,11 +37,19 @@ public class PlayerCameraView : MonoBehaviour
         playerBody.Rotate(Vector3.up * mouseX);
         // 카메라의 상하 회전을 처리
         xRotation -= mouseY;   
-        xRotation = Mathf.Clamp(xRotation, -90f, 90f);
+        xRotation = Mathf.Clamp(xRotation, -65f, 65f);
 
-       /* if(Player.nowItem != null) 
-        Player.nowItem.transform.rotation = transform.rotation;*/
+        if (Player.currentItem != null)
+        {
+           /* Player.ItemPos.rotation = transform.rotation;*/
+           Quaternion cameraRotation = Quaternion.Euler(transform.localEulerAngles);
 
+            // 아이템의 새로운 회전값을 계산합니다.
+            Quaternion newItemRotation = cameraRotation * Player.currentItem.originalRotate;
+
+            // 새로운 회전값을 아이템에 적용합니다.
+            Player.currentItem.transform.rotation = newItemRotation;
+        }
         // 카메라의 로컬 회전을 직접 조정
         transform.localEulerAngles = new Vector3(xRotation, playerBody.eulerAngles.y, 0f);
     }
