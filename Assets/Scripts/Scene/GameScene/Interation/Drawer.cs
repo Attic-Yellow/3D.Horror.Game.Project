@@ -5,7 +5,6 @@ using UnityEngine;
 public class Drawer : Container
 {
     [SerializeField] private Vector3 initpos;
-    [SerializeField] private float moveSpeed = 6f;
 
     private void Awake()
     {
