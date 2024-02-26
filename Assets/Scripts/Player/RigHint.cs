@@ -14,4 +14,5 @@ public class RigHint : MonoBehaviour
         transform.position = target.position;
         transform.rotation = target.rotation;
     }
+
 }

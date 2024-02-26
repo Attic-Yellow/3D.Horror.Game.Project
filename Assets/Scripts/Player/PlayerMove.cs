@@ -19,9 +19,8 @@ public class PlayerMove : MonoBehaviour
     public float sprintSpeed;
     public float crouchWalkSpeed;
     public float crouchRunSpeed;
-
+    public float gravityScale = 1f;
     
-    float moveDirY;
 
     private float currentSpeed;
     private bool isRun = false;
@@ -77,11 +76,6 @@ public class PlayerMove : MonoBehaviour
                 break;
         }
      
-
-      
-
-      
-
         // 카메라 방향에 기반한 플레이어의 이동 방향 계산
         Vector3 forward = Camera.main.transform.forward;
         Vector3 right = Camera.main.transform.right;
@@ -91,13 +85,22 @@ public class PlayerMove : MonoBehaviour
         right.Normalize();
 
         moveDir = (forward * inputValue.y + right * inputValue.x) * currentSpeed;
-        moveDir.y = 0;
-
+        Gravity();
         controller.Move(moveDir * Time.deltaTime);
 
     }
 
-
+  private void Gravity()
+    {
+       if(!controller.isGrounded)
+        {
+            moveDir.y -= gravityScale;
+        }
+        else
+        {
+            moveDir.y = 0f;
+        }
+    }
 
     public void OnMove(InputValue _value)
     {
@@ -121,7 +124,7 @@ public class PlayerMove : MonoBehaviour
     }
     private void Ani()
     {
-        animator.SetFloat("Velocity", moveDir.magnitude);
+        animator.SetFloat("Velocity", new Vector3(moveDir.x,0,moveDir.z).magnitude);
         animator.SetFloat("XDir", inputValue.x * currentSpeed);
         animator.SetFloat("ZDir", inputValue.y * currentSpeed);
 
@@ -134,8 +137,9 @@ public class PlayerMove : MonoBehaviour
         animator.SetLayerWeight(1, 1f); //애니메이터의 두번쨰 레이어의 weight를 1로
         animator.SetTrigger("TakeOut");
     }
-    public void WeightZero()
+    public void WeightZero() // 올리는 애니메이션 끝날때
     {
         animator.SetLayerWeight(1, 0f);
+        //TODO : 펼쳐지는 애니메이션 및 카메라 무브.
     }
 }
