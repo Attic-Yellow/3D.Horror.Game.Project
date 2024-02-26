@@ -81,8 +81,7 @@ public class PlayerMove : MonoBehaviour
         moveDir.y = 0;
 
         controller.Move(moveDir * Time.deltaTime);
-        print($"X{moveDir.x}");
-        print($"Y{moveDir.y}");
+
 
     }
 
@@ -111,7 +110,7 @@ public class PlayerMove : MonoBehaviour
     private void Ani()
     {
         animator.SetFloat("Dir", moveDir.magnitude * Time.deltaTime);
-        animator.SetFloat("")
+        // animator.SetFloat("")
     }
 
   
