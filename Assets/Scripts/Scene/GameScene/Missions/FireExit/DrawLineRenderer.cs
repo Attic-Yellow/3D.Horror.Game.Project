@@ -3,31 +3,32 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using CustomUtils;
+using UnityEditor;
 
 public class DrawLineRenderer : MonoBehaviour
 {
-    public Material defaultMaterial;
-
+   [SerializeField] private Material defaultMaterial;
     private LineRenderer lr;  
     private int positionCount = 2; 
     private Vector3 PrevPos = Vector3.zero;
-    public bool isDraw = false;
-    public ScreenShot ScreenShot;
-    [SerializeField] List<GameObject> Lines = new();
+    private ScreenShot ScreenShot;
+    private bool isDraw = false;
+
+    public List<GameObject> lines = new();
     public float camDistance = 0.3f;
-    void Update()
+    public GameObject backQuad;
+    private void Awake()
+    {
+        ScreenShot = FindObjectOfType<ScreenShot>();
+       this.backQuad =ScreenShot.backQuad;
+    }
+   private void Update()
     {
         DrawMouse();
-        if(isDraw && Input.GetKeyDown(KeyCode.S))
-        {
-            string savedImagePath = ScreenShot.ScreenShotClick();
-            Texture2D savedTexture = LoadTexture(savedImagePath);
-            DrawLine draw = GetComponent<DrawLine>();
-            draw.ChangeImg(savedTexture);
-        }
+    
     }
 
-    void DrawMouse()
+   private void DrawMouse()
     {
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, camDistance));
 
@@ -42,7 +43,7 @@ public class DrawLineRenderer : MonoBehaviour
 
     }
 
-    void CreateLine(Vector3 mousePos)
+   private void CreateLine(Vector3 mousePos)
     {
         isDraw = true;
         positionCount = 2;
@@ -62,10 +63,10 @@ public class DrawLineRenderer : MonoBehaviour
         lr.SetPosition(1, mousePos);
 
         this.lr = lr;
-        Lines.Add(line);
+        lines.Add(line);
     }
 
-    void ConnectLine(Vector3 mousePos)
+   private  void ConnectLine(Vector3 mousePos)
     {
         if (PrevPos != null && Mathf.Abs(Vector3.Distance(PrevPos, mousePos)) >= 0.001f)
         {
@@ -76,19 +77,41 @@ public class DrawLineRenderer : MonoBehaviour
         }
 
     }
-    Texture2D LoadTexture(string filePath) //파일에서 스크린샷찾기
+   private  Texture2D LoadTexture(string filePath) //파일에서 스크린샷찾기
     {
         if (File.Exists(filePath))
         {
             byte[] fileData = File.ReadAllBytes(filePath);
             Texture2D loadedTexture = new Texture2D(2, 2); // 임시로 크기를 설정
             loadedTexture.LoadImage(fileData);
+            Debug.Log($"파일을 찾음{filePath}");
             return loadedTexture;
+
         }
         else
         {
-            Debug.LogError($"File not found at path: {filePath}");
+            Debug.LogError($"파일을 찾을 수 없음: {filePath}");
             return null;
         }
     }
+
+    public void DeleteLines()
+    {
+        if (isDraw)
+        {
+            string savedImagePath = ScreenShot.ScreenShotClick();
+            EditorApplication.ExecuteMenuItem("Assets/Refresh"); //새로고침
+            Texture2D savedTexture = LoadTexture(savedImagePath);
+            DrawLine draw = GetComponent<DrawLine>();
+            draw.ChangeImg(savedTexture);
+            foreach (GameObject line in lines)
+            {
+                Destroy(line);
+            }
+            lines.Clear();
+        }
+     backQuad.SetActive(false);
+    }
+
+ 
 }
