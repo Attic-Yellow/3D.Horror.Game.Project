@@ -35,7 +35,6 @@ public class CameraZoom : MonoBehaviour
             {
                 if (missions.gameObject.GetComponentInParent<Shield>() != null)
                 {
-                    print("Shield");
                     missions.gameObject.GetComponentInParent<Shield>().CloseShield();
                 }
 
@@ -50,7 +49,7 @@ public class CameraZoom : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (missions != null && missions.gameObject.GetComponentInParent<Shield>() != null)
+            if (missions != null && isMission)
             {
                 cameraController.SetOverlayCamAtive();
             }
@@ -144,7 +143,6 @@ public class CameraZoom : MonoBehaviour
             cameraController.SetPointCamActive();
             if (missions.gameObject.transform.Find("MissionRoot") != null)
             {
-                cameraController.SetOverlayCamAtive();
                 StartCoroutine(MissionEffect());
             }
         }
@@ -152,7 +150,6 @@ public class CameraZoom : MonoBehaviour
         {
             if (missions.gameObject.transform.Find("MissionRoot") != null)
             {
-                cameraController.SetOverlayCamAtive();
                 missions.gameObject.transform.Find("MissionRoot").gameObject.SetActive(isMission);
             }
         }

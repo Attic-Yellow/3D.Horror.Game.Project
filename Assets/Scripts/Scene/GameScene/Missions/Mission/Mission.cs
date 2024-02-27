@@ -10,8 +10,6 @@ public enum MissionType
 
 public class Mission : MonoBehaviour
 {
-
-
     [SerializeField] protected string missionName;
 
     public MissionType missionType;
