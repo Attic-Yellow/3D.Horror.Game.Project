@@ -10856,7 +10856,7 @@ PrefabInstance:
         type: 3}
       propertyPath: backQuad
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 905167855}
     - target: {fileID: 2002645207267020837, guid: b9f12c66c674ccb44bbe0fbabdd3293a,
         type: 3}
       propertyPath: screenShotName
