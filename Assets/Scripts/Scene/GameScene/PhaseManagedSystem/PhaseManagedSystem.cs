@@ -5,5 +5,10 @@ using UnityEngine;
 public class PhaseManagedSystem : MonoBehaviour
 {
     [SerializeField] private List<MissionType> missions;
+    [SerializeField] private TimeSystem timeSystem;
 
+    private void Update()
+    {
+
+    }
 }
