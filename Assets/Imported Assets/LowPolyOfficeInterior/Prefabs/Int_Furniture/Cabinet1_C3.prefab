@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5983263803923740557}
   - component: {fileID: 1821116364486999983}
   - component: {fileID: 6515980695414854388}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Intreactive Text Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87,7 +87,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2033686664988048693}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: CanvasRoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -122,7 +122,7 @@ GameObject:
   - component: {fileID: 6808727843267587635}
   - component: {fileID: 4717905312565274049}
   - component: {fileID: 3064173493088302555}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Interactive Text 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -270,7 +270,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6082213183291596951}
   - component: {fileID: 5125244200427422127}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -331,7 +331,7 @@ GameObject:
   - component: {fileID: 3278941582423259467}
   - component: {fileID: 8396948532395227819}
   - component: {fileID: 2458384146854021234}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Interactive Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -481,7 +481,7 @@ GameObject:
   - component: {fileID: 7975706227367175941}
   - component: {fileID: 5181864144023923227}
   - component: {fileID: 8029839932157117816}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Interactive Text 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -730,7 +730,7 @@ GameObject:
   - component: {fileID: 9208724951923370837}
   - component: {fileID: 6260021210420871197}
   - component: {fileID: 1572873094688839635}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Interactive Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -878,7 +878,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2218039389959811051}
   - component: {fileID: 1039432023830561210}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -936,7 +936,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7715255334822127471}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: CanvasRoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -970,7 +970,7 @@ GameObject:
   - component: {fileID: 4997604149338328254}
   - component: {fileID: 7692985112076915808}
   - component: {fileID: 6774340275507682388}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Intreactive Text Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}

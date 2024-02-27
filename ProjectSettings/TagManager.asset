@@ -17,6 +17,7 @@ TagManager:
   - Locker
   - MissionItem
   - Handle
+  - Door
   layers:
   - Default
   - TransparentFX
@@ -30,8 +31,8 @@ TagManager:
   - Player
   - CRT
   - Background
-  - 
-  - 
+  - Transmission
+  - Glass
   - 
   - 
   - 

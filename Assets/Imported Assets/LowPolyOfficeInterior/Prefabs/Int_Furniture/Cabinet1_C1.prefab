@@ -1111,8 +1111,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 931d63884cb5c46f9b6fb021973c0d3b,
         type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 931d63884cb5c46f9b6fb021973c0d3b,
+        type: 3}
       propertyPath: m_TagString
-      value: Door
+      value: InDoor
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 931d63884cb5c46f9b6fb021973c0d3b, type: 3}
@@ -1237,8 +1242,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 670e9c14201754c94b44798f9d98ec37,
         type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 670e9c14201754c94b44798f9d98ec37,
+        type: 3}
       propertyPath: m_TagString
-      value: Door
+      value: OutDoor
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 670e9c14201754c94b44798f9d98ec37, type: 3}

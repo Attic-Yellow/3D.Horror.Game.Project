@@ -155,7 +155,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9125466822979701666}
   - component: {fileID: 4403141118040162541}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -259,7 +259,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8872197880716970247}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: CanvasRoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -293,7 +293,7 @@ GameObject:
   - component: {fileID: 7855851437978128474}
   - component: {fileID: 6302981303094232799}
   - component: {fileID: 9016885408094574911}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Intreactive Text Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -370,7 +370,7 @@ GameObject:
   m_Component:
   - component: {fileID: 589316658457284499}
   - component: {fileID: 1729568501640394743}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -430,7 +430,7 @@ GameObject:
   - component: {fileID: 2713691521535340671}
   - component: {fileID: 5399668237918017869}
   - component: {fileID: 4078847843563207780}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Intreactive Text Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -509,7 +509,7 @@ GameObject:
   - component: {fileID: 3837579688006651825}
   - component: {fileID: 6615110772813962610}
   - component: {fileID: 2884203208059368639}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Interactive Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -656,7 +656,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7805809143665386785}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: CanvasRoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -691,7 +691,7 @@ GameObject:
   - component: {fileID: 3951200141700964378}
   - component: {fileID: 5271559528562515201}
   - component: {fileID: 423316562881774458}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Interactive Text 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -841,7 +841,7 @@ GameObject:
   - component: {fileID: 8517938079576314312}
   - component: {fileID: 6023737789963030239}
   - component: {fileID: 1037549938481982270}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Interactive Text 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -991,7 +991,7 @@ GameObject:
   - component: {fileID: 7399403881005407419}
   - component: {fileID: 354750263400759244}
   - component: {fileID: 3492988622471895189}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Interactive Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1247,7 +1247,6 @@ MonoBehaviour:
   closeText:
   - {fileID: 5271559528562515201}
   initpos: {x: 0, y: 0, z: 0}
-  moveSpeed: 6
 --- !u!1001 &490383205061236594
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1366,4 +1365,3 @@ MonoBehaviour:
   closeText:
   - {fileID: 6023737789963030239}
   initpos: {x: 0, y: 0, z: 0}
-  moveSpeed: 6

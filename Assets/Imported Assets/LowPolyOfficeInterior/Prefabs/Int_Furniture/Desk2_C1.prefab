@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4564379925955947489}
   - component: {fileID: 798211182911188859}
   - component: {fileID: 9009242754259924719}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Interactive Text 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -162,7 +162,7 @@ GameObject:
   - component: {fileID: 4948765480430953693}
   - component: {fileID: 1770888076934313953}
   - component: {fileID: 7097241053126134844}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Interactive Text 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -312,7 +312,7 @@ GameObject:
   - component: {fileID: 7022979479851961628}
   - component: {fileID: 4781796155276181472}
   - component: {fileID: 8297717458139188869}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Interactive Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -507,7 +507,7 @@ GameObject:
   - component: {fileID: 8728938476742883258}
   - component: {fileID: 3564467980860255292}
   - component: {fileID: 2807623598963761098}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Intreactive Text Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -686,7 +686,7 @@ GameObject:
   - component: {fileID: 7892481479109098161}
   - component: {fileID: 7288137386251043349}
   - component: {fileID: 9059987624540297098}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Interactive Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -835,7 +835,7 @@ GameObject:
   - component: {fileID: 8448112345623623244}
   - component: {fileID: 4846642897707365202}
   - component: {fileID: 8640834526581636895}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Intreactive Text Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -913,7 +913,7 @@ GameObject:
   - component: {fileID: 3320134216721713312}
   - component: {fileID: 4899337315587674261}
   - component: {fileID: 2246760812679153155}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Intreactive Text Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -990,7 +990,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6628034979334360342}
   - component: {fileID: 1073642236861983303}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1049,7 +1049,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3760018365068210835}
   - component: {fileID: 751018747521688178}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1107,7 +1107,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8722860738044018983}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: CanvasRoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1234,7 +1234,7 @@ GameObject:
   - component: {fileID: 5568060036712677449}
   - component: {fileID: 5843306120895161304}
   - component: {fileID: 5854540502107770743}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Interactive Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1384,7 +1384,7 @@ GameObject:
   - component: {fileID: 5120317295390184480}
   - component: {fileID: 1922522502225815827}
   - component: {fileID: 2181647427097933690}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Interactive Text 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1532,7 +1532,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2072898507566960139}
   - component: {fileID: 423557290568800247}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1590,7 +1590,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2151467346545654943}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: CanvasRoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1622,7 +1622,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5578966323584902784}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: CanvasRoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1768,7 +1768,6 @@ MonoBehaviour:
   closeText:
   - {fileID: 1922522502225815827}
   initpos: {x: 0, y: 0, z: 0}
-  moveSpeed: 6
 --- !u!1001 &1564673094790350961
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1892,7 +1891,6 @@ MonoBehaviour:
   closeText:
   - {fileID: 798211182911188859}
   initpos: {x: 0, y: 0, z: 0}
-  moveSpeed: 6
 --- !u!1001 &1564673095713519774
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2016,4 +2014,3 @@ MonoBehaviour:
   closeText:
   - {fileID: 1770888076934313953}
   initpos: {x: 0, y: 0, z: 0}
-  moveSpeed: 6
