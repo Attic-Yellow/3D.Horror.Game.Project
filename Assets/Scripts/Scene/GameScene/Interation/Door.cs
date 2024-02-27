@@ -53,7 +53,7 @@ public class Door : Container
                 openText[i].gameObject.SetActive(!isOpen);
             }
 
-            if (closeText != null)
+            if (closeText.Length != 0)
             {
                 closeText[i].gameObject.SetActive(isOpen);
             }
