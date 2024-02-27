@@ -32,7 +32,17 @@ Fire Management Number,관리번호
 Fire Date,월/일
 Fire Inspector's Name,점검자 성명
 Fire Sign,서명
-Example Fire Date,11/15
+Example Fire Date,11월 15일
 Example Fire Name,열석윤
 Fire Use,사용
 Com Start,시 작
+Mission Title,현재 업무
+Last Work Information,4. 업무 일지 작성을 잊지 마세요!
+Electric Breaker Subject,전기 차단기 제어
+Electric Work Information 0,1. 공장 내부의 차단기를 찾으세요.
+Electric Work Information 1,2. 차단기의 On/Off를 알맞게 조정 하세요.
+Electric Work Information 2,3. 1시간 안에 해당 업무를 수행 해야합니다.
+Fier Exit Subject,소화기 점검표 최신화
+Fier Exit Work Information 0,1. 공장 내부의 소화기들을 찾으세요.
+Fier Exit Work Information 1,2. 소화기의 점검표를 최신화 하세요.
+Fier Exit Work Information 2,3. 1시간 안에 해당 업무를 수행 해야합니다.

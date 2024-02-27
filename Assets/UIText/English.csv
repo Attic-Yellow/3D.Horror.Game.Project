@@ -32,7 +32,17 @@ Fire Management Number,Number
 Fire Date,dd/mm
 Fire Inspector's Name,Inspector's Name
 Fire Sign,Sign
-Example Fire Date,15/11
+Example Fire Date,11¿ù 15ÀÏ
 Example Fire Name,Friedrich Gau©¬
 Fire Use,USE
 Com Start,Start
+Current Work,Current Work
+Last Work Information,4. Don't forget to keep a journal!
+Electric Breaker Subject,Electrical Breaker Control
+Electric Work Information 0,1. Find the electrical breaker inside the factory.
+Electric Work Information 1,2. Adiust the electrical breaker On/Off accordingly.
+Electric Work Information 2,3. The task must be completed within 1 hour.
+Fier Exit Subject,Fire Extinguisher checklist updated
+Fier Exit Work Information 0,1. Find tire extinguishers inside the factory.
+Fier Exit Work Information 1,2. Update the fire extinguisher checklist.
+Fier Exit Work Information 2,3. The task must be completed within 1 hour.

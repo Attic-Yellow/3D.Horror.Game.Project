@@ -12,5 +12,4 @@ public class CCTV : Item
             //TODO : 다른적 화면으로 넘어가는 로직
         }
     }
-
 }

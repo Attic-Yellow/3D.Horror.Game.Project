@@ -5,8 +5,14 @@ using UnityEngine;
 public class PhaseManagedSystem : MonoBehaviour
 {
     [SerializeField] private List<MissionType> missions;
+    [SerializeField] private List<Mission> allMissions;
     [SerializeField] private TimeSystem timeSystem;
     [SerializeField] private MissionType currentMission;
+
+    private void Start()
+    {
+        currentMission = MissionType.None;
+    }
 
     private void Update()
     {
@@ -55,7 +61,22 @@ public class PhaseManagedSystem : MonoBehaviour
     private void SetNewMission()
     {
         int randomMission = Random.Range(0, missions.Count);
-
         currentMission = missions[randomMission];
+        ActivateMissionObject(currentMission);
+    }
+
+    private void ActivateMissionObject(MissionType missionType)
+    {
+        foreach (var mission in allMissions)
+        {
+            if (mission.missionType == missionType)
+            {
+                mission.gameObject.SetActive(true); // 해당 타입의 미션 활성화
+            }
+            else
+            {
+                mission.gameObject.SetActive(false); // 나머지 비활성화
+            }
+        }
     }
 }

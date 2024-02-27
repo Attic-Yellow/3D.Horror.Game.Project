@@ -5,7 +5,8 @@ using UnityEngine;
 public enum MissionType
 {
     FireExtinguisher,
-    ElectricShield
+    ElectricShield,
+    None
 }
 
 public class Mission : MonoBehaviour
