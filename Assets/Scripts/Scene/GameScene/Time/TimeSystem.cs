@@ -8,7 +8,6 @@ using UnityEngine;
 public class TimeSystem : MonoBehaviour
 {
     [SerializeField] private DateTime initTime;
-    [SerializeField] private DateTime realTime;
     [SerializeField] private DateTime gameTime;
 
     private void Start()
@@ -39,5 +38,10 @@ public class TimeSystem : MonoBehaviour
     public DateTime GetAnalogGameTime()
     {
         return gameTime;
+    }
+
+    public string GetGameTime()
+    {
+        return gameTime.ToString("HH:mm");
     }
 }
