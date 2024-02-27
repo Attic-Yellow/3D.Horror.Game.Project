@@ -16,6 +16,7 @@ TagManager:
   - Battery
   - Locker
   - MissionItem
+  - Handle
   layers:
   - Default
   - TransparentFX
@@ -28,7 +29,7 @@ TagManager:
   - Screen Point
   - Player
   - CRT
-  - 
+  - Background
   - 
   - 
   - 

@@ -13,7 +13,7 @@ public class CameraController : MonoBehaviour
     {
         if(overlayCam != null)
         {
-            overlayCam.gameObject.SetActive(false);
+            overlayCam.gameObject.SetActive(true);
         }
 
         if (pointCam != null)

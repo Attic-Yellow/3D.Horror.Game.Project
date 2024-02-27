@@ -296,7 +296,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1717050540926080172
 Transform:
   m_ObjectHideFlags: 0
@@ -2419,6 +2419,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 7466884583656685028, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7478188000096343995, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
       propertyPath: m_PixelsPerUnitMultiplier
@@ -3094,10 +3099,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultMaterial: {fileID: 2100000, guid: 7883a34232ef9414a887c592e3133c06, type: 2}
-  isDraw: 0
-  ScreenShot: {fileID: 0}
-  Lines: []
+  lines: []
   camDistance: 0.3
+  backQuad: {fileID: 0}
 --- !u!114 &4605476147517636108
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3110,7 +3114,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d69251323bedf44587e37320b10f6a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  imagePrefab: {fileID: 0}
 --- !u!1 &8923708476750101417 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3837720755813727896, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
