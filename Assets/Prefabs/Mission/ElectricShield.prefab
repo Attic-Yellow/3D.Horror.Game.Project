@@ -2929,8 +2929,7 @@ MonoBehaviour:
   inRoomTransform: {fileID: 2349130444304681402}
   openText:
   - {fileID: 7662841213757931183}
-  closeText:
-  - {fileID: 0}
+  closeText: []
   isOut: 1
   rotationSpeed: 4
   startRotation: {x: 0, y: 0, z: 0, w: 0}
