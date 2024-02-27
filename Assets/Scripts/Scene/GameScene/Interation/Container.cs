@@ -21,7 +21,7 @@ public class Container : MonoBehaviour
                 openText[i].gameObject.SetActive(!isOpen);
             }
             
-            if (closeText != null)
+            if (closeText.Length != 0)
             {
                 closeText[i].gameObject.SetActive(isOpen);
             }
