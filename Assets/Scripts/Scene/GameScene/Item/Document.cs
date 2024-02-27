@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class Document : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public GameObject left;
+
+
+   public void OpenFile()
     {
-        
+       
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

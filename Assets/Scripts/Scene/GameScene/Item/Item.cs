@@ -10,9 +10,10 @@ public class Item : MonoBehaviour
     public Transform hintPos;
     public Quaternion originalRotate;
 
+
     private void Awake()
     {
-        originalRotate = transform.rotation;
+        originalRotate = transform.localRotation;
     }
 
     public void SetTransform(Transform newPos)

@@ -6,6 +6,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Animations.Rigging;
 using UnityEngine.InputSystem;
+using static UnityEditor.Progress;
 
 public class Player : MonoBehaviour
 {
@@ -40,114 +41,117 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        RigTargetChange();
 
          Ray ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward);
         RaycastHit hit;
         Debug.DrawRay(ray.origin, ray.direction * interactionDistance, new Color(1, 0, 1));
 
-        if (Physics.Raycast(ray, out hit, interactionDistance, LayerMask.GetMask("Interaction Object")) && !cameraZoom.isZoomIn)
+        if (Physics.Raycast(ray, out hit, interactionDistance) && !cameraZoom.isZoomIn)
         {
-            if (lastHitGameObject != null)
-            {
-                lastHitGameObject.gameObject.transform.Find("CanvasRoot").gameObject.SetActive(false);
-            }
-
-            // 충돌한 물체가 상호작용 가능한 물체인지 확인
-            if (hit.collider.CompareTag("Item"))
-            {
-                Item item = hit.collider.gameObject.GetComponent<Item>();
-                if (item != prevHitItem)
-                {
-                    hit.collider.gameObject.transform.Find("CanvasRoot").gameObject.SetActive(false);
-                }
-                prevHitItem = item;
-                hit.collider.gameObject.transform.Find("CanvasRoot").gameObject.SetActive(true);
-                lastHitGameObject = hit.collider.gameObject;
-            }
-            else if (hit.collider.CompareTag("OutDoor"))
+            if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Interaction Object"))
             {
                 if (lastHitGameObject != null)
                 {
                     lastHitGameObject.gameObject.transform.Find("CanvasRoot").gameObject.SetActive(false);
                 }
 
-                lastHitGameObject = hit.collider.gameObject;
-                lastHitGameObject.gameObject.transform.Find("CanvasRoot").gameObject.SetActive(true);
-                lastHitGameObject.gameObject.GetComponentInParent<Door>().isOut = true;
-            }
-            else if (hit.collider.CompareTag("InDoor"))
-            {
-                if (lastHitGameObject != null)
+                // 충돌한 물체가 상호작용 가능한 물체인지 확인
+                if (hit.collider.CompareTag("Item"))
                 {
-                    lastHitGameObject.gameObject.transform.Find("CanvasRoot").gameObject.SetActive(false);
+                    Item item = hit.collider.gameObject.GetComponent<Item>();
+                    if (item != prevHitItem)
+                    {
+                        hit.collider.gameObject.transform.Find("CanvasRoot").gameObject.SetActive(false);
+                    }
+                    prevHitItem = item;
+                    hit.collider.gameObject.transform.Find("CanvasRoot").gameObject.SetActive(true);
+                    lastHitGameObject = hit.collider.gameObject;
                 }
-
-                lastHitGameObject = hit.collider.gameObject;
-                lastHitGameObject.gameObject.transform.Find("CanvasRoot").gameObject.SetActive(true);
-                lastHitGameObject.gameObject.GetComponentInParent<Door>().isOut = false;
-            }
-            else if (hit.collider.CompareTag("Drawer"))
-            {
-                hit.collider.gameObject.transform.Find("CanvasRoot").gameObject.SetActive(true);
-                lastHitGameObject = hit.collider.gameObject;
-            }
-            else if (hit.collider.CompareTag("Monitor"))
-            {
-                hit.collider.gameObject.transform.Find("CanvasRoot").gameObject.SetActive(true);
-                lastHitGameObject = hit.collider.gameObject;
-
-                if (Input.GetKeyDown(KeyCode.F))
+                else if (hit.collider.CompareTag("OutDoor"))
                 {
-                    GameObject gameObject = hit.collider.gameObject.transform.Find("Target").gameObject;
-                    cameraZoom.LookAtZoomIn(gameObject);
-                    hit.collider.gameObject.transform.Find("Screen").gameObject.GetComponent<MonitorControl>().OnAndOff();
-                    cameraZoom.MonitorOn();
-                    hit.collider.gameObject.transform.Find("CanvasRoot").gameObject.SetActive(false);
-                }
-            }
-            else if (hit.collider.CompareTag("MissionItem"))
-            {
-                hit.collider.gameObject.transform.Find("CanvasRoot").gameObject.SetActive(true);
-                lastHitGameObject = hit.collider.gameObject;
+                    if (lastHitGameObject != null)
+                    {
+                        lastHitGameObject.gameObject.transform.Find("CanvasRoot").gameObject.SetActive(false);
+                    }
 
-                if (Input.GetKeyDown(KeyCode.F))
-                {
-                    GameObject gameObject = hit.collider.gameObject.transform.Find("Target").gameObject;
-                    cameraZoom.LookAtZoomIn(gameObject);
-                    hit.collider.gameObject.transform.Find("CanvasRoot").gameObject.SetActive(false);
-                    cameraZoom.MissionOverlayControl(hit.collider.gameObject);
+                    lastHitGameObject = hit.collider.gameObject;
+                    lastHitGameObject.gameObject.transform.Find("CanvasRoot").gameObject.SetActive(true);
+                    lastHitGameObject.gameObject.GetComponentInParent<Door>().isOut = true;
                 }
-            }
-            else if (hit.collider.CompareTag("Locker"))
-            {
-                locker = hit.collider.gameObject.GetComponent<Locker>();
-                lastHitGameObject = hit.collider.gameObject;
-            }
-            else if (hit.collider.CompareTag("Battery"))
-            {
-                battery = hit.collider.gameObject.GetComponent<Battery>();
-                hit.collider.gameObject.transform.Find("CanvasRoot").gameObject.SetActive(true);
-                lastHitGameObject = hit.collider.gameObject;
-            }
-            else if (hit.collider.CompareTag("Switch"))
-            {
-                hit.collider.gameObject.transform.Find("CanvasRoot").gameObject.SetActive(true);
-                lastHitGameObject = hit.collider.gameObject;
-            }
-            else if (hit.collider.CompareTag("Ghost"))
-            {
-                comeGhost.isSee = true;
-            }
-            else
-            {
-                ResetInteractions();
+                else if (hit.collider.CompareTag("InDoor"))
+                {
+                    if (lastHitGameObject != null)
+                    {
+                        lastHitGameObject.gameObject.transform.Find("CanvasRoot").gameObject.SetActive(false);
+                    }
+
+                    lastHitGameObject = hit.collider.gameObject;
+                    lastHitGameObject.gameObject.transform.Find("CanvasRoot").gameObject.SetActive(true);
+                    lastHitGameObject.gameObject.GetComponentInParent<Door>().isOut = false;
+                }
+                else if (hit.collider.CompareTag("Drawer"))
+                {
+                    hit.collider.gameObject.transform.Find("CanvasRoot").gameObject.SetActive(true);
+                    lastHitGameObject = hit.collider.gameObject;
+                }
+                else if (hit.collider.CompareTag("Monitor"))
+                {
+                    hit.collider.gameObject.transform.Find("CanvasRoot").gameObject.SetActive(true);
+                    lastHitGameObject = hit.collider.gameObject;
+
+                    if (Input.GetKeyDown(KeyCode.F))
+                    {
+                        GameObject gameObject = hit.collider.gameObject.transform.Find("Target").gameObject;
+                        cameraZoom.LookAtZoomIn(gameObject);
+                        hit.collider.gameObject.transform.Find("Screen").gameObject.GetComponent<MonitorControl>().OnAndOff();
+                        cameraZoom.MonitorOn();
+                        hit.collider.gameObject.transform.Find("CanvasRoot").gameObject.SetActive(false);
+                    }
+                }
+                else if (hit.collider.CompareTag("MissionItem"))
+                {
+                    hit.collider.gameObject.transform.Find("CanvasRoot").gameObject.SetActive(true);
+                    lastHitGameObject = hit.collider.gameObject;
+
+                    if (Input.GetKeyDown(KeyCode.F))
+                    {
+                        GameObject gameObject = hit.collider.gameObject.transform.Find("Target").gameObject;
+                        cameraZoom.LookAtZoomIn(gameObject);
+                        hit.collider.gameObject.transform.Find("CanvasRoot").gameObject.SetActive(false);
+                        cameraZoom.MissionOverlayControl(hit.collider.gameObject);
+                    }
+                }
+                else if (hit.collider.CompareTag("Locker"))
+                {
+                    locker = hit.collider.gameObject.GetComponent<Locker>();
+                    lastHitGameObject = hit.collider.gameObject;
+                }
+                else if (hit.collider.CompareTag("Battery"))
+                {
+                    battery = hit.collider.gameObject.GetComponent<Battery>();
+                    hit.collider.gameObject.transform.Find("CanvasRoot").gameObject.SetActive(true);
+                    lastHitGameObject = hit.collider.gameObject;
+                }
+                else if (hit.collider.CompareTag("Switch"))
+                {
+                    hit.collider.gameObject.transform.Find("CanvasRoot").gameObject.SetActive(true);
+                    lastHitGameObject = hit.collider.gameObject;
+                }
+                else if (hit.collider.CompareTag("Ghost"))
+                {
+                    comeGhost.isSee = true;
+                }
+                else
+                {
+                    ResetInteractions();
+                }
             }
         }
         else
         {
             ResetInteractions();
         }
+        
     }
 
     private void ResetInteractions()
@@ -256,20 +260,16 @@ public class Player : MonoBehaviour
                 if (item.GetComponent<Flashlight>() != null)
                 {
                     if (!item.gameObject.activeSelf)
-                    {
-                        currentItem = item;                     
-                        item.gameObject.SetActive(true);
-                        rigBuilder.enabled = true;
-                        rig.weight = 1;
-                        
+                    { 
+                        ItemActive(item);
+
                     }
                     else
                     {
-                        currentItem = null;
-                        item.gameObject.SetActive(false);
-                        rigBuilder.enabled = false;
-                        rig.weight = 0;
-                       
+                        ItemDisable(item);
+
+
+
                     }
                     break;
                 }
@@ -288,15 +288,11 @@ public class Player : MonoBehaviour
                 {
                     if (!item.gameObject.activeSelf)
                     {
-                        currentItem = item;
-                        rig.weight = 1;
-                        currentItem = item;
+                        ItemActive(item);
                     }
                     else
                     {
-                        currentItem = null;
-                        item.gameObject.SetActive(false);
-                        rig.weight = 0;
+                        ItemDisable(item);
                     }
                     break;
                 }
@@ -306,31 +302,33 @@ public class Player : MonoBehaviour
     }
     private void OnTab()
     {
-        PlayerMove playerMove = GetComponent<PlayerMove>();
-        playerMove.TakeOutAni();
-        if (currentItem == null)
+        if (currentItem != null)
         {
-            if(Holder.Instance.isHaveItems.ContainsKey("Document"))
+            ItemDisable(currentItem);
+        }
+
+            if (Holder.Instance.isHaveItems.ContainsKey("WalkList"))
             {
-                foreach(Item item in haveitems)
+                foreach (Item item in haveitems)
                 {
-                    if (item.GetComponent<Document>() != null)
+                    if (item.GetComponent<CurrentWorkList>() != null)
                     {
                         if (!item.gameObject.activeSelf)
                         {
                             item.gameObject.SetActive(true);
-                            currentItem = item;
+
                         }
                         else
                         {
-                            item.gameObject.SetActive(false);
-                            currentItem = null;
+                            ItemDisable(item);
+
                         }
                     }
                 }
 
             }
-        }
+        
+
     }
 
     // Esc키를 누르면 일시정지 및 옵션창 활성화
@@ -349,17 +347,21 @@ public class Player : MonoBehaviour
         GameManager.instance.overlayManager.OptionOverlayController();
     }
 
-    private void RigTargetChange()
+
+    private void ItemActive(Item item)
     {
-        if (currentItem != null)
-        {
-            rigTarget.target = currentItem.handTargetPos;
-            rigHint.target = currentItem.hintPos;
-        }
-        else
-        {
-            rigTarget.target = null;
-            rigHint.target = null;
-        }
+        item.gameObject.SetActive(true);
+        currentItem = item;
+        rig.weight = 1;
+        rigHint.SetTarget(currentItem.transform);
+        rigTarget.SetTarget(currentItem.transform);
+        rigBuilder.enabled = true;
+    }
+    private void ItemDisable(Item item)
+    {
+        item.gameObject.SetActive(false);
+        currentItem = null;
+        rigBuilder.enabled = false;
+        rig.weight = 0;
     }
 }

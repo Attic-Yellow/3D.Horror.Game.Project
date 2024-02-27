@@ -15,6 +15,10 @@ public class RigTarget : MonoBehaviour
         transform.rotation = target.rotation;
     }
 
+    public void SetTarget(Transform tf)
+    {
+        target = tf;
+    }
    
 }
     
