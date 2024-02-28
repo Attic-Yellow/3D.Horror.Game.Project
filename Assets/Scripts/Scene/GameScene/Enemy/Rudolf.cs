@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Rudolf : Enemy
 {
-    public bool isStunned = false;
+ /*   public bool isStunned = false;
     private new void Awake()
     {
         base.Awake();
@@ -17,7 +17,7 @@ public class Rudolf : Enemy
         if (isStunned)
             return;
 
-        /*CheckDistance();*/
+        *//*CheckDistance();*//*
         watchedPlayer = enemyCameraDetection.IsPlayerVisible(player.transform.position);
         animator.SetBool("IsWatched", watchedPlayer);
 
@@ -117,6 +117,6 @@ public class Rudolf : Enemy
             }
         }
 
-    }
+    }*/
 
 }

@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -8,12 +9,11 @@ using UnityEngine.Playables;
 
 public class Enemy : MonoBehaviour
 {
-    public Transform surface;
     public NavMeshSurface nms;
-    public Animator animator;
-    public NavMeshAgent agent;
-    public Player player;
- 
+    protected Animator animator;
+    protected NavMeshAgent agent;
+    protected Player player;
+
     protected enum State
     {
         Move,
@@ -27,25 +27,27 @@ public class Enemy : MonoBehaviour
     protected float lookingAroundDuration = 6f; // LookingAround 애니메이션 시간
     protected float lookingAroundTimer = 0f; // LookingAround 상태에서 경과한 시간
 
+    public CinemachineVirtualCameraBase camera2;
+    public PlayableDirector timeline;
+
     protected Coroutine openDoorCoroutine;
     protected EnemyCameraDetection enemyCameraDetection;
-    public bool watchedPlayer = false; // 적 카메라에 플레이어가 들어왔는지 
-    public Door isFrontDoor = null;
-    public Vector3 targetPos;
+    [SerializeField] protected bool watchedPlayer = false; // 적 카메라에 플레이어가 들어왔는지 
+    [SerializeField] protected Door isFrontDoor = null;
+    [SerializeField] protected Vector3 targetPos;
     protected bool isOpenAndMove = false;
-   public Transform gameoverCameraMove;
+    public Transform gameoverCamPos;
 
     public float timer = 0f;
     protected float eventDelay = 30f;
-    public bool isFollowingPlayer = false;
     public bool isMoving = false;
-    public bool isEventing = false;
 
     public float runSpeed = 3.5f;
     public float walkSpeed = 2f;
 
     protected void Awake()
     {
+        timeline = GetComponent<PlayableDirector>();
         enemyCameraDetection = GetComponent<EnemyCameraDetection>();
         player = FindObjectOfType<Player>();
         agent = GetComponent<NavMeshAgent>();
@@ -58,18 +60,15 @@ public class Enemy : MonoBehaviour
     }
     protected void CheckAll()
     {
-        /* if (Vector3.Distance(this.transform.position, surface.position) > 10f )
-         {
-             surface.position = this.transform.position;
-             nms.BuildNavMesh();
-         }*/
         timer += Time.deltaTime;
+
+
         watchedPlayer = enemyCameraDetection.IsPlayerVisible(player.transform.position);
 
-        if ((watchedPlayer&&!isFollowingPlayer))
+        if ((watchedPlayer && state != State.Follow) && IsMovingCheck())
         {
             state = State.Follow;
-            if(openDoorCoroutine  != null)
+            if (openDoorCoroutine != null)
             {
                 StopCoroutine(openDoorCoroutine);
                 isOpenAndMove = false;
@@ -82,7 +81,7 @@ public class Enemy : MonoBehaviour
             isFrontDoor = enemyCameraDetection.DoorCheck();
 
         }
-        if (!agent.hasPath&&isMoving)
+        if (!agent.hasPath && isMoving)
         {
             isMoving = false;
 
@@ -113,13 +112,13 @@ public class Enemy : MonoBehaviour
         }
 
         agent.SetDestination(targetPos);
-        if (!agent.pathPending&& agent.remainingDistance <= agent.stoppingDistance&&(!agent.hasPath || agent.velocity.sqrMagnitude == 0f))
+        if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance && (!agent.hasPath || agent.velocity.sqrMagnitude == 0f))
         {
-           
-                    state = State.LookingAround;
- 
+
+            state = State.LookingAround;
+
         }
-  
+
 
 
     }
@@ -144,7 +143,7 @@ public class Enemy : MonoBehaviour
             {
                 agent.speed = walkSpeed;
                 targetPos = hit.position;
-              
+
             }
         }
         agent.SetDestination(targetPos);
@@ -164,20 +163,27 @@ public class Enemy : MonoBehaviour
         state = State.Move;
         openDoorCoroutine = null;
     }
-
-    protected void OnTriggerStay(Collider other)
+   
+    protected bool IsMovingCheck()
     {
-        if (other.gameObject.CompareTag("Player"))
+        float distanceToPlayer = Vector3.Distance(player.transform.position, transform.position);
+        if (distanceToPlayer <= 15)
         {
             PlayerMove playerMove = player.GetComponent<PlayerMove>();
             if (playerMove.isMoving)
             {
                 agent.SetDestination(player.transform.position);
-                print("닿았어");
+                print("적이 움직이고 있는거 체크함");
+                return true;
             }
-
         }
+
+        return false;
+
+
     }
+
+
 
     protected IEnumerator Moving(Vector3 pos)
     {
@@ -188,4 +194,32 @@ public class Enemy : MonoBehaviour
 
     }
 
+    protected void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            print("닿았어");
+            player.isOver = true;
+            OnTimeline();
+
+        }
+    }
+    protected void PositionAndRotation(Transform _tf)
+    {
+        camera2.transform.position = _tf.position;
+        camera2.transform.rotation = _tf.rotation;
+    }
+    protected void OnTimeline()
+    {
+        PositionAndRotation(gameoverCamPos);
+        timeline.Play();
+    }
+    public void CameraPriorityChange(int _num)
+    {
+        camera2.Priority = _num;
+    }
+    private void CameraChange(PlayableDirector director)
+    { 
+        CameraPriorityChange(11);
+    }
 }

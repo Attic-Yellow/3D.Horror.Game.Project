@@ -179,14 +179,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Enemy"))
-        {
-            print("닿았어");
-            isOver = true;
-        }
-    }
+ 
 
    private void OnInteraction() //F 상호작용키 
     {

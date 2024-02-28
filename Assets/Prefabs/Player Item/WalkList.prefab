@@ -2072,28 +2072,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 071be005069243145894e46ebb9b206a, type: 3}
---- !u!1 &6316858055188108136 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 843686254070981909, guid: 071be005069243145894e46ebb9b206a,
-    type: 3}
-  m_PrefabInstance: {fileID: 6637352313508509309}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &3934377489808585955
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6316858055188108136}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c58205025c24c34d8f75ce69b994700, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  missionName: 
-  missionType: 0
-  isCompleted: 0
-  missionSubjectText: {fileID: 0}
 --- !u!224 &6316858055188108137 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 843686254070981908, guid: 071be005069243145894e46ebb9b206a,
