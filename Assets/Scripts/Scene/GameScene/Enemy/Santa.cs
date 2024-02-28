@@ -71,13 +71,11 @@ public class Santa : Enemy
             case State.Follow:
                 print("플레이어 따라가는중");
                 timer = 0f;
-                isFollowingPlayer = true;
                 agent.speed = runSpeed;
                 agent.SetDestination(player.transform.position);
                 if (!watchedPlayer && !agent.hasPath)
                 {
                     state = State.Move;
-                    isFollowingPlayer = false;
                 }
                 break;
             case State.Crouch:

@@ -38,7 +38,7 @@ namespace CustomUtils
             RenderTexture renderTexture = GetComponent<Camera>().targetTexture;   
             Texture2D texture = new Texture2D(renderTexture.width, renderTexture.height, TextureFormat.ARGB32, false);
             RenderTexture.active = renderTexture;
-            texture.ReadPixels(new Rect(0, 0, Screen.width, Screen.height), 0, 0);
+            texture.ReadPixels(new Rect(0, 0, renderTexture.width, renderTexture.height), 0, 0);
             texture.Apply();
 
             string filePath = $"{Application.dataPath}/{screenShotName}{num}.png ";

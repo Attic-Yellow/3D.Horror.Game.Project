@@ -17,7 +17,6 @@ public class CurrentWorkList : Item
             transform.localRotation = Quaternion.LookRotation(targetDirection);*/
             Vector3 cameraPosition = Camera.main.transform.position;
             SetPosition(cameraPosition + Camera.main.transform.forward * 0.5f);
-            Time.timeScale = 0f;
         }
     }
 
@@ -28,7 +27,7 @@ public class CurrentWorkList : Item
         {
             OpenFile();
         }
-        Time.timeScale = 1f;
+
     }
     public void OpenFile()
     {
