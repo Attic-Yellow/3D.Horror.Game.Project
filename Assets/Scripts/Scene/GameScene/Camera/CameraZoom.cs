@@ -39,8 +39,12 @@ public class CameraZoom : MonoBehaviour
                 }
                 else if(missions.gameObject.GetComponentInChildren<DrawLineRenderer>() != null)
                 {
-                    print("draw");
-                  missions.gameObject.GetComponentInChildren<DrawLineRenderer>().DeleteLines();
+                        missions.gameObject.GetComponentInChildren<DrawLineRenderer>().DeleteLines(); //지우고 저장
+                    if ((missions.gameObject.GetComponentInChildren<DrawLineRenderer>().ZCount % 2) == 1)
+                    {
+                        missions.gameObject.GetComponentInChildren<DrawLineRenderer>().ZCount++;
+                        return;
+                    }
                 }
                 MissionOverlayControl(missions);
                 

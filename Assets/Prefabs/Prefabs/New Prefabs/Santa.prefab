@@ -505,19 +505,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95a1133e44f9ee24785b8dc75ca7ceaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  surface: {fileID: 0}
   nms: {fileID: 0}
-  animator: {fileID: 0}
-  agent: {fileID: 0}
-  player: {fileID: 0}
   watchedPlayer: 0
   isFrontDoor: {fileID: 0}
   targetPos: {x: 0, y: 0, z: 0}
-  gameoverCameraMove: {fileID: 5209500219883047927}
+  gameoverCamPos: {fileID: 0}
+  enemyHeadTransform: {fileID: 0}
   timer: 0
-  isFollowingPlayer: 0
   isMoving: 0
-  isEventing: 0
   runSpeed: 2.5
   walkSpeed: 1
 --- !u!114 &59872021742952774
@@ -1549,9 +1544,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5209500219883047924}
-  m_LocalRotation: {x: 0.0000000018626449, y: 0.00000006216744, z: 0.000000052147243,
+  m_LocalRotation: {x: 0.0000000027939677, y: 0.00000006216744, z: 0.000000052147364,
     w: 1}
-  m_LocalPosition: {x: -0.013001772, y: -0.020110339, z: 0.39492157}
+  m_LocalPosition: {x: -0.013, y: -0.133, z: 0.454}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

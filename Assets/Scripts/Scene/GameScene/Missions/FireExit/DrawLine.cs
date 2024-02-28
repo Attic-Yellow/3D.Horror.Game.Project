@@ -20,7 +20,6 @@ public class DrawLine : MonoBehaviour
     {
         print("¹öÆ°");
         drawLineRenderer.enabled = true;
-        drawLineRenderer.backQuad.SetActive(true);
     }
     public void ChangeImg(Texture2D tex)
     {

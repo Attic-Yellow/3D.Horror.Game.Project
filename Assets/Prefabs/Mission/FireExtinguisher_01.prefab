@@ -1374,6 +1374,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 3053474722450632346, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3101162979864774919, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
       propertyPath: m_Layer
@@ -3099,9 +3104,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultMaterial: {fileID: 2100000, guid: 7883a34232ef9414a887c592e3133c06, type: 2}
+  ZCount: 0
   lines: []
   camDistance: 0.3
-  backQuad: {fileID: 0}
 --- !u!114 &4605476147517636108
 MonoBehaviour:
   m_ObjectHideFlags: 0

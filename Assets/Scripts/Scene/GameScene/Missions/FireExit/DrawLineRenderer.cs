@@ -13,14 +13,13 @@ public class DrawLineRenderer : MonoBehaviour
     private Vector3 PrevPos = Vector3.zero;
     private ScreenShot ScreenShot;
     private bool isDraw = false;
+    public int ZCount = 0;
 
     public List<GameObject> lines = new();
-    public float camDistance = 0.3f;
-    public GameObject backQuad;
+    public float camDistance = 0.1f;
     private void Awake()
     {
         ScreenShot = FindObjectOfType<ScreenShot>();
-       this.backQuad =ScreenShot.backQuad;
     }
    private void Update()
     {
@@ -30,7 +29,7 @@ public class DrawLineRenderer : MonoBehaviour
 
    private void DrawMouse()
     {
-        Vector3 mousePos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, camDistance));
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x,  + Input.mousePosition.y,  camDistance));
 
         if (Input.GetMouseButtonDown(0))
         {
@@ -109,8 +108,12 @@ public class DrawLineRenderer : MonoBehaviour
                 Destroy(line);
             }
             lines.Clear();
+            isDraw = false;
+            ZCount++;
         }
-     backQuad.SetActive(false);
+  
+
+
     }
 
  

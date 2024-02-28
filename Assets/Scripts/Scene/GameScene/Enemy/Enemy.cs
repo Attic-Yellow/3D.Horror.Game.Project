@@ -9,7 +9,6 @@ using UnityEngine.Playables;
 
 public class Enemy : MonoBehaviour
 {
-    public NavMeshSurface nms;
     protected Animator animator;
     protected NavMeshAgent agent;
     protected Player player;
@@ -27,9 +26,6 @@ public class Enemy : MonoBehaviour
     protected float lookingAroundDuration = 6f; // LookingAround 애니메이션 시간
     protected float lookingAroundTimer = 0f; // LookingAround 상태에서 경과한 시간
 
-    public CinemachineVirtualCameraBase camera2;
-    public PlayableDirector timeline;
-
     protected Coroutine openDoorCoroutine;
     protected EnemyCameraDetection enemyCameraDetection;
     [SerializeField] protected bool watchedPlayer = false; // 적 카메라에 플레이어가 들어왔는지 
@@ -37,6 +33,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] protected Vector3 targetPos;
     protected bool isOpenAndMove = false;
     public Transform gameoverCamPos;
+    public Transform enemySpine;
 
     public float timer = 0f;
     protected float eventDelay = 30f;
@@ -47,7 +44,6 @@ public class Enemy : MonoBehaviour
 
     protected void Awake()
     {
-        timeline = GetComponent<PlayableDirector>();
         enemyCameraDetection = GetComponent<EnemyCameraDetection>();
         player = FindObjectOfType<Player>();
         agent = GetComponent<NavMeshAgent>();
@@ -62,8 +58,13 @@ public class Enemy : MonoBehaviour
     {
         timer += Time.deltaTime;
 
+        if(player.isOver)
+        {
+            agent.ResetPath();
+            return;
+        }
 
-        watchedPlayer = enemyCameraDetection.IsPlayerVisible(player.transform.position);
+        watchedPlayer = enemyCameraDetection.IsPlayerVisible();
 
         if ((watchedPlayer && state != State.Follow) && IsMovingCheck())
         {
@@ -194,32 +195,7 @@ public class Enemy : MonoBehaviour
 
     }
 
-    protected void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            print("닿았어");
-            player.isOver = true;
-            OnTimeline();
+    
+ 
 
-        }
-    }
-    protected void PositionAndRotation(Transform _tf)
-    {
-        camera2.transform.position = _tf.position;
-        camera2.transform.rotation = _tf.rotation;
-    }
-    protected void OnTimeline()
-    {
-        PositionAndRotation(gameoverCamPos);
-        timeline.Play();
-    }
-    public void CameraPriorityChange(int _num)
-    {
-        camera2.Priority = _num;
-    }
-    private void CameraChange(PlayableDirector director)
-    { 
-        CameraPriorityChange(11);
-    }
 }

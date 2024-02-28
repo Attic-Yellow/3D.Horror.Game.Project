@@ -14,7 +14,7 @@ public class EnemyCameraDetection : MonoBehaviour
  
 
 
-    public bool IsPlayerVisible(Vector3 playerPos)
+    public bool IsPlayerVisible()
     {
         Vector3 cameraPos = enemyForward.transform.position;
 

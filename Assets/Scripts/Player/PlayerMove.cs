@@ -28,11 +28,12 @@ public class PlayerMove : MonoBehaviour
     private Vector2 inputValue;
     private Vector3 moveDir;
     public bool isMoving;
-
+    private Player player;
 
 
     private void Awake()
     {
+        player = GetComponent<Player>();
         controller = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
         state = State.Standing;
@@ -40,6 +41,12 @@ public class PlayerMove : MonoBehaviour
     }
 
     private void Update()
+    {
+        if (!player.isOver)
+            Move();
+
+    }
+    private void Move()
     {
         Ani();
         if (GameManager.instance.overlayManager.CheckOnOverlay())
@@ -87,9 +94,7 @@ public class PlayerMove : MonoBehaviour
         moveDir = (forward * inputValue.y + right * inputValue.x) * currentSpeed;
         Gravity();
         controller.Move(moveDir * Time.deltaTime);
-
     }
-
     private void Gravity()
     {
         if (!controller.isGrounded)
