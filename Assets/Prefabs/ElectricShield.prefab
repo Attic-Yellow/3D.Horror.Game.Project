@@ -1820,6 +1820,7 @@ MonoBehaviour:
   rotationSpeed: 4
   startRotation: {x: 0, y: 0, z: 0, w: 0}
   openAngle: 90
+  target: {fileID: 0}
 --- !u!1 &2750464857211999331
 GameObject:
   m_ObjectHideFlags: 0
@@ -3530,6 +3531,8 @@ GameObject:
   - component: {fileID: 6918340507574401769}
   - component: {fileID: 2189873911569657844}
   - component: {fileID: 2189873911569657845}
+  - component: {fileID: -9191947509171403805}
+  - component: {fileID: 2453949738818171935}
   m_Layer: 0
   m_Name: ElectricShield
   m_TagString: Untagged
@@ -3646,6 +3649,34 @@ MonoBehaviour:
   isOn: 
   isCheck: 0
   isSuccess: 0
+--- !u!114 &-9191947509171403805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6222210868839188730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b58f96fe9309e494b935e6ac7be49034, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  missionName: Electriv Shield
+  missionType: 1
+  isCompleted: 0
+--- !u!65 &2453949738818171935
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6222210868839188730}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.26, y: 0.37, z: 0.69}
+  m_Center: {x: -0.54, y: 0.29, z: 0.33}
 --- !u!1 &6660027560683307267
 GameObject:
   m_ObjectHideFlags: 0

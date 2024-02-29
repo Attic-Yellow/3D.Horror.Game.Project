@@ -7,7 +7,6 @@ using UnityEngine;
 using UnityEngine.Animations.Rigging;
 using UnityEngine.InputSystem;
 using UnityEngine.Playables;
-using static UnityEditor.Progress;
 
 public class Player : MonoBehaviour
 {
@@ -303,10 +302,9 @@ public class Player : MonoBehaviour
     private void RayCheck()
     {
         Ray ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward);
-        RaycastHit hit;
         Debug.DrawRay(ray.origin, ray.direction * interactionDistance, new Color(1, 0, 1));
 
-        if (Physics.Raycast(ray, out hit, interactionDistance) && !cameraZoom.isZoomIn)
+        if (Physics.Raycast(ray, out RaycastHit hit, interactionDistance) && !cameraZoom.isZoomIn)
         {
             if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Interaction Object"))
             {

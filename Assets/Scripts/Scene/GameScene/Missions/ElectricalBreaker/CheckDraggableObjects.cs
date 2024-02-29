@@ -7,8 +7,8 @@ public class CheckDraggableObjects : MonoBehaviour
 {
     public List<DragAndDrop> draggableObjs = new();
     [SerializeField]private List<bool> isOn = new();
-    public bool isCheck = false;
-    public bool isSuccess = false;
+    [SerializeField] private  bool isCheck = false;
+    [SerializeField] private bool isSuccess = false;
     private Animator animator;
 
     private void Awake()
@@ -20,17 +20,20 @@ public class CheckDraggableObjects : MonoBehaviour
     private void Update()
     {
         animator.SetBool("IsCheck",isCheck);
-        if(Input.GetKeyDown(KeyCode.LeftControl))
-        {
-            CheckActivatable();
-        }
-        if(isCheck)
+      
+    }
+
+    private void OnMouseUpAsButton()
+    {
+        CheckActivatable();
+        if (isCheck)
         {
             print("들어왔어");
             animator.SetBool("Success", isSuccess);
-     
+
         }
     }
+
     public void CheckActivatable() 
     {
         Activatable activatable = FindObjectOfType<Activatable>();
@@ -68,12 +71,14 @@ public class CheckDraggableObjects : MonoBehaviour
             isCheck = true;
         }
     }
-    public void IsCheckFalse()
+    public void IsCheckFalse() //애니메이션 끝날때 호출
     {
         isCheck = false;
         isOn.Clear();
         if(isSuccess)
         {
+            ElectricalShield electricalShield = FindObjectOfType<ElectricalShield>();
+            electricalShield.MissionCompleted();
             //성공시 처리할 작업
         }
     }

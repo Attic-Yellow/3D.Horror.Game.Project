@@ -1236,6 +1236,8 @@ GameObject:
   - component: {fileID: 1456630587691378121}
   - component: {fileID: 7662841215623885012}
   - component: {fileID: 7662841215623885013}
+  - component: {fileID: 7662841214774371029}
+  - component: {fileID: 3254762483257418770}
   m_Layer: 0
   m_Name: ElectricShield
   m_TagString: Untagged
@@ -1352,6 +1354,34 @@ MonoBehaviour:
   isOn: 
   isCheck: 0
   isSuccess: 0
+--- !u!65 &7662841214774371029
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2480819382599997402}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.2161181, y: 0.18, z: 0.57157934}
+  m_Center: {x: -0.50677717, y: 0.18, z: 0.44078964}
+--- !u!114 &3254762483257418770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2480819382599997402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b58f96fe9309e494b935e6ac7be49034, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  missionName: ElectricShield
+  missionType: 1
+  isCompleted: 0
 --- !u!1 &2597172167280351634
 GameObject:
   m_ObjectHideFlags: 0
@@ -1459,7 +1489,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2625480606470025224}
   m_LocalRotation: {x: 0.69887716, y: 0.69887716, z: -0.10756746, w: 0.10756746}
-  m_LocalPosition: {x: -2.25, y: 2.9, z: 0}
+  m_LocalPosition: {x: -0.724, y: 0.528, z: 0.927}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

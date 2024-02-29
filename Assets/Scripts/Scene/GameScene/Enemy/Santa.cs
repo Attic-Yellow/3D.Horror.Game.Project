@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.PlayerLoop;
 
-public class Santa : Enemy
+public class Santa : MovingEnemy
 {
     private void Update()
     {

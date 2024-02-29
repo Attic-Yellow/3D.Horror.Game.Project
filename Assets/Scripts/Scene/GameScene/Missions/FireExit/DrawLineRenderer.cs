@@ -13,10 +13,10 @@ public class DrawLineRenderer : MonoBehaviour
     private Vector3 PrevPos = Vector3.zero;
     private ScreenShot ScreenShot;
     private bool isDraw = false;
-    public int ZCount = 0;
+    public int ZCount = 0;  
 
     public List<GameObject> lines = new();
-    public float camDistance = 0.1f;
+    public float camDistance = 0.3f;
     private void Awake()
     {
         ScreenShot = FindObjectOfType<ScreenShot>();
@@ -44,6 +44,7 @@ public class DrawLineRenderer : MonoBehaviour
 
    private void CreateLine(Vector3 mousePos)
     {
+            
         isDraw = true;
         positionCount = 2;
         GameObject line = new GameObject("Line");

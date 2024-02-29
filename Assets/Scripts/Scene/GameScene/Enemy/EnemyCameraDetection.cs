@@ -46,9 +46,8 @@ public class EnemyCameraDetection : MonoBehaviour
 
     public Door DoorCheck()
     {
-        RaycastHit hit;
-        Debug.DrawRay(enemyForward.transform.position, enemyForward.transform.forward*doorCheckDistance,Color.black);
-        if (Physics.Raycast(enemyForward.transform.position, enemyForward.transform.forward, out hit, doorCheckDistance, doorLayer))
+        Debug.DrawRay(enemyForward.transform.position, enemyForward.transform.forward * doorCheckDistance, Color.black);
+        if (Physics.Raycast(enemyForward.transform.position, enemyForward.transform.forward, out RaycastHit hit, doorCheckDistance, doorLayer))
         {
           
               Door door = hit.collider.gameObject.GetComponentInParent<Door>();

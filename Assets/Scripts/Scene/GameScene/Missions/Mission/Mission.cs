@@ -16,7 +16,7 @@ public class Mission : MonoBehaviour
     public MissionType missionType;
     public bool isCompleted;
 
-    protected virtual void MissionCompleted()
+    public virtual void MissionCompleted()
     {
         isCompleted = true;
     }
