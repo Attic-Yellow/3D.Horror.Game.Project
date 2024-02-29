@@ -7,7 +7,6 @@ using UnityEngine;
 using UnityEngine.Animations.Rigging;
 using UnityEngine.InputSystem;
 using UnityEngine.Playables;
-using static UnityEditor.Progress;
 
 public class Player : MonoBehaviour
 {
@@ -263,8 +262,7 @@ public class Player : MonoBehaviour
 
     private void PositionAndRotation(Transform _tf)
     {
-        camera2.transform.position = _tf.position;
-        camera2.transform.rotation = _tf.rotation;
+        camera2.transform.SetPositionAndRotation(_tf.position, _tf.rotation);
     }
     private void OnTimeline()
     {

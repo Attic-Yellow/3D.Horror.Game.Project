@@ -30,7 +30,6 @@ public class MovingEnemy : Enemy
     public bool isMoving = false;
 
     public float runSpeed = 3.5f;
-    public float walkSpeed = 2f;
 
     private void Awake()
     {
