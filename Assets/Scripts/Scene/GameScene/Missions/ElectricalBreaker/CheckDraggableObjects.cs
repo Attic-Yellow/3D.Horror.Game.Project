@@ -19,16 +19,19 @@ public class CheckDraggableObjects : MonoBehaviour
 
     private void Update()
     {
-        animator.SetBool("IsCheck",isCheck);
-        if(Input.GetKeyDown(KeyCode.LeftControl))
-        {
+        animator.SetBool("IsCheck", isCheck);
+    }
+
+    private void OnMouseUpAsButton()
+    {
+
             CheckActivatable();
-        }
-        if(isCheck)
+        
+        if (isCheck)
         {
             print("들어왔어");
             animator.SetBool("Success", isSuccess);
-     
+
         }
     }
     public void CheckActivatable() 
@@ -74,7 +77,8 @@ public class CheckDraggableObjects : MonoBehaviour
         isOn.Clear();
         if(isSuccess)
         {
-            //성공시 처리할 작업
+            ElectricalShield electricalShield = FindObjectOfType<ElectricalShield>();
+            electricalShield.MissionCompleted();
         }
     }
    

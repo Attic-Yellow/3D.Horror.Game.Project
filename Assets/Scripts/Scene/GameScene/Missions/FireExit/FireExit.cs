@@ -14,7 +14,7 @@ public class FireExit : Mission
         isCompleted = false;
     }
 
-    protected override void MissionCompleted()
+    public override void MissionCompleted()
     {
         base.MissionCompleted();
     }
