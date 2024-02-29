@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     public UIManager uiManager;
     public OverlayManager overlayManager;
     public SettingsManager settingsManager;
-
+    public PoolingManager poolingManager;
     [SerializeField] private LanguageType languageType;
     [SerializeField] private float lightIntensity;
 

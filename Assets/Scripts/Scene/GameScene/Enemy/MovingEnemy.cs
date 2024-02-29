@@ -31,7 +31,7 @@ public class MovingEnemy : Enemy
 
     public float runSpeed = 3.5f;
 
-    private void Awake()
+    private new void Awake()
     {
         base.Awake();
         enemyCameraDetection = GetComponent<EnemyCameraDetection>();

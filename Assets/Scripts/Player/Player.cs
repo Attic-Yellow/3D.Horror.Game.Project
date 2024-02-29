@@ -195,6 +195,11 @@ public class Player : MonoBehaviour
             }
         }
     }
+
+    private void ChangeItme()
+    {
+
+    }
     private void OnTab()
     {
         if (currentItem != null)
