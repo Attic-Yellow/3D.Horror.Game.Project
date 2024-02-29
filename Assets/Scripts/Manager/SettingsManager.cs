@@ -36,7 +36,7 @@ public class SettingsManager : MonoBehaviour
         if (lightIntensitySlider != null)
         {
             lightIntensitySlider.minValue = -2;
-            lightIntensitySlider.maxValue = 1;
+            lightIntensitySlider.maxValue = 0;
         }
 
         LoadSettings();
@@ -69,7 +69,7 @@ public class SettingsManager : MonoBehaviour
             mouseSensitivitySlider.value = PlayerPrefs.GetFloat("MouseSensitivity", 100);
         }
 
-        lightIntensitySlider.value = lightIntensityValue - 2;
+        lightIntensitySlider.value = lightIntensityValue;
         UpdateSettingsText();
     }
 
@@ -98,7 +98,7 @@ public class SettingsManager : MonoBehaviour
     public void OnLightIntensityChanged()
     {
         float newExposure = lightIntensitySlider.value;
-        GameManager.instance.SetLightIntensity(newExposure + 2);
+        GameManager.instance.SetLightIntensity(newExposure);
         AdjustPostExposure(newExposure); // postExposure 값을 조절하는 메서드 호출
         UpdateSettingsText();
     }
@@ -146,7 +146,7 @@ public class SettingsManager : MonoBehaviour
 
         if (lightIntensityText != null)
         {
-            float normalizedLightIntensity = (lightIntensitySlider.value + 2) / (1 + 2); // -2 ~ 1 범위를 0 ~ 1로 정규화
+            float normalizedLightIntensity = (lightIntensitySlider.value + 2) / 2f;
             float displayLightIntensity = normalizedLightIntensity * 100; // 0 ~ 1 범위를 0 ~ 100으로 스케일링
             lightIntensityText.text = displayLightIntensity.ToString("0");
         }
