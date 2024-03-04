@@ -100,7 +100,7 @@ public class DrawLineRenderer : MonoBehaviour
         if (isDraw)
         {
             string savedImagePath = ScreenShot.ScreenShotClick();
-            EditorApplication.ExecuteMenuItem("Assets/Refresh"); //새로고침
+            // EditorApplication.ExecuteMenuItem("Assets/Refresh"); //새로고침
             Texture2D savedTexture = LoadTexture(savedImagePath);
             DrawLine draw = GetComponent<DrawLine>();
             draw.ChangeImg(savedTexture);

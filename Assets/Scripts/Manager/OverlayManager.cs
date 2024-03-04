@@ -123,7 +123,7 @@ public class OverlayManager : MonoBehaviour
     }
 
     // CRT 오버레이 활성화 / 비활성화 시키는 함수
-    public void CrtOverlayController()
+    public void CRTOverlayController()
     {
         if (crtOverlay != null)
         {
