@@ -299,7 +299,7 @@ public class Player : MonoBehaviour
             print("´ê¾Ò¾î");
             isOver = true;
             OnTimeline();
-            camera2.LookAt = collisionEnemy.enemySpine;
+            // camera2.LookAt = collisionEnemy.enemySpine;
         }
     }
 
