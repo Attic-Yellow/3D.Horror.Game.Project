@@ -25,6 +25,7 @@ public class OverlayManager : MonoBehaviour
     [Header("게임 씬 오버레이")]
     [SerializeField] private GameObject computerOverlay;
     [SerializeField] private GameObject crtOverlay;
+    [SerializeField] private GameObject workListOverlay;
 
     private void Start()
     {
@@ -53,6 +54,11 @@ public class OverlayManager : MonoBehaviour
         if (crtOverlay != null)
         {
             crtOverlay.SetActive(false);
+        }
+
+        if (workListOverlay != null)
+        {
+            workListOverlay.SetActive(false);
         }
     }
 
@@ -131,6 +137,14 @@ public class OverlayManager : MonoBehaviour
         }
     }
 
+    public void WorkListOverlayController()
+    {
+        if (workListOverlay != null)
+        {
+            workListOverlay.SetActive(!workListOverlay.activeSelf);
+        }
+    }
+
     // 모든 오버레이 비활성화 시키는 함수
     public void CloseButton()
     {
@@ -168,6 +182,19 @@ public class OverlayManager : MonoBehaviour
         if (optionsOverlay != null && computerOverlay != null)
         {
             return optionsOverlay.activeSelf || computerOverlay.activeSelf;
+        }
+        else if (optionsOverlay != null && computerOverlay == null)
+        {
+            return optionsOverlay.activeSelf;
+        }
+        return false;
+    }
+
+    public bool CheckOnchacterSettingOverlay()
+    {
+        if (chacterSettingOverlay != null)
+        {
+            return chacterSettingOverlay.activeSelf;
         }
         return false;
     }
