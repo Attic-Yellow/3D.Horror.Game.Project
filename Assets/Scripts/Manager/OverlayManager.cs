@@ -10,7 +10,7 @@ public class OverlayManager : MonoBehaviour
     [SerializeField] private GameObject LanguageSelectedOverlay;
     [SerializeField] private GameObject lightIntensityOverlay;
     [SerializeField] private GameObject chacterSettingOverlay;
-   
+
     [Space(5)]
     [Header("클래스 참조")]
     [SerializeField] private StartScene startScene;
@@ -110,7 +110,7 @@ public class OverlayManager : MonoBehaviour
     {
         gameStart.StartGameFun();
         StartCoroutine(LoadingOverlayController());
-        
+
     }
 
     // 컴퓨터 오버레이 활성화 / 비활성화 시키는 함수

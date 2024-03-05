@@ -4,19 +4,11 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UIElements;
 
-public class ComeGhost : MonoBehaviour
+public class ComeGhost : Enemy
 {
     public float detectionRadius = 10f; // 플레이어를 감지하는 반경
     public bool isSee = false;
     public GameObject[] childObj;
-    private Transform player; // 플레이어의 위치
-    public float moveSpeed = 1f; // 귀신의 이동 속도
-
-    void Start()
-    {
-        // 플레이어를 찾음
-        player = GameObject.FindGameObjectWithTag("Player").transform;
-    }
 
     void Update()
     {
@@ -51,8 +43,8 @@ public class ComeGhost : MonoBehaviour
                     obj.SetActive(false);
                 }
                 // 플레이어 방향으로 귀신을 이동시킴
-                Vector3 direction = (player.position - transform.position).normalized;
-                transform.Translate(direction * moveSpeed * Time.deltaTime, Space.World);
+                Vector3 direction = (player.transform.position - transform.position).normalized;
+                transform.Translate(direction * walkSpeed * Time.deltaTime, Space.World);
             }
         }
     }

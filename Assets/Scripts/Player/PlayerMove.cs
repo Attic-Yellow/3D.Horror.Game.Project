@@ -28,11 +28,12 @@ public class PlayerMove : MonoBehaviour
     private Vector2 inputValue;
     private Vector3 moveDir;
     public bool isMoving;
-
+    private Player player;
 
 
     private void Awake()
     {
+        player = GetComponent<Player>();
         controller = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
         state = State.Standing;
@@ -41,17 +42,23 @@ public class PlayerMove : MonoBehaviour
 
     private void Update()
     {
+        if (!player.isOver)
+            Move();
+
+    }
+    private void Move()
+    {
         Ani();
         if (GameManager.instance.overlayManager.CheckOnOverlay())
         {
             return;
         }
         state = isCrouch ? State.Crouch : State.Standing;
-        isMoving = inputValue.magnitude > 0f;
+
         switch (state)
         {
             case State.Standing:
-
+                isMoving = inputValue.magnitude > 0f;
                 if (inputValue.y < 0) //뒤로 가는키를 누르면 이속감소
                 {
                     currentSpeed = isRun ? sprintSpeed * 0.5f : moveSpeed * 0.7f;
@@ -87,9 +94,7 @@ public class PlayerMove : MonoBehaviour
         moveDir = (forward * inputValue.y + right * inputValue.x) * currentSpeed;
         Gravity();
         controller.Move(moveDir * Time.deltaTime);
-
     }
-
     private void Gravity()
     {
         if (!controller.isGrounded)

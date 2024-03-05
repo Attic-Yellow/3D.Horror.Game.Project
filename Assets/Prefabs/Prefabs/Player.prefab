@@ -3840,6 +3840,8 @@ GameObject:
   - component: {fileID: 8603163279745795481}
   - component: {fileID: 1455139709067441500}
   - component: {fileID: 1088451945}
+  - component: {fileID: 8975263772981400147}
+  - component: {fileID: 714032195701723896}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -3965,10 +3967,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerCamera: {fileID: 0}
   cameraController: {fileID: 0}
-  cameraZoom: {fileID: 1088451945}
+  cameraZoom: {fileID: 8975263772981400147}
   lastHitGameObject: {fileID: 0}
   interactionDistance: 1.5
   haveitems: []
+  camera2: {fileID: 0}
+  timeline: {fileID: 0}
   ItemPos: {fileID: 7829997469107485265}
   currentItem: {fileID: 0}
   rig: {fileID: 8888676784012645191}
@@ -4019,6 +4023,50 @@ MonoBehaviour:
   isZoomIn: 0
   isMonitorOn: 0
   isMission: 0
+--- !u!114 &8975263772981400147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8914196131680089870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92dd4958a2f2250458245ff531c2c901, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vCam: {fileID: 0}
+  player: {fileID: 8914196131680089870}
+  targetRotation: {x: 0, y: 0, z: 0, w: 0}
+  initRotation: {x: 0, y: 0, z: 0, w: 0}
+  monitorControl: {fileID: 0}
+  oSFadeEffect: {fileID: 0}
+  cameraController: {fileID: 0}
+  missions: {fileID: 0}
+  isZoomIn: 0
+  isMonitorOn: 0
+  isMission: 0
+--- !u!320 &714032195701723896
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8914196131680089870}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 11400000, guid: 16c19add79650424d8e432df1938b57e, type: 2}
+  m_InitialState: 0
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings:
+  - key: {fileID: 6765965250275843955, guid: 16c19add79650424d8e432df1938b57e, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -6919331755636601130, guid: 16c19add79650424d8e432df1938b57e, type: 2}
+    value: {fileID: 0}
+  m_ExposedReferences:
+    m_References: []
 --- !u!1 &9066901200264403135
 GameObject:
   m_ObjectHideFlags: 0

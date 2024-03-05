@@ -6,12 +6,20 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.PlayerLoop;
 
-public class Santa : Enemy
+public class Santa : MovingEnemy
 {
+  [SerializeField] private bool isStunned = false;
+    [SerializeField] Transform enemyForward;
+    private float stunTime = 3.26f;
+    private float stunTimer = 0f;
     private void Update()
     {
 
+        CheckSturn();
+
+        if(!isStunned)
         CheckAll();
+
         switch (state)
         {
 
@@ -40,9 +48,10 @@ public class Santa : Enemy
                 {
                     if (!isOpenAndMove)
                     {
-                        if (Vector3.Distance(isFrontDoor.gameObject.transform.position, transform.position) >= 1f )
+                        if (Vector3.Distance(isFrontDoor.gameObject.transform.position, transform.position) >= 1.5f )
                         {
                             print("문앞으로 이동");
+                            print(Vector3.Distance(isFrontDoor.gameObject.transform.position, transform.position));
                             agent.SetDestination(isFrontDoor.gameObject.transform.position);
                         }
                         else
@@ -83,7 +92,14 @@ public class Santa : Enemy
                 break;
 
             case State.Stun:
-
+                stunTimer += Time.deltaTime;
+                if(stunTimer >= stunTime)
+                {
+                    stunTimer = 0f;
+                    isStunned = false;
+                    state = State.Move;
+                  
+                }
                 break;
             case State.OpenDoor:
 
@@ -103,12 +119,51 @@ public class Santa : Enemy
 
                 }
                 break;
+            case State.Over:
 
+
+                break;
         }
 
         animator.SetInteger("State",(int) state);
 
     }
-  
+
+
+    public void Finsih()
+    {
+        isStunned = false;
+        state = State.Move;
+    }
+
+    private void CheckSturn()
+    {
+       float halfFOV = 45 * 0.5f;
+        Quaternion leftRayRotation = Quaternion.AngleAxis(-halfFOV, Vector3.up);
+        Quaternion rightRayRotation = Quaternion.AngleAxis(halfFOV, Vector3.up);
+
+
+        RaycastHit lefthit;
+        bool leftHitSuccess = Physics.Raycast(enemyForward.position,leftRayRotation * transform.forward,out lefthit,5f,1 << 14);
+        Debug.DrawRay(enemyForward.position, leftRayRotation * transform.forward * 5f, Color.red);
+
+        RaycastHit rightHit;
+        bool rightHitSuccess = Physics.Raycast(enemyForward.position, rightRayRotation * transform.forward, out rightHit, 5f, 1 << 14);
+        Debug.DrawRay(enemyForward.position, rightRayRotation * transform.forward * 5f, Color.green);
+
+        RaycastHit fowardHit;
+        bool fowardHitSuccess = Physics.Raycast(enemyForward.position, transform.forward, out fowardHit, 5f, 1 << 14);
+        Debug.DrawRay(enemyForward.position, transform.forward * 5f, Color.blue);
+
+        if (leftHitSuccess || rightHitSuccess || fowardHitSuccess)
+        {
+                agent.ResetPath();
+                isStunned = true;
+                state = State.Stun;
+         }
+     
+
+    }
+
 
 }

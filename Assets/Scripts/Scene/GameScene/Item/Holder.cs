@@ -19,6 +19,7 @@ public class Holder : MonoBehaviour
         isHaveItems.Add("WalkList", false);
         isHaveItems.Add("CCTV", false);
         isHaveItems.Add("Key", false);
+        isHaveItems.Add("PipeWrench", false);
     }
 
     public void SetItemState(string itemName, bool isHave) //상태변경
