@@ -13,12 +13,13 @@ public enum MissionType
 public class Mission : MonoBehaviour
 {
     [SerializeField] protected string missionName;
-
+    [SerializeField] protected PhaseManagedSystem phaseSystem;
     public MissionType missionType;
     public bool isCompleted;
 
     public virtual void MissionCompleted()
     {
         isCompleted = true;
+        phaseSystem.SetMissionSuccess(isCompleted);
     }
 }

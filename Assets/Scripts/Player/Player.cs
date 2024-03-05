@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     [SerializeField] private CameraZoom cameraZoom;
     [SerializeField] private GameObject lastHitGameObject = null;
     [SerializeField] private GameObject cctvCam;
+    [SerializeField] private Item prevHitItem;
 
     public float interactionDistance = 5f;
     public List<Item> haveitems = new();
@@ -24,7 +25,7 @@ public class Player : MonoBehaviour
     protected bool timelineFinsish = false;
 
     public Transform ItemPos;
-    private Item prevHitItem;
+
 
     public Item currentItem;
     public Rig rig;
@@ -91,7 +92,8 @@ public class Player : MonoBehaviour
         if (prevHitItem != null)
         {
             // 상호작용 가능한 아이템이 있고 상호작용 텍스트가 활성화된 상태일 때
-            Holder.Instance.SetItemState(prevHitItem.name, true); // 아이템을 먹히고 BOOL 값을 TRUE로 설정
+            Holder.Instance.SetItemState(prevHitItem.gameObject.name, true); // 아이템을 먹히고 BOOL 값을 TRUE로 설정
+            print(prevHitItem.gameObject.name);
             haveitems.Add(prevHitItem);
             prevHitItem.tag = "Untagged";
             prevHitItem.SetTransform(ItemPos);
@@ -140,7 +142,7 @@ public class Player : MonoBehaviour
                 locker.ReverseTimeline();
             }
         }
-        if (battery != null && Holder.Instance.isHaveItems["Flashlight"])
+        if (battery != null && Holder.Instance.isHaveItems["Flashlight(Clone)"])
         {
             battery.Use();
             Destroy(battery.gameObject);
@@ -150,7 +152,7 @@ public class Player : MonoBehaviour
 
     private void OnFlashlight() //Q누르면
     {
-        if (Holder.Instance.isHaveItems.ContainsKey("Flashlight"))
+        if (Holder.Instance.isHaveItems.ContainsKey("Flashlight(Clone)"))
         {
             foreach (Item item in haveitems)
             {
@@ -403,5 +405,10 @@ public class Player : MonoBehaviour
         {
             ResetInteractions();
         }
+    }
+
+    public void SetIsOver(bool isBool)
+    {
+        isOver = isBool;
     }
 }

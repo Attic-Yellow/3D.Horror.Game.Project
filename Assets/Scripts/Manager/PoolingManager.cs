@@ -80,8 +80,13 @@ public class PoolingManager : MonoBehaviour
         }
 
         int randomIndex = Random.Range(0, positions.Count);
+        if (positions[randomIndex].gameObject.GetComponentInParent<Drawer>() != null)
+        {
+            return Vector3.zero;
+        }
         Vector3 position = positions[randomIndex].position;
-        positions.RemoveAt(randomIndex); 
+        positions.RemoveAt(randomIndex);
+
         return position;
     }
 
@@ -105,8 +110,16 @@ public class PoolingManager : MonoBehaviour
             GameObject obj = GetPool(objPrefab);
             if (obj != null)
             {
+                
                 Vector3 position = SetObjPos(positionList);
                 obj.transform.position = position;
+                if(position ==  Vector3.zero)
+                {
+                    obj.transform.parent = positionList[i].transform;
+                    obj.transform.localPosition = Vector3.zero;
+                    obj.transform.localRotation = Quaternion.identity;  
+                }
+
             }
         }
     }
