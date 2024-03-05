@@ -74,6 +74,7 @@ public class Rudolf : MovingEnemy
 
             case State.Over:
                 //끝나면 게임종료
+                print("오버야");
                 break;
         }
         animator.SetInteger("State", (int)state);
@@ -89,22 +90,24 @@ public class Rudolf : MovingEnemy
         {
             agent.ResetPath();
             state = State.Over;
-  
+
         }
-
-        watchedPlayer = enemyCameraDetection.IsPlayerVisible();
-
-        if (state != State.Follow && IsMovingCheck())
+        else
         {
-            state = State.Follow;
+            watchedPlayer = enemyCameraDetection.IsPlayerVisible();
 
-            return;
-        }
+            if (state != State.Follow && IsMovingCheck())
+            {
+                state = State.Follow;
 
-        if (!agent.hasPath && isMoving)
-        {
-            isMoving = false;
+                return;
+            }
 
+            if (!agent.hasPath && isMoving)
+            {
+                isMoving = false;
+
+            }
         }
     }
 
