@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     [SerializeField] private CameraController cameraController;
     [SerializeField] private CameraZoom cameraZoom;
     [SerializeField] private GameObject lastHitGameObject = null;
+    [SerializeField] private GameObject cctvCam;
 
     public float interactionDistance = 5f;
     public List<Item> haveitems = new();
@@ -35,6 +36,7 @@ public class Player : MonoBehaviour
     private Enemy collisionEnemy;
 
     private bool isPaused = false;
+    private bool isLookAtCCTV = false;
     public bool isOver = false;
     private Battery battery;
 
@@ -53,7 +55,7 @@ public class Player : MonoBehaviour
             return;
         }
         RayCheck();
-        
+
     }
 
     private void ResetInteractions()
@@ -81,16 +83,16 @@ public class Player : MonoBehaviour
         }
     }
 
- 
 
-   private void OnInteraction() //F 상호작용키 
+
+    private void OnInteraction() //F 상호작용키 
     {
-        
+
         if (prevHitItem != null)
         {
             // 상호작용 가능한 아이템이 있고 상호작용 텍스트가 활성화된 상태일 때
             Holder.Instance.SetItemState(prevHitItem.name, true); // 아이템을 먹히고 BOOL 값을 TRUE로 설정
-            haveitems.Add(prevHitItem) ;
+            haveitems.Add(prevHitItem);
             prevHitItem.tag = "Untagged";
             prevHitItem.SetTransform(ItemPos);
             prevHitItem.gameObject.SetActive(false);
@@ -146,7 +148,7 @@ public class Player : MonoBehaviour
         }
     }
 
-   private void OnFlashlight() //Q누르면
+    private void OnFlashlight() //Q누르면
     {
         if (Holder.Instance.isHaveItems.ContainsKey("Flashlight"))
         {
@@ -155,7 +157,7 @@ public class Player : MonoBehaviour
                 if (item.GetComponent<Flashlight>() != null)
                 {
                     if (!item.gameObject.activeSelf)
-                    { 
+                    {
                         ItemActive(item);
 
                     }
@@ -175,24 +177,16 @@ public class Player : MonoBehaviour
 
     private void OnCCTV()
     {
-        if (Holder.Instance.isHaveItems.ContainsKey("CCTV"))
+        if (!cameraZoom.isZoomIn && !isPaused)
         {
-            foreach (Item item in haveitems)
-            {
-                if (item.GetComponent<CCTV>() != null)
-                {
-                    if (!item.gameObject.activeSelf)
-                    {
-                        ItemActive(item);
-                    }
-                    else
-                    {
-                        ItemDisable(item);
-                    }
-                    break;
-                }
-
-            }
+            isLookAtCCTV = !isLookAtCCTV;
+            cctvCam.SetActive(!cctvCam.activeSelf);
+            cameraController.SetOverlayCamAtive();
+            cameraController.SetPointCamActive();
+            cameraController.SetCRTCamActive();
+            Cursor.lockState = isLookAtCCTV ? CursorLockMode.Confined : CursorLockMode.Locked;
+            Cursor.visible = isLookAtCCTV;
+            GameManager.instance.overlayManager.CRTOverlayController();
         }
     }
 
@@ -204,27 +198,27 @@ public class Player : MonoBehaviour
             ItemDisable(currentItem);
         }
 
-            if (Holder.Instance.isHaveItems.ContainsKey("WalkList"))
+        if (Holder.Instance.isHaveItems.ContainsKey("WalkList"))
+        {
+            foreach (Item item in haveitems)
             {
-                foreach (Item item in haveitems)
+                if (item.GetComponent<CurrentWorkList>() != null)
                 {
-                    if (item.GetComponent<CurrentWorkList>() != null)
+                    if (!item.gameObject.activeSelf)
                     {
-                        if (!item.gameObject.activeSelf)
-                        {
-                            item.gameObject.SetActive(true);
+                        item.gameObject.SetActive(true);
 
-                        }
-                        else
-                        {
-                            ItemDisable(item);
+                    }
+                    else
+                    {
+                        ItemDisable(item);
 
-                        }
                     }
                 }
-
             }
-        
+
+        }
+
 
     }
 
@@ -233,16 +227,18 @@ public class Player : MonoBehaviour
     {
         isPaused = !isPaused;
 
-        if (!cameraZoom.isZoomIn)
+        if (!cameraZoom.isZoomIn && !isLookAtCCTV)
         {
             cameraController.SetOverlayCamAtive();
             cameraController.SetPointCamActive();
             Cursor.lockState = isPaused ? CursorLockMode.Confined : CursorLockMode.Locked;
-            Cursor.visible = true;
+            Cursor.visible = isPaused;
         }
 
         GameManager.instance.overlayManager.OptionOverlayController();
     }
+
+
 
 
     private void ItemActive(Item item)
@@ -292,7 +288,7 @@ public class Player : MonoBehaviour
             collisionEnemy = other.gameObject.GetComponent<Enemy>();
             isOver = true;
             OnTimeline();
-            
+
         }
     }
 
