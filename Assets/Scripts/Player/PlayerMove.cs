@@ -54,11 +54,11 @@ public class PlayerMove : MonoBehaviour
             return;
         }
         state = isCrouch ? State.Crouch : State.Standing;
-        isMoving = inputValue.magnitude > 0f;
+
         switch (state)
         {
             case State.Standing:
-
+                isMoving = inputValue.magnitude > 0f;
                 if (inputValue.y < 0) //뒤로 가는키를 누르면 이속감소
                 {
                     currentSpeed = isRun ? sprintSpeed * 0.5f : moveSpeed * 0.7f;

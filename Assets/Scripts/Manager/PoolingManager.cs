@@ -5,33 +5,26 @@ using UnityEngine;
 public class PoolingManager : MonoBehaviour
 {
     [SerializeField] private int poolSize;
-    [SerializeField] private int fireExitCount;
-    [SerializeField] private int battertCount;
-    [SerializeField] private Transform objParent; //부무로 담을 곳
-    [SerializeField] private GameObject fireExitPrefab;
-    [SerializeField] private GameObject batteryPrefab;
-    [SerializeField] private List<Transform> fireExitTf; //소화기 넣을만한 곳
-    [SerializeField] private List<Transform> inTheObjTf;// ex) 서랍 안 , 캐비넷 안
+
+    [SerializeField] private Transform objParent; //담을곳
+    [SerializeField] private List<GameObject> onThePlaneObjs; //바닥위 생성할 오브젝트
+    [SerializeField] private List<GameObject> inTheObjs; //어디 안에 생성할 오브젝트
+    [SerializeField] private List<GameObject> missionObjs; //미션에 사용할 오브젝트
+
+    [SerializeField] private List<Transform> planeTf; //바닥 위
+    [SerializeField] private List<Transform> inTheTf;// ex) 서랍 안 , 캐비넷 안
+    [SerializeField] private List<Transform> missionTf; //미션에 사용될 오브젝트 생성할 위치
+
+    public List<int> missionObjCount = new();
     public Dictionary<GameObject, List<GameObject>> objectPools = new();
   
     private void Start()
     {
         GameManager.instance.poolingManager = this;
-        InitPool(fireExitPrefab, poolSize);
-        InitPool(batteryPrefab, poolSize);
-        for (int i = 0;  i < fireExitCount; i++)
-        {
-            GameObject initObj = GetPool(fireExitPrefab);
-           initObj.transform.position =  SetObjPos(fireExitTf);
-        }
-       for(int i = 0; i <battertCount; i++)
-        {
-            GameObject initObj = GetPool(batteryPrefab);
-            initObj.transform.position = SetObjPos(inTheObjTf);
-        }
-       
+        InitObjects(onThePlaneObjs, planeTf,poolSize);
+        InitObjects(inTheObjs, inTheTf, poolSize);
+        InitMissionObjects();
 
-     
     }
 
     public void InitPool(GameObject objPrefab, int poolSize)
@@ -69,8 +62,12 @@ public class PoolingManager : MonoBehaviour
         }
         else
         {
-            print("생성한 풀이 없음");
-            return null;
+            print("직접 생성");
+            GameObject newObj = Instantiate(objPrefab);
+            newObj.transform.parent = objParent;
+            objectPools[objPrefab].Add(newObj);
+            return newObj;
+            
         }
     }
 
@@ -78,7 +75,7 @@ public class PoolingManager : MonoBehaviour
     {
         if (positions.Count == 0)
         {
-            Debug.LogError("생성할 곳이 없음");
+            print("생성할 곳이 없음");
             return Vector3.zero;
         }
 
@@ -88,4 +85,45 @@ public class PoolingManager : MonoBehaviour
         return position;
     }
 
+    private void InitObjects(List<GameObject> objectList, List<Transform> positionList, int num)
+    {
+        foreach (var gameObject in objectList)
+        {
+            if (gameObject != null)
+            {
+                InitPool(gameObject, num);
+
+                int randomNum = Random.Range(1, num + 1); // 최대값을 원하는 개수로 지정
+                InitObjOnPosition(gameObject, positionList, randomNum);
+            }
+        }
+    }
+    private void InitObjOnPosition(GameObject objPrefab, List<Transform> positionList, int num)
+    {
+        for (int i = 0; i < num; i++)
+        {
+            GameObject obj = GetPool(objPrefab);
+            if (obj != null)
+            {
+                Vector3 position = SetObjPos(positionList);
+                obj.transform.position = position;
+            }
+        }
+    }
+    private void InitMissionObjects()
+    {
+        foreach (var missionObj in missionObjs)
+        {
+            if (missionObj != null)
+            {
+                InitPool(missionObj, poolSize);
+
+                int randomNum = Random.Range(1, poolSize + 1); // 최대값을 원하는 개수로 지정
+                InitObjOnPosition(missionObj, missionTf, randomNum);
+
+                // 미션 오브젝트의 개수를 missionObjCount 리스트에 추가
+                missionObjCount.Add(randomNum);
+            }
+        }
+    }
 }

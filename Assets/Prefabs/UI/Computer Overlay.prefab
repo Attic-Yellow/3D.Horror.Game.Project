@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1733176546710153130}
   - component: {fileID: 5459721779086300150}
   m_Layer: 5
-  m_Name: SecondRow (2)
+  m_Name: 2Row
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -420,7 +420,7 @@ GameObject:
   - component: {fileID: 6635152384890731849}
   - component: {fileID: 4722273016206136111}
   m_Layer: 5
-  m_Name: SecondRow (1)
+  m_Name: 1Row
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -735,7 +735,7 @@ GameObject:
   - component: {fileID: 1297150008962549008}
   - component: {fileID: 6775251015274941422}
   m_Layer: 5
-  m_Name: SecondRow (16)
+  m_Name: 16Row
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1574,7 +1574,7 @@ GameObject:
   - component: {fileID: 3862776053992087067}
   - component: {fileID: 7066084506436388890}
   m_Layer: 5
-  m_Name: SecondRow (13)
+  m_Name: 13Row
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3520,7 +3520,7 @@ GameObject:
   - component: {fileID: 4073406145597145905}
   - component: {fileID: 8376250128632710015}
   m_Layer: 5
-  m_Name: SecondRow (8)
+  m_Name: 8Row
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4388,7 +4388,7 @@ GameObject:
   - component: {fileID: 7917998306353605413}
   - component: {fileID: 1862471180388644565}
   m_Layer: 5
-  m_Name: FirstRow
+  m_Name: Blanksheet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5356,6 +5356,8 @@ MonoBehaviour:
   priceText: {fileID: 2915506983575736611}
   objTextName: "\uB9DD\uCE58"
   explainTextName: 
+  num: 3
+  isTrue: 0
 --- !u!1 &1371447259880426480
 GameObject:
   m_ObjectHideFlags: 0
@@ -8073,7 +8075,7 @@ GameObject:
   - component: {fileID: 4878034152446206522}
   - component: {fileID: 6538231024596685253}
   m_Layer: 5
-  m_Name: SecondRow (17)
+  m_Name: 17Row
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8588,7 +8590,7 @@ GameObject:
   - component: {fileID: 1220859374739000721}
   - component: {fileID: 3659544184738738954}
   m_Layer: 5
-  m_Name: SecondRow (3)
+  m_Name: 3Row
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10506,7 +10508,7 @@ GameObject:
   - component: {fileID: 4325428360823614415}
   - component: {fileID: 7354028552772914437}
   m_Layer: 5
-  m_Name: SecondRow (5)
+  m_Name: 5Row
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12055,7 +12057,7 @@ GameObject:
   - component: {fileID: 4967798911848605722}
   - component: {fileID: 8781022021239782255}
   m_Layer: 5
-  m_Name: SecondRow (12)
+  m_Name: 12Row
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13707,6 +13709,8 @@ MonoBehaviour:
   priceText: {fileID: 8729947442155502470}
   objTextName: "\uC190\uC804\uB4F1"
   explainTextName: 
+  num: 0
+  isTrue: 0
 --- !u!1 &3562403138417748225
 GameObject:
   m_ObjectHideFlags: 0
@@ -14901,7 +14905,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &3644952328519894301
 RectTransform:
   m_ObjectHideFlags: 0
@@ -16125,7 +16129,7 @@ GameObject:
   - component: {fileID: 3799362484948697167}
   - component: {fileID: 5962789230428224776}
   m_Layer: 5
-  m_Name: SecondRow (15)
+  m_Name: 15Row
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17629,7 +17633,7 @@ GameObject:
   - component: {fileID: 1792667931281344238}
   - component: {fileID: 7084317733447142952}
   m_Layer: 5
-  m_Name: SecondRow
+  m_Name: BlankSheet1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18626,6 +18630,7 @@ GameObject:
   - component: {fileID: 1858347769294734805}
   - component: {fileID: 9115451572356582441}
   - component: {fileID: 107525491388096842}
+  - component: {fileID: 1508758892362998208}
   m_Layer: 5
   m_Name: FirstButton PopUp
   m_TagString: Untagged
@@ -18692,6 +18697,28 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1508758892362998208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4499157138132501940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9b84911545cd1249ab4e5df75cf1e4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  missionName: 
+  missionType: 2
+  isCompleted: 0
+  missionText: 
+  rows:
+  - {fileID: 1603362867923948303}
+  - {fileID: 3860994052528699548}
+  - {fileID: 1770327639882647622}
+  - {fileID: 4775885014037090385}
+  - {fileID: 5076762792094972076}
 --- !u!1 &4607511261561182225
 GameObject:
   m_ObjectHideFlags: 0
@@ -18980,7 +19007,7 @@ GameObject:
   - component: {fileID: 1940576713184759593}
   - component: {fileID: 6978941019029645753}
   m_Layer: 5
-  m_Name: SecondRow (10)
+  m_Name: 10Row
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20525,7 +20552,7 @@ GameObject:
   - component: {fileID: 4446168038663850411}
   - component: {fileID: 7389336185242327028}
   m_Layer: 5
-  m_Name: SecondRow (6)
+  m_Name: 6Row
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20611,7 +20638,7 @@ GameObject:
   - component: {fileID: 7385902775226537768}
   - component: {fileID: 1620347880644207686}
   m_Layer: 5
-  m_Name: SecondRow (11)
+  m_Name: 11Row
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23352,7 +23379,7 @@ GameObject:
   - component: {fileID: 8375240983211793086}
   - component: {fileID: 8668372141760354557}
   m_Layer: 5
-  m_Name: SecondRow (7)
+  m_Name: 7Row
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24163,6 +24190,8 @@ MonoBehaviour:
   priceText: {fileID: 572962917573019781}
   objTextName: "\uACF5\uAD6C\uD568"
   explainTextName: 
+  num: 2
+  isTrue: 0
 --- !u!1 &6390769307948503042
 GameObject:
   m_ObjectHideFlags: 0
@@ -24673,6 +24702,8 @@ MonoBehaviour:
   priceText: {fileID: 822748249089405428}
   objTextName: "\uB4DC\uB77C\uC774\uBC84"
   explainTextName: 
+  num: 1
+  isTrue: 0
 --- !u!1 &6625290763333175055
 GameObject:
   m_ObjectHideFlags: 0
@@ -25769,7 +25800,7 @@ GameObject:
   - component: {fileID: 8716901972562024699}
   - component: {fileID: 3125192558165673238}
   m_Layer: 5
-  m_Name: SecondRow (4)
+  m_Name: 4Row
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26661,6 +26692,8 @@ MonoBehaviour:
   priceText: {fileID: 4330680623906613365}
   objTextName: "\uB098\uC0AC"
   explainTextName: 
+  num: 4
+  isTrue: 0
 --- !u!1 &7215864344699919102
 GameObject:
   m_ObjectHideFlags: 0
@@ -30708,15 +30741,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 0795b05b23b11ab4c94239d9d25f5608, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -31075,7 +31108,7 @@ GameObject:
   - component: {fileID: 8184854104680055256}
   - component: {fileID: 8824333572370367317}
   m_Layer: 5
-  m_Name: SecondRow (14)
+  m_Name: 14Row
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32084,7 +32117,7 @@ GameObject:
   - component: {fileID: 2101577952963375162}
   - component: {fileID: 3920882523119196034}
   m_Layer: 5
-  m_Name: SecondRow (9)
+  m_Name: 9Row
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32795,7 +32828,7 @@ GameObject:
   - component: {fileID: 8590923688994939763}
   - component: {fileID: 3907170466117344285}
   m_Layer: 5
-  m_Name: SecondRow (18)
+  m_Name: 18Row
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

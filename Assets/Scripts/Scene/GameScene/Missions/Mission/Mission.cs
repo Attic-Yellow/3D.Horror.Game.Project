@@ -6,6 +6,7 @@ public enum MissionType
 {
     FireExtinguisher,
     ElectricShield,
+    CountingObj,
     None
 }
 

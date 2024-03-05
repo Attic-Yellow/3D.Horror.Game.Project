@@ -15,7 +15,6 @@ public class Enemy : MonoBehaviour
 
 
     public Transform gameoverCamPos;
-    public Transform enemySpine;
     public float walkSpeed;
 
     protected void Awake()

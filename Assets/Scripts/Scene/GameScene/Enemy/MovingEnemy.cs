@@ -12,9 +12,10 @@ public class MovingEnemy : Enemy
         Crouch,
         Stun,
         OpenDoor,
-        LookingAround
+        LookingAround,
+        Over
     }
-    protected State state;
+   [SerializeField] protected State state;
     protected float lookingAroundDuration = 6f; // LookingAround 애니메이션 시간
     protected float lookingAroundTimer = 0f; // LookingAround 상태에서 경과한 시간
 
@@ -41,7 +42,7 @@ public class MovingEnemy : Enemy
     {
         state = State.Move;
     }
-    protected void CheckAll()
+    protected virtual void CheckAll()
     {
         timer += Time.deltaTime;
 
@@ -53,14 +54,16 @@ public class MovingEnemy : Enemy
 
         watchedPlayer = enemyCameraDetection.IsPlayerVisible();
 
-        if ((watchedPlayer && state != State.Follow) && IsMovingCheck())
+        if (state != State.Follow && IsMovingCheck())
         {
-            state = State.Follow;
+           
             if (openDoorCoroutine != null)
             {
                 StopCoroutine(openDoorCoroutine);
                 isOpenAndMove = false;
             }
+            state = State.Follow;
+
             return;
         }
 
@@ -128,6 +131,8 @@ public class MovingEnemy : Enemy
             {
                 agent.speed = walkSpeed;
                 targetPos = hit.position;
+                timer = 0f;
+                isFind = true;
 
             }
         }
@@ -177,5 +182,6 @@ public class MovingEnemy : Enemy
         isMoving = false;
 
     }
+
 
 }
