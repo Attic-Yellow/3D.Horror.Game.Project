@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class CameraController : MonoBehaviour
 {
     [SerializeField] private Camera overlayCam;
     [SerializeField] private Camera pointCam;
     [SerializeField] private Camera crtCam;
+    [SerializeField] private CinemachineVirtualCamera cctvCam;
     [SerializeField] private Transform[] target;
     
     private void Start()
@@ -24,6 +26,11 @@ public class CameraController : MonoBehaviour
         if (crtCam != null)
         {
             crtCam.gameObject.SetActive(false);
+        }
+
+        if (cctvCam != null)
+        {
+            cctvCam.gameObject.SetActive(false);
         }
 
     }

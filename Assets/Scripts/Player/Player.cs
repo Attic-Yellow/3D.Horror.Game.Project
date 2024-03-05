@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     [SerializeField] private CameraController cameraController;
     [SerializeField] private CameraZoom cameraZoom;
     [SerializeField] private GameObject lastHitGameObject = null;
+    [SerializeField] private GameObject cctvCam;
 
     public float interactionDistance = 5f;
     public List<Item> haveitems = new();
@@ -35,6 +36,7 @@ public class Player : MonoBehaviour
     private Enemy collisionEnemy;
 
     private bool isPaused = false;
+    private bool isLookAtCCTV = false;
     public bool isOver = false;
     private Battery battery;
 
@@ -175,24 +177,16 @@ public class Player : MonoBehaviour
 
     private void OnCCTV()
     {
-        if (Holder.Instance.isHaveItems.ContainsKey("CCTV"))
+        if (!cameraZoom.isZoomIn && !isPaused)
         {
-            foreach (Item item in haveitems)
-            {
-                if (item.GetComponent<CCTV>() != null)
-                {
-                    if (!item.gameObject.activeSelf)
-                    {
-                        ItemActive(item);
-                    }
-                    else
-                    {
-                        ItemDisable(item);
-                    }
-                    break;
-                }
-
-            }
+            isLookAtCCTV = !isLookAtCCTV;
+            cctvCam.SetActive(!cctvCam.activeSelf);
+            cameraController.SetOverlayCamAtive();
+            cameraController.SetPointCamActive();
+            cameraController.SetCRTCamActive();
+            Cursor.lockState = isLookAtCCTV ? CursorLockMode.Confined : CursorLockMode.Locked;
+            Cursor.visible = isLookAtCCTV;
+            GameManager.instance.overlayManager.CRTOverlayController();
         }
     }
 
@@ -200,6 +194,7 @@ public class Player : MonoBehaviour
     {
 
     }
+
     private void OnTab()
     {
         if (currentItem != null)
@@ -236,12 +231,12 @@ public class Player : MonoBehaviour
     {
         isPaused = !isPaused;
 
-        if (!cameraZoom.isZoomIn)
+        if (!cameraZoom.isZoomIn && !isLookAtCCTV)
         {
             cameraController.SetOverlayCamAtive();
             cameraController.SetPointCamActive();
             Cursor.lockState = isPaused ? CursorLockMode.Confined : CursorLockMode.Locked;
-            Cursor.visible = true;
+            Cursor.visible = isPaused;
         }
 
         GameManager.instance.overlayManager.OptionOverlayController();
