@@ -190,10 +190,6 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void ChangeItme()
-    {
-
-    }
 
     private void OnTab()
     {
@@ -243,6 +239,8 @@ public class Player : MonoBehaviour
     }
 
 
+
+
     private void ItemActive(Item item)
     {
         item.gameObject.SetActive(true);
@@ -260,14 +258,12 @@ public class Player : MonoBehaviour
         rig.weight = 0;
     }
 
-    private void PositionAndRotation(Transform _tf)
-    {
-        camera2.transform.SetPositionAndRotation(_tf.position, _tf.rotation);
-    }
+
     private void OnTimeline()
     {
-        PositionAndRotation(collisionEnemy.gameoverCamPos);
         timeline.Play();
+        camera2.Follow = collisionEnemy.transform;
+        camera2.LookAt = collisionEnemy.gameoverCamPos;
     }
     public void CameraPriorityChange(int _num)
     {
@@ -290,11 +286,9 @@ public class Player : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             collisionEnemy = other.gameObject.GetComponent<Enemy>();
-
-            print("´ê¾Ò¾î");
             isOver = true;
             OnTimeline();
-            // camera2.LookAt = collisionEnemy.enemySpine;
+
         }
     }
 
