@@ -11,6 +11,7 @@ public class FlashlightBattery : MonoBehaviour
 
     private void Update()
     {
+        if(flashlight != null)
         batteyUI.fillAmount = flashlight.GetBatteyTime();
     }
 }

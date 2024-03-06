@@ -25,6 +25,7 @@ public class OverlayManager : MonoBehaviour
     [Header("게임 씬 오버레이")]
     [SerializeField] private GameObject computerOverlay;
     [SerializeField] private GameObject crtOverlay;
+    [SerializeField] private GameObject CurrentMissionOverlay;
 
     private void Start()
     {
@@ -128,6 +129,14 @@ public class OverlayManager : MonoBehaviour
         if (crtOverlay != null)
         {
             crtOverlay.SetActive(!crtOverlay.activeSelf);
+        }
+    }
+
+    public void CMOverlayController()
+    {
+        if(CurrentMissionOverlay != null)
+        {
+            CurrentMissionOverlay.SetActive(!CurrentMissionOverlay.activeSelf);
         }
     }
 

@@ -133,7 +133,7 @@ public class Player : MonoBehaviour
 
         if (locker != null && !locker.timelinePlaying)
         {
-            if (locker.isIn)
+            if (!locker.isIn)
             {
                 locker.OnTimeline();
             }
@@ -200,27 +200,15 @@ public class Player : MonoBehaviour
             ItemDisable(currentItem);
         }
 
-        if (Holder.Instance.isHaveItems.ContainsKey("WalkList"))
+        if (Holder.Instance.isHaveItems["WorkList"])
         {
-            foreach (Item item in haveitems)
-            {
-                if (item.GetComponent<CurrentWorkList>() != null)
-                {
-                    if (!item.gameObject.activeSelf)
-                    {
-                        item.gameObject.SetActive(true);
-
-                    }
-                    else
-                    {
-                        ItemDisable(item);
-
-                    }
-                }
-            }
-
+            cameraController.SetOverlayCamAtive();
+            GameManager.instance.overlayManager.CMOverlayController();
         }
-
+        else
+        {
+            print("워크리스트를 가지고있지 않음");
+        }
 
     }
 

@@ -1202,7 +1202,7 @@ GameObject:
   - component: {fileID: 4489594901815937115}
   - component: {fileID: 4626719682353108104}
   m_Layer: 6
-  m_Name: WalkList
+  m_Name: WorkList
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

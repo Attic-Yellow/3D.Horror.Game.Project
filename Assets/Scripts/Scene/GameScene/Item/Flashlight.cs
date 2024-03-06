@@ -65,7 +65,6 @@ public class Flashlight : Item
     public float GetBatteyTime()
     {
         float fillRatio = currentBatteryTime / maxBatteryTime;
-        print(fillRatio);
         return fillRatio;
     }
 }

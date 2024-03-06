@@ -49,10 +49,7 @@ public class PlayerMove : MonoBehaviour
     private void Move()
     {
         Ani();
-        if (GameManager.instance.overlayManager.CheckOnOverlay())
-        {
-            return;
-        }
+
         state = isCrouch ? State.Crouch : State.Standing;
 
         switch (state)

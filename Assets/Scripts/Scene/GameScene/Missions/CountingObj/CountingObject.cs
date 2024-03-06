@@ -34,8 +34,7 @@ public class CountingObject : Mission
 
         if (allTrue)
         {
-            isCompleted = true;
-            print("재고미션 성공");
+            base.MissionCompleted();
         }
     }
 }

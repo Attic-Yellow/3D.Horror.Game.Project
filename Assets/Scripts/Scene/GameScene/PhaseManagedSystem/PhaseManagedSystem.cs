@@ -8,10 +8,12 @@ public class PhaseManagedSystem : MonoBehaviour
     [SerializeField] private List<Mission> allMissions;
     [SerializeField] private TimeSystem timeSystem;
     [SerializeField] private MissionType currentMission;
-    public bool missionSuccess = true;
+    [SerializeField] private bool missionSuccess;
+    [SerializeField] private bool check = true;
     private string checktime;
     private void Start()
     {
+        missionSuccess = true;
         currentMission = MissionType.None;
     }
 
@@ -32,19 +34,26 @@ public class PhaseManagedSystem : MonoBehaviour
             case "03:00":
             case "05:00":
             case "07:00":
-                SetNewMission();
+                if (check)
+                {
+                    SetNewMission();
+                    check = false;
+                    StartCoroutine(ResetCheck()); 
+                }
                 break;
         }
     }
 
     private void SetNewMission()
     {
+        print("»£√‚");
         if (missionSuccess)
         {
             missionSuccess = false;
             int randomMission = Random.Range(0, missions.Count);
             currentMission = missions[randomMission];
             ActivateMissionObject(currentMission);
+            return;
         }
         else
         {
@@ -77,6 +86,10 @@ public class PhaseManagedSystem : MonoBehaviour
     {
       missionSuccess = isbool;
     }
-  
+    private IEnumerator ResetCheck()
+    {
+        yield return new WaitForSeconds(1f); 
+        check = true; 
+    }
 
 }

@@ -21,5 +21,6 @@ public class Mission : MonoBehaviour
     {
         isCompleted = true;
         phaseSystem.SetMissionSuccess(isCompleted);
+        print("재고미션 성공");
     }
 }

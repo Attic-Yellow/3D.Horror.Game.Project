@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class PoolingManager : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class PoolingManager : MonoBehaviour
     [SerializeField] private List<Transform> inTheTf;// ex) 서랍 안 , 캐비넷 안
     [SerializeField] private List<Transform> missionTf; //미션에 사용될 오브젝트 생성할 위치
 
+    private int randomIndex;
     public List<int> missionObjCount = new();
     public Dictionary<GameObject, List<GameObject>> objectPools = new();
   
@@ -79,13 +81,8 @@ public class PoolingManager : MonoBehaviour
             return Vector3.zero;
         }
 
-        int randomIndex = Random.Range(0, positions.Count);
-        if (positions[randomIndex].gameObject.GetComponentInParent<Drawer>() != null)
-        {
-            return Vector3.zero;
-        }
+        randomIndex = Random.Range(0, positions.Count);
         Vector3 position = positions[randomIndex].position;
-        positions.RemoveAt(randomIndex);
 
         return position;
     }
@@ -97,7 +94,6 @@ public class PoolingManager : MonoBehaviour
             if (gameObject != null)
             {
                 InitPool(gameObject, num);
-
                 int randomNum = Random.Range(1, num + 1); // 최대값을 원하는 개수로 지정
                 InitObjOnPosition(gameObject, positionList, randomNum);
             }
@@ -110,16 +106,20 @@ public class PoolingManager : MonoBehaviour
             GameObject obj = GetPool(objPrefab);
             if (obj != null)
             {
-                
-                Vector3 position = SetObjPos(positionList);
-                obj.transform.position = position;
-                if(position ==  Vector3.zero)
+                if (positionList[randomIndex].GetComponentInParent<Drawer>() != null)
                 {
-                    obj.transform.parent = positionList[i].transform;
+                    obj.transform.SetParent(positionList[randomIndex]);
                     obj.transform.localPosition = Vector3.zero;
-                    obj.transform.localRotation = Quaternion.identity;  
+                    obj.transform.localRotation = Quaternion.identity;
                 }
-
+                else
+                {
+                    Vector3 position = SetObjPos(positionList);
+                    obj.transform.position = position;
+                }
+                positionList.RemoveAt(randomIndex);
+               
+              
             }
         }
     }

@@ -29,7 +29,6 @@ public class Locker : MonoBehaviour
    
     public void OnTimeline()
     {
-        isChanged = false;
         PositionAndRotation(tf.transform);
         isIn = true;
         timeline.Play();
