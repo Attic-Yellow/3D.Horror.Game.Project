@@ -7,6 +7,7 @@ public class DrawLine : MonoBehaviour
 {
     private Image img; //바꿀 이미지
     private DrawLineRenderer drawLineRenderer; // DrawLineRenderer 스크립트 참조
+    [SerializeField] private GameObject signArea;
 
     private void Awake()
     {
@@ -20,6 +21,7 @@ public class DrawLine : MonoBehaviour
     {
         print("버튼");
         drawLineRenderer.enabled = true;
+        signArea.SetActive(true);
     }
     public void ChangeImg(Texture2D tex)
     {
@@ -27,4 +29,8 @@ public class DrawLine : MonoBehaviour
         img.sprite = sprite;
     }
   
+    public void SetSignArea(bool isBool)
+    {
+        signArea.SetActive(isBool);
+    }
 }

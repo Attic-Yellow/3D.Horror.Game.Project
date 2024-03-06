@@ -21,7 +21,7 @@ public class DrawLineRenderer : MonoBehaviour
     private void Awake()
     {
         ScreenShot = FindObjectOfType<ScreenShot>();
-        FindObjectOfType<FireExit>().AddList(this);
+        //FindObjectOfType<FireExit>().AddList(this);
     }
     private void Start()
     {
@@ -109,6 +109,7 @@ public class DrawLineRenderer : MonoBehaviour
             Texture2D savedTexture = LoadTexture(savedImagePath);
             DrawLine draw = GetComponent<DrawLine>();
             draw.ChangeImg(savedTexture);
+            draw.SetSignArea(false);
             foreach (GameObject line in lines)
             {
                 Destroy(line);

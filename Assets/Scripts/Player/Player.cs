@@ -236,8 +236,8 @@ public class Player : MonoBehaviour
         item.gameObject.SetActive(true);
         currentItem = item;
         rig.weight = 1;
-        rigHint.SetTarget(currentItem.transform);
-        rigTarget.SetTarget(currentItem.transform);
+        rigHint.SetTarget(currentItem.hintPos);
+        rigTarget.SetTarget(currentItem.handTargetPos);
         rigBuilder.enabled = true;
     }
     private void ItemDisable(Item item)
