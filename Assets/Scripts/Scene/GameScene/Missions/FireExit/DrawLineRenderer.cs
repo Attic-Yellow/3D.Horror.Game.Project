@@ -4,6 +4,7 @@ using UnityEngine;
 using System.IO;
 using CustomUtils;
 using UnityEditor;
+using Unity.VisualScripting;
 
 public class DrawLineRenderer : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class DrawLineRenderer : MonoBehaviour
     private int positionCount = 2; 
     private Vector3 PrevPos = Vector3.zero;
     private ScreenShot ScreenShot;
-    private bool isDraw = false;
+    public bool isDraw = false;
     public int ZCount = 0;
 
     public List<GameObject> lines = new();
@@ -20,8 +21,13 @@ public class DrawLineRenderer : MonoBehaviour
     private void Awake()
     {
         ScreenShot = FindObjectOfType<ScreenShot>();
+        FindObjectOfType<FireExit>().AddList(this);
     }
-   private void Update()
+    private void Start()
+    {
+        enabled = false;
+    }
+    private void Update()
     {
         DrawMouse();
     

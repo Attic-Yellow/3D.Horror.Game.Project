@@ -6,11 +6,12 @@ public class Battery : MonoBehaviour
 {
     private float addTime = 10f;
     private Flashlight flashlight;
-    private void Awake()
+    private void Start()
     {
-         flashlight = FindObjectOfType<Flashlight>();
+        flashlight = FindObjectOfType<Flashlight>();
     }
-    public void Use()
+  
+  public void Use()
     {  
         flashlight.AddTime(addTime);
     }

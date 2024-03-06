@@ -50,3 +50,7 @@ Stairs,계단
 3F,3층
 2F,2층
 1F,1층
+Inventory Clearance,재고 정리
+Inventory Work Information 0,1. 공장 내부의 전원을 켤 수 있는 모니터를 찾으세요.
+Inventory Work Information 1,2. 재고 정리 리스트에 있는 물품들을 소품실에서 찾아 재고를 확인하세요.
+Inventory Work Information 2,3. 모니터가 있는 방에 돌아와  재고 정리 파일을 올바르게 수정하세요.

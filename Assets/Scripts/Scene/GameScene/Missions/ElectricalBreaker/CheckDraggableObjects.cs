@@ -77,7 +77,7 @@ public class CheckDraggableObjects : MonoBehaviour
         isOn.Clear();
         if(isSuccess)
         {
-            ElectricalShield electricalShield = FindObjectOfType<ElectricalShield>();
+            ElectricBreaker electricalShield = FindObjectOfType<ElectricBreaker>();
             electricalShield.MissionCompleted();
         }
     }

@@ -15,8 +15,8 @@ public class Holder : MonoBehaviour
 
     private void InitItems()
     {
-        isHaveItems.Add("Flashlight", false);
-        isHaveItems.Add("WalkList", false);
+        isHaveItems.Add("Flashlight(Clone)", false);
+        isHaveItems.Add("WorkList", false);
         isHaveItems.Add("CCTV", false);
         isHaveItems.Add("Key", false);
         isHaveItems.Add("PipeWrench", false);

@@ -136,6 +136,14 @@ public class OverlayManager : MonoBehaviour
             crtOverlay.SetActive(!crtOverlay.activeSelf);
         }
     }
+  
+    public void WorkListOverlayController()
+    {
+        if (workListOverlay != null)
+        {
+            workListOverlay.SetActive(!workListOverlay.activeSelf);
+        }
+    }
 
     public void WorkListOverlayController()
     {

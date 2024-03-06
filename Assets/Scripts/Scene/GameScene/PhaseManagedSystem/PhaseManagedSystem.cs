@@ -8,9 +8,12 @@ public class PhaseManagedSystem : MonoBehaviour
     [SerializeField] private List<Mission> allMissions;
     [SerializeField] private TimeSystem timeSystem;
     [SerializeField] private MissionType currentMission;
-
+    [SerializeField] private bool missionSuccess;
+    [SerializeField] private bool check = true;
+    private string checktime;
     private void Start()
     {
+        missionSuccess = true;
         currentMission = MissionType.None;
     }
 
@@ -21,48 +24,47 @@ public class PhaseManagedSystem : MonoBehaviour
 
     private void CheckTime()
     {
-        string checktime = timeSystem.GetGameTime();
+        checktime = timeSystem.GetGameTime();
 
         switch (checktime)
         {
             case "21:00":
-                SetNewMission();
-                break;            
-            case "22:00":
-                SetNewMission();
-                break;
             case "23:00":
-                SetNewMission();
-                break;
-            case "24:00":
-                SetNewMission();
-                break;
             case "01:00":
-                SetNewMission();
-                break;
-            case "02:00":
-                SetNewMission();
-                break;
             case "03:00":
-                SetNewMission();
-                break;
-            case "04:00":
-                SetNewMission();
-                break;
             case "05:00":
-                SetNewMission();
-                break;
-            case "06:00":
-                SetNewMission();
+            case "07:00":
+                if (check)
+                {
+                    SetNewMission();
+                    check = false;
+                    StartCoroutine(ResetCheck()); 
+                }
                 break;
         }
     }
 
     private void SetNewMission()
     {
-        int randomMission = Random.Range(0, missions.Count);
-        currentMission = missions[randomMission];
-        ActivateMissionObject(currentMission);
+        print("호출");
+        if (missionSuccess)
+        {
+            missionSuccess = false;
+            int randomMission = Random.Range(0, missions.Count);
+            currentMission = missions[randomMission];
+            ActivateMissionObject(currentMission);
+            return;
+        }
+        else
+        {
+            Player player = FindObjectOfType<Player>();
+            if (player!= null)
+            {
+                player.SetIsOver(true);
+                //다시시작 UI
+            }
+
+        }
     }
 
     private void ActivateMissionObject(MissionType missionType)
@@ -79,4 +81,15 @@ public class PhaseManagedSystem : MonoBehaviour
             }
         }
     }
+
+    public void SetMissionSuccess(bool isbool)
+    {
+      missionSuccess = isbool;
+    }
+    private IEnumerator ResetCheck()
+    {
+        yield return new WaitForSeconds(1f); 
+        check = true; 
+    }
+
 }
