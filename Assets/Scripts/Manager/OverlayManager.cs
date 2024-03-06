@@ -136,8 +136,7 @@ public class OverlayManager : MonoBehaviour
             crtOverlay.SetActive(!crtOverlay.activeSelf);
         }
     }
-
-    // 업무 목록 오버레이 활성화 / 비활성화 시키는 함수
+  
     public void WorkListOverlayController()
     {
         if (workListOverlay != null)
@@ -191,7 +190,6 @@ public class OverlayManager : MonoBehaviour
         return false;
     }
 
-    // 캐릭터 설정 오버레이가 활성화되어 있는지 확인하는 함수
     public bool CheckOnchacterSettingOverlay()
     {
         if (chacterSettingOverlay != null)
