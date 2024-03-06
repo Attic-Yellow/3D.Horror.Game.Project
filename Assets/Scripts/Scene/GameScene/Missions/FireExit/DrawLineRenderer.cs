@@ -21,7 +21,7 @@ public class DrawLineRenderer : MonoBehaviour
     private void Awake()
     {
         ScreenShot = FindObjectOfType<ScreenShot>();
-        FindObjectOfType<FireExit>().AddList(this);
+        // FindObjectOfType<FireExit>().AddList(this);
     }
     private void Start()
     {
