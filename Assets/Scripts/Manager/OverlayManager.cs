@@ -26,7 +26,7 @@ public class OverlayManager : MonoBehaviour
     [SerializeField] private GameObject computerOverlay;
     [SerializeField] private GameObject crtOverlay;
     [SerializeField] private GameObject workListOverlay;
-
+    [SerializeField] private GameObject screenTextOverlay;
     private void Start()
     {
         GameManager.instance.overlayManager = this;
@@ -59,6 +59,11 @@ public class OverlayManager : MonoBehaviour
         if (workListOverlay != null)
         {
             workListOverlay.SetActive(false);
+        }
+
+        if(screenTextOverlay != null)
+        {
+            screenTextOverlay.SetActive(false);
         }
     }
 
@@ -99,6 +104,14 @@ public class OverlayManager : MonoBehaviour
         if (optionsOverlay != null)
         {
             optionsOverlay.SetActive(!optionsOverlay.activeSelf);
+        }
+    }
+
+    public void ScrenTextOverlayController()
+    {
+        if(screenTextOverlay != null)
+        {
+            screenTextOverlay.SetActive(!screenTextOverlay.activeSelf);
         }
     }
 

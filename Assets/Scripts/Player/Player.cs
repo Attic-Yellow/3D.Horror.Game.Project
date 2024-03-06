@@ -142,7 +142,7 @@ public class Player : MonoBehaviour
                 locker.ReverseTimeline();
             }
         }
-        if (battery != null && Holder.Instance.isHaveItems["Flashlight(Clone)"])
+        if (battery != null && Holder.Instance.isHaveItems["Flashlight"])
         {
             battery.Use();
             Destroy(battery.gameObject);
@@ -152,7 +152,7 @@ public class Player : MonoBehaviour
 
     private void OnFlashlight() //Q´©¸£¸é
     {
-        if (Holder.Instance.isHaveItems.ContainsKey("Flashlight(Clone)"))
+        if (Holder.Instance.isHaveItems.ContainsKey("Flashlight"))
         {
             foreach (Item item in haveitems)
             {
@@ -227,9 +227,6 @@ public class Player : MonoBehaviour
 
         GameManager.instance.overlayManager.OptionOverlayController();
     }
-
-
-
 
     private void ItemActive(Item item)
     {

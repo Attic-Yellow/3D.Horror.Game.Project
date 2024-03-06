@@ -6,21 +6,17 @@ using UnityEngine.UI;
 public class DrawLine : MonoBehaviour
 {
     private Image img; //바꿀 이미지
-    private DrawLineRenderer drawLineRenderer; // DrawLineRenderer 스크립트 참조
     [SerializeField] private GameObject signArea;
 
     private void Awake()
     {
         img = GetComponent<Image>();
-        drawLineRenderer = GetComponent<DrawLineRenderer>();
-        drawLineRenderer.enabled = false; // 초기에는 비활성화
 
     }
 
     public void OnMouseUpAsButton()
     {
         print("버튼");
-        drawLineRenderer.enabled = true;
         signArea.SetActive(true);
     }
     public void ChangeImg(Texture2D tex)
