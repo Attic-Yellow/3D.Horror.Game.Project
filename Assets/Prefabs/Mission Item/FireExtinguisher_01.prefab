@@ -3099,6 +3099,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultMaterial: {fileID: 2100000, guid: 7883a34232ef9414a887c592e3133c06, type: 2}
+  isDraw: 0
   ZCount: 0
   lines: []
   camDistance: 0.3
