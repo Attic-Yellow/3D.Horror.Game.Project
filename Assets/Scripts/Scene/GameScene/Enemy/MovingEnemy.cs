@@ -26,9 +26,9 @@ public class MovingEnemy : Enemy
     [SerializeField] protected Vector3 targetPos;
     protected bool isOpenAndMove = false;
 
-    public float timer = 0f;
-    protected float eventDelay = 30f;
-    public bool isMoving = false;
+    [SerializeField] protected float timer = 0f;
+    [SerializeField] protected float eventDelay = 30f;
+    [SerializeField] protected bool isMoving = false;
 
     public float runSpeed = 3.5f;
 
@@ -126,7 +126,7 @@ public class MovingEnemy : Enemy
             randomOffset.y = 0f;
 
             Vector3 targetPosition = playerPosition + randomOffset; // 플레이어 주변 위치 계산
-            targetPos = new Vector3(targetPosition.x, transform.position.y, targetPosition.z); // targetPos 초기화
+            targetPos = targetPosition;
             if (NavMesh.SamplePosition(targetPos, out NavMeshHit hit, 5.0f, NavMesh.AllAreas))
             {
                 agent.speed = walkSpeed;

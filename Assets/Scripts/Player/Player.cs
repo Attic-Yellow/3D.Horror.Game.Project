@@ -82,6 +82,8 @@ public class Player : MonoBehaviour
         {
             battery = null;
         }
+
+        comeGhost.isSee = false;
     }
 
 
@@ -275,6 +277,10 @@ public class Player : MonoBehaviour
             collisionEnemy = other.gameObject.GetComponent<Enemy>();
             isOver = true;
             OnTimeline();
+            if(other.GetComponent<ComeGhost>() != null)
+            {
+                other.GetComponent<ComeGhost>().SetActiveTrue();
+            }
 
         }
     }
@@ -376,7 +382,7 @@ public class Player : MonoBehaviour
                     hit.collider.gameObject.transform.Find("CanvasRoot").gameObject.SetActive(true);
                     lastHitGameObject = hit.collider.gameObject;
                 }
-                else if (hit.collider.CompareTag("Ghost"))
+                else if (hit.collider.CompareTag("Enemy")&&hit.collider.gameObject.GetComponent<ComeGhost>())
                 {
                     comeGhost.isSee = true;
                 }

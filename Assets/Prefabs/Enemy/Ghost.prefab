@@ -717,7 +717,7 @@ GameObject:
   - component: {fileID: 4623635605949524566}
   m_Layer: 6
   m_Name: Ghost
-  m_TagString: Ghost
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -729,8 +729,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2292997384001134028}
-  m_LocalRotation: {x: -0, y: -0.99722487, z: -0, w: -0.07444888}
-  m_LocalPosition: {x: -8.275849, y: 0, z: 1.7115469}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -739,7 +739,7 @@ Transform:
   - {fileID: 2292997384001421748}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -188.539, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &2292997382923614088
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -751,8 +751,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2, y: 2, z: 0.5}
-  m_Center: {x: 0, y: 1.28, z: 0}
+  m_Size: {x: 1.9925034, y: 2.0583556, z: 0.5}
+  m_Center: {x: -0.008194327, y: 0.9809872, z: 0}
 --- !u!114 &4623635605949524566
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -765,12 +765,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e087b2300a7ce1479b99bfd3364ca5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameoverCamPos: {fileID: 2292997384001421702}
+  walkSpeed: 1
   detectionRadius: 10
   isSee: 0
   childObj:
   - {fileID: 2292997384001134038}
   - {fileID: 2292997384001134036}
-  moveSpeed: 1
 --- !u!1 &2292997384001134030
 GameObject:
   m_ObjectHideFlags: 0
