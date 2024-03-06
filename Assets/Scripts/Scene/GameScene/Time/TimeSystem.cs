@@ -24,7 +24,7 @@ public class TimeSystem : MonoBehaviour
     private void UpdateTime()
     {
         TimeSpan realTimeElapsed = DateTime.Now - initTime;
-        TimeSpan gameTimeElapsed = TimeSpan.FromHours(realTimeElapsed.TotalMinutes / 0.5f);
+        TimeSpan gameTimeElapsed = TimeSpan.FromHours(realTimeElapsed.TotalMinutes / 1f);
 
         gameTime = new DateTime(1988, 12, 23, 20, 0, 0).Add(gameTimeElapsed);
         // print($"{gameTime.ToString("yyyy : MM : dd : HH : mm : ss : tt", new CultureInfo("en-US"))}");

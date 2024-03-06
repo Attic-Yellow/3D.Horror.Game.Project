@@ -109,6 +109,7 @@ public class DrawLineRenderer : MonoBehaviour
             Texture2D savedTexture = LoadTexture(savedImagePath);
             DrawLine draw = GetComponent<DrawLine>();
             draw.ChangeImg(savedTexture);
+            draw.SetSignArea(false);
             foreach (GameObject line in lines)
             {
                 Destroy(line);
