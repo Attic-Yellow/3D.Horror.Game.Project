@@ -1301,6 +1301,7 @@ MonoBehaviour:
   - {fileID: 4103410717015382984}
   - {fileID: 3195771254295232950}
   isOut: 0
+  isLock: 0
   rotationSpeed: 5
   startRotation: {x: 0, y: 0, z: 0, w: 0}
   openAngle: 125
