@@ -1236,7 +1236,12 @@ GameObject:
   - component: {fileID: 1456630587691378121}
   - component: {fileID: 7662841215623885012}
   - component: {fileID: 7662841215623885013}
-  m_Layer: 0
+  - component: {fileID: 3657157550774202013}
+  - component: {fileID: 1369372546581864348}
+  - component: {fileID: 5633075227998807040}
+  - component: {fileID: 638238102857648298}
+  - component: {fileID: 5605495549845725016}
+  m_Layer: 16
   m_Name: ElectricShield
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1352,6 +1357,71 @@ MonoBehaviour:
   isOn: 
   isCheck: 0
   isSuccess: 0
+--- !u!65 &3657157550774202013
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2480819382599997402}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.0379839, y: 0.5170231, z: 0.08228216}
+  m_Center: {x: -0.267797, y: 0.0953722, z: 0.79300857}
+--- !u!65 &1369372546581864348
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2480819382599997402}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.0339794, y: 0.5167389, z: 0.09011064}
+  m_Center: {x: -0.2661705, y: 0.09061146, z: -0.65504473}
+--- !u!65 &5633075227998807040
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2480819382599997402}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.0357409, y: 0.09388638, z: 1.5361173}
+  m_Center: {x: -0.2662568, y: -0.1170392, z: 0.06795859}
+--- !u!65 &638238102857648298
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2480819382599997402}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.09766197, y: 0.5016365, z: 1.5323417}
+  m_Center: {x: 0.19821262, y: 0.09061146, z: 0.06984621}
+--- !u!65 &5605495549845725016
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2480819382599997402}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.07123375, y: 0.505414, z: 1.5285662}
+  m_Center: {x: -0.74754333, y: 0.08872366, z: 0.064183}
 --- !u!1 &2597172167280351634
 GameObject:
   m_ObjectHideFlags: 0
@@ -1458,14 +1528,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2625480606470025224}
-  m_LocalRotation: {x: 0.69887716, y: 0.69887716, z: -0.10756746, w: 0.10756746}
+  m_LocalRotation: {x: 0.7025614, y: 0.7025614, z: -0.080046766, w: 0.080046766}
   m_LocalPosition: {x: -2.25, y: 2.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7662841215325005588}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 17.5, y: 180, z: 90}
+  m_LocalEulerAnglesHint: {x: 13, y: 180, z: 90}
 --- !u!1 &2657484846069505339
 GameObject:
   m_ObjectHideFlags: 0
@@ -3532,7 +3602,7 @@ GameObject:
   - component: {fileID: 7662841213757931182}
   - component: {fileID: 7662841213757931183}
   - component: {fileID: 7662841213757931180}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: Interactive Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3680,7 +3750,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7662841214150211487}
   - component: {fileID: 7662841214150211486}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3705,7 +3775,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0.155}
+  m_AnchoredPosition: {x: 0.3, y: -0.5}
   m_SizeDelta: {x: 0.5, y: 0.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &7662841214150211486
@@ -3752,7 +3822,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7662841214652029230}
-  m_LocalRotation: {x: -0.7071068, y: -0.7071068, z: 0, w: 0}
+  m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
   m_LocalPosition: {x: 0.05, y: 0.75, z: 0.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3760,7 +3830,7 @@ Transform:
   - {fileID: 7662841214150211487}
   m_Father: {fileID: 7662841215325005588}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 180, y: 0, z: 270}
+  m_LocalEulerAnglesHint: {x: 180, y: 0, z: 180}
 --- !u!1 &7662841215084857895
 GameObject:
   m_ObjectHideFlags: 0
@@ -3772,7 +3842,7 @@ GameObject:
   - component: {fileID: 7662841215084857894}
   - component: {fileID: 7662841215084857896}
   - component: {fileID: 7662841215084857897}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: Intreactive Text Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3848,6 +3918,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7662841215325005588}
   - component: {fileID: 7662841215325005591}
+  - component: {fileID: 5291321880511942706}
   m_Layer: 6
   m_Name: In
   m_TagString: MissionItem
@@ -3863,7 +3934,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7662841215325005589}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.45, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3884,7 +3955,19 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1.3737618, y: 0.8657619, z: 0.01}
-  m_Center: {x: 0.00000008547422, y: 0.4340197, z: -0.03}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5291321880511942706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7662841215325005589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7487b15b1c1f6b498f4320cc270d61c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8060538383986098055
 GameObject:
   m_ObjectHideFlags: 0
