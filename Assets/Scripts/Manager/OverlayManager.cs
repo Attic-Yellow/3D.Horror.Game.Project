@@ -25,7 +25,7 @@ public class OverlayManager : MonoBehaviour
     [Header("게임 씬 오버레이")]
     [SerializeField] private GameObject computerOverlay;
     [SerializeField] private GameObject crtOverlay;
-    [SerializeField] private GameObject CurrentMissionOverlay;
+    [SerializeField] private GameObject workListOverlay;
 
     private void Start()
     {
@@ -54,6 +54,11 @@ public class OverlayManager : MonoBehaviour
         if (crtOverlay != null)
         {
             crtOverlay.SetActive(false);
+        }
+
+        if (workListOverlay != null)
+        {
+            workListOverlay.SetActive(false);
         }
     }
 
@@ -132,11 +137,12 @@ public class OverlayManager : MonoBehaviour
         }
     }
 
-    public void CMOverlayController()
+    // 업무 목록 오버레이 활성화 / 비활성화 시키는 함수
+    public void WorkListOverlayController()
     {
-        if(CurrentMissionOverlay != null)
+        if (workListOverlay != null)
         {
-            CurrentMissionOverlay.SetActive(!CurrentMissionOverlay.activeSelf);
+            workListOverlay.SetActive(!workListOverlay.activeSelf);
         }
     }
 
@@ -177,6 +183,20 @@ public class OverlayManager : MonoBehaviour
         if (optionsOverlay != null && computerOverlay != null)
         {
             return optionsOverlay.activeSelf || computerOverlay.activeSelf;
+        }
+        else if (optionsOverlay != null && computerOverlay == null)
+        {
+            return optionsOverlay.activeSelf;
+        }
+        return false;
+    }
+
+    // 캐릭터 설정 오버레이가 활성화되어 있는지 확인하는 함수
+    public bool CheckOnchacterSettingOverlay()
+    {
+        if (chacterSettingOverlay != null)
+        {
+            return chacterSettingOverlay.activeSelf;
         }
         return false;
     }

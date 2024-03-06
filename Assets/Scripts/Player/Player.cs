@@ -203,7 +203,7 @@ public class Player : MonoBehaviour
         if (Holder.Instance.isHaveItems["WorkList"])
         {
             cameraController.SetOverlayCamAtive();
-            GameManager.instance.overlayManager.CMOverlayController();
+            GameManager.instance.overlayManager.WorkListOverlayController();
         }
         else
         {
