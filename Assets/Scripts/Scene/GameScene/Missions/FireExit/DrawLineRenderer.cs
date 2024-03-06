@@ -9,6 +9,7 @@ using Unity.VisualScripting;
 public class DrawLineRenderer : MonoBehaviour
 {
    [SerializeField] private Material defaultMaterial;
+    [SerializeField] private DrawLine drawLine;
     private LineRenderer lr;  
     private int positionCount = 2; 
     private Vector3 PrevPos = Vector3.zero;
@@ -16,8 +17,9 @@ public class DrawLineRenderer : MonoBehaviour
     public bool isDraw = false;
     public int ZCount = 0;
 
+
     public List<GameObject> lines = new();
-    public float camDistance = 0.1f;
+    [SerializeField] private float camDistance = 0.1f;
     private void Awake()
     {
         ScreenShot = FindObjectOfType<ScreenShot>();
@@ -27,12 +29,12 @@ public class DrawLineRenderer : MonoBehaviour
     {
         enabled = false;
     }
-    private void Update()
+    public void OnMouseOver()
     {
         DrawMouse();
-    
     }
-
+   
+   
    private void DrawMouse()
     {
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x,  + Input.mousePosition.y,  camDistance));
@@ -107,9 +109,8 @@ public class DrawLineRenderer : MonoBehaviour
             string savedImagePath = ScreenShot.ScreenShotClick();
             // EditorApplication.ExecuteMenuItem("Assets/Refresh"); //새로고침
             Texture2D savedTexture = LoadTexture(savedImagePath);
-            DrawLine draw = GetComponent<DrawLine>();
-            draw.ChangeImg(savedTexture);
-            draw.SetSignArea(false);
+            drawLine.ChangeImg(savedTexture);
+            drawLine.SetSignArea(false);
             foreach (GameObject line in lines)
             {
                 Destroy(line);

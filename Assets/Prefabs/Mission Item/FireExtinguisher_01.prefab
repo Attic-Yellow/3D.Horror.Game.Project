@@ -957,6 +957,8 @@ GameObject:
   - component: {fileID: 599353143201531402}
   - component: {fileID: 7343739844477134392}
   - component: {fileID: 5946596351695645548}
+  - component: {fileID: 1005075238402613781}
+  - component: {fileID: 7843789828897298571}
   m_Layer: 6
   m_Name: SignBackboard Area
   m_TagString: Untagged
@@ -972,7 +974,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8675164681978303385}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1039,6 +1041,37 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
   m_EffectDistance: {x: 0, y: 0}
   m_UseGraphicAlpha: 1
+--- !u!65 &1005075238402613781
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8675164681978303385}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1, y: 0.07, z: 0.1}
+  m_Center: {x: 0, y: -0.03, z: 0}
+--- !u!114 &7843789828897298571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8675164681978303385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7008b1dfe3445d847a45c8e55c8f7414, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultMaterial: {fileID: 2100000, guid: 7883a34232ef9414a887c592e3133c06, type: 2}
+  drawLine: {fileID: 7144025081826590391}
+  isDraw: 0
+  ZCount: 0
+  lines: []
+  camDistance: 0.3
 --- !u!1001 &5662488344097932593
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1763,6 +1796,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2840138571661135675, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2882904173494886205, guid: cbb680bd36e76c24cb2b8f1c30a8c72e,
         type: 3}
@@ -3499,26 +3537,9 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.07, y: 0.04, z: 0.09}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1701656475
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8592689094815603088}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7008b1dfe3445d847a45c8e55c8f7414, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  defaultMaterial: {fileID: 2100000, guid: 7883a34232ef9414a887c592e3133c06, type: 2}
-  isDraw: 0
-  ZCount: 0
-  lines: []
-  camDistance: 0.3
---- !u!114 &4605476147517636108
+  m_Size: {x: 0.4, y: 0.4, z: 0.09}
+  m_Center: {x: 0.05, y: 0, z: 0}
+--- !u!114 &7144025081826590391
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
