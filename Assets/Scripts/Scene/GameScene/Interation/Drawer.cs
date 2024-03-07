@@ -5,7 +5,7 @@ using UnityEngine;
 public class Drawer : Container
 {
     [SerializeField] private Vector3 initpos;
-
+    private Coroutine drawerCoroutine = null;
     private void Awake()
     {
         initpos = transform.localPosition;
@@ -13,7 +13,10 @@ public class Drawer : Container
 
     public void DrawerController()
     {
-        StartCoroutine(DrawerPosCoroutine());
+        if (drawerCoroutine == null)
+        {
+            drawerCoroutine = StartCoroutine(DrawerPosCoroutine());
+        }
     }
 
     IEnumerator DrawerPosCoroutine()
@@ -34,6 +37,8 @@ public class Drawer : Container
             endPos = new Vector3(initpos.x, initpos.y, initpos.z + 0.3f);
         }
 
+        GameManager.instance.settingsManager.PlayClip(0);
+
         while (elapsedTime < duration)
         {
             elapsedTime += Time.deltaTime;
@@ -41,6 +46,8 @@ public class Drawer : Container
             transform.localPosition = Vector3.Lerp(startPos, endPos, elapsedTime / duration);
             yield return null;
         }
+
+        drawerCoroutine = null;
 
         // 문의 상태 업데이트
         isOpen = !isOpen;

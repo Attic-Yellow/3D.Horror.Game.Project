@@ -37,9 +37,12 @@ public class Flashlight : Item
     void Update()
     {
       
-        if (Input.GetKeyDown(KeyCode.X) && gameObject.activeSelf && Holder.Instance.isHaveItems.ContainsKey(name)&&currentBatteryTime > 0)
+        if (Input.GetKeyDown(KeyCode.X) && gameObject.activeSelf && Holder.Instance.isHaveItems.ContainsKey(name))
         {
-            isOn = !isOn;         
+            if(currentBatteryTime > 0)
+            isOn = !isOn;
+
+            GameManager.instance.settingsManager.PlayClip(9);
         }
         if (isOn)
         {

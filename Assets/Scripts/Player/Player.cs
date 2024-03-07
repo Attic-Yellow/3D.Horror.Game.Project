@@ -101,6 +101,7 @@ public class Player : MonoBehaviour
             prevHitItem.tag = "Untagged";
             prevHitItem.SetTransform(ItemPos);
             prevHitItem.gameObject.SetActive(false);
+            GameManager.instance.settingsManager.PlayClip(8);
             prevHitItem = null;
         }
 
@@ -226,6 +227,8 @@ public class Player : MonoBehaviour
             cameraController.SetPointCamActive();
             Cursor.lockState = isPaused ? CursorLockMode.Confined : CursorLockMode.Locked;
             Cursor.visible = isPaused;
+            if (isPaused)
+                GameManager.instance.settingsManager.PlayClip(9);
         }
 
         GameManager.instance.overlayManager.OptionOverlayController();

@@ -5,6 +5,8 @@ using UnityEngine.UI;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.Rendering;
 using TMPro;
+using System;
+
 
 public class SettingsManager : MonoBehaviour
 {
@@ -17,9 +19,14 @@ public class SettingsManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI lightIntensityText;
     [SerializeField] private TextMeshProUGUI mouseSensitivityText;
     [SerializeField] private AudioSource bgmAudioSource; // 배경음악을 위한 AudioSource
-    [SerializeField] private List<AudioSource> sfxAudioSources = new(); // 효과음을 위한 AudioSource
+    [SerializeField] private AudioSource[] sfxAudioSources; // 효과음을 위한 AudioSource
+    [SerializeField] private AudioSource playerMoveAudioSouce;
+    [SerializeField] private AudioClip[] moveClips;
+    [SerializeField] private AudioClip[] sfxClips;
+
     [SerializeField] private Volume globalVolume;
     [SerializeField] private ColorAdjustments colorAdjustments;
+
 
     private void Awake()
     {
@@ -49,6 +56,70 @@ public class SettingsManager : MonoBehaviour
 
     }
 
+    public void PlayClip(int soundNum)
+    {
+        for(int i = 0; i < sfxAudioSources.Length; i++)
+        {
+            if (!sfxAudioSources[i].isPlaying)
+            {
+                sfxAudioSources[i].clip = sfxClips[soundNum];
+                sfxAudioSources[i].Play();
+                return;
+            }
+
+        }
+    
+    }
+
+    public void StopAudioSource(int soundNum)
+    {
+       for(int i = 0;i < sfxAudioSources.Length;i++)
+        {
+            if (sfxAudioSources[i].clip == sfxClips[soundNum])
+            {
+                sfxAudioSources[i].Stop();
+            }
+        }
+    }
+
+    public void PlayMoveSFX(int num)
+    {
+       if(playerMoveAudioSouce.isPlaying)
+        {
+            if (playerMoveAudioSouce.clip != moveClips[num])
+            {
+                StopMoveSFX();
+                playerMoveAudioSouce.clip = moveClips[num];
+                playerMoveAudioSouce.Play();
+            }
+            else
+            {
+                return;
+            }
+        }
+        else
+        {
+            playerMoveAudioSouce.clip = moveClips[num];
+            playerMoveAudioSouce.Play();
+        }
+    }
+
+
+
+    public void StopMoveSFX()
+    {
+        playerMoveAudioSouce.Stop();
+       ResetPitch();
+    }
+
+    public void ChangeSouncePitch(float _value)
+    {
+        playerMoveAudioSouce.pitch = _value;
+    }
+   public void ResetPitch()
+    {
+        playerMoveAudioSouce.pitch = 1f;
+    }
     // 설정을 로드하고 UI를 업데이트
     public void LoadSettings()
     {
@@ -158,19 +229,5 @@ public class SettingsManager : MonoBehaviour
         }
     }
 
-    public void ChangeAudioClip(AudioSource source, AudioClip clip)
-    {
-        source.clip = clip;
-        source.Play();
-    }
-
-    public void StopAudioSource(AudioSource source)
-    {
-        source.Stop();
-    }
-
-    public void AddSfxSourceList(AudioSource source)
-    {
-        sfxAudioSources.Add(source);
-    }
+  
 }
