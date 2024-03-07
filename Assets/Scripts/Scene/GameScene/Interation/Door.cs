@@ -13,6 +13,7 @@ public class Door : Container
     [SerializeField] protected float rotationSpeed = 4f;
     [SerializeField] protected Quaternion startRotation;
     [SerializeField] protected float openAngle;
+    private Coroutine doorCoroutine = null;
     /*private OcclusionPortal occlusionPortal;*/
 
     // [SerializeField] private Animator animator;
@@ -35,21 +36,29 @@ public class Door : Container
             }
             else
             {
-                if (textcoroutine == null){
-                    textcoroutine = StartCoroutine(ScreenTextOverlayOff());
-                  
+                if (textcoroutine == null)
+                {
+                    textcoroutine = StartCoroutine(ScreenTextOverlayOff()); 
                 }
                 return;
             }   
         }
-        Quaternion targetRotation = isOut ? startRotation * Quaternion.Euler(0f, openAngle, 0f) : startRotation * Quaternion.Euler(0f, -openAngle, 0f);
-        StartCoroutine(RotateDoorCoroutine(targetRotation));
+        if (doorCoroutine == null)
+        {
+            GameManager.instance.settingsManager.PlayClip(5);
+            Quaternion targetRotation = isOut ? startRotation * Quaternion.Euler(0f, openAngle, 0f) : startRotation * Quaternion.Euler(0f, -openAngle, 0f);
+            doorCoroutine = StartCoroutine(RotateDoorCoroutine(targetRotation));
+        }
         /*occlusionPortal.open = true;*/
     }
 
     public void CloseDoor()
     {
-        StartCoroutine(RotateDoorCoroutine(startRotation));
+        if (doorCoroutine == null)
+        {
+            GameManager.instance.settingsManager.PlayClip(3);
+            doorCoroutine = StartCoroutine(RotateDoorCoroutine(startRotation));
+        }
     }
 
     protected IEnumerator RotateDoorCoroutine(Quaternion targetRotation)
@@ -57,13 +66,13 @@ public class Door : Container
         float elapsedTime = 0f;
         Quaternion currentRotation = transform.localRotation;
 
-        while (elapsedTime < 2.5f)
+        while (elapsedTime < 5f)
         {
             elapsedTime += Time.deltaTime * rotationSpeed;
-            transform.localRotation = Quaternion.Slerp(currentRotation, targetRotation, elapsedTime / 2.5f);
+            transform.localRotation = Quaternion.Slerp(currentRotation, targetRotation, elapsedTime / 5f);
             yield return null;
         }
-
+        doorCoroutine = null;
         // 문의 상태 업데이트
         isOpen = !isOpen;
 

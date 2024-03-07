@@ -6,11 +6,10 @@ using UnityEngine;
 public class Container : MonoBehaviour
 {
     public bool isOpen;
-
     public Transform inRoomTransform;
-
     [SerializeField] protected TextMeshProUGUI[] openText;
     [SerializeField] protected TextMeshProUGUI[] closeText;
+
 
     protected void Start()
     {

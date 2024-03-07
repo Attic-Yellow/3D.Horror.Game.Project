@@ -12,6 +12,10 @@ public class Santa : MovingEnemy
     [SerializeField] Transform enemyForward;
     private float stunTime = 3.26f;
     private float stunTimer = 0f;
+   [SerializeField]private AudioSource[] souce;
+   [SerializeField]private AudioClip[] clips;
+
+
     private void Update()
     {
 
@@ -19,6 +23,11 @@ public class Santa : MovingEnemy
 
         if(!isStunned)
         CheckAll();
+
+        if(isMoving)
+        {
+           
+        }
 
         switch (state)
         {
@@ -121,7 +130,7 @@ public class Santa : MovingEnemy
                 break;
             case State.Over:
 
-
+                EnemySFX(0);
                 break;
         }
 
@@ -165,5 +174,29 @@ public class Santa : MovingEnemy
 
     }
 
+    private void EnemyMoveSound(int _num) //루프를 하는 오디오소스
+    {
+        if (souce[0].clip == clips[_num])
+        {
+            return;  
+        }
+        else
+        {
+                souce[0].clip = clips[_num];
+                souce[0].Play();
+        }
+    }
+    private void EnemySFX(int _num)
+    {
+        if (souce[1].isPlaying)
+        {
+            return;
+        }
+        else
+        {
+            souce[1].clip = clips[_num];
+            souce[1].Play();
+        }
+    }
 
 }

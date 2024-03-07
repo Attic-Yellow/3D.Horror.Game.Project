@@ -30,6 +30,8 @@ public class CheckDraggableObjects : MonoBehaviour
         if (isCheck)
         {
             print("들어왔어");
+            int clipNum = isSuccess ? 6 : 7;
+            GameManager.instance.settingsManager.PlayClip(clipNum);
             animator.SetBool("Success", isSuccess);
 
         }
@@ -54,6 +56,7 @@ public class CheckDraggableObjects : MonoBehaviour
         {
             isSuccess = false;
             isCheck = true;
+
             return;
         }
         else

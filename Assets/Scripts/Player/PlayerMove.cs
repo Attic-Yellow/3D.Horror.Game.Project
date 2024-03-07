@@ -56,27 +56,68 @@ public class PlayerMove : MonoBehaviour
         {
             case State.Standing:
                 isMoving = inputValue.magnitude > 0f;
-                if (inputValue.y < 0) //뒤로 가는키를 누르면 이속감소
+                if (isMoving)
                 {
-                    currentSpeed = isRun ? sprintSpeed * 0.5f : moveSpeed * 0.7f;
+                    if (inputValue.y < 0) //뒤로 가는키를 누르면 이속감소
+                    {
+                        currentSpeed = isRun ? sprintSpeed * 0.5f : moveSpeed * 0.7f;
+                        GameManager.instance.settingsManager.ChangeSouncePitch(0.7f);
+                    }
+                    else
+                    {
+                        currentSpeed = isRun ? sprintSpeed : moveSpeed;
+                        GameManager.instance.settingsManager.ResetPitch();
+                    }
+                    if (!isRun)
+                    {
+                        GameManager.instance.settingsManager.PlayMoveSFX(0);
+                    }
+                    else
+                    {
+                        GameManager.instance.settingsManager.PlayMoveSFX(1);
+                    }
                 }
                 else
                 {
-                    currentSpeed = isRun ? sprintSpeed : moveSpeed;
+                    GameManager.instance.settingsManager.StopMoveSFX();
                 }
+
+
+           
 
                 break;
             case State.Crouch:
 
-                if (inputValue.y < 0)
+                bool isMove = inputValue.magnitude > 0f;
+                if (isMove)
                 {
-                    currentSpeed = isRun ? crouchRunSpeed * 0.5f : crouchWalkSpeed * 0.7f;
+                    if (inputValue.y < 0)
+                    {
+                        currentSpeed = isRun ? crouchRunSpeed * 0.5f : crouchWalkSpeed * 0.7f;
+                        GameManager.instance.settingsManager.ChangeSouncePitch(0.5f);
+                    }
+                    else
+                    {
+                        currentSpeed = isRun ? crouchRunSpeed : crouchWalkSpeed;
+                        GameManager.instance.settingsManager.ResetPitch();
+                    }
+
+                    if (!isRun)
+                    {
+                        GameManager.instance.settingsManager.ChangeSouncePitch(0.7f);
+                        GameManager.instance.settingsManager.PlayMoveSFX(2);
+                    }
+                    else
+                    {
+                        GameManager.instance.settingsManager.PlayMoveSFX(2);
+                    }
                 }
                 else
                 {
-                    currentSpeed = isRun ? crouchRunSpeed : crouchWalkSpeed;
+                    GameManager.instance.settingsManager.StopMoveSFX();
                 }
-
+                
+             
                 break;
         }
 
@@ -144,4 +185,5 @@ public class PlayerMove : MonoBehaviour
         animator.SetLayerWeight(1, 0f);
         //TODO : 펼쳐지는 애니메이션 및 카메라 무브.
     }
+
 }
