@@ -6,11 +6,21 @@ using UnityEngine;
 public class Container : MonoBehaviour
 {
     public bool isOpen;
-
     public Transform inRoomTransform;
-
+    [SerializeField] protected AudioSource source;
+    [SerializeField] protected AudioClip openClip;
+    [SerializeField] protected AudioClip closeClip;
     [SerializeField] protected TextMeshProUGUI[] openText;
     [SerializeField] protected TextMeshProUGUI[] closeText;
+
+    protected void Awake()
+    {
+        source = GetComponent<AudioSource>();
+        /*if (source != null && GameManager.instance.settingsManager != null)
+        {
+            GameManager.instance.settingsManager.AddSfxSourceList(source);
+        }*/
+    }
 
     protected void Start()
     {

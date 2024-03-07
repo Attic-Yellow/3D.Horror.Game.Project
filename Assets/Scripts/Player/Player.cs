@@ -83,6 +83,7 @@ public class Player : MonoBehaviour
             battery = null;
         }
 
+        if(comeGhost != null)
         comeGhost.isSee = false;
     }
 

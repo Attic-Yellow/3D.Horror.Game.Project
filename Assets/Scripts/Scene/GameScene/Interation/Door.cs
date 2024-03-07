@@ -13,12 +13,14 @@ public class Door : Container
     [SerializeField] protected float rotationSpeed = 4f;
     [SerializeField] protected Quaternion startRotation;
     [SerializeField] protected float openAngle;
+    [SerializeField] private AudioClip lockedClip;
     /*private OcclusionPortal occlusionPortal;*/
 
     // [SerializeField] private Animator animator;
 
     protected void Awake()
     {
+        base.Awake();
         startRotation = Quaternion.identity;
         /*occlusionPortal = GetComponent<OcclusionPortal>();*/
     }
@@ -35,13 +37,15 @@ public class Door : Container
             }
             else
             {
-                if (textcoroutine == null){
-                    textcoroutine = StartCoroutine(ScreenTextOverlayOff());
-                  
+                if (textcoroutine == null)
+                {
+                    GameManager.instance.settingsManager.ChangeAudioClip(source, lockedClip);
+                    textcoroutine = StartCoroutine(ScreenTextOverlayOff()); 
                 }
                 return;
             }   
         }
+        GameManager.instance.settingsManager.ChangeAudioClip(source, openClip);
         Quaternion targetRotation = isOut ? startRotation * Quaternion.Euler(0f, openAngle, 0f) : startRotation * Quaternion.Euler(0f, -openAngle, 0f);
         StartCoroutine(RotateDoorCoroutine(targetRotation));
         /*occlusionPortal.open = true;*/
@@ -49,6 +53,7 @@ public class Door : Container
 
     public void CloseDoor()
     {
+        GameManager.instance.settingsManager.ChangeAudioClip(source, closeClip);
         StartCoroutine(RotateDoorCoroutine(startRotation));
     }
 
@@ -63,7 +68,7 @@ public class Door : Container
             transform.localRotation = Quaternion.Slerp(currentRotation, targetRotation, elapsedTime / 2.5f);
             yield return null;
         }
-
+       
         // 문의 상태 업데이트
         isOpen = !isOpen;
 
