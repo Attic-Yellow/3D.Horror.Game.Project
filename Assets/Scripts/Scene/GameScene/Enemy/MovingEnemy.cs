@@ -30,12 +30,13 @@ public class MovingEnemy : Enemy
     [SerializeField] protected float eventDelay = 30f;
     [SerializeField] protected bool isMoving = false;
 
-    public float runSpeed = 3.5f;
+    public float runSpeed;
 
     private new void Awake()
     {
         base.Awake();
         enemyCameraDetection = GetComponent<EnemyCameraDetection>();
+        runSpeed = walkSpeed * 1.5f;
     }
 
     protected void Start()
@@ -49,33 +50,35 @@ public class MovingEnemy : Enemy
         if (player.isOver)
         {
             agent.ResetPath();
-            return;
+            state = State.Over;
         }
-
-        watchedPlayer = enemyCameraDetection.IsPlayerVisible();
-
-        if (state != State.Follow && IsMovingCheck())
+        else
         {
-           
-            if (openDoorCoroutine != null)
+            watchedPlayer = enemyCameraDetection.IsPlayerVisible();
+
+            if (state != State.Follow && IsMovingCheck())
             {
-                StopCoroutine(openDoorCoroutine);
-                isOpenAndMove = false;
+
+                if (openDoorCoroutine != null)
+                {
+                    StopCoroutine(openDoorCoroutine);
+                    isOpenAndMove = false;
+                }
+                state = State.Follow;
+
+                return;
             }
-            state = State.Follow;
 
-            return;
-        }
+            if (isFrontDoor == null)
+            {
+                isFrontDoor = enemyCameraDetection.DoorCheck();
 
-        if (isFrontDoor == null)
-        {
-            isFrontDoor = enemyCameraDetection.DoorCheck();
+            }
+            if (!agent.hasPath && isMoving)
+            {
+                isMoving = false;
 
-        }
-        if (!agent.hasPath && isMoving)
-        {
-            isMoving = false;
-
+            }
         }
     }
 
@@ -140,30 +143,20 @@ public class MovingEnemy : Enemy
 
     }
 
-    protected IEnumerator OpenAndIntheRoom()
-    {
-        agent.ResetPath();
-        isOpenAndMove = true;
-        print("문여는 애니메이션");
-        yield return new WaitForSeconds(5f); //문열리는시간 대기
-        isFrontDoor.OpenDoor();
-        print("문염");
-        yield return new WaitUntil(() => isFrontDoor.isOpen);
-        /*nms.BuildNavMesh();*/
-        state = State.Move;
-        openDoorCoroutine = null;
-    }
+   
     protected bool IsMovingCheck()
     {
         float distanceToPlayer = Vector3.Distance(player.transform.position, transform.position);
-        if (distanceToPlayer <= 15)
+        if (distanceToPlayer <= 10)
         {
             PlayerMove playerMove = player.GetComponent<PlayerMove>();
             if (playerMove.isMoving)
             {
-                agent.SetDestination(player.transform.position);
-                print("적이 움직이고 있는거 체크함");
                 return true;
+            }
+            else
+            {
+                GameManager.instance.settingsManager.PlayClip(10);
             }
         }
 

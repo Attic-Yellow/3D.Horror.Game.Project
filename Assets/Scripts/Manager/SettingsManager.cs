@@ -60,27 +60,37 @@ public class SettingsManager : MonoBehaviour
     {
         for(int i = 0; i < sfxAudioSources.Length; i++)
         {
-            if (!sfxAudioSources[i].isPlaying)
+            if (sfxAudioSources[i].isPlaying && sfxAudioSources[i].clip == sfxClips[soundNum])
+            {
+                return;
+            }
+        }
+       for(int i = 0;i < sfxAudioSources.Length; i++)
+        {
+           if(!sfxAudioSources[i].isPlaying)
             {
                 sfxAudioSources[i].clip = sfxClips[soundNum];
                 sfxAudioSources[i].Play();
                 return;
             }
-
         }
-    
     }
 
-    public void StopAudioSource(int soundNum)
+    public void PlayClip(AudioClip clip)
     {
-       for(int i = 0;i < sfxAudioSources.Length;i++)
+        for (int i = 0; i < sfxAudioSources.Length; i++)
         {
-            if (sfxAudioSources[i].clip == sfxClips[soundNum])
+            if (!sfxAudioSources[i].isPlaying)
             {
-                sfxAudioSources[i].Stop();
+                sfxAudioSources[i].clip = clip;
+                sfxAudioSources[i].Play();
+                return;
             }
+
         }
     }
+
+ 
 
     public void PlayMoveSFX(int num)
     {
@@ -103,7 +113,7 @@ public class SettingsManager : MonoBehaviour
             playerMoveAudioSouce.Play();
         }
     }
-
+   
 
 
     public void StopMoveSFX()
@@ -111,7 +121,17 @@ public class SettingsManager : MonoBehaviour
         playerMoveAudioSouce.Stop();
        ResetPitch();
     }
+    public void StopThisSFX(int _num)
+    {
+       for(int i = 0; i < sfxAudioSources.Length;i++)
+        {
+          if(sfxAudioSources[i].isPlaying && sfxAudioSources[i].clip == sfxClips[_num])
+            {
+                sfxAudioSources[i].Stop();
+            }
+        }
 
+    }
     public void ChangeSouncePitch(float _value)
     {
         playerMoveAudioSouce.pitch = _value;
@@ -121,6 +141,11 @@ public class SettingsManager : MonoBehaviour
         playerMoveAudioSouce.pitch = 1f;
     }
     // 설정을 로드하고 UI를 업데이트
+
+    public AudioClip GetAudioClip(int _num)
+    {
+        return sfxClips[_num];
+    }
     public void LoadSettings()
     {
         float lightIntensityValue = GameManager.instance.GetLightIntensity();

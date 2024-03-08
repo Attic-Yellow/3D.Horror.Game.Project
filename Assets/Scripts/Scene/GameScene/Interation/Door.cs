@@ -7,13 +7,14 @@ using UnityEngine;
 
 public class Door : Container
 {
+    public bool isRoomDoor = false;
     public bool isOut = true; // 밖에서 문을 여는지 안에서 여는지
     public bool isLock = false;
     private Coroutine textcoroutine = null;
     [SerializeField] protected float rotationSpeed = 4f;
     [SerializeField] protected Quaternion startRotation;
     [SerializeField] protected float openAngle;
-    private Coroutine doorCoroutine = null;
+    public Coroutine doorCoroutine = null;
     /*private OcclusionPortal occlusionPortal;*/
 
     // [SerializeField] private Animator animator;
@@ -24,7 +25,7 @@ public class Door : Container
         /*occlusionPortal = GetComponent<OcclusionPortal>();*/
     }
 
-    public void OpenDoor()
+    public void OpenDoor(GameObject opener)
     {
         print("문열어");
         if(isLock)
@@ -45,7 +46,15 @@ public class Door : Container
         }
         if (doorCoroutine == null)
         {
-            GameManager.instance.settingsManager.PlayClip(5);
+            if(opener.GetComponent<Player>() != null)
+            {
+                GameManager.instance.settingsManager.PlayClip(5);
+            }
+           if(opener.GetComponent<Santa>() != null)
+            {
+                Santa santa = opener.GetComponent<Santa>();
+                santa.EnemySFX(1, GameManager.instance.settingsManager.GetAudioClip(5));
+            }
             Quaternion targetRotation = isOut ? startRotation * Quaternion.Euler(0f, openAngle, 0f) : startRotation * Quaternion.Euler(0f, -openAngle, 0f);
             doorCoroutine = StartCoroutine(RotateDoorCoroutine(targetRotation));
         }
