@@ -13,7 +13,7 @@ public class Enemy : MonoBehaviour
     protected NavMeshAgent agent;
     protected Player player;
 
-
+    public AudioClip overClip;
     public Transform gameoverCamPos;
     public float walkSpeed;
 

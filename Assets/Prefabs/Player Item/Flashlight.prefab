@@ -336,7 +336,7 @@ MonoBehaviour:
   originalRotate: {x: 0, y: 0, z: 0, w: 0}
   lightGO: {fileID: 6956195836446193785}
   isOn: 0
-  lightColl: {fileID: 0}
+  lightColl: {fileID: 7683507469422766607}
 --- !u!1 &1863083720254318315
 GameObject:
   m_ObjectHideFlags: 0

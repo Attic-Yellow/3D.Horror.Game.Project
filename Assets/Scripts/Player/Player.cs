@@ -134,7 +134,11 @@ public class Player : MonoBehaviour
             Drawer drawer = lastHitGameObject.gameObject.GetComponentInParent<Drawer>();
             drawer.DrawerController();
         }
-
+        if(lastHitGameObject !=null && lastHitGameObject.GetComponent<Switch>()!=null)
+        {
+            Switch sw = lastHitGameObject.gameObject.GetComponent<Switch>();
+            sw.OnOffLights();
+        }
         if (locker != null && !locker.timelinePlaying)
         {
             if (!locker.isIn)
@@ -266,6 +270,8 @@ public class Player : MonoBehaviour
     {
         timelineFinsish = true;
         CameraPriorityChange(11);
+        GameManager.instance.settingsManager.PlayClip(collisionEnemy.overClip);
+
     }
 
     private void TimelineEndCheck()
@@ -281,6 +287,7 @@ public class Player : MonoBehaviour
             collisionEnemy = other.gameObject.GetComponent<Enemy>();
             isOver = true;
             OnTimeline();
+            GameManager.instance.settingsManager.PlayClip(11);
             if(other.GetComponent<ComeGhost>() != null)
             {
                 other.GetComponent<ComeGhost>().SetActiveTrue();

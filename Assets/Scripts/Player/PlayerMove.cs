@@ -44,7 +44,10 @@ public class PlayerMove : MonoBehaviour
     {
         if (!player.isOver)
             Move();
-
+        else
+        {
+            GameManager.instance.settingsManager.StopMoveSFX();
+        }
     }
     private void Move()
     {

@@ -24,9 +24,18 @@ public class Santa : MovingEnemy
         if(!isStunned)
         CheckAll();
 
-        if(isMoving)
+        if(agent.hasPath)
         {
-           
+            if (state != State.Follow)
+            {
+                SoundPitchChange(0.5f);
+                EnemySFX(0,0);
+            }
+            else
+            {
+                SoundPitchChange(0.5f * 1.5f);
+                EnemySFX(0,0);
+            }
         }
 
         switch (state)
@@ -129,8 +138,7 @@ public class Santa : MovingEnemy
                 }
                 break;
             case State.Over:
-
-                EnemySFX(0);
+                print("OVER");
                 break;
         }
 
@@ -174,29 +182,79 @@ public class Santa : MovingEnemy
 
     }
 
-    private void EnemyMoveSound(int _num) //루프를 하는 오디오소스
+    private void SoundPitchChange(float _num)
     {
-        if (souce[0].clip == clips[_num])
-        {
-            return;  
-        }
-        else
-        {
-                souce[0].clip = clips[_num];
-                souce[0].Play();
-        }
+        if (souce[0].pitch == _num)
+            return;
+
+            souce[0].pitch = _num;
     }
-    private void EnemySFX(int _num)
+    private void EnemySFX(int souceNum, int _num)
     {
-        if (souce[1].isPlaying)
+        if (souce[souceNum].isPlaying)
         {
             return;
         }
         else
         {
-            souce[1].clip = clips[_num];
-            souce[1].Play();
+            souce[souceNum].clip = clips[_num];
+            souce[souceNum].Play();
         }
     }
 
+    protected IEnumerator OpenAndIntheRoom()
+    {
+        agent.ResetPath();
+        isOpenAndMove = true;
+        print("문여는 애니메이션");
+        yield return new WaitForSeconds(1f);
+        EnemySFX(1,1);
+        yield return new WaitForSeconds(5f); //문열리는시간 대기
+        isFrontDoor.OpenDoor();
+        print("문염");
+        yield return new WaitUntil(() => isFrontDoor.isOpen);
+        /*nms.BuildNavMesh();*/
+        state = State.Move;
+        openDoorCoroutine = null;
+    }
+
+    protected override void CheckAll()
+    {
+        timer += Time.deltaTime;
+
+        if (player.isOver)
+        {
+            agent.ResetPath();
+            state = State.Over;
+         
+        }
+        else
+        {
+            watchedPlayer = enemyCameraDetection.IsPlayerVisible();
+
+            if (state != State.Follow && (watchedPlayer || IsMovingCheck()))
+            {
+
+                if (openDoorCoroutine != null)
+                {
+                    StopCoroutine(openDoorCoroutine);
+                    isOpenAndMove = false;
+                }
+                state = State.Follow;
+
+                return;
+            }
+
+            if (isFrontDoor == null)
+            {
+                isFrontDoor = enemyCameraDetection.DoorCheck();
+
+            }
+            if (!agent.hasPath && isMoving)
+            {
+                isMoving = false;
+
+            }
+        }
+    }
 }
