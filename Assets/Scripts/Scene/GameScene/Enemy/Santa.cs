@@ -12,8 +12,8 @@ public class Santa : MovingEnemy
     [SerializeField] Transform enemyForward;
     private float stunTime = 3.26f;
     private float stunTimer = 0f;
-   [SerializeField]private AudioSource[] souce;
-   [SerializeField]private AudioClip[] clips;
+   public AudioSource[] souces;
+   public AudioClip[] clips;
 
 
     private void Update()
@@ -22,19 +22,19 @@ public class Santa : MovingEnemy
         CheckSturn();
 
         if(!isStunned)
-        CheckAll();
+       this.CheckAll();
 
         if(agent.hasPath)
         {
             if (state != State.Follow)
             {
                 SoundPitchChange(0.5f);
-                EnemySFX(0,0);
+                EnemySFX(0,clips[0]);
             }
             else
             {
                 SoundPitchChange(0.5f * 1.5f);
-                EnemySFX(0,0);
+                EnemySFX(0,clips[0]);
             }
         }
 
@@ -66,15 +66,18 @@ public class Santa : MovingEnemy
                 {
                     if (!isOpenAndMove)
                     {
-                        if (Vector3.Distance(isFrontDoor.gameObject.transform.position, transform.position) >= 1.5f )
+                        if (!agent.hasPath)
                         {
-                            print("문앞으로 이동");
-                            print(Vector3.Distance(isFrontDoor.gameObject.transform.position, transform.position));
-                            agent.SetDestination(isFrontDoor.gameObject.transform.position);
-                        }
-                        else
-                        {
-                            state = State.OpenDoor;
+                            if (Vector3.Distance(isFrontDoor.gameObject.transform.position, transform.position) >= 2f)
+                            {
+                                print("문앞으로 이동");
+                                print(isFrontDoor.gameObject.transform.position);
+                                agent.SetDestination(isFrontDoor.gameObject.transform.position);
+                            }
+                            else
+                            {
+                                state = State.OpenDoor;
+                            }
                         }
                     }
                     else
@@ -100,9 +103,11 @@ public class Santa : MovingEnemy
                 timer = 0f;
                 agent.speed = runSpeed;
                 agent.SetDestination(player.transform.position);
-                if (!watchedPlayer && !agent.hasPath)
+                if (!agent.hasPath)
                 {
+                    isFrontDoor = MostNearDoor();
                     state = State.Move;
+                    
                 }
                 break;
             case State.Crouch:
@@ -184,21 +189,21 @@ public class Santa : MovingEnemy
 
     private void SoundPitchChange(float _num)
     {
-        if (souce[0].pitch == _num)
+        if (souces[0].pitch == _num)
             return;
 
-            souce[0].pitch = _num;
+            souces[0].pitch = _num;
     }
-    private void EnemySFX(int souceNum, int _num)
+    public void EnemySFX(int souceNum, AudioClip _clip)
     {
-        if (souce[souceNum].isPlaying)
+        if (souces[souceNum].isPlaying)
         {
             return;
         }
         else
         {
-            souce[souceNum].clip = clips[_num];
-            souce[souceNum].Play();
+            souces[souceNum].clip = _clip;
+            souces[souceNum].Play();
         }
     }
 
@@ -208,9 +213,9 @@ public class Santa : MovingEnemy
         isOpenAndMove = true;
         print("문여는 애니메이션");
         yield return new WaitForSeconds(1f);
-        EnemySFX(1,1);
+        EnemySFX(1,clips[1]);
         yield return new WaitForSeconds(5f); //문열리는시간 대기
-        isFrontDoor.OpenDoor();
+        isFrontDoor.OpenDoor(gameObject);
         print("문염");
         yield return new WaitUntil(() => isFrontDoor.isOpen);
         /*nms.BuildNavMesh();*/
@@ -230,17 +235,19 @@ public class Santa : MovingEnemy
         }
         else
         {
+
             watchedPlayer = enemyCameraDetection.IsPlayerVisible();
 
             if (state != State.Follow && (watchedPlayer || IsMovingCheck()))
             {
-
+                print($"state{state != State.Follow}, watch {watchedPlayer}, move {IsMovingCheck()} ");
                 if (openDoorCoroutine != null)
                 {
                     StopCoroutine(openDoorCoroutine);
                     isOpenAndMove = false;
                 }
                 state = State.Follow;
+                print("여기서 follow로");
 
                 return;
             }
@@ -256,5 +263,45 @@ public class Santa : MovingEnemy
 
             }
         }
+    }
+
+    private Door MostNearDoor()
+    {
+        Collider[] colliders = Physics.OverlapSphere(transform.position, 10f);
+        Door[] doors = new Door[2];
+        foreach(Collider collider in colliders)
+        {
+            if (collider.GetComponent<Door>() != null)
+            {
+                Door door = collider.GetComponent<Door>();
+                if (!door.isLock && door.isRoomDoor &&(!door.isOpen || door.doorCoroutine != null))
+                {                
+                    if (doors[0] != null && doors[1] == null)
+                    {
+                        doors[1] = door;
+                        break;
+                    }
+                    if (doors[0] == null)
+                        doors[0] = door;
+                }
+            }
+        }
+        Vector3 diffDis = player.transform.position - transform.position;
+        float[] diff = new float[doors.Length];
+       for(int i = 0; i < doors.Length; i++) 
+        {
+          diffDis[i] =  Vector3.Distance(doors[i].transform.position, diffDis);
+        }
+
+        bool nearstDoorIsFirst = false;
+        if (diff[0] < diff[1])
+        {
+            nearstDoorIsFirst = true;
+        }
+        Door nearstDoor;
+        print($"{doors[0].transform.position}, {doors[1].transform.position}");
+        nearstDoor = nearstDoorIsFirst ? doors[0] : doors[1];
+        return nearstDoor;
+
     }
 }

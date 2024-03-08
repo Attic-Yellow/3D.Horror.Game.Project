@@ -152,8 +152,6 @@ public class MovingEnemy : Enemy
             PlayerMove playerMove = player.GetComponent<PlayerMove>();
             if (playerMove.isMoving)
             {
-                agent.SetDestination(player.transform.position);
-                print("적이 움직이고 있는거 체크함");
                 return true;
             }
             else

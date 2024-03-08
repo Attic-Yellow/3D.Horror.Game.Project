@@ -115,7 +115,7 @@ public class Player : MonoBehaviour
             }
             else
             {
-                door.OpenDoor();
+                door.OpenDoor(gameObject);
             }
         }
 

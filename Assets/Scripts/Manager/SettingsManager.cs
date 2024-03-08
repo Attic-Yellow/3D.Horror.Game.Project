@@ -141,6 +141,11 @@ public class SettingsManager : MonoBehaviour
         playerMoveAudioSouce.pitch = 1f;
     }
     // 설정을 로드하고 UI를 업데이트
+
+    public AudioClip GetAudioClip(int _num)
+    {
+        return sfxClips[_num];
+    }
     public void LoadSettings()
     {
         float lightIntensityValue = GameManager.instance.GetLightIntensity();
