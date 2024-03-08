@@ -3257,6 +3257,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: f44a49054b67f4501bd1d5228e87e6ef,
         type: 3}
+      propertyPath: m_StaticShadowCaster
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: f44a49054b67f4501bd1d5228e87e6ef,
+        type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 793f478d17192415ebe0cee202b6578d, type: 2}
@@ -3311,7 +3316,6 @@ MonoBehaviour:
   closeText:
   - {fileID: 2893848994882017554}
   initpos: {x: 0, y: 0, z: 0}
-  moveSpeed: 6
 --- !u!1001 &1819450601221659568
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3376,6 +3380,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: f44a49054b67f4501bd1d5228e87e6ef,
         type: 3}
+      propertyPath: m_StaticShadowCaster
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: f44a49054b67f4501bd1d5228e87e6ef,
+        type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 793f478d17192415ebe0cee202b6578d, type: 2}
@@ -3429,7 +3438,6 @@ MonoBehaviour:
   closeText:
   - {fileID: 2434225636968297250}
   initpos: {x: 0, y: 0, z: 0}
-  moveSpeed: 6
 --- !u!4 &2212751568398023771 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f44a49054b67f4501bd1d5228e87e6ef,
@@ -3500,6 +3508,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: f44a49054b67f4501bd1d5228e87e6ef,
         type: 3}
+      propertyPath: m_StaticShadowCaster
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: f44a49054b67f4501bd1d5228e87e6ef,
+        type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 793f478d17192415ebe0cee202b6578d, type: 2}
@@ -3559,7 +3572,6 @@ MonoBehaviour:
   closeText:
   - {fileID: 2605502938316388632}
   initpos: {x: 0, y: 0, z: 0}
-  moveSpeed: 6
 --- !u!1001 &5634384479067321657
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3624,6 +3636,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: f44a49054b67f4501bd1d5228e87e6ef,
         type: 3}
+      propertyPath: m_StaticShadowCaster
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: f44a49054b67f4501bd1d5228e87e6ef,
+        type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 793f478d17192415ebe0cee202b6578d, type: 2}
@@ -3677,7 +3694,6 @@ MonoBehaviour:
   closeText:
   - {fileID: 6493881724718939413}
   initpos: {x: 0, y: 0, z: 0}
-  moveSpeed: 6
 --- !u!4 &5313090503161762514 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f44a49054b67f4501bd1d5228e87e6ef,
@@ -3748,6 +3764,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: f44a49054b67f4501bd1d5228e87e6ef,
         type: 3}
+      propertyPath: m_StaticShadowCaster
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: f44a49054b67f4501bd1d5228e87e6ef,
+        type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 793f478d17192415ebe0cee202b6578d, type: 2}
@@ -3807,7 +3828,6 @@ MonoBehaviour:
   closeText:
   - {fileID: 5198656658223793085}
   initpos: {x: 0, y: 0, z: 0}
-  moveSpeed: 6
 --- !u!1001 &8634944271541934567
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3872,6 +3892,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: f44a49054b67f4501bd1d5228e87e6ef,
         type: 3}
+      propertyPath: m_StaticShadowCaster
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: f44a49054b67f4501bd1d5228e87e6ef,
+        type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 793f478d17192415ebe0cee202b6578d, type: 2}
@@ -3931,4 +3956,3 @@ MonoBehaviour:
   closeText:
   - {fileID: 2766382224287667577}
   initpos: {x: 0, y: 0, z: 0}
-  moveSpeed: 6
