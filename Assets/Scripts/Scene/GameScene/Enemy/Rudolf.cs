@@ -12,6 +12,13 @@ public class Rudolf : MovingEnemy
     [SerializeField] private bool isGoToPlayer = false;
     [SerializeField] private bool isPlayerCome = false;
     [SerializeField] private bool isRunAway = false;
+    private CapsuleCollider myCollider;
+    private new void Awake()
+    {
+        base.Awake();
+        myCollider = GetComponent<CapsuleCollider>();
+        myCollider.enabled = false;
+    }
 
     private void Update()
     {
@@ -25,34 +32,37 @@ public class Rudolf : MovingEnemy
                 timer += Time.deltaTime;
                 Debug.Log("적이 화면을 벗어났습니다!");
 
-                if(isRunAway)
-                gameObject.SetActive(false);
+                if (timer > 2f) //2초간 벗어나면
+                {
+                    if (!agent.hasPath)
+                    {
+                        isGoToPlayer = true;
+                        myCollider.enabled = true;
+                        agent.SetDestination(player.transform.position);
+                    }
+                }
+
             }
             else //화면 안에있으면
             {
                 timer = 0f;
                 Debug.Log("적이 화면 안에 감지");
 
-                if (isGoToPlayer)
+                if (isGoToPlayer && !player.isOver)
+                {
                     RunAway();
-     
+                    StartCoroutine(SetAtiveFalse());
+                }
 
             }
-            if (timer > 2f) //2초간 벗어나면
-            {
-                if (!agent.hasPath)
-                {
-                    isGoToPlayer = true;
-                    agent.SetDestination(player.transform.position);
-                }
-            }
+          
         }
         else //플레이어를 체크를 아직 못했으면
         {
             Collider[] colliders = Physics.OverlapSphere(transform.position, 2);
             foreach(Collider collider in colliders)
             {
-               if (collider.GetComponent<Player>()!=null)
+               if (collider.GetComponent<Player>() != null)
                 {
                     isPlayerCome = true;
                 }
@@ -65,9 +75,9 @@ public class Rudolf : MovingEnemy
         isGoToPlayer = false;
         isRunAway = true;
         bool isFind = false;
-        Vector3 randomDirection = Random.insideUnitSphere;
-        randomDirection.y = 0;
-        Vector3 targetPosition = player.transform.position + randomDirection.normalized * 10f; 
+        Vector3 playerDirection = transform.position - player.transform.position;
+        playerDirection.y = 0;
+        Vector3 targetPosition = player.transform.position + playerDirection.normalized * 10f;
 
         while (!isFind)
         {
@@ -79,7 +89,7 @@ public class Rudolf : MovingEnemy
                 isFind = true;
             }
         }
-
+        GameManager.instance.settingsManager.PlayClip(14);
         agent.SetDestination(targetPos);
     
     }
@@ -88,5 +98,11 @@ public class Rudolf : MovingEnemy
     {
         animator.SetBool("PlayerCheck", isPlayerCome&&isGoToPlayer);
         animator.SetBool("IsRunAway",isPlayerCome &&!isGoToPlayer);
+    }
+
+    private IEnumerator SetAtiveFalse()
+    {
+        yield return new WaitForSeconds(2f);
+        gameObject.SetActive(false);
     }
 }

@@ -80,10 +80,13 @@ public class SettingsManager : MonoBehaviour
     {
         for (int i = 0; i < sfxAudioSources.Length; i++)
         {
+            print($"{i}. {sfxAudioSources[i].isPlaying}");
             if (!sfxAudioSources[i].isPlaying)
             {
+              
                 sfxAudioSources[i].clip = clip;
                 sfxAudioSources[i].Play();
+               
                 return;
             }
 
@@ -125,8 +128,10 @@ public class SettingsManager : MonoBehaviour
     {
        for(int i = 0; i < sfxAudioSources.Length;i++)
         {
+
           if(sfxAudioSources[i].isPlaying && sfxAudioSources[i].clip == sfxClips[_num])
             {
+                print("여기서 끄는중");
                 sfxAudioSources[i].Stop();
             }
         }

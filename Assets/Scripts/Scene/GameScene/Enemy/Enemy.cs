@@ -15,6 +15,7 @@ public class Enemy : MonoBehaviour
 
     public AudioClip overClip;
     public Transform gameoverCamPos;
+    public Transform gameoverLookAt;
     public float walkSpeed;
 
     protected void Awake()

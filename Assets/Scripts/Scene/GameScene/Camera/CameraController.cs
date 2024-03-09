@@ -62,7 +62,6 @@ public class CameraController : MonoBehaviour
 
     public bool GetOverlayCamAtive()
     {
-        print(overlayCam.gameObject.activeSelf);
         return overlayCam.gameObject.activeSelf;
     }
 }

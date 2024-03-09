@@ -8,6 +8,7 @@ using UnityEngine;
 public class Door : Container
 {
     public bool isRoomDoor = false;
+    public bool canOpenEnemy = false;
     public bool isOut = true; // 밖에서 문을 여는지 안에서 여는지
     public bool isLock = false;
     private Coroutine textcoroutine = null;

@@ -15,12 +15,12 @@ public class PlayerMove : MonoBehaviour
     private CharacterController controller;
     private Animator animator;
 
-    public float moveSpeed;
-    public float sprintSpeed;
-    public float crouchWalkSpeed;
-    public float crouchRunSpeed;
-    public float gravityScale = 1f;
-
+    [SerializeField] private float moveSpeed;
+    [SerializeField] private float sprintSpeed;
+    [SerializeField] private float crouchWalkSpeed;
+    [SerializeField] private float crouchRunSpeed;
+    [SerializeField] private float gravityScale = 1f;
+    [SerializeField] private float jumpForce;
 
     private float currentSpeed;
     private bool isRun = false;
@@ -29,7 +29,7 @@ public class PlayerMove : MonoBehaviour
     private Vector3 moveDir;
     public bool isMoving;
     private Player player;
-
+    
 
     private void Awake()
     {
@@ -39,7 +39,7 @@ public class PlayerMove : MonoBehaviour
         state = State.Standing;
         animator.SetLayerWeight(1, 0);
     }
-
+    
     private void Update()
     {
         if (!player.isOver && !player.cameraController.GetOverlayCamAtive())
@@ -86,10 +86,6 @@ public class PlayerMove : MonoBehaviour
                 {
                     GameManager.instance.settingsManager.StopMoveSFX();
                 }
-
-
-           
-
                 break;
             case State.Crouch:
 
@@ -134,9 +130,10 @@ public class PlayerMove : MonoBehaviour
         forward.Normalize();
         right.Normalize();
 
-        moveDir = (forward * inputValue.y + right * inputValue.x) * currentSpeed;
+        moveDir = (forward * inputValue.y + right * inputValue.x)*currentSpeed;
         Gravity();
-        controller.Move(moveDir * Time.deltaTime);
+        print(moveDir);
+        controller.Move(moveDir * Time.deltaTime );
     }
     private void Gravity()
     {
@@ -144,10 +141,7 @@ public class PlayerMove : MonoBehaviour
         {
             moveDir.y -= gravityScale;
         }
-        else
-        {
-            moveDir.y = 0f;
-        }
+    
     }
 
     public void OnMove(InputValue _value)
@@ -190,5 +184,12 @@ public class PlayerMove : MonoBehaviour
         animator.SetLayerWeight(1, 0f);
         //TODO : 펼쳐지는 애니메이션 및 카메라 무브.
     }
-
+    public void OnJump()
+    {
+        if (controller.isGrounded) 
+        {
+            print("점프");
+            moveDir.y = jumpForce; 
+        }
+    }
 }

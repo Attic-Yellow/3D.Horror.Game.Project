@@ -284,7 +284,7 @@ public class Santa : MovingEnemy
             }
         }
         print(doors.Count);
-        if(doors.Count == 0)
+        if(doors.Count == 1)
         {
             return doors[0];
         }

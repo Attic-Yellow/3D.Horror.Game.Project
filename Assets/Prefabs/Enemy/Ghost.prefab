@@ -765,7 +765,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e087b2300a7ce1479b99bfd3364ca5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameoverCamPos: {fileID: 2292997384001421702}
+  overClip: {fileID: 0}
+  gameoverCamPos: {fileID: 2292997384001421740}
+  gameoverLookAt: {fileID: 2292997384001421702}
   walkSpeed: 1
   detectionRadius: 10
   isSee: 0

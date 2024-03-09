@@ -27,7 +27,7 @@ public class PlayerCameraView : MonoBehaviour
 
     private void Update()
     {
-        if (vCam.m_Follow != playerBody ||   camController.GetOverlayCamAtive())
+        if (vCam.m_Follow != playerBody ||   camController.GetOverlayCamAtive() || Player.isOver )
         {
             return;
         }
