@@ -1,114 +1,92 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using UnityEngine;
+using UnityEngine.AI;
+using UnityEngine.ProBuilder.MeshOperations;
+using UnityEngine.UIElements;
 
 public class Rudolf : MovingEnemy
 {
- 
+    [SerializeField] private Camera mainCamera; // 메인 카메라
+    [SerializeField] private bool isRunAway = false;
+    [SerializeField] private bool isPlayerCome = false;
 
 
     private void Update()
     {
-
-        CheckAll();
-
-        switch (state)
+        Ani();
+        if (isPlayerCome)
         {
+            Vector3 viewportPos = mainCamera.WorldToViewportPoint(transform.position);
 
-            case State.Move:
+            if (viewportPos.x < 0 || viewportPos.x > 1 || viewportPos.y < 0 || viewportPos.y > 1) //화면 밖으로 벗어나면
+            {
+                timer += Time.deltaTime;
+                Debug.Log("적이 화면을 벗어났습니다!");
 
-              
-                    if (!isMoving)
-                    {
-                        if (timer >= eventDelay) // 플레이어를 못 본 지 eventDelay만큼 지났을 때
-                        {
-                            print("이벤트");
-                            EnemyEvent();
-                        }
-                        else // 플레이어를 감지하지 못하고 따라가는 중이 아닐 때
-                        {
-                            print("일반적인 이동");
-
-                            MoveToNextTransform();
-
-                        }
-                    }
-        
-              
-                break;
-
-            case State.Follow:
-                print("플레이어 따라가는중");
+            }
+            else //화면 안에있으면
+            {
                 timer = 0f;
-                agent.speed = runSpeed;
-                agent.SetDestination(player.transform.position);
-                if (!watchedPlayer && !agent.hasPath)
-                {
-                    state = State.Move;
-                }
-                break;
-            case State.Crouch:
+                Debug.Log("적이 화면 안에 감지");
 
-                break;
-
-            case State.Stun:
-
-                break;
-
-            case State.OpenDoor:
-
- 
-                break;
-
-            case State.LookingAround:
-                print("돌아봐");
-                agent.ResetPath();
-                lookingAroundTimer += Time.deltaTime;
-                if (lookingAroundTimer >= lookingAroundDuration)
-                {
-                    lookingAroundTimer = 0f; // 타이머 초기화
-                    state = State.Move;
-
-                }
-                break;
-
-            case State.Over:
-                //끝나면 게임종료
-                print("오버야");
-                break;
-        }
-        animator.SetInteger("State", (int)state);
+                if (isRunAway)
+                    RunAway();
      
 
+            }
+            if (timer > 2f) //2초간 벗어나면
+            {
+                if (!agent.hasPath)
+                {
+                    isRunAway = true;
+                    agent.SetDestination(player.transform.position);
+                }
+            }
+        }
+        else //플레이어를 체크를 아직 못했으면
+        {
+            Collider[] colliders = Physics.OverlapSphere(transform.position, 2);
+            foreach(Collider collider in colliders)
+            {
+               if (collider.GetComponent<Player>()!=null)
+                {
+                    isPlayerCome = true;
+                }
+            }
+        }
     }
 
-    protected override void CheckAll()
+    private void RunAway()
     {
-        timer += Time.deltaTime;
+        isRunAway = false;
+        bool isFind = false;
+        Vector3 randomDirection = Random.insideUnitSphere;
+        randomDirection.y = 0;
+        Vector3 targetPosition = player.transform.position + randomDirection.normalized * 10f; 
 
-        if (player.isOver && state != State.Over)
+        while (!isFind)
         {
-            agent.ResetPath();
-            state = State.Over;
-
+            NavMeshHit hit;
+            if (NavMesh.SamplePosition(targetPosition, out hit, 10f, NavMesh.AllAreas))
+            {
+                targetPos = hit.position;
+                agent.speed = walkSpeed;
+                isFind = true;
+            }
         }
-        else
+
+        agent.SetDestination(targetPos);
+        if (agent.remainingDistance <= 0.5f && !agent.hasPath)
         {
-            watchedPlayer = enemyCameraDetection.IsPlayerVisible();
-
-            if (state != State.Follow && IsMovingCheck())
-            {
-                state = State.Follow;
-
-                return;
-            }
-
-            if (!agent.hasPath && isMoving)
-            {
-                isMoving = false;
-
-            }
+            gameObject.SetActive(false);
         }
     }
 
+    private void Ani()
+    {
+        animator.SetBool("PlayerCheck", isPlayerCome&&isRunAway);
+        animator.SetBool("IsRunAway",isPlayerCome &&!isRunAway);
+    }
 }

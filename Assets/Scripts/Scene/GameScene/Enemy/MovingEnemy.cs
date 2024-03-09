@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class MovingEnemy : Enemy
 {
-    protected enum State
+    protected  enum State
     {
         Move,
         Follow,

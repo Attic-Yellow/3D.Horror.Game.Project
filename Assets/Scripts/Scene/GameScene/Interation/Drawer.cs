@@ -36,8 +36,8 @@ public class Drawer : Container
             // 서랍을 여는 경우, Z 위치를 조정하여 목표 위치 설정
             endPos = new Vector3(initpos.x, initpos.y, initpos.z + 0.3f);
         }
-
-        GameManager.instance.settingsManager.PlayClip(0);
+        AudioClip clip = GameManager.instance.settingsManager.GetAudioClip(0);
+        GameManager.instance.settingsManager.PlayClip(clip);
 
         while (elapsedTime < duration)
         {
