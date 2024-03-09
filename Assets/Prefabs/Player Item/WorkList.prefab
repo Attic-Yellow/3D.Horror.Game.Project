@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6438614347848844505}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Page
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 6345949550361776217}
   - component: {fileID: 1969905691534417632}
   - component: {fileID: 5338401789673037543}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Clip 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -126,7 +126,7 @@ GameObject:
   - component: {fileID: 5734107977990201985}
   - component: {fileID: 5884444114076011682}
   - component: {fileID: 8233725026360768362}
-  m_Layer: 6
+  m_Layer: 15
   m_Name: Intreactive Text Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -201,7 +201,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7795078670402296528}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Renderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -234,7 +234,7 @@ GameObject:
   - component: {fileID: 5410544575865083392}
   - component: {fileID: 108267812210771502}
   - component: {fileID: 2048694170395067173}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cover
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -318,7 +318,7 @@ GameObject:
   - component: {fileID: 6960673674014844656}
   - component: {fileID: 6243566300282044057}
   - component: {fileID: 5324463022092096450}
-  m_Layer: 6
+  m_Layer: 15
   m_Name: Interactive Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -467,7 +467,7 @@ GameObject:
   - component: {fileID: 4980096825622148936}
   - component: {fileID: 2440284492053059966}
   - component: {fileID: 6365262026232717347}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cover 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -548,7 +548,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1966312621862230723}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -580,7 +580,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4938251720617527450}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Right Cover
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -613,7 +613,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3094229563545745244}
   - component: {fileID: 7210065991788953262}
-  m_Layer: 6
+  m_Layer: 15
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -673,7 +673,7 @@ GameObject:
   - component: {fileID: 1862281842497480264}
   - component: {fileID: 2717470682008476158}
   - component: {fileID: 6349052334233647768}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Clip 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -754,7 +754,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5950827348695576042}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -788,7 +788,7 @@ GameObject:
   - component: {fileID: 6319867533159814156}
   - component: {fileID: 2205557962170804909}
   - component: {fileID: 40415941078483388}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cover 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -869,7 +869,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5422204960334253323}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Clip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -904,7 +904,7 @@ GameObject:
   - component: {fileID: 1668073386725049810}
   - component: {fileID: 3718284815183741877}
   - component: {fileID: 7547660149224148282}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Clip 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -987,7 +987,7 @@ GameObject:
   - component: {fileID: 5852222747048265449}
   - component: {fileID: 5500638933207978374}
   - component: {fileID: 4069967151726298855}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Clip 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1068,7 +1068,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 344822869747462492}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Renderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1132,7 +1132,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1896326321397021238}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Renderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1165,7 +1165,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5014505628200197827}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Left Cover
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1244,7 +1244,6 @@ MonoBehaviour:
   handTargetPos: {fileID: 3920670825550481357}
   hintPos: {fileID: 4962980360066143082}
   originalRotate: {x: 0, y: 0, z: 0, w: 0}
-  Left: {fileID: 1828757676701440801}
 --- !u!65 &4626719682353108104
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1269,7 +1268,7 @@ GameObject:
   - component: {fileID: 5346356464168352419}
   - component: {fileID: 3251720428268628809}
   - component: {fileID: 1272994503549070965}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cover 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1350,7 +1349,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6406418324199320304}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Left Clip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1449,7 +1448,7 @@ GameObject:
   - component: {fileID: 3125313084271099931}
   - component: {fileID: 5508641190357564314}
   - component: {fileID: 6011116652174825489}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Clip 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}

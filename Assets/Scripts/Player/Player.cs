@@ -41,6 +41,7 @@ public class Player : MonoBehaviour
 
     private bool isPaused = false;
     private bool isLookAtCCTV = false;
+    private bool isTab = false;
     public bool isOver = false;
     private Battery battery;
 
@@ -186,7 +187,7 @@ public class Player : MonoBehaviour
 
     private void OnCCTV()
     {
-        if (!cameraZoom.isZoomIn && !isPaused)
+        if (!cameraZoom.isZoomIn && !isPaused && !isTab)
         {
             if (isLookAtCCTV)
             {
@@ -201,8 +202,13 @@ public class Player : MonoBehaviour
 
             isLookAtCCTV = !isLookAtCCTV;
             cctvCam.SetActive(!cctvCam.activeSelf);
-            cameraController.SetOverlayCamAtive();
-            cameraController.SetPointCamActive();
+
+            if (!isTab)
+            {
+                cameraController.SetOverlayCamAtive();
+                cameraController.SetPointCamActive();
+            }
+            
             cameraController.SetCRTCamActive();
             Cursor.lockState = isLookAtCCTV ? CursorLockMode.Confined : CursorLockMode.Locked;
             Cursor.visible = isLookAtCCTV;
@@ -213,21 +219,26 @@ public class Player : MonoBehaviour
 
     private void OnTab()
     {
-        if (currentItem != null)
+        if (!isLookAtCCTV && !cameraZoom.isZoomIn && !isPaused)
         {
-            ItemDisable(currentItem);
-        }
+            isTab = !isTab;
 
-        if (Holder.Instance.isHaveItems["WorkList"])
-        {
-            cameraController.SetOverlayCamAtive();
-            GameManager.instance.overlayManager.WorkListOverlayController();
-        }
-        else
-        {
-            print("워크리스트를 가지고있지 않음");
-        }
+            if (currentItem != null)
+            {
+                ItemDisable(currentItem);
+            }
 
+            if (Holder.Instance.isHaveItems["WorkList"])
+            {
+                cameraController.SetOverlayCamAtive();
+                cameraController.SetPointCamActive();
+                GameManager.instance.overlayManager.WorkListOverlayController();
+            }
+            else
+            {
+                print("워크리스트를 가지고있지 않음");
+            }
+        }
     }
 
     // Esc키를 누르면 일시정지 및 옵션창 활성화
@@ -235,7 +246,7 @@ public class Player : MonoBehaviour
     {
         isPaused = !isPaused;
 
-        if (!cameraZoom.isZoomIn && !isLookAtCCTV)
+        if (!cameraZoom.isZoomIn && !isLookAtCCTV && !isTab)
         {
             cameraController.SetOverlayCamAtive();
             cameraController.SetPointCamActive();
