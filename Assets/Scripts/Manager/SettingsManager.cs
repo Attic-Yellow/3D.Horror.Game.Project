@@ -42,8 +42,8 @@ public class SettingsManager : MonoBehaviour
         // 슬라이더의 최솟값과 최댓값 설정
         if (lightIntensitySlider != null)
         {
-            lightIntensitySlider.minValue = -2;
-            lightIntensitySlider.maxValue = 0.5f;
+            lightIntensitySlider.minValue = 0;
+            lightIntensitySlider.maxValue = 2f;
         }
 
         LoadSettings();
@@ -248,7 +248,7 @@ public class SettingsManager : MonoBehaviour
 
         if (lightIntensityText != null)
         {
-            float normalizedLightIntensity = (lightIntensitySlider.value + 2) / 2.5f;
+            float normalizedLightIntensity = (lightIntensitySlider.value) / 2f;
             float displayLightIntensity = normalizedLightIntensity * 100; // 0 ~ 1 범위를 0 ~ 100으로 스케일링
             lightIntensityText.text = displayLightIntensity.ToString("0");
         }

@@ -16,6 +16,9 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject lastHitGameObject = null;
     [SerializeField] private GameObject cctvCam;
     [SerializeField] private Item prevHitItem;
+    [SerializeField] private GameObject flashLight;
+    [SerializeField] private GameObject cctvLight;
+
 
     public float interactionDistance = 5f;
     public List<Item> haveitems = new();
@@ -166,17 +169,13 @@ public class Player : MonoBehaviour
             {
                 if (item.GetComponent<Flashlight>() != null)
                 {
-                    if (!item.gameObject.activeSelf)
+                    if (!flashLight.activeSelf)
                     {
-                        ItemActive(item);
-
+                        flashLight.SetActive(true);
                     }
                     else
                     {
-                        ItemDisable(item);
-
-
-
+                        flashLight.SetActive(false);
                     }
                     break;
                 }
@@ -189,6 +188,17 @@ public class Player : MonoBehaviour
     {
         if (!cameraZoom.isZoomIn && !isPaused)
         {
+            if (isLookAtCCTV)
+            {
+                flashLight.SetActive(true);
+                cctvLight.SetActive(false);
+            }
+            else
+            {
+                flashLight.SetActive(false);
+                cctvLight.SetActive(true);
+            }
+
             isLookAtCCTV = !isLookAtCCTV;
             cctvCam.SetActive(!cctvCam.activeSelf);
             cameraController.SetOverlayCamAtive();

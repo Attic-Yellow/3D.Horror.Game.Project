@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5816944940270246615}
   - component: {fileID: 2662883391107258987}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24,7 +24,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 321250836376809753}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -32,7 +32,7 @@ RectTransform:
   - {fileID: 9066071271031293210}
   m_Father: {fileID: 3008241417763511113}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0.155}
@@ -71,7 +71,7 @@ GameObject:
   - component: {fileID: 209831387871726645}
   - component: {fileID: 2893977030486191431}
   - component: {fileID: 8295885284518243843}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: Interactive Text 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -221,7 +221,7 @@ GameObject:
   - component: {fileID: 369620846166680251}
   - component: {fileID: 6045628763291686357}
   - component: {fileID: 3714980042544509850}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: Interactive Text 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -371,7 +371,7 @@ GameObject:
   - component: {fileID: 8226069757101905780}
   - component: {fileID: 1846470406411258419}
   - component: {fileID: 180403591976240143}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: Interactive Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -652,7 +652,7 @@ GameObject:
   - component: {fileID: 8345391106445797197}
   - component: {fileID: 6278669130077672870}
   - component: {fileID: 3251354219993036302}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: Interactive Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -800,6 +800,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9078407055078427981}
   - component: {fileID: 2893766424985791428}
+  - component: {fileID: 2224922548774799933}
   m_Layer: 6
   m_Name: Out
   m_TagString: OutDoor
@@ -836,6 +837,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 0.5, z: 0.1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2224922548774799933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7211976537938331079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7487b15b1c1f6b498f4320cc270d61c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8177973883400686421
 GameObject:
   m_ObjectHideFlags: 0
@@ -847,7 +860,7 @@ GameObject:
   - component: {fileID: 7287995946508467730}
   - component: {fileID: 3639927596214051963}
   - component: {fileID: 5825193869342008784}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: Intreactive Text Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -925,7 +938,7 @@ GameObject:
   - component: {fileID: 9066071271031293210}
   - component: {fileID: 8285616986563760831}
   - component: {fileID: 8721453478614778005}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: Intreactive Text Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1002,7 +1015,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5442572552892059004}
   - component: {fileID: 8052595971034028412}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1016,7 +1029,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8430944788733619933}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1024,7 +1037,7 @@ RectTransform:
   - {fileID: 7287995946508467730}
   m_Father: {fileID: 8345069417349150119}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0.155}
@@ -1093,6 +1106,7 @@ GameObject:
   m_Component:
   - component: {fileID: 992135650585364807}
   - component: {fileID: 6942501938072767922}
+  - component: {fileID: 6392391316567292526}
   m_Layer: 6
   m_Name: In
   m_TagString: InDoor
@@ -1129,6 +1143,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 0.5, z: 0.1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6392391316567292526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9169390727653029716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7487b15b1c1f6b498f4320cc270d61c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &466592795579086149
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1378,7 +1404,9 @@ MonoBehaviour:
   closeText:
   - {fileID: 2893977030486191431}
   - {fileID: 6045628763291686357}
+  isRoomDoor: 0
   isOut: 0
+  isLock: 0
   rotationSpeed: 5
   startRotation: {x: 0, y: 0, z: 0, w: 0}
   openAngle: 125

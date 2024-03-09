@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.00001893061, g: 0.000000035940456, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.0000189306, g: 0.000000035933848, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -722,6 +722,7 @@ MonoBehaviour:
   computerOverlay: {fileID: 0}
   crtOverlay: {fileID: 0}
   workListOverlay: {fileID: 0}
+  screenTextOverlay: {fileID: 0}
 --- !u!114 &129914655
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1767,14 +1768,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 410087039}
-  m_LocalRotation: {x: -0.24999997, y: -0.24999997, z: -0.06698728, w: 0.9330127}
+  m_LocalRotation: {x: -0.24999997, y: 0.25000006, z: 0.066987306, w: 0.9330127}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 512022877}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -30, y: -30, z: 0}
+  m_LocalEulerAnglesHint: {x: -30, y: 30, z: 0}
 --- !u!114 &410087042
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5217,7 +5218,11 @@ MonoBehaviour:
   lightIntensityText: {fileID: 1556051674}
   mouseSensitivityText: {fileID: 1556051672}
   bgmAudioSource: {fileID: 1613557359}
-  sfxAudioSource: {fileID: 1849747887}
+  sfxAudioSources:
+  - {fileID: 1849747887}
+  playerMoveAudioSouce: {fileID: 0}
+  moveClips: []
+  sfxClips: []
   globalVolume: {fileID: 832575518}
   colorAdjustments: {fileID: 0}
 --- !u!4 &1410918058
@@ -5607,7 +5612,7 @@ Light:
   m_Shape: 0
   m_Color: {r: 0.8396226, g: 0.82025784, b: 0.49638063, a: 1}
   m_Intensity: 40
-  m_Range: 100
+  m_Range: 20
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -5640,16 +5645,16 @@ Light:
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 215
   m_RenderingLayerMask: 1
-  m_Lightmapping: 4
+  m_Lightmapping: 2
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
-  m_ColorTemperature: 20000
+  m_ColorTemperature: 6000
   m_UseColorTemperature: 1
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
@@ -6748,7 +6753,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: f7f8eb0e0b678924993969e68d8130f5, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 19f24ec6c230ddb4cab17989efd21968, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
