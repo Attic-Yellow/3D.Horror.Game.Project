@@ -9,9 +9,9 @@ using UnityEngine.UIElements;
 public class Rudolf : MovingEnemy
 {
     [SerializeField] private Camera mainCamera; // 메인 카메라
-    [SerializeField] private bool isRunAway = false;
+    [SerializeField] private bool isGoToPlayer = false;
     [SerializeField] private bool isPlayerCome = false;
-
+    [SerializeField] private bool isRunAway = false;
 
     private void Update()
     {
@@ -25,13 +25,15 @@ public class Rudolf : MovingEnemy
                 timer += Time.deltaTime;
                 Debug.Log("적이 화면을 벗어났습니다!");
 
+                if(isRunAway)
+                gameObject.SetActive(false);
             }
             else //화면 안에있으면
             {
                 timer = 0f;
                 Debug.Log("적이 화면 안에 감지");
 
-                if (isRunAway)
+                if (isGoToPlayer)
                     RunAway();
      
 
@@ -40,7 +42,7 @@ public class Rudolf : MovingEnemy
             {
                 if (!agent.hasPath)
                 {
-                    isRunAway = true;
+                    isGoToPlayer = true;
                     agent.SetDestination(player.transform.position);
                 }
             }
@@ -60,7 +62,8 @@ public class Rudolf : MovingEnemy
 
     private void RunAway()
     {
-        isRunAway = false;
+        isGoToPlayer = false;
+        isRunAway = true;
         bool isFind = false;
         Vector3 randomDirection = Random.insideUnitSphere;
         randomDirection.y = 0;
@@ -78,15 +81,12 @@ public class Rudolf : MovingEnemy
         }
 
         agent.SetDestination(targetPos);
-        if (agent.remainingDistance <= 0.5f && !agent.hasPath)
-        {
-            gameObject.SetActive(false);
-        }
+    
     }
 
     private void Ani()
     {
-        animator.SetBool("PlayerCheck", isPlayerCome&&isRunAway);
-        animator.SetBool("IsRunAway",isPlayerCome &&!isRunAway);
+        animator.SetBool("PlayerCheck", isPlayerCome&&isGoToPlayer);
+        animator.SetBool("IsRunAway",isPlayerCome &&!isGoToPlayer);
     }
 }

@@ -11,6 +11,7 @@ public class PlayerCameraView : MonoBehaviour
     [SerializeField] public float mouseSensitivity;
     [SerializeField] private Transform playerBody;
     [SerializeField] private CinemachineVirtualCamera vCam;
+    [SerializeField] private CameraController camController;
     [SerializeField] private Player Player;
     private float xRotation = 0f;
 
@@ -26,7 +27,7 @@ public class PlayerCameraView : MonoBehaviour
 
     private void Update()
     {
-        if (vCam.m_Follow != playerBody || GameManager.instance.overlayManager.CheckOnOverlay())
+        if (vCam.m_Follow != playerBody ||   camController.GetOverlayCamAtive())
         {
             return;
         }

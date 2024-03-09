@@ -11,7 +11,6 @@ using UnityEngine.Playables;
 public class Player : MonoBehaviour
 {
     [SerializeField] private Camera playerCamera;
-    [SerializeField] private CameraController cameraController;
     [SerializeField] private CameraZoom cameraZoom;
     [SerializeField] private GameObject lastHitGameObject = null;
     [SerializeField] private GameObject cctvCam;
@@ -19,7 +18,7 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject flashLight;
     [SerializeField] private GameObject cctvLight;
 
-
+    public CameraController cameraController;
     public float interactionDistance = 5f;
     public List<Item> haveitems = new();
 

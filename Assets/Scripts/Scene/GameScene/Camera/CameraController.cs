@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using System;
 
 public class CameraController : MonoBehaviour
 {
@@ -57,5 +58,11 @@ public class CameraController : MonoBehaviour
         {
             crtCam.gameObject.SetActive(!crtCam.gameObject.activeSelf);
         }
+    }
+
+    public bool GetOverlayCamAtive()
+    {
+        print(overlayCam.gameObject.activeSelf);
+        return overlayCam.gameObject.activeSelf;
     }
 }

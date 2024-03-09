@@ -30,8 +30,8 @@ Transform:
   m_GameObject: {fileID: 779311133175681386}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 779311132858665259}
   - {fileID: 621777727251175526}
@@ -50,16 +50,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b88b6ca80455924f9642cc8a331b011, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  overClip: {fileID: 0}
   gameoverCamPos: {fileID: 779311133175681389}
-  enemySpine: {fileID: 779311133175681389}
   walkSpeed: 1
   state: 0
   watchedPlayer: 0
   isFrontDoor: {fileID: 0}
   targetPos: {x: 0, y: 0, z: 0}
   timer: 0
+  eventDelay: 30
   isMoving: 0
   runSpeed: 2.5
+  mainCamera: {fileID: 0}
+  isRunAway: 0
+  isPlayerCome: 0
 --- !u!114 &779311133175681391
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73,9 +77,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyForward: {fileID: 779311133175681389}
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 512
 --- !u!195 &779311133175681388
 NavMeshAgent:
   m_ObjectHideFlags: 0

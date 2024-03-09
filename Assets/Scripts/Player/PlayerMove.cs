@@ -42,8 +42,10 @@ public class PlayerMove : MonoBehaviour
 
     private void Update()
     {
-        if (!player.isOver)
+        if (!player.isOver && !player.cameraController.GetOverlayCamAtive())
+        {
             Move();
+        }
         else
         {
             GameManager.instance.settingsManager.StopMoveSFX();
