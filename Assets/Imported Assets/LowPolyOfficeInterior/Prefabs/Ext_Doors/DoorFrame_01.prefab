@@ -1042,6 +1042,7 @@ GameObject:
   - component: {fileID: 4954719571513935825}
   - component: {fileID: 7144473154475488027}
   - component: {fileID: 5394996283301807258}
+  - component: {fileID: 3529521842097128926}
   m_Layer: 6
   m_Name: DoorFrame_01
   m_TagString: Untagged
@@ -1129,6 +1130,22 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -1597095157327102737, guid: f1c737f60c0564459b766e4a8ab2758f, type: 3}
+--- !u!208 &3529521842097128926
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8657809691746554574}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.555, y: 1.13, z: 0.091000006}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 1.13, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1001 &1511847960819269254
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1280,7 +1297,9 @@ MonoBehaviour:
   closeText:
   - {fileID: 1076638265826326756}
   - {fileID: 4061691341312600678}
+  isRoomDoor: 0
   isOut: 0
+  isLock: 0
   rotationSpeed: 5
   startRotation: {x: 0, y: 0, z: 0, w: 0}
   openAngle: 125

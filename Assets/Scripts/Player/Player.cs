@@ -279,6 +279,7 @@ public class Player : MonoBehaviour
     private void OnTimeline()
     {
         timeline.Play();
+        camera2.gameObject.SetActive(true);
         camera2.Follow = collisionEnemy.transform;
         camera2.LookAt = collisionEnemy.gameoverCamPos;
     }

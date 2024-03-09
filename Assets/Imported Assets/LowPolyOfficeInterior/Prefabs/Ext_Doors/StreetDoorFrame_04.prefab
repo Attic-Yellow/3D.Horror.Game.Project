@@ -553,6 +553,7 @@ GameObject:
   - component: {fileID: 1184738169215347001}
   - component: {fileID: 4005387130107698675}
   - component: {fileID: 5592623552998444918}
+  - component: {fileID: 5596386370541695457}
   m_Layer: 6
   m_Name: StreetDoorFrame_04
   m_TagString: Untagged
@@ -640,6 +641,22 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 8744999321999026182, guid: 35b6f6d9fa90145bbb7f0e25700a943b, type: 3}
+--- !u!208 &5596386370541695457
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3212476312825510950}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.555, y: 1.13, z: 0.091000006}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 1.13, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &3437062657921287927
 GameObject:
   m_ObjectHideFlags: 0

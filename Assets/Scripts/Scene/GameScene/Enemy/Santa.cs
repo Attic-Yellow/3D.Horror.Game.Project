@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
@@ -14,7 +16,7 @@ public class Santa : MovingEnemy
     private float stunTimer = 0f;
    public AudioSource[] souces;
    public AudioClip[] clips;
-
+    private Door nearstDoor = null;
 
     private void Update()
     {
@@ -267,8 +269,9 @@ public class Santa : MovingEnemy
 
     private Door MostNearDoor()
     {
-        Collider[] colliders = Physics.OverlapSphere(transform.position, 10f);
-        Door[] doors = new Door[2];
+      
+        Collider[] colliders = Physics.OverlapSphere(transform.position, 20f);
+        List<Door> doors = new();
         foreach(Collider collider in colliders)
         {
             if (collider.GetComponent<Door>() != null)
@@ -276,32 +279,37 @@ public class Santa : MovingEnemy
                 Door door = collider.GetComponent<Door>();
                 if (!door.isLock && door.isRoomDoor &&(!door.isOpen || door.doorCoroutine != null))
                 {                
-                    if (doors[0] != null && doors[1] == null)
-                    {
-                        doors[1] = door;
-                        break;
-                    }
-                    if (doors[0] == null)
-                        doors[0] = door;
+                  doors.Add(door);
                 }
             }
         }
-        Vector3 diffDis = player.transform.position - transform.position;
-        float[] diff = new float[doors.Length];
-       for(int i = 0; i < doors.Length; i++) 
+        print(doors.Count);
+        if(doors.Count == 0)
         {
-          diffDis[i] =  Vector3.Distance(doors[i].transform.position, diffDis);
+            return doors[0];
         }
 
-        bool nearstDoorIsFirst = false;
-        if (diff[0] < diff[1])
+        else if (doors.Count > 1)
         {
-            nearstDoorIsFirst = true;
-        }
-        Door nearstDoor;
-        print($"{doors[0].transform.position}, {doors[1].transform.position}");
-        nearstDoor = nearstDoorIsFirst ? doors[0] : doors[1];
-        return nearstDoor;
+            Vector3 diffDis = player.transform.position - transform.position;
+            float nearstDiff = 9999;
 
+            for (int i = 0; i < doors.Count; i++)
+            {
+                if (nearstDiff > Vector3.Distance(doors[i].transform.position, diffDis))
+                {
+                    nearstDiff = Vector3.Distance(doors[i].transform.position, diffDis);
+                    nearstDoor = doors[i];
+                }
+
+            }
+        }
+        else
+        {
+            return null;
+        }
+        Door thisDoor = nearstDoor;
+        nearstDoor = null;
+        return thisDoor;
     }
 }

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4158193296485185419}
   - component: {fileID: 2184291501662012225}
   - component: {fileID: 5472196873986043788}
+  - component: {fileID: -4803475105026694318}
   m_Layer: 6
   m_Name: DoorFrame_04
   m_TagString: Untagged
@@ -99,6 +100,22 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 5497673433465290424, guid: caf73d544447c449da3dec0e66c52a39, type: 3}
+--- !u!208 &-4803475105026694318
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 383041248595255956}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.555, y: 1.13, z: 0.091000006}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 1.13, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &1935032984577200806
 GameObject:
   m_ObjectHideFlags: 0

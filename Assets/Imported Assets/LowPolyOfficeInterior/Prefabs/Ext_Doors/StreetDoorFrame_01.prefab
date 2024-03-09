@@ -860,6 +860,7 @@ GameObject:
   - component: {fileID: 6012823001637120772}
   - component: {fileID: 8400657927227056078}
   - component: {fileID: 2109161306449797748}
+  - component: {fileID: -1637624637303193304}
   m_Layer: 6
   m_Name: StreetDoorFrame_01
   m_TagString: Untagged
@@ -947,6 +948,22 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -8586845391868459659, guid: 4de7a658831d24290b807a08c560392e, type: 3}
+--- !u!208 &-1637624637303193304
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8040576322321235483}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.555, y: 1.13, z: 0.091000006}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 1.13, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &8439211474450211303
 GameObject:
   m_ObjectHideFlags: 0
@@ -1274,7 +1291,9 @@ MonoBehaviour:
   closeText:
   - {fileID: 916001342392609343}
   - {fileID: 1003087679236823858}
+  isRoomDoor: 0
   isOut: 0
+  isLock: 0
   rotationSpeed: 5
   startRotation: {x: 0, y: 0, z: 0, w: 0}
   openAngle: 125
