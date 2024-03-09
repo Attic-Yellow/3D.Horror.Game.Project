@@ -1,11 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Switch : MonoBehaviour
 {
     [SerializeField] private Light[] lights;
-    private bool isOn = true;
+    [SerializeField] private bool isOn = true;
+    [SerializeField] private TextMeshProUGUI onText;
+    [SerializeField] private TextMeshProUGUI offText;
+
+    private void Start()
+    {
+        if (lights != null)
+        {
+            foreach (Light light in lights)
+            {
+                light.enabled = isOn;
+                onText.gameObject.SetActive(!isOn);
+                offText.gameObject.SetActive(isOn);
+            }
+        }
+    }
 
     public void OnOffLights()
     {
@@ -15,6 +31,8 @@ public class Switch : MonoBehaviour
         foreach (Light light in lights)
         {
             light.enabled = isOn;
+            onText.gameObject.SetActive(!isOn);
+            offText.gameObject.SetActive(isOn);
         }
     }
 }

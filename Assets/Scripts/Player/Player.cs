@@ -220,7 +220,7 @@ public class Player : MonoBehaviour
     {
         if (!isLookAtCCTV && !cameraZoom.isZoomIn && !isPaused)
         {
-            isTab = !isTab;
+           
 
             if (currentItem != null)
             {
@@ -229,6 +229,7 @@ public class Player : MonoBehaviour
 
             if (Holder.Instance.isHaveItems["WorkList"])
             {
+                isTab = !isTab;
                 cameraController.SetOverlayCamAtive();
                 cameraController.SetPointCamActive();
                 GameManager.instance.overlayManager.WorkListOverlayController();
@@ -325,13 +326,13 @@ public class Player : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, interactionDistance) && !cameraZoom.isZoomIn)
         {
+            if (lastHitGameObject != null)
+            {
+                lastHitGameObject.gameObject.transform.Find("CanvasRoot").gameObject.SetActive(false);
+            }
+
             if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Interaction Object"))
             {
-                if (lastHitGameObject != null)
-                {
-                    lastHitGameObject.gameObject.transform.Find("CanvasRoot").gameObject.SetActive(false);
-                }
-
                 // 충돌한 물체가 상호작용 가능한 물체인지 확인
                 if (hit.collider.CompareTag("Item"))
                 {
