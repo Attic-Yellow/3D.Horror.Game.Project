@@ -280,8 +280,8 @@ public class Player : MonoBehaviour
     {
         timeline.Play();
         camera2.gameObject.SetActive(true);
-        camera2.Follow = collisionEnemy.transform;
-        camera2.LookAt = collisionEnemy.gameoverCamPos;
+        camera2.Follow = collisionEnemy.gameoverCamPos;
+        camera2.LookAt = collisionEnemy.gameoverLookAt;
     }
     public void CameraPriorityChange(int _num)
     {

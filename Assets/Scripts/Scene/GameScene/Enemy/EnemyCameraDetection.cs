@@ -64,11 +64,14 @@ public class EnemyCameraDetection : MonoBehaviour
      
         RaycastHit hit;
         Debug.DrawRay(enemyForward.transform.position, enemyForward.transform.forward * doorCheckDistance, Color.black);
-        if (Physics.Raycast(enemyForward.transform.position, enemyForward.transform.forward, out hit, doorCheckDistance, 1 <<6))
+        if (Physics.Raycast(enemyForward.transform.position, enemyForward.transform.forward, out hit, doorCheckDistance))
         {
             if (hit.collider.gameObject.CompareTag("InDoor") || hit.collider.gameObject.CompareTag("OutDoor"))
             {
                 Door door = hit.collider.GetComponentInParent<Door>();
+                if (!door.canOpenEnemy)
+                    return null;
+
                 if (hit.collider.gameObject.CompareTag("InDoor"))
                     door.isOut = false;
                 if (hit.collider.gameObject.CompareTag("OutDoor"))

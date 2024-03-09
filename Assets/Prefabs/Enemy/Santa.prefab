@@ -537,7 +537,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   overClip: {fileID: 8300000, guid: 6e1c397e35c62254185bab4d4f9ad089, type: 3}
-  gameoverCamPos: {fileID: 7520216030991557174}
+  gameoverCamPos: {fileID: 59872021742952775}
+  gameoverLookAt: {fileID: 7520216030991557174}
   walkSpeed: 1
   state: 0
   watchedPlayer: 0
@@ -568,9 +569,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyForward: {fileID: 1976568674376765884}
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 512
 --- !u!136 &59872021742952771
 CapsuleCollider:
   m_ObjectHideFlags: 0
