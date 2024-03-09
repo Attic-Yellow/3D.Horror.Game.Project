@@ -129,7 +129,12 @@ public class OverlayManager : MonoBehaviour
     {
         gameStart.StartGameFun();
         StartCoroutine(LoadingOverlayController());
+    }
 
+    // 타이틀 씬으로 넘어가는 버튼
+    public void TitleButton()
+    {
+        StartCoroutine(LoadingOverlayControllerToTitle());
     }
 
     // 컴퓨터 오버레이 활성화 / 비활성화 시키는 함수
@@ -187,6 +192,17 @@ public class OverlayManager : MonoBehaviour
             yield return new WaitForSeconds(2.8f);
             loadingOverlay.SetActive(true);
             sceneLoader.LoadScene("GameScene");
+        }
+    }
+
+    // 타이틀 씬으로 넘어가는 함수
+    private IEnumerator LoadingOverlayControllerToTitle()
+    {
+        if (loadingOverlay != null)
+        {
+            loadingOverlay.SetActive(true);
+            sceneLoader.LoadScene("TitleScene");
+            yield return null;
         }
     }
 
