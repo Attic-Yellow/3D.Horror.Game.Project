@@ -23,12 +23,22 @@ public class OptionController : MonoBehaviour
     public void OnClickBackButton(int pageNum)
     {
         pages[pageNum].SetActive(false);
-        pages[pageNum - 1].SetActive(true);
+        pages[0].SetActive(true);
     }
 
     public void OnClickNextButton(int pageNum)
     {
-        pages[pageNum].SetActive(false);
-        pages[pageNum + 1].SetActive(true);
+        pages[0].SetActive(false);
+        pages[pageNum].SetActive(true);
+    }
+
+    public void OnClickCloseButton()
+    {
+        foreach (GameObject page in pages)
+        {
+            page.SetActive(false);
+        }
+
+        pages[0].SetActive(true);
     }
 }

@@ -104,6 +104,7 @@ public class OverlayManager : MonoBehaviour
         if (optionsOverlay != null)
         {
             optionsOverlay.SetActive(!optionsOverlay.activeSelf);
+            optionsOverlay.GetComponent<OptionController>().OnClickCloseButton();
         }
     }
 

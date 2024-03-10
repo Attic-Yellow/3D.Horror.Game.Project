@@ -30,7 +30,7 @@ public class SettingsManager : MonoBehaviour
     [SerializeField] private TMP_Dropdown resolution;
     [SerializeField] private TMP_Dropdown anti_Aliasing;
     [SerializeField] private TMP_Dropdown renderScale;
-    [SerializeField] private TMP_Dropdown quality;
+    [SerializeField] private TMP_Dropdown postProcessing;
 
     [SerializeField] private Volume globalVolume;
     [SerializeField] private ColorAdjustments colorAdjustments;
@@ -64,11 +64,30 @@ public class SettingsManager : MonoBehaviour
         PopulateResolutionDropdown();
 
         // 각 TMP 드랍다운의 OnValueChanged 이벤트에 리스너 추가
-        resolution.onValueChanged.AddListener(delegate { OnResolutionChanged(resolution.value); });
-        displayMode.onValueChanged.AddListener(OnDisplayModeChanged);
-        anti_Aliasing.onValueChanged.AddListener(OnAntiAliasingChanged);
-        renderScale.onValueChanged.AddListener(OnRenderScaleChanged);
-        quality.onValueChanged.AddListener(OnQualityChanged);
+        if (resolution != null)
+        {
+            resolution.onValueChanged.AddListener(delegate { OnResolutionChanged(resolution.value); });
+        }
+       
+        if (displayMode != null)
+        {
+            displayMode.onValueChanged.AddListener(OnDisplayModeChanged);
+        }
+       
+        if (anti_Aliasing != null)
+        {
+            anti_Aliasing.onValueChanged.AddListener(OnAntiAliasingChanged);
+        }
+        
+        if (renderScale != null)
+        {
+            renderScale.onValueChanged.AddListener(OnRenderScaleChanged);
+        }
+        
+        if (postProcessing != null)
+        {
+            postProcessing.onValueChanged.AddListener(OnQualityChanged);
+        }
     }
 
     public void PlayClip(int soundNum)
@@ -190,7 +209,7 @@ public class SettingsManager : MonoBehaviour
         // 디스플레이 모드 로드
         if (displayMode != null)
         {
-            int displayModeValue = PlayerPrefs.GetInt("DisplayMode", 0); // 기본값으로 0 설정
+            int displayModeValue = PlayerPrefs.GetInt("DisplayMode", 1); // 기본값으로 0 설정
             displayMode.value = displayModeValue;
         }
 
@@ -215,10 +234,10 @@ public class SettingsManager : MonoBehaviour
         }
 
         // 퀄리티 모드 로드
-        if (quality != null)
+        if (postProcessing != null)
         {
             int qualityMode = PlayerPrefs.GetInt("QualityMode", 1); // 기본값으로 1 설정
-            quality.value = qualityMode;
+            postProcessing.value = qualityMode;
         }
 
         UpdateSettingsText();
@@ -429,13 +448,17 @@ public class SettingsManager : MonoBehaviour
     // 퀄리티 변경 함수
     public void OnQualityChanged(int mode)
     {
-        if (mode == 0)
+        switch (mode)
         {
-            urpAsset.colorGradingMode = ColorGradingMode.LowDynamicRange;
-        }
-        else if (mode == 1)
-        {
-            urpAsset.colorGradingMode = ColorGradingMode.HighDynamicRange;
+            case 0:
+                urpAsset.colorGradingMode = ColorGradingMode.LowDynamicRange;
+                break;
+            case 1:
+                urpAsset.colorGradingMode = ColorGradingMode.HighDynamicRange;
+                break;
+            default:
+                urpAsset.colorGradingMode = ColorGradingMode.HighDynamicRange;
+                break;
         }
 
         PlayerPrefs.SetInt("QualityMode", mode);

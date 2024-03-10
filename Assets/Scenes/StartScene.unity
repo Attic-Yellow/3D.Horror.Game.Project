@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.019317653, g: 0.014619662, b: 0.01003453, a: 1}
+  m_IndirectSpecularColor: {r: 0.13857242, g: 0.115934946, b: 0.09231224, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -819,7 +819,7 @@ MonoBehaviour:
   resolution: {fileID: 0}
   anti_Aliasing: {fileID: 0}
   renderScale: {fileID: 0}
-  quality: {fileID: 0}
+  postProcessing: {fileID: 0}
   globalVolume: {fileID: 764906601}
   colorAdjustments: {fileID: 0}
 --- !u!4 &398948198
@@ -1959,7 +1959,7 @@ MonoBehaviour:
   priority: 0
   blendDistance: 0
   weight: 1
-  sharedProfile: {fileID: 11400000, guid: 4465c7d0888b140429f5b61934009631, type: 2}
+  sharedProfile: {fileID: 11400000, guid: 7bcaedda6c1329d44bc57372a52f15a7, type: 2}
 --- !u!4 &764906602
 Transform:
   m_ObjectHideFlags: 0
@@ -4225,7 +4225,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1227627625}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1
+  m_MaxValue: 2
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:

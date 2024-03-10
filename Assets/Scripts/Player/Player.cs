@@ -242,7 +242,7 @@ public class Player : MonoBehaviour
     }
 
     // Esc키를 누르면 일시정지 및 옵션창 활성화
-    private void OnPause()
+    public void OnPause()
     {
         isPaused = !isPaused;
 
