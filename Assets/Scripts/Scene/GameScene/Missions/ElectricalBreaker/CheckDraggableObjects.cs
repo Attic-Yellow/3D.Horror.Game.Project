@@ -14,7 +14,7 @@ public class CheckDraggableObjects : MonoBehaviour
 
     private void Awake()
     {
-        animator = GetComponentInParent<Animator>();
+        animator = GetComponent<Animator>();
     }
 
 
@@ -24,8 +24,8 @@ public class CheckDraggableObjects : MonoBehaviour
     }
 
     private void OnMouseUpAsButton()
-    {
-
+    {   
+        print("콜라이더");
             CheckActivatable();
         
         if (isCheck)
