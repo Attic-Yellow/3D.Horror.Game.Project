@@ -186,35 +186,43 @@ public class Player : MonoBehaviour
 
     private void OnCCTV()
     {
-        if (!cameraZoom.isZoomIn && !isPaused && !isTab)
+        if (Holder.Instance.isHaveItems.ContainsKey("CCTV"))
         {
-            if (isLookAtCCTV)
+            foreach (Item item in haveitems)
             {
-                flashLight.SetActive(true);
-                cctvLight.SetActive(false);
-            }
-            else
-            {
-                flashLight.SetActive(false);
-                cctvLight.SetActive(true);
-            }
+                if (item.GetComponent<CCTV>() != null)
+                {
+                    if (!cameraZoom.isZoomIn && !isPaused && !isTab)
+                    {
+                        if (isLookAtCCTV)
+                        {
+                            flashLight.SetActive(true);
+                            cctvLight.SetActive(false);
+                        }
+                        else
+                        {
+                            flashLight.SetActive(false);
+                            cctvLight.SetActive(true);
+                        }
 
-            isLookAtCCTV = !isLookAtCCTV;
-            cctvCam.SetActive(!cctvCam.activeSelf);
+                        isLookAtCCTV = !isLookAtCCTV;
+                        cctvCam.SetActive(!cctvCam.activeSelf);
 
-            if (!isTab)
-            {
-                cameraController.SetOverlayCamAtive();
-                cameraController.SetPointCamActive();
+                        if (!isTab)
+                        {
+                            cameraController.SetOverlayCamAtive();
+                            cameraController.SetPointCamActive();
+                        }
+
+                        cameraController.SetCRTCamActive();
+                        Cursor.lockState = isLookAtCCTV ? CursorLockMode.Confined : CursorLockMode.Locked;
+                        Cursor.visible = isLookAtCCTV;
+                        GameManager.instance.overlayManager.CRTOverlayController();
+                    }
+                }
             }
-            
-            cameraController.SetCRTCamActive();
-            Cursor.lockState = isLookAtCCTV ? CursorLockMode.Confined : CursorLockMode.Locked;
-            Cursor.visible = isLookAtCCTV;
-            GameManager.instance.overlayManager.CRTOverlayController();
         }
     }
-
 
     private void OnTab()
     {
