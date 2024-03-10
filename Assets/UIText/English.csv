@@ -63,3 +63,14 @@ Resolution Settings,Resolution
 Anti-Aliasing Settings,Anti-Allasing
 Render Scale Settings,Render Scale
 Post-Processing,Post-Processing
+Reset Game,Game Restart
+Reset Game Check Text 1,Would you like to restart the game?
+Reset Game Check Text 2,All progress made up to now will be lost. It cannot be recovered.
+Back To Title Check Text 1,Would you like to  leave the game?
+Back To Title Check Text 2,All progress made up to now will be lost You cannot proceed further.
+Quit Game Check Text,Do you want to quit the game?
+Yes,Yes
+No,No
+Credit,Credit
+Game Over Text,You are dead...
+Retry,Retry

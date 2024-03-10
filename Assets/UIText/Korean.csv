@@ -63,3 +63,14 @@ Resolution Settings,해상도
 Anti-Aliasing Settings,안티 앨리어싱
 Render Scale Settings,랜더 스케일
 Post-Processing,포스트 프로세싱
+Reset Game,다시 시작
+Reset Game Check Text 1,다시 시작하시겠습니까?
+Reset Game Check Text 2,현재까지 진행된 내용은 없어지며 복구할 수 없습니다.
+Back To Title Check Text 1,게임을 나가시겠습니까?
+Back To Title Check Text 2,현재까지 진행된 내용은 사라지며 이어서 진행할 수 없습니다.
+Quit Game Check Text,게임을 종료하시겠습니까?
+Yes,예
+No,아니요
+Credit,크래딧
+Game Over Text,당신은 죽고 말았습니다...
+Retry,다시 시작
