@@ -3839,9 +3839,8 @@ GameObject:
   - component: {fileID: 2917112366734644660}
   - component: {fileID: 8603163279745795481}
   - component: {fileID: 1455139709067441500}
-  - component: {fileID: 1088451945}
-  - component: {fileID: 8975263772981400147}
   - component: {fileID: 714032195701723896}
+  - component: {fileID: 1088451945}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -3857,7 +3856,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8914196131680089870}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.476, y: 3, z: -2.8}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3966,9 +3965,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCamera: {fileID: 0}
-  cameraController: {fileID: 0}
-  cameraZoom: {fileID: 8975263772981400147}
+  cameraZoom: {fileID: 1088451945}
   lastHitGameObject: {fileID: 0}
+  cctvCam: {fileID: 0}
+  prevHitItem: {fileID: 0}
+  flashLight: {fileID: 0}
+  cctvLight: {fileID: 0}
+  cameraController: {fileID: 0}
   interactionDistance: 1.5
   haveitems: []
   camera2: {fileID: 0}
@@ -3998,8 +4001,33 @@ MonoBehaviour:
   sprintSpeed: 5
   crouchWalkSpeed: 1
   crouchRunSpeed: 1.5
-  gravityScale: 1
+  gravityScale: 3
+  jumpForce: 0
   isMoving: 0
+--- !u!320 &714032195701723896
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8914196131680089870}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 11400000, guid: 16c19add79650424d8e432df1938b57e, type: 2}
+  m_InitialState: 0
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings:
+  - key: {fileID: 6765965250275843955, guid: 16c19add79650424d8e432df1938b57e, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -6919331755636601130, guid: 16c19add79650424d8e432df1938b57e, type: 2}
+    value: {fileID: 0}
+  m_ExposedReferences:
+    m_References:
+    - d4b805101a7c83f4caa0e55638ace42a: {fileID: 0}
+    - 5abef4a21c6fb5a409499455d43680b3: {fileID: 0}
+    - 327b44f69fa9c7041b7fe8d343a1efc1: {fileID: 0}
 --- !u!114 &1088451945
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4023,50 +4051,6 @@ MonoBehaviour:
   isZoomIn: 0
   isMonitorOn: 0
   isMission: 0
---- !u!114 &8975263772981400147
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8914196131680089870}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92dd4958a2f2250458245ff531c2c901, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  vCam: {fileID: 0}
-  player: {fileID: 8914196131680089870}
-  targetRotation: {x: 0, y: 0, z: 0, w: 0}
-  initRotation: {x: 0, y: 0, z: 0, w: 0}
-  monitorControl: {fileID: 0}
-  oSFadeEffect: {fileID: 0}
-  cameraController: {fileID: 0}
-  missions: {fileID: 0}
-  isZoomIn: 0
-  isMonitorOn: 0
-  isMission: 0
---- !u!320 &714032195701723896
-PlayableDirector:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8914196131680089870}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_PlayableAsset: {fileID: 11400000, guid: 16c19add79650424d8e432df1938b57e, type: 2}
-  m_InitialState: 0
-  m_WrapMode: 2
-  m_DirectorUpdateMode: 1
-  m_InitialTime: 0
-  m_SceneBindings:
-  - key: {fileID: 6765965250275843955, guid: 16c19add79650424d8e432df1938b57e, type: 2}
-    value: {fileID: 0}
-  - key: {fileID: -6919331755636601130, guid: 16c19add79650424d8e432df1938b57e, type: 2}
-    value: {fileID: 0}
-  m_ExposedReferences:
-    m_References: []
 --- !u!1 &9066901200264403135
 GameObject:
   m_ObjectHideFlags: 0

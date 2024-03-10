@@ -102,15 +102,15 @@ public class DrawLineRenderer : MonoBehaviour
         }
     }
 
-    public void DeleteLines()
+    public bool DeleteLines()
     {
         if (isDraw)
         {
             string savedImagePath = ScreenShot.ScreenShotClick();
-            // EditorApplication.ExecuteMenuItem("Assets/Refresh"); //»õ·Î°íÄ§
+            EditorApplication.ExecuteMenuItem("Assets/Refresh"); //»õ·Î°íÄ§
             Texture2D savedTexture = LoadTexture(savedImagePath);
-            drawLine.ChangeImg(savedTexture);
-            drawLine.SetSignArea(false);
+            drawLine.ChangeImg(savedTexture); 
+            drawLine.SetSignArea(false); //½ÎÀÎ ui°¡ ²¨Áü.
             foreach (GameObject line in lines)
             {
                 Destroy(line);
@@ -118,6 +118,17 @@ public class DrawLineRenderer : MonoBehaviour
             lines.Clear();
             isDraw = false;
             ZCount++;
+            if(ZCount % 2 ==0)
+            {
+                return true;
+            }
+         
+                return false;
+            
+        }
+        else
+        {
+            return false;
         }
   
 
