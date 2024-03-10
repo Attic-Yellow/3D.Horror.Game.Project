@@ -18,15 +18,18 @@ public class OverlayManager : MonoBehaviour
     [SerializeField] private SceneLoader sceneLoader;
     [Space(5)]
 
-    [Header("타이틀 씬 오버레이")]
+    [Header("씬 공용 오버레이")]
     [SerializeField] private GameObject optionsOverlay;
     [SerializeField] private GameObject loadingOverlay;
+    [SerializeField] private GameObject[] checkArea;
 
     [Header("게임 씬 오버레이")]
     [SerializeField] private GameObject computerOverlay;
     [SerializeField] private GameObject crtOverlay;
     [SerializeField] private GameObject workListOverlay;
     [SerializeField] private GameObject screenTextOverlay;
+    [SerializeField] private GameObject gameOverOverlay;
+
     private void Start()
     {
         GameManager.instance.overlayManager = this;
@@ -44,6 +47,14 @@ public class OverlayManager : MonoBehaviour
         if (loadingOverlay != null)
         {
             loadingOverlay.SetActive(false);
+        }
+
+        if (checkArea != null)
+        {
+            foreach (GameObject area in checkArea)
+            {
+                area.SetActive(false);
+            }
         }
 
         if (computerOverlay != null)
@@ -64,6 +75,11 @@ public class OverlayManager : MonoBehaviour
         if(screenTextOverlay != null)
         {
             screenTextOverlay.SetActive(false);
+        }
+
+        if (gameOverOverlay != null)
+        {
+            gameOverOverlay.SetActive(false);
         }
     }
 
@@ -104,7 +120,23 @@ public class OverlayManager : MonoBehaviour
         if (optionsOverlay != null)
         {
             optionsOverlay.SetActive(!optionsOverlay.activeSelf);
+            optionsOverlay.GetComponent<OptionController>().OnClickCloseButton();
+
+            if (checkArea[0].activeSelf)
+            {
+                foreach (GameObject area in checkArea)
+                {
+                    area.SetActive(false);
+                }
+            }
         }
+    }
+
+    // 확인 오버레이 활성화 / 비활성화 시키는 함수
+    public void CheckAreaOverlayController(int areaNum)
+    {
+        checkArea[0].SetActive(!checkArea[0].activeSelf);
+        checkArea[areaNum].SetActive(!checkArea[areaNum].activeSelf);
     }
 
     public void ScrenTextOverlayController()
@@ -129,6 +161,12 @@ public class OverlayManager : MonoBehaviour
     {
         gameStart.StartGameFun();
         StartCoroutine(LoadingOverlayController());
+    }
+
+    // 게임 재시작하는 버튼
+    public void RestartButton()
+    {
+        StartCoroutine(LoadingOverlayControllerRoReset());
     }
 
     // 타이틀 씬으로 넘어가는 버튼
@@ -164,6 +202,15 @@ public class OverlayManager : MonoBehaviour
         }
     }
 
+    // 게임 오버 오버레이 활성화 / 비활성화 시키는 함수
+    public void GameOverOverlayController()
+    {
+        if (gameOverOverlay != null)
+        {
+            gameOverOverlay.SetActive(!gameOverOverlay.activeSelf);
+        }
+    }
+
     // 모든 오버레이 비활성화 시키는 함수
     public void CloseButton()
     {
@@ -192,6 +239,17 @@ public class OverlayManager : MonoBehaviour
             yield return new WaitForSeconds(2.8f);
             loadingOverlay.SetActive(true);
             sceneLoader.LoadScene("GameScene");
+        }
+    }
+
+    // 게임 씬으로 넘어가는 함수
+    private IEnumerator LoadingOverlayControllerRoReset()
+    {
+        if (loadingOverlay != null)
+        {
+            loadingOverlay.SetActive(true);
+            sceneLoader.LoadScene("GameScene");
+            yield return null;
         }
     }
 

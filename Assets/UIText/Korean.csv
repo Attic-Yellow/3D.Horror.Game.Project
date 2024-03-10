@@ -55,3 +55,22 @@ Inventory Work Information 0,1. 공장 내부의 전원을 켤 수 있는 모니터를 찾으세요.
 Inventory Work Information 1,2. 재고 정리 리스트에 있는 물품들을 소품실에서 찾아 재고를 확인하세요.
 Inventory Work Information 2,3. 재고 정리 파일을 올바르게 수정하세요.
 The door is locked,문이 잠겨있습니다.
+Back To Title,게임 나가기
+Graphics,그래픽
+Audio,오디오
+Display Mode,창 모드
+Resolution Settings,해상도
+Anti-Aliasing Settings,안티 앨리어싱
+Render Scale Settings,랜더 스케일
+Post-Processing,포스트 프로세싱
+Reset Game,다시 시작
+Reset Game Check Text 1,다시 시작하시겠습니까?
+Reset Game Check Text 2,현재까지 진행된 내용은 없어지며 복구할 수 없습니다.
+Back To Title Check Text 1,게임을 나가시겠습니까?
+Back To Title Check Text 2,현재까지 진행된 내용은 사라지며 이어서 진행할 수 없습니다.
+Quit Game Check Text,게임을 종료하시겠습니까?
+Yes,예
+No,아니요
+Credit,크래딧
+Game Over Text,당신은 죽고 말았습니다...
+Retry,다시 시작
