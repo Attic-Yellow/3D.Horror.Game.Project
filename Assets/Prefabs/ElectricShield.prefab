@@ -1816,10 +1816,14 @@ MonoBehaviour:
   - {fileID: 2189873910818365839}
   closeText:
   - {fileID: 2189873910740142421}
+  isRoomDoor: 0
+  canOpenEnemy: 0
   isOut: 1
+  isLock: 0
   rotationSpeed: 4
   startRotation: {x: 0, y: 0, z: 0, w: 0}
   openAngle: 90
+  target: {fileID: 5790375091953495848}
 --- !u!1 &2750464857211999331
 GameObject:
   m_ObjectHideFlags: 0

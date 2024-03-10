@@ -7,13 +7,14 @@ public class CheckDraggableObjects : MonoBehaviour
 {
     public List<DragAndDrop> draggableObjs = new();
     [SerializeField]private List<bool> isOn = new();
+    [SerializeField] private Activatable activatable;
     public bool isCheck = false;
     public bool isSuccess = false;
     private Animator animator;
 
     private void Awake()
     {
-        animator = GetComponent<Animator>();
+        animator = GetComponentInParent<Animator>();
     }
 
 
@@ -38,7 +39,6 @@ public class CheckDraggableObjects : MonoBehaviour
     }
     public void CheckActivatable() 
     {
-        Activatable activatable = FindObjectOfType<Activatable>();
 
         foreach (var obj in draggableObjs)
         {
