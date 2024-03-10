@@ -8,13 +8,11 @@ public class Flashlight : Item
 {
     private float maxBatteryTime = 10f;
     private float currentBatteryTime;
-    [SerializeField] private GameObject lightGO;
    [SerializeField] private bool isOn = false;
     [SerializeField] private GameObject lightColl; //적이 눈뽕맞는걸 체크하는 콜라이더
     private FlashlightBattery flashlightBattery;
     private void Start()
     {
-        lightGO.SetActive(isOn);
         currentBatteryTime = maxBatteryTime;
         flashlightBattery = FindObjectOfType<FlashlightBattery>();
         flashlightBattery.flashlight = this;
@@ -52,7 +50,6 @@ public class Flashlight : Item
                 isOn = false;
             }
         }
-        lightGO.SetActive(isOn);
         lightColl.SetActive(isOn);
     }
 
