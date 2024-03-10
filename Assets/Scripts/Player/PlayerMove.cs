@@ -125,15 +125,13 @@ public class PlayerMove : MonoBehaviour
         // 카메라 방향에 기반한 플레이어의 이동 방향 계산
         Vector3 forward = Camera.main.transform.forward;
         Vector3 right = Camera.main.transform.right;
-        forward.y = 0; // 카메라의 상하 움직임은 무시
-        right.y = 0; // 카메라의 상하 움직임은 무시
         forward.Normalize();
         right.Normalize();
 
-        moveDir = (forward * inputValue.y + right * inputValue.x)*currentSpeed;
-        Gravity();
+        moveDir = forward * inputValue.y + right * inputValue.x;  
         print(moveDir);
-        controller.Move(moveDir * Time.deltaTime );
+        /*Gravity();*/
+        controller.Move(moveDir * Time.deltaTime *currentSpeed );   
     }
     private void Gravity()
     {
@@ -186,10 +184,10 @@ public class PlayerMove : MonoBehaviour
     }
     public void OnJump()
     {
-        if (controller.isGrounded) 
+        if (!controller.isGrounded)
         {
             print("점프");
-            moveDir.y = jumpForce; 
+            moveDir.y = jumpForce;
         }
     }
 }
