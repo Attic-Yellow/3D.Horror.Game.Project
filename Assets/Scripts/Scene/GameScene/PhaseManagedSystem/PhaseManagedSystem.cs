@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PhaseManagedSystem : MonoBehaviour
@@ -11,10 +12,18 @@ public class PhaseManagedSystem : MonoBehaviour
     [SerializeField] private bool missionSuccess;
     [SerializeField] private bool check = true;
     private string checktime;
+
+    [SerializeField] private CameraController cameraController;
+
     private void Start()
     {
         missionSuccess = true;
         currentMission = MissionType.None;
+
+        foreach (var mission in allMissions)
+        {
+            mission.gameObject.SetActive(false); // 나머지 비활성화
+        }
     }
 
     private void Update()
@@ -61,9 +70,12 @@ public class PhaseManagedSystem : MonoBehaviour
             if (player!= null)
             {
                 player.SetIsOver(true);
-                //다시시작 UI
+                cameraController.SetOverlayCamAtive();
+                cameraController.SetPointCamActive();
+                Cursor.lockState = CursorLockMode.Confined;
+                Cursor.visible = true;
+                GameManager.instance.overlayManager.GameOverOverlayController();
             }
-
         }
     }
 

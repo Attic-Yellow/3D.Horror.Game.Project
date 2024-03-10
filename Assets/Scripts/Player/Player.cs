@@ -298,10 +298,14 @@ public class Player : MonoBehaviour
     }
     private void CameraChange(PlayableDirector director)
     {
+        cameraController.SetOverlayCamAtive();
+        cameraController.SetPointCamActive();
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
+        GameManager.instance.overlayManager.GameOverOverlayController();
         timelineFinsish = true;
-        CameraPriorityChange(11);
         GameManager.instance.settingsManager.PlayClip(collisionEnemy.overClip);
-
+        
     }
 
     private void TimelineEndCheck()
