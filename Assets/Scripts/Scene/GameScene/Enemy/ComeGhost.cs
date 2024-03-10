@@ -6,16 +6,23 @@ using UnityEngine.UIElements;
 
 public class ComeGhost : Enemy
 {
-    public float detectionRadius = 10f; // 플레이어를 감지하는 반경
+    public float boxXDistance = 10f; 
+    public float boxZDistance = 2f;
     public bool isSee = false;
     public GameObject[] childObj;
+    private Vector3 detectionBoxSize; // 감지 박스의 크기
 
+    private new void Awake()
+    {
+        base.Awake();
+        detectionBoxSize = new Vector3(boxXDistance, 1f, boxZDistance);
+    }
     void Update()
     {
         if (!player.isOver)
         {
             // 일정 범위 내에 있는 모든 플레이어를 검출
-            Collider[] colliders = Physics.OverlapSphere(transform.position, detectionRadius);
+            Collider[] colliders = Physics.OverlapBox(transform.position + transform.forward * boxXDistance * 0.5f, detectionBoxSize * 0.5f);
             bool playerDetected = false; // 플레이어를 발견했는지 여부를 나타내는 변수
 
             foreach (Collider collider in colliders)
@@ -50,6 +57,7 @@ public class ComeGhost : Enemy
                     }
                     // 플레이어 방향으로 귀신을 이동시킴
                     Vector3 direction = (player.transform.position - transform.position).normalized;
+                    direction.y = 0; // y축 이동 방향 제거
                     transform.Translate(direction * walkSpeed * Time.deltaTime, Space.World);
                 }
             }

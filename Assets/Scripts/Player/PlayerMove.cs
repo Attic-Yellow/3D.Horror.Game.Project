@@ -127,10 +127,12 @@ public class PlayerMove : MonoBehaviour
         Vector3 right = Camera.main.transform.right;
         forward.Normalize();
         right.Normalize();
+        forward.y = 0f;
+        right.y = 0f;
 
         moveDir = forward * inputValue.y + right * inputValue.x;  
         print(moveDir);
-        /*Gravity();*/
+        Gravity();
         controller.Move(moveDir * Time.deltaTime *currentSpeed );   
     }
     private void Gravity()

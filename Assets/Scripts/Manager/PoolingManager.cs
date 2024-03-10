@@ -141,19 +141,17 @@ public class PoolingManager : MonoBehaviour
             GameObject obj = GetPool(objPrefab);
             if (obj != null)
             {
-
-                if (!isDrawerObj)
-                {
-                    Vector3 position = SetObjPos(positionList);
-                    obj.transform.position = position;
-                }
-                else
+                Vector3 position = SetObjPos(positionList);
+                obj.transform.position = position;
+              
+                if(isDrawerObj)
                 {
                     obj.transform.SetParent(positionList[randomIndex]);
                     obj.transform.localPosition = Vector3.zero;
                     obj.transform.localRotation = Quaternion.identity;
+                    isDrawerObj = false;
                 }
-                isDrawerObj = false;
+                
               
             }
          
