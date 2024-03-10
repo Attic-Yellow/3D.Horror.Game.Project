@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public PoolingManager poolingManager;
     [SerializeField] private LanguageType languageType;
     [SerializeField] private float lightIntensity;
+    [SerializeField] private bool isGameUsing = false;
 
     private void Awake()
     {
@@ -25,9 +26,9 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
         // PlayerPrefs.DeleteAll();
         languageType = (LanguageType)PlayerPrefs.GetInt("LanguageSetting", (int)LanguageType.English);
-      
     }
 
     // 현재 활성화된 언어를 설정
@@ -57,5 +58,20 @@ public class GameManager : MonoBehaviour
     {
         lightIntensity = PlayerPrefs.GetFloat("LightIntensity", 1f);
         return lightIntensity;
+    }
+
+    // 게임이 실행된 적이 있는지 확인
+    private void SetGamePlayUsing()
+    {
+        isGameUsing = true;
+        PlayerPrefs.SetInt("GameUsing", isGameUsing ? 1 : 0);
+        PlayerPrefs.Save();
+    }
+
+    // 게임이 실행된 적이 있는지 확인
+    public bool GetGamePlayUsing()
+    {
+        isGameUsing = PlayerPrefs.GetInt("GameUsing", 0) == 1 ? true : false;
+        return isGameUsing;
     }
 }
