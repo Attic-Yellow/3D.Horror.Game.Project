@@ -1239,7 +1239,7 @@ GameObject:
   - component: {fileID: 5605495549845725016}
   - component: {fileID: 7905684941659148422}
   - component: {fileID: 5004030114274458417}
-  m_Layer: 16
+  m_Layer: 0
   m_Name: ElectricShield
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1333,7 +1333,7 @@ BoxCollider:
   m_GameObject: {fileID: 2480819382599997402}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 0.09766197, y: 0.5016365, z: 1.5323417}
   m_Center: {x: 0.19821262, y: 0.09061146, z: 0.06984621}
@@ -1346,7 +1346,7 @@ BoxCollider:
   m_GameObject: {fileID: 2480819382599997402}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 0.07123375, y: 0.505414, z: 1.5285662}
   m_Center: {x: -0.74754333, y: 0.08872366, z: 0.064183}

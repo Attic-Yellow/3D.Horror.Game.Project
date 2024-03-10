@@ -1537,7 +1537,7 @@ GameObject:
   - component: {fileID: 6825414304510745640}
   - component: {fileID: 187676029386868474}
   - component: {fileID: 2573475737475062551}
-  - component: {fileID: 3892466727288625384}
+  - component: {fileID: 662863244237109713}
   m_Layer: 6
   m_Name: CountingObj
   m_TagString: Untagged
@@ -1622,7 +1622,7 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
   m_EffectDistance: {x: 0, y: 0}
   m_UseGraphicAlpha: 1
---- !u!114 &3892466727288625384
+--- !u!114 &662863244237109713
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1631,14 +1631,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 7872424409616968353}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d11b1a0ee1aa7314086aca8e10bdfeb4, type: 3}
+  m_Script: {fileID: 11500000, guid: e9b84911545cd1249ab4e5df75cf1e4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   missionName: 
   phaseSystem: {fileID: 0}
-  missionType: 1
+  missionType: 0
   isCompleted: 0
-  missionSubjectText: {fileID: 3787403593275857104}
+  missionText: 
+  rows: []
 --- !u!1 &8116923300798473386
 GameObject:
   m_ObjectHideFlags: 0

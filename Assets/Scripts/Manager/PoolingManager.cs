@@ -31,7 +31,7 @@ public class PoolingManager : MonoBehaviour
     {
         GameManager.instance.poolingManager = this;
         AddTFLists();
-        //InitObjects(onThePlaneObjs, planeTf,poolSize);
+        InitObjects(onThePlaneObjs, planeTf,1);
         InitObjects(inTheObjs, inTheTf, 1);
         InitMissionObjects();
     }
