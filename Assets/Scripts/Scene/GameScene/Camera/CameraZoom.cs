@@ -54,6 +54,11 @@ public class CameraZoom : MonoBehaviour
             cameraController.SetPointCamActive();
             missions = null;
         }
+
+        if (isMission && Input.GetKeyDown(KeyCode.Escape))
+        {
+            cameraController.SetOverlayCamAtive();
+        }
     }
 
     // Ä«¸Þ¶ó ÁÜÀÎ, ÁÜ¾Æ¿ô
@@ -137,7 +142,6 @@ public class CameraZoom : MonoBehaviour
     {
         isMission = !isMission;
         missions = mission;
-        cameraController.SetOverlayCamAtive();
         if (isMission)
         {
             cameraController.SetPointCamActive();
