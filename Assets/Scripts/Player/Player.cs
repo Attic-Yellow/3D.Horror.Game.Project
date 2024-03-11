@@ -257,7 +257,7 @@ public class Player : MonoBehaviour
     {
         isPaused = !isPaused;
 
-        if (!cameraZoom.isZoomIn && !isLookAtCCTV && !isTab)
+        if (!cameraZoom.isZoomIn && !isLookAtCCTV && !isTab && !isOver)
         {
             cameraController.SetOverlayCamAtive();
             cameraController.SetPointCamActive();
@@ -302,14 +302,7 @@ public class Player : MonoBehaviour
     }
     private void CameraChange(PlayableDirector director)
     {
-        cameraController.SetOverlayCamAtive();
-        cameraController.SetPointCamActive();
-        Cursor.lockState = CursorLockMode.Confined;
-        Cursor.visible = true;
-        GameManager.instance.overlayManager.GameOverOverlayController();
         timelineFinsish = true;
-       
-
     }
 
     private void TimelineEndCheck()
@@ -325,8 +318,13 @@ public class Player : MonoBehaviour
             collisionEnemy = other.gameObject.GetComponent<Enemy>();
             isOver = true;
             OnTimeline();
-            GameManager.instance.settingsManager.PlayClip(11);
-            if(other.GetComponent<ComeGhost>() != null)
+            cameraController.SetOverlayCamAtive();
+            cameraController.SetPointCamActive();
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = true;
+            GameManager.instance.overlayManager.GameOverOverlayController();
+            //GameManager.instance.settingsManager.PlayClip(11);
+            if (other.GetComponent<ComeGhost>() != null)
             {
                 other.GetComponent<ComeGhost>().SetActiveTrue();
             }

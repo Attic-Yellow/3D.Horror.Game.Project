@@ -3864,6 +3864,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4499157138132501940, guid: 06b090d646fb7024eb8d55979bb522e9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6756511256654518599, guid: 06b090d646fb7024eb8d55979bb522e9,
         type: 3}
       propertyPath: timeSystem
@@ -7619,7 +7624,9 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8975263772981400147, guid: e2b66c58f82d87b42bfd1c326e323ece, type: 3}
+    - {fileID: 1088451945, guid: e2b66c58f82d87b42bfd1c326e323ece, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e2b66c58f82d87b42bfd1c326e323ece, type: 3}
 --- !u!1 &374539981
 GameObject:
@@ -10329,7 +10336,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &512223109
 RectTransform:
   m_ObjectHideFlags: 0

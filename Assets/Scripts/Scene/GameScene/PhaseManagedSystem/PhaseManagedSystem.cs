@@ -70,10 +70,14 @@ public class PhaseManagedSystem : MonoBehaviour
             if (player!= null)
             {
                 player.SetIsOver(true);
-                cameraController.SetOverlayCamAtive();
-                cameraController.SetPointCamActive();
-                Cursor.lockState = CursorLockMode.Confined;
-                Cursor.visible = true;
+
+                if (!Cursor.visible)
+                {
+                    cameraController.SetOverlayCamAtive();
+                    cameraController.SetPointCamActive();
+                    Cursor.lockState = CursorLockMode.Confined;
+                    Cursor.visible = true;
+                }
                 GameManager.instance.overlayManager.GameOverOverlayController();
             }
         }
