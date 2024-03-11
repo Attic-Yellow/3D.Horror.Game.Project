@@ -12,12 +12,12 @@ public class PlayerCameraView : MonoBehaviour
     [SerializeField] private Transform playerBody;
     [SerializeField] private CinemachineVirtualCamera vCam;
     [SerializeField] private CameraController camController;
-    [SerializeField] private Player Player;
+    [SerializeField] private Player player;
     private float xRotation = 0f;
 
     private void Awake()
     {
-        Player = playerBody.gameObject.GetComponent<Player>();
+        player = playerBody.gameObject.GetComponent<Player>();
     }
     private void Start()
     {
@@ -27,7 +27,7 @@ public class PlayerCameraView : MonoBehaviour
 
     private void Update()
     {
-        if (vCam.m_Follow != playerBody ||   camController.GetOverlayCamAtive() || Player.isOver )
+        if (vCam.m_Follow != playerBody || camController.GetOverlayCamAtive() || player.isOver || player.LiveCamCam3())
         {
             return;
         }
@@ -40,16 +40,16 @@ public class PlayerCameraView : MonoBehaviour
         xRotation -= mouseY;   
         xRotation = Mathf.Clamp(xRotation, -65f, 65f);
 
-        if (Player.currentItem != null)
+        if (player.currentItem != null)
         {
            /* Player.ItemPos.rotation = transform.rotation;*/
            Quaternion cameraRotation = Quaternion.Euler(transform.localEulerAngles);
 
             // 아이템의 새로운 회전값을 계산합니다.
-            Quaternion newItemRotation = cameraRotation * Player.currentItem.originalRotate;
+            Quaternion newItemRotation = cameraRotation * player.currentItem.originalRotate;
 
             // 새로운 회전값을 아이템에 적용합니다.
-            Player.currentItem.transform.rotation = newItemRotation;
+            player.currentItem.transform.rotation = newItemRotation;
         }
         // 카메라의 로컬 회전을 직접 조정
         transform.localEulerAngles = new Vector3(xRotation, playerBody.eulerAngles.y, 0f);

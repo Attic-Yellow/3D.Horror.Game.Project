@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -42,7 +43,7 @@ public class PlayerMove : MonoBehaviour
     
     private void Update()
     {
-        if (!player.isOver && !player.cameraController.GetOverlayCamAtive())
+        if (!player.isOver && !player.cameraController.GetOverlayCamAtive() || player.LiveCamCam3())
         {
             Move();
         }

@@ -56,11 +56,14 @@ public class Locker : MonoBehaviour
         isIn = false;
         isChanged = true;
         timelinePlaying = false;
+        camera2.gameObject.SetActive(false);
     }
     public void PositionAndRotation(Transform _tf)
     {
+        camera2.gameObject.SetActive(true);
         camera2.transform.position = _tf.position;
         camera2.transform.rotation = _tf.rotation;
+        
     }
 
     public void CameraPriorityChange(int _num)

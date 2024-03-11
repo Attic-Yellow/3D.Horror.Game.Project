@@ -7,7 +7,7 @@ public class FlashlightBattery : MonoBehaviour
 {
    public Image batteyUI;
   public  PlayerLight playerLight;
-
+    
 
     private void Update()
     {

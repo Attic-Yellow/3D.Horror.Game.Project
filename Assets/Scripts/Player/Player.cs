@@ -10,7 +10,7 @@ using UnityEngine.Playables;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private Camera playerCamera;
+    public Camera playerCamera;
     [SerializeField] private CameraZoom cameraZoom;
     [SerializeField] private GameObject lastHitGameObject = null;
     [SerializeField] private GameObject cctvCam;
@@ -24,7 +24,7 @@ public class Player : MonoBehaviour
 
     public CinemachineVirtualCameraBase camera2;
     public PlayableDirector timeline;
-    protected bool timelineFinsish = false;
+    [SerializeField] private bool timelineFinsish = false;
 
     public Transform ItemPos;
 
@@ -90,7 +90,10 @@ public class Player : MonoBehaviour
         if(comeGhost != null)
         comeGhost.isSee = false;
     }
-
+    public bool LiveCamCam3()
+    {
+        return playerCamera.GetComponent<CinemachineBrain>().ActiveVirtualCamera == camera2;
+    }
 
 
     private void OnInteraction() //F 상호작용키 
@@ -156,6 +159,7 @@ public class Player : MonoBehaviour
         }
         if (battery != null && Holder.Instance.isHaveItems["Flashlight"])
         {
+            battery.playerLight = flashLight.GetComponent<PlayerLight>();
             battery.Use();
             Destroy(battery.gameObject);
             battery = null;
@@ -295,6 +299,7 @@ public class Player : MonoBehaviour
         camera2.Follow = collisionEnemy.gameoverCamPos;
         camera2.LookAt = collisionEnemy.gameoverLookAt;
         GameManager.instance.settingsManager.PlayClip(collisionEnemy.overClip);
+       
     }
     public void CameraPriorityChange(int _num)
     {
@@ -303,6 +308,7 @@ public class Player : MonoBehaviour
     private void CameraChange(PlayableDirector director)
     {
         timelineFinsish = true;
+        StartCoroutine(WaitCoroutine());
     }
 
     private void TimelineEndCheck()
@@ -318,11 +324,11 @@ public class Player : MonoBehaviour
             collisionEnemy = other.gameObject.GetComponent<Enemy>();
             isOver = true;
             OnTimeline();
-            cameraController.SetOverlayCamAtive();
+          /*  cameraController.SetOverlayCamAtive();
             cameraController.SetPointCamActive();
             Cursor.lockState = CursorLockMode.Confined;
             Cursor.visible = true;
-            GameManager.instance.overlayManager.GameOverOverlayController();
+            GameManager.instance.overlayManager.GameOverOverlayController();*/
             //GameManager.instance.settingsManager.PlayClip(11);
             if (other.GetComponent<ComeGhost>() != null)
             {
@@ -448,5 +454,14 @@ public class Player : MonoBehaviour
     public void SetIsOver(bool isBool)
     {
         isOver = isBool;
+    }
+    private IEnumerator WaitCoroutine()
+    {
+        yield return new WaitForSeconds(1f);
+        cameraController.SetOverlayCamAtive();
+        cameraController.SetPointCamActive();
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
+        GameManager.instance.overlayManager.GameOverOverlayController();
     }
 }

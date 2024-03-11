@@ -29,6 +29,7 @@ public class OverlayManager : MonoBehaviour
     [SerializeField] private GameObject workListOverlay;
     [SerializeField] private GameObject screenTextOverlay;
     [SerializeField] private GameObject gameOverOverlay;
+    [SerializeField] private GameObject excelPopupOverlay;
 
     private void Start()
     {
@@ -183,7 +184,13 @@ public class OverlayManager : MonoBehaviour
             computerOverlay.SetActive(!computerOverlay.activeSelf);
         }
     }
-
+    public void ExcelPopUpOverlayController()
+    {
+        if(excelPopupOverlay != null)
+        {
+            excelPopupOverlay.SetActive(false);
+        }
+    }
     // CRT 오버레이 활성화 / 비활성화 시키는 함수
     public void CRTOverlayController()
     {

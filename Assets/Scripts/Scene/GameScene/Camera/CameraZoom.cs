@@ -29,6 +29,7 @@ public class CameraZoom : MonoBehaviour
                 isMonitorOn = !isMonitorOn;
                 cameraController.SetOverlayCamAtive();
                 GameManager.instance.overlayManager.ComputerOverlayController();
+                GameManager.instance.overlayManager.ExcelPopUpOverlayController();
                 monitorControl.OnAndOff();
             }
             else if (missions != null && isMission)

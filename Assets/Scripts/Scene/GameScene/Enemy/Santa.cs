@@ -145,7 +145,6 @@ public class Santa : MovingEnemy
                 }
                 break;
             case State.Over:
-                print("OVER");
                 break;
         }
 

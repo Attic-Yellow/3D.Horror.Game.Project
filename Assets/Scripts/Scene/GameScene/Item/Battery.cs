@@ -5,7 +5,7 @@ using UnityEngine;
 public class Battery : MonoBehaviour
 {
     private float addTime = 120f;
-    private PlayerLight playerLight;
+   public PlayerLight playerLight;
     private void Start()
     {
         playerLight = FindObjectOfType<PlayerLight>();

@@ -99,7 +99,6 @@ public class MovingEnemy : Enemy
                 targetPos = hit.position;
                 agent.speed = walkSpeed;
                 isFind = true;
-                print($"hitPos : {hit.position}");
             }
         }
 
