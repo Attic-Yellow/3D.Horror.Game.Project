@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class Battery : MonoBehaviour
 {
-    private float addTime = 10f;
-    private Flashlight flashlight;
+    private float addTime = 120f;
+    private PlayerLight playerLight;
     private void Start()
     {
-        flashlight = FindObjectOfType<Flashlight>();
+        playerLight = FindObjectOfType<PlayerLight>();
     }
   
   public void Use()
     {  
-        flashlight.AddTime(addTime);
+        playerLight.AddTime(addTime);
     }
 
 

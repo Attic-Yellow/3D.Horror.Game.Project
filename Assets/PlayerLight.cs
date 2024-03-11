@@ -5,7 +5,7 @@ using UnityEngine.Purchasing.MiniJSON;
 
 public class PlayerLight : MonoBehaviour
 {
-    private float maxBatteryTime = 120f;
+    private float maxBatteryTime = 180f;
     private float currentBatteryTime;
 
     [SerializeField] FlashlightBattery flashlightBattery;
