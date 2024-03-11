@@ -324,13 +324,15 @@ public class Player : MonoBehaviour
             collisionEnemy = other.gameObject.GetComponent<Enemy>();
             isOver = true;
             OnTimeline();
-          /*  cameraController.SetOverlayCamAtive();
+            cameraController.SetOverlayCamAtive();
             cameraController.SetPointCamActive();
+            /*
             Cursor.lockState = CursorLockMode.Confined;
             Cursor.visible = true;
-            GameManager.instance.overlayManager.GameOverOverlayController();*/
-            //GameManager.instance.settingsManager.PlayClip(11);
+            GameManager.instance.settingsManager.PlayClip(11);*/
+            GameManager.instance.overlayManager.GameOverOverlayController();
             if (other.GetComponent<ComeGhost>() != null)
+
             {
                 other.GetComponent<ComeGhost>().SetActiveTrue();
             }
@@ -458,10 +460,7 @@ public class Player : MonoBehaviour
     private IEnumerator WaitCoroutine()
     {
         yield return new WaitForSeconds(1f);
-        cameraController.SetOverlayCamAtive();
-        cameraController.SetPointCamActive();
         Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = true;
-        GameManager.instance.overlayManager.GameOverOverlayController();
     }
 }
