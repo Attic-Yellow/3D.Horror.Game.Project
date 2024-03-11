@@ -14,9 +14,9 @@ public class Flashlight : Item
     private void Start()
     {
         currentBatteryTime = maxBatteryTime;
-        flashlightBattery = FindObjectOfType<FlashlightBattery>();
+       /* flashlightBattery = FindObjectOfType<FlashlightBattery>();
         flashlightBattery.flashlight = this;
-        flashlightBattery.batteyUI.gameObject.SetActive(false);
+        flashlightBattery.batteyUI.gameObject.SetActive(false);*/
     }
     private void OnEnable()
     {

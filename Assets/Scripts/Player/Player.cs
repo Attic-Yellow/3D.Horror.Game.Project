@@ -46,6 +46,7 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
+        flashLight.gameObject.SetActive(false);
         rig.weight = 0f;
         rigBuilder.enabled = false;
         timeline = GetComponent<PlayableDirector>();
@@ -171,10 +172,12 @@ public class Player : MonoBehaviour
                 {
                     if (!flashLight.activeSelf)
                     {
+                        GameManager.instance.settingsManager.PlayClip(15);
                         flashLight.SetActive(true);
                     }
                     else
                     {
+                        GameManager.instance.settingsManager.PlayClip(15);
                         flashLight.SetActive(false);
                     }
                     break;
@@ -291,6 +294,7 @@ public class Player : MonoBehaviour
         camera2.gameObject.SetActive(true);
         camera2.Follow = collisionEnemy.gameoverCamPos;
         camera2.LookAt = collisionEnemy.gameoverLookAt;
+        GameManager.instance.settingsManager.PlayClip(collisionEnemy.overClip);
     }
     public void CameraPriorityChange(int _num)
     {
@@ -304,8 +308,8 @@ public class Player : MonoBehaviour
         Cursor.visible = true;
         GameManager.instance.overlayManager.GameOverOverlayController();
         timelineFinsish = true;
-        GameManager.instance.settingsManager.PlayClip(collisionEnemy.overClip);
-        
+       
+
     }
 
     private void TimelineEndCheck()
@@ -329,7 +333,7 @@ public class Player : MonoBehaviour
 
         }
     }
-
+    
     private void RayCheck()
     {
         Ray ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward);

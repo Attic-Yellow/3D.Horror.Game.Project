@@ -6,12 +6,12 @@ using UnityEngine.UI;
 public class FlashlightBattery : MonoBehaviour
 {
    public Image batteyUI;
-  public  Flashlight flashlight;
+  public  PlayerLight playerLight;
 
 
     private void Update()
     {
-        if(flashlight != null)
-        batteyUI.fillAmount = flashlight.GetBatteyTime();
+        if(playerLight != null)
+        batteyUI.fillAmount = playerLight.GetBatteyTime();
     }
 }

@@ -5354,7 +5354,7 @@ MonoBehaviour:
   objNameText: {fileID: 8463797446174748135}
   explainText: {fileID: 7285457854586630199}
   priceText: {fileID: 2915506983575736611}
-  objTextName: "\uB9DD\uCE58"
+  objTextName: "\uC804\uB4F1"
   explainTextName: 
   num: 3
   isTrue: 0
@@ -13707,8 +13707,8 @@ MonoBehaviour:
   objNameText: {fileID: 2557287331124981753}
   explainText: {fileID: 1755561103788236953}
   priceText: {fileID: 8729947442155502470}
-  objTextName: "\uC190\uC804\uB4F1"
-  explainTextName: 
+  objTextName: "\uAE30\uB984\uD1B5"
+  explainTextName: "(\uBBF8\uC0AC\uC6A9)"
   num: 0
   isTrue: 0
 --- !u!1 &3562403138417748225
@@ -18637,7 +18637,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1858347769294734805
 RectTransform:
   m_ObjectHideFlags: 0
@@ -18710,6 +18710,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   missionName: 
+  phaseSystem: {fileID: 0}
   missionType: 2
   isCompleted: 0
   missionText: 
@@ -24188,7 +24189,7 @@ MonoBehaviour:
   objNameText: {fileID: 7088412962788766773}
   explainText: {fileID: 6938816663617647128}
   priceText: {fileID: 572962917573019781}
-  objTextName: "\uACF5\uAD6C\uD568"
+  objTextName: "\uD30C\uC774\uD504 \uB80C\uCE58"
   explainTextName: 
   num: 2
   isTrue: 0
@@ -24700,7 +24701,7 @@ MonoBehaviour:
   objNameText: {fileID: 8282848951642403742}
   explainText: {fileID: 3326789195794013192}
   priceText: {fileID: 822748249089405428}
-  objTextName: "\uB4DC\uB77C\uC774\uBC84"
+  objTextName: "\uAD6C\uAE09\uC0C1\uC790"
   explainTextName: 
   num: 1
   isTrue: 0
@@ -26690,7 +26691,7 @@ MonoBehaviour:
   objNameText: {fileID: 2772789192166780916}
   explainText: {fileID: 9149625847236495607}
   priceText: {fileID: 4330680623906613365}
-  objTextName: "\uB098\uC0AC"
+  objTextName: "\uD0A4\uBCF4\uB4DC"
   explainTextName: 
   num: 4
   isTrue: 0

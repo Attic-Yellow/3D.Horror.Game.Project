@@ -131,7 +131,6 @@ public class PlayerMove : MonoBehaviour
         right.y = 0f;
 
         moveDir = forward * inputValue.y + right * inputValue.x;  
-        print(moveDir);
         Gravity();
         controller.Move(moveDir * Time.deltaTime *currentSpeed );   
     }
