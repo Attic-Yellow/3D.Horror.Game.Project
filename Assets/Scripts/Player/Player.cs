@@ -22,6 +22,7 @@ public class Player : MonoBehaviour
     public float interactionDistance = 5f;
     public List<Item> haveitems = new();
 
+    [SerializeField] private CinemachineVirtualCamera camera1;
     public CinemachineVirtualCameraBase camera2;
     public PlayableDirector timeline;
     [SerializeField] private bool timelineFinsish = false;
@@ -43,7 +44,7 @@ public class Player : MonoBehaviour
     private bool isTab = false;
     public bool isOver = false;
     private Battery battery;
-
+    private bool isTrue = false;
     private void Awake()
     {
         flashLight.gameObject.SetActive(false);
@@ -54,8 +55,9 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        if (isOver)
+        if (isOver && !isTrue)
         {
+            isTrue = true;
             TimelineEndCheck();
             return;
         }
@@ -87,8 +89,8 @@ public class Player : MonoBehaviour
             battery = null;
         }
 
-        if(comeGhost != null)
-        comeGhost.isSee = false;
+        if (comeGhost != null)
+            comeGhost.isSee = false;
     }
     public bool LiveCamCam3()
     {
@@ -141,7 +143,7 @@ public class Player : MonoBehaviour
             Drawer drawer = lastHitGameObject.gameObject.GetComponentInParent<Drawer>();
             drawer.DrawerController();
         }
-        if(lastHitGameObject !=null && lastHitGameObject.GetComponent<Switch>()!=null)
+        if (lastHitGameObject != null && lastHitGameObject.GetComponent<Switch>() != null)
         {
             Switch sw = lastHitGameObject.gameObject.GetComponent<Switch>();
             sw.OnOffLights();
@@ -235,7 +237,7 @@ public class Player : MonoBehaviour
     {
         if (!isLookAtCCTV && !cameraZoom.isZoomIn && !isPaused)
         {
-           
+
 
             if (currentItem != null)
             {
@@ -299,7 +301,7 @@ public class Player : MonoBehaviour
         camera2.Follow = collisionEnemy.gameoverCamPos;
         camera2.LookAt = collisionEnemy.gameoverLookAt;
         GameManager.instance.settingsManager.PlayClip(collisionEnemy.overClip);
-       
+
     }
     public void CameraPriorityChange(int _num)
     {
@@ -307,8 +309,16 @@ public class Player : MonoBehaviour
     }
     private void CameraChange(PlayableDirector director)
     {
+        print("1");
+        cameraController.SetOverlayCamAtive();
+        cameraController.SetPointCamActive();
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
+        GameManager.instance.overlayManager.GameOverOverlayController();
         timelineFinsish = true;
-        StartCoroutine(WaitCoroutine());
+        CameraPriorityChange(11);
+        camera1.gameObject.SetActive(false);
+
     }
 
     private void TimelineEndCheck()
@@ -324,22 +334,20 @@ public class Player : MonoBehaviour
             collisionEnemy = other.gameObject.GetComponent<Enemy>();
             isOver = true;
             OnTimeline();
-            cameraController.SetOverlayCamAtive();
-            cameraController.SetPointCamActive();
-            /*
-            Cursor.lockState = CursorLockMode.Confined;
-            Cursor.visible = true;
-            GameManager.instance.settingsManager.PlayClip(11);*/
-            GameManager.instance.overlayManager.GameOverOverlayController();
+            /*  cameraController.SetOverlayCamAtive();
+              cameraController.SetPointCamActive();
+              Cursor.lockState = CursorLockMode.Confined;
+              Cursor.visible = true;
+              GameManager.instance.overlayManager.GameOverOverlayController();*/
+            //GameManager.instance.settingsManager.PlayClip(11);
             if (other.GetComponent<ComeGhost>() != null)
-
             {
                 other.GetComponent<ComeGhost>().SetActiveTrue();
             }
 
         }
     }
-    
+
     private void RayCheck()
     {
         Ray ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward);
@@ -437,7 +445,7 @@ public class Player : MonoBehaviour
                     hit.collider.gameObject.transform.Find("CanvasRoot").gameObject.SetActive(true);
                     lastHitGameObject = hit.collider.gameObject;
                 }
-                else if (hit.collider.CompareTag("Enemy")&&hit.collider.gameObject.GetComponent<ComeGhost>())
+                else if (hit.collider.CompareTag("Enemy") && hit.collider.gameObject.GetComponent<ComeGhost>())
                 {
                     comeGhost.isSee = true;
                 }
@@ -460,7 +468,6 @@ public class Player : MonoBehaviour
     private IEnumerator WaitCoroutine()
     {
         yield return new WaitForSeconds(1f);
-        Cursor.lockState = CursorLockMode.Confined;
-        Cursor.visible = true;
+
     }
 }

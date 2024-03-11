@@ -67,7 +67,7 @@ public class PhaseManagedSystem : MonoBehaviour
         else
         {
             Player player = FindObjectOfType<Player>();
-            if (player!= null)
+            if (player!= null && player.isOver)
             {
                 player.SetIsOver(true);
 
