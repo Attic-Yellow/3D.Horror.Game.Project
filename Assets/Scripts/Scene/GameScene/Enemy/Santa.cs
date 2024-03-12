@@ -55,6 +55,10 @@ public class Santa : MovingEnemy
                                   print("이벤트");
                                  EnemyEvent();
                              }
+                              else
+                               {
+                            //이벤트가 활성화되어있는데 
+                                }
                         }
                         else if(!agent.hasPath)// 플레이어를 감지하지 못하고 따라가는 중이 아닐 때
                         {
@@ -65,17 +69,20 @@ public class Santa : MovingEnemy
                 {
                     if (!isOpenAndMove)
                     {
-                        if (!agent.hasPath)
+
+                        if (Vector3.Distance(isFrontDoor.gameObject.transform.position, transform.position) >= 2f)
                         {
-                            if (Vector3.Distance(isFrontDoor.gameObject.transform.position, transform.position) >= 2f)
+                            if (!agent.hasPath)
                             {
+                                print("문앞으로 이동");
                                 agent.SetDestination(isFrontDoor.gameObject.transform.position);
                             }
-                            else
-                            {
-                                state = State.OpenDoor;
-                            }
                         }
+                        else
+                        {
+                            state = State.OpenDoor;
+                        }
+                        
                     }
                     else
                     {
@@ -247,7 +254,6 @@ public class Santa : MovingEnemy
             if (isEvent && !agent.hasPath)
             {
                 isFrontDoor = MostNearDoor();
-                isEvent = false;
             }
 
 
