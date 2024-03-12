@@ -24,11 +24,11 @@ public class MovingEnemy : Enemy
     [SerializeField] protected bool watchedPlayer = false; // 적 카메라에 플레이어가 들어왔는지 
     [SerializeField] protected Door isFrontDoor = null;
     [SerializeField] protected Vector3 targetPos;
+    [SerializeField] protected bool isEvent = false;
     protected bool isOpenAndMove = false;
 
     [SerializeField] protected float timer = 0f;
     [SerializeField] protected float eventDelay = 30f;
-    [SerializeField] protected bool isMoving = false;
 
     public float runSpeed;
 
@@ -72,19 +72,12 @@ public class MovingEnemy : Enemy
             if (isFrontDoor == null)
             {
                 isFrontDoor = enemyCameraDetection.DoorCheck();
-
-            }
-            if (!agent.hasPath && isMoving)
-            {
-                isMoving = false;
-
             }
         }
     }
 
     protected void MoveToNextTransform()
     {
-        isMoving = true;
 
         bool isFind = false;
         Vector3 randomPosition = Vector3.zero;
@@ -117,8 +110,7 @@ public class MovingEnemy : Enemy
 
     protected void EnemyEvent() //시간마다 플레이어에게 제일가까운 위치로 가게끔하는 이벤트
     {
-
-        isMoving = true;
+        isEvent = true;
         bool isFind = false;
 
         while (!isFind)
@@ -168,10 +160,8 @@ public class MovingEnemy : Enemy
 
     protected IEnumerator Moving(Vector3 pos)
     {
-        isMoving = true;
         agent.SetDestination(pos);
         yield return new WaitUntil(() => agent.remainingDistance >= agent.stoppingDistance);
-        isMoving = false;
 
     }
 

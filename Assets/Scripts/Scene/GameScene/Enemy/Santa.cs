@@ -10,17 +10,18 @@ using UnityEngine.PlayerLoop;
 
 public class Santa : MovingEnemy
 {
-  [SerializeField] private bool isStunned = false;
+    [SerializeField] private bool isStunned = false;
     [SerializeField] Transform enemyForward;
+
     private float stunTime = 3.26f;
     private float stunTimer = 0f;
-   public AudioSource[] souces;
-   public AudioClip[] clips;
-    private Door nearstDoor = null;
 
+    public AudioSource[] souces;
+    public AudioClip[] clips;
+
+    private Door nearstDoor = null;
     private void Update()
     {
-
         CheckSturn();
 
         if(!isStunned)
@@ -44,25 +45,21 @@ public class Santa : MovingEnemy
         {
 
             case State.Move:
-
-              
+           
                 if (isFrontDoor == null )
                 {
-                    if (!isMoving)
-                    {
                         if (timer >= eventDelay) // 플레이어를 못 본 지 eventDelay만큼 지났을 때
                         {
-                            print("이벤트");
-                            EnemyEvent();
+                            if (!isEvent)
+                             {
+                                  print("이벤트");
+                                 EnemyEvent();
+                             }
                         }
-                        else // 플레이어를 감지하지 못하고 따라가는 중이 아닐 때
+                        else if(!agent.hasPath)// 플레이어를 감지하지 못하고 따라가는 중이 아닐 때
                         {
-                            print("일반적인 이동");
-
                             MoveToNextTransform();
-
                         }
-                    }
                 }
                 else 
                 {
@@ -72,8 +69,6 @@ public class Santa : MovingEnemy
                         {
                             if (Vector3.Distance(isFrontDoor.gameObject.transform.position, transform.position) >= 2f)
                             {
-                                print("문앞으로 이동");
-                                print(isFrontDoor.gameObject.transform.position);
                                 agent.SetDestination(isFrontDoor.gameObject.transform.position);
                             }
                             else
@@ -84,18 +79,20 @@ public class Santa : MovingEnemy
                     }
                     else
                     {
-                        if (Vector3.Distance(isFrontDoor.inRoomTransform.position, transform.position) >= 1f)
-                        {
-                            print("방안으로 이동");
-                            agent.SetDestination(isFrontDoor.inRoomTransform.position);
-                        }
-                        else
-                        {
-                            isOpenAndMove = false;
-                            isFrontDoor = null;
-                            state = State.LookingAround;
-                        }
-                      
+                            if (Vector3.Distance(isFrontDoor.inRoomTransform.position, transform.position) >= 1f)
+                            {
+                                if (!agent.hasPath)
+                                {
+                                print("방안으로 이동");
+                                agent.SetDestination(isFrontDoor.inRoomTransform.position);
+                                }
+                            }
+                            else
+                            {
+                                isOpenAndMove = false;
+                                isFrontDoor = null;
+                                state = State.LookingAround;
+                            }
                     }
                 }
 
@@ -108,8 +105,7 @@ public class Santa : MovingEnemy
                 if (!agent.hasPath)
                 {
                     isFrontDoor = MostNearDoor();
-                    state = State.Move;
-                    
+                    state = State.Move;                   
                 }
                 break;
             case State.Crouch:
@@ -152,7 +148,6 @@ public class Santa : MovingEnemy
 
     }
 
-
     public void Finsih()
     {
         isStunned = false;
@@ -164,7 +159,6 @@ public class Santa : MovingEnemy
        float halfFOV = 45 * 0.5f;
         Quaternion leftRayRotation = Quaternion.AngleAxis(-halfFOV, Vector3.up);
         Quaternion rightRayRotation = Quaternion.AngleAxis(halfFOV, Vector3.up);
-
 
         RaycastHit lefthit;
         bool leftHitSuccess = Physics.Raycast(enemyForward.position,leftRayRotation * transform.forward,out lefthit,5f,1 << 14);
@@ -231,44 +225,42 @@ public class Santa : MovingEnemy
         if (player.isOver)
         {
             agent.ResetPath();
-            state = State.Over;
-         
+            state = State.Over;         
         }
         else
         {
-
             watchedPlayer = enemyCameraDetection.IsPlayerVisible();
 
             if (state != State.Follow && (watchedPlayer || IsMovingCheck()))
             {
-                print($"state{state != State.Follow}, watch {watchedPlayer}, move {IsMovingCheck()} ");
                 if (openDoorCoroutine != null)
                 {
                     StopCoroutine(openDoorCoroutine);
                     isOpenAndMove = false;
                 }
+                isEvent = false;
                 state = State.Follow;
-                print("여기서 follow로");
-
+               
                 return;
             }
+
+            if (isEvent && !agent.hasPath)
+            {
+                isFrontDoor = MostNearDoor();
+                isEvent = false;
+            }
+
+
 
             if (isFrontDoor == null)
             {
                 isFrontDoor = enemyCameraDetection.DoorCheck();
-
-            }
-            if (!agent.hasPath && isMoving)
-            {
-                isMoving = false;
-
             }
         }
     }
 
-    private Door MostNearDoor()
-    {
-      
+    private Door MostNearDoor() //쫒아가다가 놓쳤을떄 가장가까운 문을 열도록
+    {     
         Collider[] colliders = Physics.OverlapSphere(transform.position, 20f);
         List<Door> doors = new();
         foreach(Collider collider in colliders)
@@ -285,23 +277,46 @@ public class Santa : MovingEnemy
         print(doors.Count);
         if(doors.Count == 1)
         {
+            print("감지가능한 문이 한개밖에없음");
             return doors[0];
         }
 
         else if (doors.Count > 1)
         {
-            Vector3 diffDis = player.transform.position - transform.position;
+            Vector3 diffDis;
             float nearstDiff = 9999;
 
-            for (int i = 0; i < doors.Count; i++)
+            if(state != State.Follow)
             {
-                if (nearstDiff > Vector3.Distance(doors[i].transform.position, diffDis))
+                diffDis = transform.position;
+                for (int i = 0; i < doors.Count; i++)
                 {
-                    nearstDiff = Vector3.Distance(doors[i].transform.position, diffDis);
-                    nearstDoor = doors[i];
+                    print($"전체 {doors[i].name}");
+                    if ( 2< Mathf.Abs(doors[i].transform.position.y - diffDis.y))
+                    {
+                        print($"y값의 차이가 많이 나는 놈{i}");
+                        continue;
+                    }
+                    if (nearstDiff > Vector3.Distance(doors[i].transform.position, diffDis))
+                    {
+                        nearstDiff = Vector3.Distance(doors[i].transform.position, diffDis);
+                        nearstDoor = doors[i];
+                    }
                 }
-
             }
+            else
+            {
+                diffDis = player.transform.position - transform.position;
+                for (int i = 0; i < doors.Count; i++)
+                {
+                    if (nearstDiff > Vector3.Distance(doors[i].transform.position, diffDis))
+                    {
+                        nearstDiff = Vector3.Distance(doors[i].transform.position, diffDis);
+                        nearstDoor = doors[i];
+                    }
+                }
+            }
+          
         }
         else
         {

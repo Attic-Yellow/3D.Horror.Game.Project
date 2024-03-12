@@ -27,7 +27,7 @@ public class Rudolf : MovingEnemy
         {
             Vector3 viewportPos = mainCamera.WorldToViewportPoint(transform.position);
 
-            if (viewportPos.x < 0 || viewportPos.x > 1 || viewportPos.y < 0 || viewportPos.y > 1) //화면 밖으로 벗어나면
+            if ((viewportPos.x < 0 || viewportPos.x > 1) || (viewportPos.y < 0 || viewportPos.y > 1)) //화면 밖에
             {
                 timer += Time.deltaTime;
                 Debug.Log("적이 화면을 벗어났습니다!");
