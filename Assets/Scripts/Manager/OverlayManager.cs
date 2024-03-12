@@ -6,21 +6,24 @@ using UnityEngine.SceneManagement;
 
 public class OverlayManager : MonoBehaviour
 {
-    [Header("스타트 씬 오버레이")]
+    [Header("스타트 오버레이")]
     [SerializeField] private GameObject LanguageSelectedOverlay;
     [SerializeField] private GameObject lightIntensityOverlay;
-    [SerializeField] private GameObject chacterSettingOverlay;
+    [SerializeField] private GameObject[] chacterSettingOverlay;
+    [SerializeField] private GameObject[] startOverlayCanvas;
 
     [Space(5)]
     [Header("클래스 참조")]
     [SerializeField] private StartScene startScene;
     [SerializeField] private GameStart gameStart;
-    [SerializeField] private SceneLoader sceneLoader;
+    [SerializeField] private SceneLoader sceneLoaderToGameScene;
+    [SerializeField] private SceneLoader sceneLoaderToTitle;
+
     [Space(5)]
 
     [Header("씬 공용 오버레이")]
     [SerializeField] private GameObject optionsOverlay;
-    [SerializeField] private GameObject loadingOverlay;
+    [SerializeField] private GameObject[] loadingOverlay;
     [SerializeField] private GameObject[] checkArea;
 
     [Header("게임 씬 오버레이")]
@@ -37,7 +40,7 @@ public class OverlayManager : MonoBehaviour
 
         if (SceneManager.GetActiveScene().name == "TitleScene" && chacterSettingOverlay != null)
         {
-            chacterSettingOverlay.SetActive(false);
+            chacterSettingOverlay[0].SetActive(false);
         }
 
         if (optionsOverlay != null)
@@ -47,7 +50,7 @@ public class OverlayManager : MonoBehaviour
 
         if (loadingOverlay != null)
         {
-            loadingOverlay.SetActive(false);
+            loadingOverlay[0].SetActive(false);
         }
 
         if (checkArea != null)
@@ -84,6 +87,37 @@ public class OverlayManager : MonoBehaviour
         }
     }
 
+    public void StartCanvasController()
+    {
+        if (LanguageSelectedOverlay != null)
+        {  
+            LanguageSelectedOverlay.SetActive(false); 
+        }
+
+        if (lightIntensityOverlay != null)
+        {
+            lightIntensityOverlay.SetActive(false);
+        }
+
+        if (chacterSettingOverlay[1] != null)
+        {
+            chacterSettingOverlay[1].SetActive(false);
+        }
+
+        if (loadingOverlay[1] != null)
+        {
+            loadingOverlay[1].SetActive(false);
+        }
+
+        if (startOverlayCanvas != null)
+        {
+            foreach (GameObject canvas in startOverlayCanvas)
+            {
+                canvas.SetActive(false);
+            }
+        }
+    }
+
     // 언어 설정 오버레이에서 광량 설정 오버레이로 전환 하는 함수
     public void GoToBright()
     {
@@ -112,7 +146,7 @@ public class OverlayManager : MonoBehaviour
     public void Complete()
     {
         startScene.Complete();
-        sceneLoader.LoadScene("TitleScene");
+        sceneLoaderToTitle.LoadScene("TitleScene");
     }
 
     // 옵션 오버레이 활성화 / 비활성화 시키는 함수
@@ -153,7 +187,7 @@ public class OverlayManager : MonoBehaviour
     {
         if (chacterSettingOverlay != null)
         {
-            chacterSettingOverlay.SetActive(!chacterSettingOverlay.activeSelf);
+            chacterSettingOverlay[0].SetActive(!chacterSettingOverlay[0].activeSelf);
         }
     }
 
@@ -223,7 +257,7 @@ public class OverlayManager : MonoBehaviour
     {
         if (chacterSettingOverlay != null)
         {
-            chacterSettingOverlay.SetActive(false);
+            chacterSettingOverlay[0].SetActive(false);
         }
 
         if (optionsOverlay != null)
@@ -244,8 +278,8 @@ public class OverlayManager : MonoBehaviour
         if (loadingOverlay != null)
         {
             yield return new WaitForSeconds(2.8f);
-            loadingOverlay.SetActive(true);
-            sceneLoader.LoadScene("GameScene");
+            loadingOverlay[0].SetActive(true);
+            sceneLoaderToGameScene.LoadScene("GameScene");
         }
     }
 
@@ -254,8 +288,8 @@ public class OverlayManager : MonoBehaviour
     {
         if (loadingOverlay != null)
         {
-            loadingOverlay.SetActive(true);
-            sceneLoader.LoadScene("GameScene");
+            loadingOverlay[0].SetActive(true);
+            sceneLoaderToGameScene.LoadScene("GameScene");
             yield return null;
         }
     }
@@ -265,8 +299,8 @@ public class OverlayManager : MonoBehaviour
     {
         if (loadingOverlay != null)
         {
-            loadingOverlay.SetActive(true);
-            sceneLoader.LoadScene("TitleScene");
+            loadingOverlay[0].SetActive(true);
+            sceneLoaderToTitle.LoadScene("TitleScene");
             yield return null;
         }
     }
@@ -290,7 +324,7 @@ public class OverlayManager : MonoBehaviour
     {
         if (chacterSettingOverlay != null)
         {
-            return chacterSettingOverlay.activeSelf;
+            return chacterSettingOverlay[0].activeSelf;
         }
         return false;
     }

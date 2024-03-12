@@ -29,6 +29,19 @@ public class GameManager : MonoBehaviour
 
         // PlayerPrefs.DeleteAll();
         languageType = (LanguageType)PlayerPrefs.GetInt("LanguageSetting", (int)LanguageType.English);
+
+        isGameUsing = GetGamePlayUsing();
+
+        if (!isGameUsing)
+        {
+            SetGamePlayUsing();
+        }
+        else
+        {
+            overlayManager.StartCanvasController();
+        }
+
+        print(isGameUsing);
     }
 
     // 현재 활성화된 언어를 설정
@@ -64,7 +77,7 @@ public class GameManager : MonoBehaviour
     private void SetGamePlayUsing()
     {
         isGameUsing = true;
-        PlayerPrefs.SetInt("GameUsing", isGameUsing ? 1 : 0);
+        PlayerPrefs.SetInt("GameUsing", 1);
         PlayerPrefs.Save();
     }
 
