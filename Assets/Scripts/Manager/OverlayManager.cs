@@ -109,7 +109,7 @@ public class OverlayManager : MonoBehaviour
             loadingOverlay[1].SetActive(false);
         }
 
-        if (startOverlayCanvas != null)
+        if (startOverlayCanvas[0] != null)
         {
             foreach (GameObject canvas in startOverlayCanvas)
             {

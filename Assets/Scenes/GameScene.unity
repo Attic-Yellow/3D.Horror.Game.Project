@@ -3876,6 +3876,12 @@ PrefabInstance:
       objectReference: {fileID: 630961454}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 06b090d646fb7024eb8d55979bb522e9, type: 3}
+--- !u!1 &210546600 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4499157138132501940, guid: 06b090d646fb7024eb8d55979bb522e9,
+    type: 3}
+  m_PrefabInstance: {fileID: 210546599}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &211956199
 GameObject:
   m_ObjectHideFlags: 0
@@ -4443,12 +4449,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LanguageSelectedOverlay: {fileID: 0}
   lightIntensityOverlay: {fileID: 0}
-  chacterSettingOverlay: {fileID: 0}
+  chacterSettingOverlay: []
+  startOverlayCanvas: []
   startScene: {fileID: 0}
   gameStart: {fileID: 0}
-  sceneLoader: {fileID: 261007324}
+  sceneLoaderToGameScene: {fileID: 261007324}
+  sceneLoaderToTitle: {fileID: 261007324}
   optionsOverlay: {fileID: 512223108}
-  loadingOverlay: {fileID: 1470585930}
+  loadingOverlay:
+  - {fileID: 1470585930}
   checkArea:
   - {fileID: 79364031}
   - {fileID: 198934901}
@@ -4459,7 +4468,7 @@ MonoBehaviour:
   workListOverlay: {fileID: 1998868728}
   screenTextOverlay: {fileID: 0}
   gameOverOverlay: {fileID: 896841104}
-  excelPopupOverlay: {fileID: 0}
+  excelPopupOverlay: {fileID: 210546600}
 --- !u!114 &261007324
 MonoBehaviour:
   m_ObjectHideFlags: 0

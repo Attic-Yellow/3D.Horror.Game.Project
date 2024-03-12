@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -30,18 +31,19 @@ public class GameManager : MonoBehaviour
         // PlayerPrefs.DeleteAll();
         languageType = (LanguageType)PlayerPrefs.GetInt("LanguageSetting", (int)LanguageType.English);
 
-        isGameUsing = GetGamePlayUsing();
-
-        if (!isGameUsing)
+        if (SceneManager.GetActiveScene().name != "GameScene")
         {
-            SetGamePlayUsing();
-        }
-        else
-        {
-            overlayManager.StartCanvasController();
-        }
+            isGameUsing = GetGamePlayUsing();
 
-        print(isGameUsing);
+            if (!isGameUsing)
+            {
+                SetGamePlayUsing();
+            }
+            else
+            {
+                overlayManager.StartCanvasController();
+            }
+        }
     }
 
     // 현재 활성화된 언어를 설정
