@@ -127,8 +127,6 @@ public class SettingsManager : MonoBehaviour
         }
     }
 
- 
-
     public void PlayMoveSFX(int num)
     {
        if(playerMoveAudioSouce.isPlaying)
@@ -150,14 +148,13 @@ public class SettingsManager : MonoBehaviour
             playerMoveAudioSouce.Play();
         }
     }
-   
-
 
     public void StopMoveSFX()
     {
         playerMoveAudioSouce.Stop();
        ResetPitch();
     }
+
     public void StopThisSFX(int _num)
     {
        for(int i = 0; i < sfxAudioSources.Length;i++)
@@ -171,10 +168,12 @@ public class SettingsManager : MonoBehaviour
         }
 
     }
+
     public void ChangeSouncePitch(float _value)
     {
         playerMoveAudioSouce.pitch = _value;
     }
+
    public void ResetPitch()
     {
         playerMoveAudioSouce.pitch = 1f;
@@ -185,6 +184,7 @@ public class SettingsManager : MonoBehaviour
     {
         return sfxClips[_num];
     }
+
     public void LoadSettings()
     {
         float lightIntensityValue = GameManager.instance.GetLightIntensity();
@@ -209,7 +209,7 @@ public class SettingsManager : MonoBehaviour
         // 디스플레이 모드 로드
         if (displayMode != null)
         {
-            int displayModeValue = PlayerPrefs.GetInt("DisplayMode", 1); // 기본값으로 0 설정
+            int displayModeValue = PlayerPrefs.GetInt("DisplayMode", 0); // 기본값으로 0 설정
             displayMode.value = displayModeValue;
         }
 
@@ -322,6 +322,7 @@ public class SettingsManager : MonoBehaviour
         }
 
         PlayerPrefs.SetInt("DisplayMode", mode);
+        PlayerPrefs.Save();
     }
 
     // 해상도 드랍다운 동적 할당 함수
@@ -371,6 +372,7 @@ public class SettingsManager : MonoBehaviour
         }
 
         PlayerPrefs.SetInt("ResolutionIndex", resolutionIndex);
+        PlayerPrefs.Save();
     }
 
     // 안티 앨리어싱 변경 함수
@@ -399,6 +401,7 @@ public class SettingsManager : MonoBehaviour
             }
 
             PlayerPrefs.SetInt("AntiAliasingMode", mode);
+            PlayerPrefs.Save();
         }
     }
 
@@ -442,6 +445,7 @@ public class SettingsManager : MonoBehaviour
             urpAsset.renderScale = renderScaleValue;
             GraphicsSettings.renderPipelineAsset = urpAsset;
             PlayerPrefs.SetInt("RenderScale", value);
+            PlayerPrefs.Save();
         }
     }
 
@@ -462,6 +466,7 @@ public class SettingsManager : MonoBehaviour
         }
 
         PlayerPrefs.SetInt("QualityMode", mode);
+        PlayerPrefs.Save();
     }
 
     // 설정 값에 따라 텍스트를 업데이트
