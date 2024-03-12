@@ -41,10 +41,12 @@ public class Player : MonoBehaviour
 
     private bool isPaused = false;
     private bool isLookAtCCTV = false;
+    private bool beforeFlashlight = false;
     private bool isTab = false;
     public bool isOver = false;
     private Battery battery;
     private bool isTrue = false;
+
     private void Awake()
     {
         flashLight.gameObject.SetActive(false);
@@ -176,19 +178,21 @@ public class Player : MonoBehaviour
             {
                 if (item.GetComponent<Flashlight>() != null)
                 {
-                    if (!flashLight.activeSelf)
+                    if (!isLookAtCCTV && !isPaused && !cameraZoom.isZoomIn)
                     {
-                        GameManager.instance.settingsManager.PlayClip(15);
-                        flashLight.SetActive(true);
+                        if (!flashLight.activeSelf)
+                        {
+                            GameManager.instance.settingsManager.PlayClip(15);
+                            flashLight.SetActive(true);
+                        }
+                        else
+                        {
+                            GameManager.instance.settingsManager.PlayClip(15);
+                            flashLight.SetActive(false);
+                        }
+                        break;
                     }
-                    else
-                    {
-                        GameManager.instance.settingsManager.PlayClip(15);
-                        flashLight.SetActive(false);
-                    }
-                    break;
                 }
-
             }
         }
     }
@@ -203,19 +207,23 @@ public class Player : MonoBehaviour
                 {
                     if (!cameraZoom.isZoomIn && !isPaused && !isTab)
                     {
+                        isLookAtCCTV = !isLookAtCCTV;
+                        cctvCam.SetActive(!cctvCam.activeSelf);
+
                         if (isLookAtCCTV)
                         {
-                            flashLight.SetActive(true);
-                            cctvLight.SetActive(false);
-                        }
-                        else
-                        {
+                            beforeFlashlight = flashLight.activeSelf;
                             flashLight.SetActive(false);
                             cctvLight.SetActive(true);
                         }
-
-                        isLookAtCCTV = !isLookAtCCTV;
-                        cctvCam.SetActive(!cctvCam.activeSelf);
+                        else
+                        {
+                            if (beforeFlashlight)
+                            {
+                                flashLight.SetActive(true);
+                            }
+                            cctvLight.SetActive(false);
+                        }
 
                         if (!isTab)
                         {
@@ -334,12 +342,6 @@ public class Player : MonoBehaviour
             collisionEnemy = other.gameObject.GetComponent<Enemy>();
             isOver = true;
             OnTimeline();
-            /*  cameraController.SetOverlayCamAtive();
-              cameraController.SetPointCamActive();
-              Cursor.lockState = CursorLockMode.Confined;
-              Cursor.visible = true;
-              GameManager.instance.overlayManager.GameOverOverlayController();*/
-            //GameManager.instance.settingsManager.PlayClip(11);
             if (other.GetComponent<ComeGhost>() != null)
             {
                 other.GetComponent<ComeGhost>().SetActiveTrue();
@@ -464,10 +466,5 @@ public class Player : MonoBehaviour
     public void SetIsOver(bool isBool)
     {
         isOver = isBool;
-    }
-    private IEnumerator WaitCoroutine()
-    {
-        yield return new WaitForSeconds(1f);
-
     }
 }
